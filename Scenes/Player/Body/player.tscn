@@ -1,0 +1,207 @@
+[gd_scene format=3 uid="uid://cnpq0jkyhjr73"]
+
+[ext_resource type="Texture2D" uid="uid://gxq8bf5ermgw" path="res://Scenes/Player/Body/Sprites/base_idle.png" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://dajvrlwh2xhji" path="res://Scenes/Player/Body/Sprites/base_run.png" id="2_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://mhwc11sb4vfj" path="res://Scenes/Player/Classes/class_actions.tscn" id="2_b1gc2"]
+[ext_resource type="Script" uid="uid://dtmy4137r83in" path="res://Scenes/Player/Body/player.gd" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://cxenysspmiry6" path="res://Global/DEV.tscn" id="4_os2qf"]
+[ext_resource type="Texture2D" uid="uid://258dhlky5nq3" path="res://Scenes/Player/UI/Progress_bars/HP Bar/HP_BG.png" id="5_86lyx"]
+[ext_resource type="Script" uid="uid://drnmkrhj51qsh" path="res://Scenes/Player/UI/Progress_bars/Prog_bars.gd" id="5_t6byl"]
+[ext_resource type="Texture2D" uid="uid://dl8xhycnyk4wn" path="res://Scenes/Player/UI/Progress_bars/HP Bar/HP_EXTRA.png" id="6_t6byl"]
+[ext_resource type="Texture2D" uid="uid://38sd0eg67kr7" path="res://Scenes/Player/UI/Progress_bars/HP Bar/HP_BAR.png" id="7_7rbim"]
+[ext_resource type="Texture2D" uid="uid://cqxyaaoft6q56" path="res://Scenes/Player/UI/Progress_bars/level_emblem.png" id="8_b1gc2"]
+[ext_resource type="Texture2D" uid="uid://ceisp4mqgqot3" path="res://Scenes/Player/UI/Progress_bars/level_prog.png" id="9_e2n6q"]
+[ext_resource type="Texture2D" uid="uid://0bjvnsxvoty2" path="res://Scenes/Player/UI/Progress_bars/Stamina Bar/STAM_BG.png" id="10_unyjo"]
+[ext_resource type="Texture2D" uid="uid://camc4kf4l4hrg" path="res://Scenes/Player/UI/Progress_bars/Stamina Bar/STAM_EXTRA.png" id="11_t0j56"]
+[ext_resource type="Texture2D" uid="uid://c7ty5h26li165" path="res://Scenes/Player/UI/Progress_bars/Stamina Bar/STAM_BAR.png" id="12_iqdhd"]
+[ext_resource type="PackedScene" uid="uid://bhrve3jivpr3l" path="res://Scenes/Player/UI/Inventory/Inventory.tscn" id="14_7rbim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ym4e"]
+size = Vector2(38.333336, 120.666664)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
+atlas = ExtResource("1_cvnsp")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
+atlas = ExtResource("1_cvnsp")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+atlas = ExtResource("1_cvnsp")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
+atlas = ExtResource("1_cvnsp")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gymyn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgqql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkybt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3wgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3smsa")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8erm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ek2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx1dd")
+}],
+"loop": true,
+"name": &"run",
+"speed": 20.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpcdj"]
+bg_color = Color(0.6627451, 0.6627451, 0.6627451, 0.49019608)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtuoh"]
+bg_color = Color(1, 1, 1, 0.49019608)
+
+[node name="Player" type="Node2D" unique_id=150661442]
+
+[node name="PlayerBody" type="CharacterBody2D" parent="." unique_id=1855640503 groups=["attackable", "player"]]
+z_index = 1
+scale = Vector2(3, 3)
+collision_layer = 2
+script = ExtResource("3_6t5aa")
+
+[node name="Class_Actions" parent="PlayerBody" unique_id=130291011 instance=ExtResource("2_b1gc2")]
+position = Vector2(2, -19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody" unique_id=1760944347]
+texture_filter = 1
+position = Vector2(-2.166667, -17.666664)
+shape = SubResource("RectangleShape2D_2ym4e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerBody" unique_id=294112005]
+texture_filter = 1
+position = Vector2(1.3333334, -18.666668)
+sprite_frames = SubResource("SpriteFrames_gymyn")
+animation = &"run"
+autoplay = "idle"
+frame = 2
+frame_progress = 0.88888896
+
+[node name="RayCast2D" type="RayCast2D" parent="PlayerBody" unique_id=700149789]
+target_position = Vector2(0, -200)
+collision_mask = 2147483648
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="Attached UI Elements" type="Control" parent="PlayerBody" unique_id=384446543]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Jump_bar" type="ProgressBar" parent="PlayerBody/Attached UI Elements" unique_id=383500847]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -50.0
+offset_right = 44.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/background = SubResource("StyleBoxFlat_xpcdj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mtuoh")
+value = 50.0
+fill_mode = 3
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=522202565]
+position = Vector2(0, -10)
+limit_enabled = false
+
+[node name="Non Attached UI Elements" type="Control" parent="." unique_id=1654400495]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Dev" parent="Non Attached UI Elements" unique_id=1959197403 instance=ExtResource("4_os2qf")]
+visible = false
+position = Vector2(-1416, -885)
+
+[node name="Prog_Bars" type="Control" parent="Non Attached UI Elements" unique_id=841381205]
+anchors_preset = 0
+offset_left = -1500.0
+offset_top = 750.0
+offset_right = -1126.0
+offset_bottom = 1044.0
+scale = Vector2(4, 4)
+script = ExtResource("5_t6byl")
+
+[node name="HP_BAR" type="TextureProgressBar" parent="Non Attached UI Elements/Prog_Bars" unique_id=1981042270]
+texture_filter = 1
+layout_mode = 0
+offset_top = 1.0
+offset_right = 128.0
+offset_bottom = 33.0
+scale = Vector2(1.2, 1.2)
+value = 100.0
+fill_mode = 1
+texture_under = ExtResource("5_86lyx")
+texture_over = ExtResource("6_t6byl")
+texture_progress = ExtResource("7_7rbim")
+
+[node name="XP_BAR" type="TextureProgressBar" parent="Non Attached UI Elements/Prog_Bars" unique_id=2033860299]
+texture_filter = 1
+layout_mode = 0
+offset_left = 149.0
+offset_top = 4.0
+offset_right = 181.0
+offset_bottom = 36.0
+value = 100.0
+texture_under = ExtResource("8_b1gc2")
+texture_over = ExtResource("9_e2n6q")
+
+[node name="STAM_BAR" type="TextureProgressBar" parent="Non Attached UI Elements/Prog_Bars" unique_id=2064783846]
+texture_filter = 1
+layout_mode = 0
+offset_left = 178.4
+offset_top = 1.0
+offset_right = 306.4
+offset_bottom = 33.0
+scale = Vector2(1.2, 1.2)
+value = 100.0
+texture_under = ExtResource("10_unyjo")
+texture_over = ExtResource("11_t0j56")
+texture_progress = ExtResource("12_iqdhd")
+
+[node name="Inventory" parent="Non Attached UI Elements" unique_id=951110833 instance=ExtResource("14_7rbim")]

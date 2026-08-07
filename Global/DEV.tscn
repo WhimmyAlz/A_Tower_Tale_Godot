@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cxenysspmiry6"]
+
+[ext_resource type="Script" uid="uid://bltoxcx4anq8m" path="res://Global/dev.gd" id="1_u0jf5"]
+
+[node name="Dev" type="Node2D" unique_id=1959197403]
+script = ExtResource("1_u0jf5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1214934853]
+z_index = -1
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 1025.0
+offset_bottom = 1125.0
+color = Color(0, 0, 0, 0.40392157)
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=1490915761]
+offset_right = 1000.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Type command here"
+
+[node name="Console_log" type="RichTextLabel" parent="." unique_id=802485483]
+offset_top = 100.0
+offset_right = 1000.0
+offset_bottom = 1100.0
+theme_override_font_sizes/normal_font_size = 32

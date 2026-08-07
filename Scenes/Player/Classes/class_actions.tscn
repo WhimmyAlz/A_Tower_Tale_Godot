@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://mhwc11sb4vfj"]
+
+[ext_resource type="Texture2D" uid="uid://coah73g7r16wt" path="res://Scenes/Player/Classes/brawler/sprites/base_punch.png" id="1_0qstu"]
+[ext_resource type="Script" uid="uid://f8lxgv42fvlw" path="res://Scenes/Player/Classes/class_actions.gd" id="1_51i2t"]
+[ext_resource type="Script" uid="uid://4cvb4d7s8tcx" path="res://Scenes/Player/Classes/brawler/brawler.gd" id="2_8365r"]
+[ext_resource type="Texture2D" uid="uid://cpgp21emfe4jb" path="res://Scenes/Player/Classes/brawler/sprites/brawler_hat.png" id="2_bxt8x"]
+[ext_resource type="Texture2D" uid="uid://bs6pj62q1di02" path="res://Scenes/Player/Classes/brawler/sprites/hat_idle.png" id="2_ndw6e"]
+[ext_resource type="Texture2D" uid="uid://c26wiay3lovfd" path="res://Scenes/Player/Classes/brawler/sprites/hat_run.png" id="3_51i2t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxt8x"]
+atlas = ExtResource("1_0qstu")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5jco"]
+atlas = ExtResource("1_0qstu")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndw6e"]
+atlas = ExtResource("1_0qstu")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51i2t"]
+atlas = ExtResource("1_0qstu")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8365r"]
+atlas = ExtResource("1_0qstu")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rooqj"]
+atlas = ExtResource("1_0qstu")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3a7wu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxt8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5jco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndw6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51i2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8365r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rooqj")
+}],
+"loop": true,
+"name": &"punch",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djfo2"]
+atlas = ExtResource("2_ndw6e")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2t5g"]
+atlas = ExtResource("2_ndw6e")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4jdf"]
+atlas = ExtResource("2_ndw6e")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0ks5"]
+atlas = ExtResource("2_ndw6e")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynl55"]
+atlas = ExtResource("3_51i2t")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fjwc"]
+atlas = ExtResource("3_51i2t")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biw8c"]
+atlas = ExtResource("3_51i2t")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a7wu"]
+atlas = ExtResource("2_bxt8x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djfo2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djfo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2t5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4jdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0ks5")
+}],
+"loop": true,
+"name": &"hat_idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynl55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fjwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_biw8c")
+}],
+"loop": true,
+"name": &"hat_run",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a7wu")
+}],
+"loop": true,
+"name": &"hat_stun",
+"speed": 5.0
+}]
+
+[node name="Class_actions" type="Node2D" unique_id=130291011]
+z_index = 1
+script = ExtResource("1_51i2t")
+
+[node name="brawler" type="Node2D" parent="." unique_id=2128555396]
+script = ExtResource("2_8365r")
+
+[node name="skills" type="AnimatedSprite2D" parent="brawler" unique_id=1842856046]
+visible = false
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_3a7wu")
+animation = &"punch"
+
+[node name="hat" type="AnimatedSprite2D" parent="brawler" unique_id=2133882194]
+texture_filter = 1
+position = Vector2(-5, -61)
+sprite_frames = SubResource("SpriteFrames_djfo2")
+animation = &"hat_run"
+autoplay = "hat_idle"
+frame = 1
+frame_progress = 0.49913576

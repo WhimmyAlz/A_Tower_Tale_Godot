@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://lx3q27cr43hv"]
+
+[ext_resource type="Texture2D" uid="uid://bjhtwo0op76sw" path="res://Scenes/Settings/Background/Sprites/black_strip.png" id="1_6lqi4"]
+[ext_resource type="Texture2D" uid="uid://bcf3xiho63rf" path="res://Scenes/Settings/Background/Sprites/bg_grad.png" id="2_u13yy"]
+[ext_resource type="Texture2D" uid="uid://cbpwyf5oue0m6" path="res://Scenes/Settings/Floor/Sprites/Tower_base.png" id="3_4w8c0"]
+[ext_resource type="PackedScene" uid="uid://df4idpwngbvmw" path="res://Scenes/Settings/Floor/Floor parts/Border_wall_ground.tscn" id="4_pkiij"]
+[ext_resource type="PackedScene" uid="uid://csbsd546ckjx0" path="res://Scenes/Settings/Floor/Floor parts/Border_walls.tscn" id="5_p28ks"]
+[ext_resource type="PackedScene" uid="uid://lmxe1uorsl4x" path="res://Scenes/Settings/Floor/Floor parts/Border_wall_ceiling.tscn" id="6_7qsdb"]
+[ext_resource type="PackedScene" uid="uid://cnpq0jkyhjr73" path="res://Scenes/Player/Body/player.tscn" id="7_t2lht"]
+[ext_resource type="PackedScene" uid="uid://ccbgwns1go13h" path="res://Scenes/Mobs/Skelebone/skelebone.tscn" id="8_u13yy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubiir"]
+atlas = ExtResource("3_4w8c0")
+region = Rect2(0, 0, 711, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ks4c7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubiir")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=1019729382]
+
+[node name="Enviroment" type="Node2D" parent="." unique_id=275081161]
+
+[node name="Background" type="Node2D" parent="Enviroment" unique_id=1520827362]
+
+[node name="BgGrad_extra" type="Sprite2D" parent="Enviroment/Background" unique_id=1352254047]
+position = Vector2(0, -91475)
+scale = Vector2(160, 160)
+texture = ExtResource("1_6lqi4")
+
+[node name="BgGrad" type="Sprite2D" parent="Enviroment/Background" unique_id=1494766398]
+z_index = -3
+position = Vector2(0, -36880)
+scale = Vector2(30, 210)
+texture = ExtResource("2_u13yy")
+
+[node name="Ground_floor" type="Node2D" parent="Enviroment" unique_id=1252557882]
+
+[node name="Tower_sprite" type="AnimatedSprite2D" parent="Enviroment/Ground_floor" unique_id=1468190379]
+z_index = -1
+texture_filter = 1
+position = Vector2(0, -25)
+scale = Vector2(4.725, 4.725)
+sprite_frames = SubResource("SpriteFrames_ks4c7")
+
+[node name="BorderWall_ground" parent="Enviroment/Ground_floor" unique_id=600890904 instance=ExtResource("4_pkiij")]
+position = Vector2(-5, 937)
+scale = Vector2(2.0000002, 2.0000002)
+
+[node name="BorderWall_left" parent="Enviroment/Ground_floor" unique_id=965109119 instance=ExtResource("5_p28ks")]
+position = Vector2(-1050, -25)
+scale = Vector2(1.85, 1.85)
+
+[node name="BorderWall_right" parent="Enviroment/Ground_floor" unique_id=1415558213 instance=ExtResource("5_p28ks")]
+position = Vector2(944.99994, -25)
+scale = Vector2(1.85, 1.85)
+
+[node name="BorderWall_Ceiling" parent="Enviroment/Ground_floor" unique_id=245252224 instance=ExtResource("6_7qsdb")]
+position = Vector2(0, -950)
+scale = Vector2(2, 2)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1301696289]
+
+[node name="Skeleton" parent="Enemies" unique_id=1750366798 instance=ExtResource("8_u13yy")]
+position = Vector2(612, 87)
+
+[node name="Player" parent="." unique_id=150661442 instance=ExtResource("7_t2lht")]
+position = Vector2(2, 7)
+
+[node name="Projectiles" type="Node2D" parent="." unique_id=752351717]

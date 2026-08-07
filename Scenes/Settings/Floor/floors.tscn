@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cm47xn0mvu734"]
+
+[ext_resource type="Texture2D" uid="uid://ck4h7lm78wddx" path="res://Scenes/Settings/Floor/Sprites/Tower_wall1.png" id="1_llume"]
+[ext_resource type="PackedScene" uid="uid://df4idpwngbvmw" path="res://Scenes/Settings/Floor/Floor parts/Border_wall_ground.tscn" id="2_cbrny"]
+[ext_resource type="PackedScene" uid="uid://lmxe1uorsl4x" path="res://Scenes/Settings/Floor/Floor parts/Border_wall_ceiling.tscn" id="3_pihha"]
+[ext_resource type="PackedScene" uid="uid://csbsd546ckjx0" path="res://Scenes/Settings/Floor/Floor parts/Border_walls.tscn" id="4_302yw"]
+
+[node name="Tower_floor" type="Node2D" unique_id=810457986]
+
+[node name="TowerWall1" type="Sprite2D" parent="." unique_id=501990343]
+texture_filter = 1
+scale = Vector2(4.725, 4.725)
+texture = ExtResource("1_llume")
+
+[node name="Border" parent="." unique_id=600890904 instance=ExtResource("2_cbrny")]
+position = Vector2(1, 967)
+scale = Vector2(2, 2)
+
+[node name="BorderWallCeiling" parent="." unique_id=245252224 instance=ExtResource("3_pihha")]
+position = Vector2(0, -950)
+scale = Vector2(2, 2)
+
+[node name="BorderWalls" parent="." unique_id=965109119 instance=ExtResource("4_302yw")]
+position = Vector2(-1053, 10)
+scale = Vector2(1.85, 1.85)
+
+[node name="BorderWalls2" parent="." unique_id=1236644501 instance=ExtResource("4_302yw")]
+position = Vector2(935.00006, 9.999996)
+scale = Vector2(1.85, 1.85)
