@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7ty5h26li165"
-path="res://.godot/imported/STAM_BAR.png-e1f055da22a28fffa064e1ef0efd56b8.ctex"
+uid="uid://258dhlky5nq3"
+path="res://.godot/imported/HP_BG.png-d60ff76727d73f20cf68304e6616b99a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Player/UI/Progress_bars/Stamina Bar/STAM_BAR.png"
-dest_files=["res://.godot/imported/STAM_BAR.png-e1f055da22a28fffa064e1ef0efd56b8.ctex"]
+source_file="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_BG.png"
+dest_files=["res://.godot/imported/HP_BG.png-d60ff76727d73f20cf68304e6616b99a.ctex"]
 
 [params]
 

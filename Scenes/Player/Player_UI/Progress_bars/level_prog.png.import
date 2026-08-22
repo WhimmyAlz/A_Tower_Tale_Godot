@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqxyaaoft6q56"
-path="res://.godot/imported/level_emblem.png-18195e2a862b7323a67ca2c1d025984d.ctex"
+uid="uid://ceisp4mqgqot3"
+path="res://.godot/imported/level_prog.png-5506a78f9db9fa0140b7496141e2dfea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Player/UI/Progress_bars/level_emblem.png"
-dest_files=["res://.godot/imported/level_emblem.png-18195e2a862b7323a67ca2c1d025984d.ctex"]
+source_file="res://Scenes/Player/Player_UI/Progress_bars/level_prog.png"
+dest_files=["res://.godot/imported/level_prog.png-5506a78f9db9fa0140b7496141e2dfea.ctex"]
 
 [params]
 

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bhrve3jivpr3l"]
 
-[ext_resource type="Texture2D" uid="uid://b434ed6uucijh" path="res://Scenes/Player/UI/Inventory/scroll_loop.png" id="1_heh5q"]
-[ext_resource type="Script" uid="uid://bhgte1fxkbj5r" path="res://Scenes/Player/UI/Inventory/inventory.gd" id="1_wm164"]
-[ext_resource type="Texture2D" uid="uid://c3ns7nqc1jd4o" path="res://Scenes/Player/UI/Inventory/scroll_start.png" id="2_ctxg8"]
+[ext_resource type="Texture2D" uid="uid://b434ed6uucijh" path="res://Scenes/Player/Player_UI/Inventory/scroll_loop.png" id="1_heh5q"]
+[ext_resource type="Script" uid="uid://bhgte1fxkbj5r" path="res://Scenes/Player/Player_UI/Inventory/inventory.gd" id="1_wm164"]
+[ext_resource type="Texture2D" uid="uid://c3ns7nqc1jd4o" path="res://Scenes/Player/Player_UI/Inventory/scroll_start.png" id="2_ctxg8"]
 [ext_resource type="FontFile" uid="uid://djuj2ddb7qpuy" path="res://Assets/Swiggler V1.ttf" id="3_1vg8b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ctxg8"]

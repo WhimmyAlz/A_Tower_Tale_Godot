@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b434ed6uucijh"
-path="res://.godot/imported/scroll_loop.png-551e46a4916713a1e19c03afbfed440e.ctex"
+uid="uid://dl8xhycnyk4wn"
+path="res://.godot/imported/HP_EXTRA.png-168c46c1c9f42db95eed14d52e7edd4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Player/UI/Inventory/scroll_loop.png"
-dest_files=["res://.godot/imported/scroll_loop.png-551e46a4916713a1e19c03afbfed440e.ctex"]
+source_file="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_EXTRA.png"
+dest_files=["res://.godot/imported/HP_EXTRA.png-168c46c1c9f42db95eed14d52e7edd4a.ctex"]
 
 [params]
 

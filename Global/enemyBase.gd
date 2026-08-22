@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name enemyBase
 
 @export var Health := 100
+@export var Max_Health := Health
 @export var Weight := 50 # used for friction and knockback reduction
 @export var Speed := 10
 
@@ -9,6 +10,12 @@ class_name enemyBase
 
 var direction := 1
 var stunnedf := 0 # stunned frames (stunned time shortened)
+
+func get_health():
+	return(Health)
+
+func get_max_health():
+	return(Max_Health)
 
 func set_player_gen_1():
 	player = get_tree().current_scene.get_node("Player").get_child(0)
@@ -50,6 +57,7 @@ func move(animation):
 
 func take_damage(dmg):
 	self.Health = maxi(self.Health - dmg, 0)
+	$HealthBar.update_value(Health)
 
 func take_knockback(kb, dir):
 	self.velocity.x += kb * dir * 100 # 100 cuz kb too weak otherwise (want to use lower values)
