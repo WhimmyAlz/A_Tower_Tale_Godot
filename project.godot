@@ -21,7 +21,10 @@ Global="*uid://dmgnhmmlp0nq5"
 
 [display]
 
-window/size/mode=3
+window/size/viewport_width=3000
+window/size/viewport_height=1840
+window/size/mode=2
+window/stretch/mode="canvas_items"
 
 [global_group]
 

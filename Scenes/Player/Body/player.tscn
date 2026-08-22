@@ -156,6 +156,7 @@ offset_bottom = 40.0
 
 [node name="Dev" parent="Non Attached UI Elements" unique_id=1959197403 instance=ExtResource("4_os2qf")]
 visible = false
+z_index = 100
 position = Vector2(-1416, -885)
 
 [node name="Prog_Bars" type="Control" parent="Non Attached UI Elements" unique_id=841381205]

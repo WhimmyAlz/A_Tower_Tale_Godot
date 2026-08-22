@@ -24,7 +24,7 @@ var defense := 0 # reduces damage by 1 (min 1)
 var defense_penetration := 0 # ignores X amount of defense
 var max_stamina := 1 
 var stamina := 1
-var max_health := 1
+var max_health := 100
 var health := 100
 var health_regen_value := 15 # % of max health healed naturally per floor
 var crit_chance := 0 # chance to land crit
@@ -86,6 +86,8 @@ func class_stats_draco():
 	defense = 0
 	defense_penetration = 0
 
+func _ready() -> void:
+	health = max_health
 
 func _physics_process(_delta: float):
 	if player_class == 0:
