@@ -8,6 +8,8 @@ var attacking = false
 var free := true # Used for stunned, frozen, unable to move, etc
 var hat_mode = "idle" # hat is idle when jumping or idle, otherwise stunned or run
 
+var speed_penalty := 0.2 # used as a speed multiplier
+
 ## Slows down the player's velocity when it's not zero.
 func player_friction():
 	if velocity.x > 0:
@@ -21,14 +23,14 @@ func player_friction():
 func player_movement():
 	$AnimatedSprite2D.speed_scale = (Global.player_spd * 0.035)
 	if Input.is_action_pressed("left") and free:
-		position.x -= Global.player_spd * attack_speed_penalty()
+		position.x -= Global.player_spd * attack_speed_penalty(speed_penalty)
 		if not jump_pause:
 			$AnimatedSprite2D.play("run")
 			hat_mode = "run"
 		direction_change_free(-1)
 		$AnimatedSprite2D.flip_h = true
 	elif Input.is_action_pressed("right") and free:
-		position.x += Global.player_spd * attack_speed_penalty()
+		position.x += Global.player_spd * attack_speed_penalty(speed_penalty)
 		if not jump_pause:
 			$AnimatedSprite2D.play("run")
 			hat_mode = "run"
@@ -104,20 +106,28 @@ func check_free():
 func get_hat_mode():
 	return(hat_mode)
 
+## sets if player is currently attacking
 func set_attacking(boolean):
 	if boolean is bool:
 		attacking = boolean
 
-func attack_speed_penalty():
+## sets a speed penalty when attacking
+func set_speed_penalty(penalty):
+	self.speed_penalty = penalty
+
+## returns a speed multi after checking if attacking
+func attack_speed_penalty(penalty):
 	if attacking == true:
-		return(0.2)
+		return(penalty)
 	else:
 		return(1)
 
+## returns direction if not in action
 func direction_change_free(value):
 	if attacking == false:
 		Global.player_dir = value
 
+## toggles animation visiblity
 func set_animation_visibility(boolean):
 	if boolean is bool:
 		$AnimatedSprite2D.visible = boolean
@@ -136,13 +146,22 @@ func take_knockback(kb, dir):
 func take_stun(stun_time):
 	Global.stun_time = stun_time
 
+func gain_xp(amount):
+	Global.player_XP += amount
+
+func stamina_regen():
+	if Global.stamina < Global.max_stamina:
+		Global.stamina += (1 + Global.stamina_regen_multi) * 0.5
+		$"../Non Attached UI Elements/Prog_Bars".Update_STAM()
+
+
 func _ready() -> void:
 	player_friction() # calls friction function 
 	player_movement() # calls player movement function 
 	vert_velocities() # calls player vertical movement function
 
 func _physics_process(_delta: float):
-	
+	stamina_regen()
 	check_free()
 
 	# Movement functions

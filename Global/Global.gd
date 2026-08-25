@@ -17,18 +17,18 @@ var player_weight := 50
 var player_dir := 1
 
 # Combat stats
-var strength := 2
-var agility := 2
-var power := 0 # damage % is based on this
-var defense := 0 # reduces damage by 1 (min 1)
-var defense_penetration := 0 # ignores X amount of defense
-var max_stamina := 1 
-var stamina := 1
-var max_health := 100
-var health := 100
-var health_regen_value := 15 # % of max health healed naturally per floor
-var crit_chance := 0 # chance to land crit
-var crit_damage := 100 # extra damage % from crits
+var strength := 2.0
+var agility := 2.0
+var power := 0.0 # damage % is based on this
+var defense := 0.0 # reduces damage by 1 (min 1)
+var defense_penetration := 0.0 # ignores X amount of defense
+var max_stamina := 1.0
+var stamina := 1.0
+var max_health := 100.0
+var health := 100.0
+var health_regen_value := 15.0 # % of max health healed naturally per floor
+var crit_chance := 0.0 # chance to land crit
+var crit_damage := 100.0 # extra damage % from crits
 
 # cooldowns
 var attack1t := 0

@@ -11,12 +11,12 @@ func hover_bars():
 		BAR_HOVER_t = 100
 	
 func Update_HP():
-	@warning_ignore("integer_division")
+	@warning_ignore("integer_division", "narrowing_conversion")
 	$HP_BAR.value = maxi(100 * Global.health / Global.max_health, 0)
 
 func Update_STAM():
-	@warning_ignore("integer_division")
-	$STAM_BAR.value = maxi(100 *Global.stamina / Global.max_stamina , 0)
+	@warning_ignore("integer_division", "narrowing_conversion")
+	$STAM_BAR.value = maxi(100 * Global.stamina / Global.max_stamina , 0)
 
 func Update_XP():
 	@warning_ignore("integer_division")

@@ -9,15 +9,15 @@ var stats_label = $stastList/VBoxContainer/stats
 
 func update_stats():
 	# stats
-	var health = Global.health
-	var max_health = Global.max_health
-	var stamina = Global.stamina
-	var max_stamina = Global.max_stamina
-	var power = Global.power
-	var crit_rate = Global.crit_chance
-	var crit_damage = Global.crit_damage
-	var strength = Global.strength
-	var agility = Global.agility
+	var health = int(Global.health)
+	var max_health = int(Global.max_health)
+	var stamina = int(Global.stamina)
+	var max_stamina = int(Global.max_stamina)
+	var power = int(Global.power)
+	var crit_rate = int(Global.crit_chance)
+	var crit_damage = int(Global.crit_damage)
+	var strength = int(Global.strength)
+	var agility = int(Global.agility)
 	
 	# displayed texts
 	var listed_stats = [

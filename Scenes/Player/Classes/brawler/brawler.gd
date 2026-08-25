@@ -21,14 +21,18 @@ func set_dir():
 		class_anim.flip_h = false
 
 func init_attack_1():
-	set_dir()
-	
-	player.set_animation_visibility(false)
-	class_anim.visible = true
-	class_anim.frame = 0
-	class_anim.play("punch")
-	Global.attack1t = 1
-	player.set_attacking(true)
+	if Global.stamina >= 20:
+		set_dir()
+
+		Global.stamina -= 20
+		Global.attack1t = 1
+
+		player.set_animation_visibility(false)
+		class_anim.visible = true
+		class_anim.frame = 0
+		class_anim.play("punch")
+		Global.attack1t = 1
+		player.set_attacking(true)
 
 func between(variable, time1, time2):
 	if variable >= time1 and variable <= time2:

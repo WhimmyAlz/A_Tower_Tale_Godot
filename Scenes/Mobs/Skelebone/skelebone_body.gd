@@ -30,6 +30,10 @@ func throw_bone():
 	projectile.init(proj_position, proj_speed, self.direction, proj_lifetime)
 	get_tree().current_scene.get_node("Projectiles").add_child(projectile)
 
+func on_death():
+	player.gain_xp(10)
+	queue_free()
+
 func _ready() -> void:
 	set_player_gen_1()
 	set_direction(self, player)

@@ -19,7 +19,6 @@ func set_class_items():
 
 func attack_1():
 	if Input.is_action_pressed("attack 1") and Global.attack1t == 0:
-		Global.attack1t = 1
 		class_node.init_attack_1()
 
 func hat_animations():

@@ -58,9 +58,15 @@ func move(animation):
 func take_damage(dmg):
 	self.Health = maxi(self.Health - dmg, 0)
 	$HealthBar.update_value(Health)
+	
+	if self.Health == 0:
+		on_death()
 
 func take_knockback(kb, dir):
 	self.velocity.x += kb * dir * 100 # 100 cuz kb too weak otherwise (want to use lower values)
 
 func take_stun(stun_time):
 	stunnedf = stun_time
+
+func on_death():
+	pass
