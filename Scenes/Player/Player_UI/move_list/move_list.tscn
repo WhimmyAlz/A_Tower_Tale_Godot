@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://cfi0x72d52f0x"]
+
+[ext_resource type="Script" uid="uid://icpvifdyhmix" path="res://Scenes/Player/Player_UI/move_list/move_list.gd" id="1_m7o2u"]
+
+[node name="MoveList" type="Node2D" unique_id=1954343084]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_m7o2u")
+
+[node name="bar_1" type="Control" parent="." unique_id=307362647]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -413.0
+offset_top = -50.0
+offset_right = 7.0
+offset_bottom = -50.0
+
+[node name="bar_1_prog" type="ProgressBar" parent="bar_1" unique_id=1602923882]
+layout_mode = 0
+offset_right = 413.0
+offset_bottom = 48.0
+show_percentage = false
+
+[node name="bar_1_txt" type="RichTextLabel" parent="bar_1" unique_id=987873340]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 408.0
+offset_bottom = 48.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Skill 1"
+scroll_active = false
+
+[node name="bar_2" type="Control" parent="." unique_id=152810246]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -413.5
+offset_top = -100.0
+offset_right = 6.5
+offset_bottom = -100.0
+
+[node name="bar_2_prog" type="ProgressBar" parent="bar_2" unique_id=634286780]
+layout_mode = 0
+offset_right = 413.0
+offset_bottom = 48.0
+show_percentage = false
+
+[node name="bar_2_txt" type="RichTextLabel" parent="bar_2" unique_id=59155824]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 408.0
+offset_bottom = 48.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Skill 2"
+scroll_active = false
+
+[node name="bar_3" type="Control" parent="." unique_id=854474331]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -413.5
+offset_top = -150.0
+offset_right = 6.5
+offset_bottom = -150.0
+
+[node name="bar_3_prog" type="ProgressBar" parent="bar_3" unique_id=1238595712]
+layout_mode = 0
+offset_right = 413.0
+offset_bottom = 48.0
+show_percentage = false
+
+[node name="bar_3_txt" type="RichTextLabel" parent="bar_3" unique_id=831368478]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 408.0
+offset_bottom = 48.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Skill 3
+"
+scroll_active = false
+
+[node name="bar_4" type="Control" parent="." unique_id=2080699590]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -413.5
+offset_top = -200.0
+offset_right = 6.5
+offset_bottom = -200.0
+
+[node name="bar_4_prog" type="ProgressBar" parent="bar_4" unique_id=1647510287]
+layout_mode = 0
+offset_right = 413.0
+offset_bottom = 48.0
+show_percentage = false
+
+[node name="bar_4_txt" type="RichTextLabel" parent="bar_4" unique_id=1752405020]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 408.0
+offset_bottom = 48.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Skill 4
+"
+scroll_active = false
+
+[node name="bar_5" type="Control" parent="." unique_id=1339666496]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -413.5
+offset_top = -250.0
+offset_right = 6.5
+offset_bottom = -250.0
+
+[node name="bar_5_prog" type="ProgressBar" parent="bar_5" unique_id=1065668714]
+layout_mode = 0
+offset_right = 413.0
+offset_bottom = 48.0
+show_percentage = false
+
+[node name="bar_5_txt" type="RichTextLabel" parent="bar_5" unique_id=1004563375]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 408.0
+offset_bottom = 48.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Skill 5
+"
+scroll_active = false

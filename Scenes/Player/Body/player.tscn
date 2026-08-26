@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://camc4kf4l4hrg" path="res://Scenes/Player/Player_UI/Progress_bars/Stamina Bar/STAM_EXTRA.png" id="11_t0j56"]
 [ext_resource type="Texture2D" uid="uid://c7ty5h26li165" path="res://Scenes/Player/Player_UI/Progress_bars/Stamina Bar/STAM_BAR.png" id="12_iqdhd"]
 [ext_resource type="PackedScene" uid="uid://bhrve3jivpr3l" path="res://Scenes/Player/Player_UI/Inventory/Inventory.tscn" id="14_7rbim"]
+[ext_resource type="PackedScene" uid="uid://cfi0x72d52f0x" path="res://Scenes/Player/Player_UI/move_list/move_list.tscn" id="16_e2n6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ym4e"]
 size = Vector2(38.333336, 120.666664)
@@ -206,3 +207,7 @@ texture_over = ExtResource("11_t0j56")
 texture_progress = ExtResource("12_iqdhd")
 
 [node name="Inventory" parent="Non Attached UI Elements" unique_id=951110833 instance=ExtResource("14_7rbim")]
+position = Vector2(0, -54)
+
+[node name="MoveList" parent="Non Attached UI Elements" unique_id=1954343084 instance=ExtResource("16_e2n6q")]
+position = Vector2(1458, 870)

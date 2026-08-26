@@ -38,6 +38,13 @@ var attack4t := 0
 var attack5t := 0
 var ultimatet := 0
 
+var attack1_max_t
+var attack2_max_t
+var attack3_max_t
+var attack4_max_t
+var attack5_max_t
+var ultimate_max_t
+
 # Buffs
 var speed_multi : float = 0
 var jump_multi : float = 0

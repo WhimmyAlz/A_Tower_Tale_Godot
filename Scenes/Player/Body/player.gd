@@ -111,6 +111,9 @@ func set_attacking(boolean):
 	if boolean is bool:
 		attacking = boolean
 
+func get_attacking():
+	return(attacking)
+
 ## sets a speed penalty when attacking
 func set_speed_penalty(penalty):
 	self.speed_penalty = penalty

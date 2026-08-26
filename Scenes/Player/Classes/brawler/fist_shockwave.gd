@@ -1,20 +1,45 @@
 extends Area2D
 
 var speed := Vector2(0, 0)
-var size := 2
+var size := 2.5
 var lifetime := 10
-var dir := Global.player_dir
+var direction := Global.player_dir
+
+var damage = 15
+var knockback = 15
+var stuntime = 20
 
 var player
 
 func set_speed(x, y):
-	speed = Vector2(x * dir, y)
+	speed = Vector2(x * direction, y)
+
+func set_size(sz):
+	size = sz
 
 func set_pos(pos):
 	position = pos
 
+func set_pos_x(pos):
+	position.x = pos
+
+func set_pos_y(pos):
+	position.y = pos
+
 func set_player(ply):
 	player = ply
+
+func set_damage(dmg):
+	damage = dmg
+
+func set_direction(dir):
+	direction = dir
+
+func set_knockback(kb):
+	knockback = kb
+
+func set_stuntime(stun_t):
+	stuntime = stun_t
 
 func set_lifetime(time):
 	lifetime = time
@@ -24,9 +49,11 @@ func _ready() -> void:
 	self.scale.y = size
 
 func _physics_process(_delta: float) -> void:
-	if dir == -1:
+	self.position += speed
+	
+	if direction == -1:
 		$AnimatedSprite2D.flip_h = true
-	elif dir == 1:
+	elif direction == 1:
 		$AnimatedSprite2D.flip_h = false
 		
 	lifetime -= 1
@@ -38,6 +65,6 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	var collider = body
 	if collider.is_in_group("attackable") and collider.is_in_group("enemy"):
-		collider.take_damage(5)
-		collider.take_knockback(10, dir)
-		collider.take_stun(20)
+		collider.take_damage(damage)
+		collider.take_knockback(knockback, direction)
+		collider.take_stun(stuntime)

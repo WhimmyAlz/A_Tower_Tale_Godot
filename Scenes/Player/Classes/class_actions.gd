@@ -6,6 +6,8 @@ var class_node
 var animation
 var hat
 
+@onready var player = get_parent()
+
 func set_class_items():
 	player_class = Global.player_class
 
@@ -18,8 +20,12 @@ func set_class_items():
 		# implement later
 
 func attack_1():
-	if Input.is_action_pressed("attack 1") and Global.attack1t == 0:
+	if Input.is_action_pressed("attack 1") and Global.attack1t == 0 and not player.get_attacking():
 		class_node.init_attack_1()
+
+func attack_2():
+	if Input.is_action_pressed("attack 2") and Global.attack2t == 0 and not player.get_attacking():
+		class_node.init_attack_2()
 
 func hat_animations():
 	var hat_mode = get_parent().get_hat_mode()
@@ -46,4 +52,4 @@ func _physics_process(_delta: float) -> void:
 	hat_animations()
 	
 	attack_1()
- 
+	attack_2()
