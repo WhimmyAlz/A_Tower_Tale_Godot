@@ -7,8 +7,8 @@ var direction
 var proj_life_time
 var damage = 10
 
-var velocity_y = -10
-var gravity = 0.5
+var velocity_y = -9
+var gravity = 0.4
 
 var velocity_vector
 
@@ -18,6 +18,9 @@ func init(pos, speed, dir, time) -> void:
 	proj_speed = speed
 	direction = dir
 	proj_life_time = time
+
+func set_vert_velocity(value):
+	velocity_y = value
 
 func _ready() -> void:
 	self.scale.x = size

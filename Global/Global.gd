@@ -17,18 +17,26 @@ var player_weight := 50
 var player_dir := 1
 
 # Combat stats
-var strength := 2.0
-var agility := 2.0
-var power := 0.0 # damage % is based on this
-var defense := 0.0 # reduces damage by 1 (min 1)
-var defense_penetration := 0.0 # ignores X amount of defense
+var strength := 2
+var agility := 2
+var dexterity := 2
+var intellect := 2
+
+var bonus_strength := 0
+var bonus_agility := 0
+var bonus_dexterity := 0
+var bonus_intellect := 0
+
+var power := 0 # damage % is based on this
+var defense := 0 # reduces damage by 1 (min 1)
+var defense_penetration := 0 # ignores X amount of defense
 var max_stamina := 1.0
 var stamina := 1.0
 var max_health := 100.0
 var health := 100.0
 var health_regen_value := 15.0 # % of max health healed naturally per floor
 var crit_chance := 0.0 # chance to land crit
-var crit_damage := 100.0 # extra damage % from crits
+var crit_damage := 25.0 # extra damage % from crits
 
 # cooldowns
 var attack1t := 0
@@ -66,7 +74,7 @@ func class_stats_brawler():
 	jump_power = round(1500 * (1 + jump_multi))
 	jump_limit = 100 # must be more than 0
 
-	player_spd = round(15 * (1 + speed_multi))
+	player_spd = round((15 + agility) * (1 + speed_multi))
 	player_weight = 20
 
 	max_health = 280
@@ -75,6 +83,11 @@ func class_stats_brawler():
 	power = round(18 * (1 + power_multi))
 	defense = 0
 	defense_penetration = 0
+	
+	strength = 4 + bonus_strength
+	agility = 1 + bonus_agility
+	dexterity = 2 + bonus_dexterity
+	intellect = 1 + bonus_intellect
 
 ## Sets stats for Draco [class:10]
 func class_stats_draco():
@@ -83,7 +96,7 @@ func class_stats_draco():
 	jump_power = round(1050 * (1 + jump_multi))
 	jump_limit = 350 # must be more than 0
 
-	player_spd = round(14 * (1 + speed_multi))
+	player_spd = round((14 + agility) * (1 + speed_multi))
 	player_weight = 30
 
 	max_health = 150
@@ -92,6 +105,11 @@ func class_stats_draco():
 	power = round(35 * (1 + power_multi))
 	defense = 0
 	defense_penetration = 0
+
+	strength = 4 + bonus_strength
+	agility = 4 + bonus_agility
+	dexterity = 4 + bonus_dexterity
+	intellect = 4 + bonus_intellect
 
 func _ready() -> void:
 	health = max_health

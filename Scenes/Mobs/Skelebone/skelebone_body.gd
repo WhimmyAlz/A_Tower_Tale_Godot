@@ -24,7 +24,7 @@ func move(animation):
 func throw_bone():
 	var projectile = bone.instantiate()
 	var proj_position = self.position + Vector2(self.direction * 6, -100)
-	var proj_speed = 5 + abs(self.position.x - player.position.x) * 0.01
+	var proj_speed = 10 + abs(self.position.x - player.position.x) * 0.005
 	var proj_lifetime = 90
 	
 	projectile.init(proj_position, proj_speed, self.direction, proj_lifetime)

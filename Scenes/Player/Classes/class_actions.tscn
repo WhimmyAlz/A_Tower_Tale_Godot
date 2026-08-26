@@ -6,6 +6,23 @@
 [ext_resource type="Texture2D" uid="uid://cpgp21emfe4jb" path="res://Scenes/Player/Classes/brawler/sprites/brawler_hat.png" id="2_bxt8x"]
 [ext_resource type="Texture2D" uid="uid://bs6pj62q1di02" path="res://Scenes/Player/Classes/brawler/sprites/hat_idle.png" id="2_ndw6e"]
 [ext_resource type="Texture2D" uid="uid://c26wiay3lovfd" path="res://Scenes/Player/Classes/brawler/sprites/hat_run.png" id="3_51i2t"]
+[ext_resource type="Texture2D" uid="uid://dcq8kc0ipp700" path="res://Scenes/Player/Classes/brawler/sprites/barrage.png" id="3_imllr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kva02"]
+atlas = ExtResource("3_imllr")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrwy1"]
+atlas = ExtResource("3_imllr")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1ht3"]
+atlas = ExtResource("3_imllr")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtl3k"]
+atlas = ExtResource("3_imllr")
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bxt8x"]
 atlas = ExtResource("1_0qstu")
@@ -33,6 +50,23 @@ region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3a7wu"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kva02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrwy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1ht3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtl3k")
+}],
+"loop": true,
+"name": &"barrage",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bxt8x")
@@ -142,7 +176,7 @@ script = ExtResource("2_8365r")
 visible = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_3a7wu")
-animation = &"punch"
+animation = &"barrage"
 
 [node name="hat" type="AnimatedSprite2D" parent="brawler" unique_id=2133882194]
 texture_filter = 1
