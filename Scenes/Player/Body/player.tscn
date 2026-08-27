@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cxenysspmiry6" path="res://Global/DEV.tscn" id="4_os2qf"]
 [ext_resource type="Texture2D" uid="uid://258dhlky5nq3" path="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_BG.png" id="5_86lyx"]
 [ext_resource type="Script" uid="uid://drnmkrhj51qsh" path="res://Scenes/Player/Player_UI/Progress_bars/Prog_bars.gd" id="5_t6byl"]
+[ext_resource type="PackedScene" uid="uid://btfb8iexjk6eb" path="res://Scenes/Player/Body/status_effects.tscn" id="5_unyjo"]
 [ext_resource type="Texture2D" uid="uid://dl8xhycnyk4wn" path="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_EXTRA.png" id="6_t6byl"]
 [ext_resource type="Texture2D" uid="uid://38sd0eg67kr7" path="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_BAR.png" id="7_7rbim"]
 [ext_resource type="Texture2D" uid="uid://cqxyaaoft6q56" path="res://Scenes/Player/Player_UI/Progress_bars/level_emblem.png" id="8_b1gc2"]
@@ -123,6 +124,8 @@ collision_mask = 2147483648
 hit_from_inside = true
 collide_with_areas = true
 
+[node name="Status_effects" parent="PlayerBody" unique_id=1381918084 instance=ExtResource("5_unyjo")]
+
 [node name="Attached UI Elements" type="Control" parent="PlayerBody" unique_id=384446543]
 layout_mode = 3
 anchors_preset = 0
@@ -172,8 +175,9 @@ script = ExtResource("5_t6byl")
 [node name="HP_BAR" type="TextureProgressBar" parent="Non Attached UI Elements/Prog_Bars" unique_id=1981042270]
 texture_filter = 1
 layout_mode = 0
+offset_left = 11.0
 offset_top = 1.0
-offset_right = 128.0
+offset_right = 139.0
 offset_bottom = 33.0
 scale = Vector2(1.2, 1.2)
 value = 100.0
@@ -185,9 +189,9 @@ texture_progress = ExtResource("7_7rbim")
 [node name="XP_BAR" type="TextureProgressBar" parent="Non Attached UI Elements/Prog_Bars" unique_id=2033860299]
 texture_filter = 1
 layout_mode = 0
-offset_left = 149.0
+offset_left = 145.0
 offset_top = 4.0
-offset_right = 181.0
+offset_right = 177.0
 offset_bottom = 36.0
 value = 100.0
 texture_under = ExtResource("8_b1gc2")

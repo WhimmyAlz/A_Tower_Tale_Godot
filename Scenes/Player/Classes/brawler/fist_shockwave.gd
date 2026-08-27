@@ -4,9 +4,12 @@ var speed := Vector2(0, 0)
 var size := 2.5
 var lifetime := 10
 var direction := Global.player_dir
+var angle = 0
 
+var hitnum = 1
 var damage = 15
 var knockback = 15
+var knockbackY = 0
 var stuntime = 20
 
 var player
@@ -38,11 +41,17 @@ func set_direction(dir):
 func set_knockback(kb):
 	knockback = kb
 
+func set_knockbackY(kb):
+	knockbackY = kb
+
 func set_stuntime(stun_t):
 	stuntime = stun_t
 
 func set_lifetime(time):
 	lifetime = time
+
+func set_angle(value):
+	angle = value
 
 func _ready() -> void:
 	self.scale.x = size
@@ -50,7 +59,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	self.position += speed
-	
+	self.rotation = angle
 	if direction == -1:
 		$AnimatedSprite2D.flip_h = true
 	elif direction == 1:
@@ -64,7 +73,9 @@ func _physics_process(_delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	
 	var collider = body
-	if collider.is_in_group("attackable") and collider.is_in_group("enemy"):
+	if collider.is_in_group("attackable") and collider.is_in_group("enemy") and hitnum >= 1:
 		collider.take_damage(damage)
 		collider.take_knockback(knockback, direction)
+		collider.take_knockbackY(knockbackY)
 		collider.take_stun(stuntime)
+		hitnum -= 1

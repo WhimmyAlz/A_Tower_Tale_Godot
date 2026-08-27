@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://btfb8iexjk6eb"]
+
+[ext_resource type="Script" uid="uid://vvytpa80hdor" path="res://Scenes/Player/Body/status_effects.gd" id="1_1u1m3"]
+
+[node name="Debuffs" type="Node2D" unique_id=1381918084]
+script = ExtResource("1_1u1m3")

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bs6pj62q1di02" path="res://Scenes/Player/Classes/brawler/sprites/hat_idle.png" id="2_ndw6e"]
 [ext_resource type="Texture2D" uid="uid://c26wiay3lovfd" path="res://Scenes/Player/Classes/brawler/sprites/hat_run.png" id="3_51i2t"]
 [ext_resource type="Texture2D" uid="uid://dcq8kc0ipp700" path="res://Scenes/Player/Classes/brawler/sprites/barrage.png" id="3_imllr"]
+[ext_resource type="Texture2D" uid="uid://bijixm55xpfg7" path="res://Scenes/Player/Classes/brawler/sprites/base_uppercut.png" id="5_kva02"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kva02"]
 atlas = ExtResource("3_imllr")
@@ -46,6 +47,30 @@ region = Rect2(512, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rooqj"]
 atlas = ExtResource("1_0qstu")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh75a"]
+atlas = ExtResource("5_kva02")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0beey"]
+atlas = ExtResource("5_kva02")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldyiv"]
+atlas = ExtResource("5_kva02")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie0a0"]
+atlas = ExtResource("5_kva02")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frtco"]
+atlas = ExtResource("5_kva02")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4pa8"]
+atlas = ExtResource("5_kva02")
 region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3a7wu"]
@@ -88,6 +113,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"punch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh75a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0beey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldyiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie0a0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frtco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4pa8")
+}],
+"loop": true,
+"name": &"uppercut",
 "speed": 5.0
 }]
 
@@ -176,7 +224,7 @@ script = ExtResource("2_8365r")
 visible = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_3a7wu")
-animation = &"barrage"
+animation = &"uppercut"
 
 [node name="hat" type="AnimatedSprite2D" parent="brawler" unique_id=2133882194]
 texture_filter = 1

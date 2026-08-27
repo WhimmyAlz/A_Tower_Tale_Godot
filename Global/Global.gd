@@ -57,10 +57,10 @@ var ultimate_max_t
 var speed_multi : float = 0
 var jump_multi : float = 0
 var jump_adds : int = 0
-var health_regen_multi : float = 10
+var bonus_health_regen : float = 0
 var stamina_regen_multi : float = 0
-var power_multi : float = 0
-var defense_booster : float = 0
+var bonus_power : int = 0
+var bonus_defense : int = 0
 var defense_penetration_adds : float = 0
 
 # Misc
@@ -74,18 +74,18 @@ func class_stats_brawler():
 	jump_power = round(1500 * (1 + jump_multi))
 	jump_limit = 100 # must be more than 0
 
-	player_spd = round((15 + agility) * (1 + speed_multi))
+	player_spd = round(agility * (1 + speed_multi))
 	player_weight = 20
 
-	max_health = 280
+	max_health = 400
 	max_stamina = 120
 
-	power = round(18 * (1 + power_multi))
-	defense = 0
+	power = 18 + bonus_power
+	defense = 5 + bonus_defense
 	defense_penetration = 0
 	
 	strength = 4 + bonus_strength
-	agility = 1 + bonus_agility
+	agility = 12 + bonus_agility
 	dexterity = 2 + bonus_dexterity
 	intellect = 1 + bonus_intellect
 
@@ -96,22 +96,23 @@ func class_stats_draco():
 	jump_power = round(1050 * (1 + jump_multi))
 	jump_limit = 350 # must be more than 0
 
-	player_spd = round((14 + agility) * (1 + speed_multi))
+	player_spd = round(agility * (1 + speed_multi))
 	player_weight = 30
 
-	max_health = 150
+	max_health = 250
 	max_stamina = 320
 
-	power = round(35 * (1 + power_multi))
-	defense = 0
+	power = 35 + bonus_power
+	defense = 15
 	defense_penetration = 0
 
 	strength = 4 + bonus_strength
-	agility = 4 + bonus_agility
+	agility = 10 + bonus_agility
 	dexterity = 4 + bonus_dexterity
 	intellect = 4 + bonus_intellect
 
 func _ready() -> void:
+	class_stats_brawler()
 	health = max_health
 
 func _physics_process(_delta: float):

@@ -35,6 +35,12 @@ func face_player(animation):
 func vert_velocities():
 	if stunnedf > 1:
 		stunnedf -= 1
+
+		if velocity.y >= 15:
+			velocity.y = 15
+		else:
+			velocity.y += Global.Gravity
+
 	else:
 		velocity.y += Global.Gravity
 
@@ -64,6 +70,10 @@ func take_damage(dmg):
 
 func take_knockback(kb, dir):
 	self.velocity.x += kb * dir * 100 # 100 cuz kb too weak otherwise (want to use lower values)
+
+func take_knockbackY(kb):
+	self.velocity.y += kb * 100 # 100 cuz kb too weak otherwise (want to use lower values)
+
 
 func take_stun(stun_time):
 	stunnedf = stun_time

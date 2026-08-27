@@ -31,6 +31,14 @@ func attack_3():
 	if Input.is_action_pressed("attack 3") and Global.attack3t == 0 and not player.get_attacking():
 		class_node.init_attack_3()
 
+func attack_4():
+	if Input.is_action_pressed("attack 4") and Global.attack4t == 0 and not player.get_attacking():
+		class_node.init_attack_4()
+
+func attack_5():
+	if Input.is_action_pressed("attack 5") and Global.attack5t == 0 and not player.get_attacking():
+		class_node.init_attack_5()
+
 func hat_animations():
 	var hat_mode = get_parent().get_hat_mode()
 	
@@ -58,3 +66,5 @@ func _physics_process(_delta: float) -> void:
 	attack_1()
 	attack_2()
 	attack_3()
+	attack_4()
+	attack_5()

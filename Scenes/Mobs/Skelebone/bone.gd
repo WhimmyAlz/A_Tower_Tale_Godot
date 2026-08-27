@@ -5,7 +5,7 @@ var spin_speed = 0.2
 var proj_speed
 var direction
 var proj_life_time
-var damage = 10
+var damage = 25
 
 var velocity_y = -9
 var gravity = 0.4

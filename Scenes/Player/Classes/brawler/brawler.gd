@@ -3,20 +3,22 @@ extends Node2D
 var attack1_max_t = 60
 var attack2_max_t = 120
 var attack3_max_t = 240
-var attack4_max_t = 1
-var attack5_max_t = 1
+var attack4_max_t = 90
+var attack5_max_t = 900
 var ultimate_max_t = 1
 
 var wave
 
 var descriptions = {
-"Punch": "Does [100% + str] damage and deals 15 knockback. Has a 1s cooldown.",
-"Flurry": "Does [33% + str] x3 damage and deals 5 x3 knockback at a moderate range. Has a 2s cooldown.",
-"Barrage": "Does [10% + 0.2str] x 15 damage and deals 1 x15 knockback. Has a 4s cooldown."
+"Punch": "A simple punch. Does [100% + str] damage and deals 15 knockback. Has a 1s cooldown.",
+"Flurry": "A punch that sends out 3 waves. Does [33% + 0.75str] x3 damage and deals 5 x3 knockback at a moderate range. Has a 2s cooldown.",
+"Barrage": "A wave of punches. Does [10% + 0.2str] x 15 damage and deals 1 x15 knockback. Has a 4s cooldown.",
+"Berserk": "Enrages the user. Gains 100% mana regen as well as 4 str and 6 agi stats for 7.5s. Has a 15s cooldown."
 }
 
 @onready var player = get_parent().get_parent()
 @onready var class_anim = $skills
+@onready var status = $"../../Status_effects"
 
 var fist_wave = preload("res://Scenes/Player/Classes/brawler/fist_shockwave.tscn")
 
@@ -56,7 +58,7 @@ func attack_1():
 			get_tree().current_scene.get_node("Projectiles").add_child(wave)
 
 		if between(Global.attack1t, 20, 30):
-			wave.set_pos(player.position + Vector2((Global.player_dir * 8 * Global.attack1t) - (Global.player_dir * 95), -75))
+			wave.set_pos(player.position + Vector2((Global.player_dir * 7.75 * Global.attack1t) - (Global.player_dir * 95), -85))
 
 		if Global.attack1t == 30:
 			player.set_animation_visibility(true)
@@ -86,15 +88,15 @@ func init_attack_2():
 func attack_2():
 	if Global.attack2t >= 1 and Global.attack2t <= 34:
 		class_anim.speed_scale = 1.75
-		player.set_speed_penalty(0.1)
+		player.set_speed_penalty(0.05)
 		
 		# spawns wave
 		if between(Global.attack2t, 30, 34) and Global.attack2t % 2 == 0:
 			wave = fist_wave.instantiate()
 			wave.set_player(player)
-			wave.set_damage((0.33 * Global.power) + Global.strength)
+			wave.set_damage((0.33 * Global.power) + (0.75 * Global.strength))
 			wave.set_knockback(5)
-			wave.set_size(2)
+			wave.set_size(3)
 			wave.set_pos(Vector2(player.position.x, player.position.y + randi_range(-150, -20)))
 			wave.set_speed(40 + randi_range(-10,20), 0)
 			get_tree().current_scene.get_node("Projectiles").add_child(wave)
@@ -137,6 +139,7 @@ func attack_3():
 			wave.set_knockback(1)
 			wave.set_size(2.5)
 			wave.set_lifetime(5)
+			wave.set_stuntime(45)
 			wave.set_pos(Vector2(player.position.x + (80 * Global.player_dir), player.position.y + randi_range(-130, -60)))
 			wave.set_speed(20, 0)
 			get_tree().current_scene.get_node("Projectiles").add_child(wave)
@@ -151,6 +154,85 @@ func attack_3():
 
 	if Global.attack3t >= attack3_max_t:
 		Global.attack3t = 0
+
+func init_attack_4():
+	if Global.stamina >= 30:
+		set_dir()
+
+		Global.stamina -= 30
+		Global.attack4t = 1
+
+		player.set_animation_visibility(false)
+		class_anim.visible = true
+		class_anim.frame = 0
+		class_anim.play("uppercut")
+		Global.attack4t = 1
+		player.set_attacking(true)
+
+func attack_4():
+	if Global.attack4t >= 1 and Global.attack4t <= 30:
+		class_anim.speed_scale = 2.8
+		player.set_speed_penalty(0.1)
+		
+		# spawns wave
+		if Global.attack4t == 15:
+			wave = fist_wave.instantiate()
+			wave.set_player(player)
+			wave.set_damage(Global.power + Global.strength)
+			wave.set_knockback(5)
+			wave.set_knockbackY(-12)
+			wave.set_size(4.5)
+			wave.set_stuntime(90)
+			wave.set_lifetime(10)
+			wave.set_pos(Vector2(player.position.x + (80 * Global.player_dir), player.position.y + randi_range(-130, -60)))
+			wave.set_angle(30 * Global.player_dir)
+			wave.set_speed(2, -15)
+			get_tree().current_scene.get_node("Projectiles").add_child(wave)
+
+		if Global.attack4t == 30:
+			player.set_animation_visibility(true)
+			class_anim.visible = false
+			player.set_attacking(false)
+
+	if Global.attack4t >= 1:
+		Global.attack4t += 1
+
+	if Global.attack4t >= attack4_max_t:
+		Global.attack4t = 0
+
+func init_attack_5():
+	if Global.stamina >= 30:
+		set_dir()
+
+		Global.stamina -= 30
+		Global.attack5t = 1
+
+		player.set_animation_visibility(false)
+		class_anim.visible = true
+		class_anim.frame = 0
+		class_anim.play("punch")
+		Global.attack5t = 1
+		player.set_attacking(true)
+
+func attack_5():
+	if Global.attack5t >= 1 and Global.attack5t <= 30:
+		class_anim.speed_scale = 2.5
+		player.set_speed_penalty(0)
+		
+		# spawns wave
+		if Global.attack5t == 20:
+			status.set_berserk(450)
+
+		if Global.attack5t == 30:
+			player.set_animation_visibility(true)
+			class_anim.visible = false
+			player.set_attacking(false)
+
+	if Global.attack5t >= 1:
+		Global.attack5t += 1
+
+	if Global.attack5t >= attack5_max_t:
+		Global.attack5t = 0
 
 func between(variable, time1, time2):
 	if variable >= time1 and variable <= time2:
@@ -171,3 +253,5 @@ func _physics_process(_delta: float) -> void:
 	attack_1()
 	attack_2()
 	attack_3()
+	attack_4()
+	attack_5()
