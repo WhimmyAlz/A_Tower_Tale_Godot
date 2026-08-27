@@ -6,6 +6,7 @@ var proj_speed
 var direction
 var proj_life_time
 var damage = 25
+var defense_pen = 0
 
 var velocity_y = -9
 var gravity = 0.4
@@ -21,6 +22,12 @@ func init(pos, speed, dir, time) -> void:
 
 func set_vert_velocity(value):
 	velocity_y = value
+
+func set_damage(value):
+	damage = value
+
+func set_defense_pen(value):
+	defense_pen = value
 
 func _ready() -> void:
 	self.scale.x = size
@@ -43,7 +50,7 @@ func _physics_process(_delta: float) -> void:
 		var collider = colision.get_collider()
 
 		if collider.is_in_group("player") and collider.is_in_group("attackable"):
-			collider.take_damage(damage)
+			collider.take_damage(damage, defense_pen)
 			collider.take_knockback(5, direction)
 			collider.take_stun(15)
 			queue_free()

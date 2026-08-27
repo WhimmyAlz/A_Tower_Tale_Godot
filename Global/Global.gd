@@ -61,7 +61,7 @@ var bonus_health_regen : float = 0
 var stamina_regen_multi : float = 0
 var bonus_power : int = 0
 var bonus_defense : int = 0
-var defense_penetration_adds : float = 0
+var defense_penetration_adds : int = 0
 
 # Misc
 var Gravity := 50
@@ -82,7 +82,7 @@ func class_stats_brawler():
 
 	power = 18 + bonus_power
 	defense = 5 + bonus_defense
-	defense_penetration = 0
+	defense_penetration = 0 + defense_penetration_adds
 	
 	strength = 4 + bonus_strength
 	agility = 12 + bonus_agility
@@ -104,7 +104,7 @@ func class_stats_draco():
 
 	power = 35 + bonus_power
 	defense = 15
-	defense_penetration = 0
+	defense_penetration = 0 + defense_penetration_adds
 
 	strength = 4 + bonus_strength
 	agility = 10 + bonus_agility

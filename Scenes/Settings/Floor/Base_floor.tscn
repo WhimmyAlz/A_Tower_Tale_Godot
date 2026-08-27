@@ -41,35 +41,42 @@ position = Vector2(0, -36880)
 scale = Vector2(30, 210)
 texture = ExtResource("2_u13yy")
 
-[node name="Ground_floor" type="Node2D" parent="Enviroment" unique_id=1252557882]
+[node name="Walls_and_sprites" type="Node2D" parent="Enviroment" unique_id=1252557882]
 
-[node name="Tower_sprite" type="AnimatedSprite2D" parent="Enviroment/Ground_floor" unique_id=1468190379]
+[node name="BorderWall_ground" parent="Enviroment/Walls_and_sprites" unique_id=600890904 instance=ExtResource("4_pkiij")]
+position = Vector2(-5, 937)
+scale = Vector2(2.0000002, 2.0000002)
+
+[node name="BorderWall_left" parent="Enviroment/Walls_and_sprites" unique_id=965109119 instance=ExtResource("5_p28ks")]
+position = Vector2(-1050, -25)
+scale = Vector2(1.85, 1.85)
+
+[node name="BorderWall_right" parent="Enviroment/Walls_and_sprites" unique_id=1415558213 instance=ExtResource("5_p28ks")]
+position = Vector2(944.99994, -25)
+scale = Vector2(1.85, 1.85)
+
+[node name="BorderWall_Ceiling" parent="Enviroment/Walls_and_sprites" unique_id=245252224 instance=ExtResource("6_7qsdb")]
+position = Vector2(0, -950)
+scale = Vector2(2, 2)
+
+[node name="Sprites" type="Node2D" parent="Enviroment/Walls_and_sprites" unique_id=960453592]
+
+[node name="Tower_sprite_1" type="AnimatedSprite2D" parent="Enviroment/Walls_and_sprites/Sprites" unique_id=1468190379]
 z_index = -1
 texture_filter = 1
 position = Vector2(0, -25)
 scale = Vector2(4.725, 4.725)
 sprite_frames = SubResource("SpriteFrames_ks4c7")
 
-[node name="BorderWall_ground" parent="Enviroment/Ground_floor" unique_id=600890904 instance=ExtResource("4_pkiij")]
-position = Vector2(-5, 937)
-scale = Vector2(2.0000002, 2.0000002)
-
-[node name="BorderWall_left" parent="Enviroment/Ground_floor" unique_id=965109119 instance=ExtResource("5_p28ks")]
-position = Vector2(-1050, -25)
-scale = Vector2(1.85, 1.85)
-
-[node name="BorderWall_right" parent="Enviroment/Ground_floor" unique_id=1415558213 instance=ExtResource("5_p28ks")]
-position = Vector2(944.99994, -25)
-scale = Vector2(1.85, 1.85)
-
-[node name="BorderWall_Ceiling" parent="Enviroment/Ground_floor" unique_id=245252224 instance=ExtResource("6_7qsdb")]
-position = Vector2(0, -950)
-scale = Vector2(2, 2)
-
 [node name="Enemies" type="Node2D" parent="." unique_id=1301696289]
 
 [node name="Skeleton" parent="Enemies" unique_id=1750366798 instance=ExtResource("8_u13yy")]
 position = Vector2(612, 87)
+Health = 1000
+Max_Health = 1000
+
+[node name="Skelebone" parent="Enemies" unique_id=1712150969 instance=ExtResource("8_u13yy")]
+position = Vector2(-863, 204)
 
 [node name="Player" parent="." unique_id=150661442 instance=ExtResource("7_t2lht")]
 position = Vector2(2, 7)

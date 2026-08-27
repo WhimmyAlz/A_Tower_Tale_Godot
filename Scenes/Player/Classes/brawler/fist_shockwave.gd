@@ -8,9 +8,12 @@ var angle = 0
 
 var hitnum = 1
 var damage = 15
+var defense_pen = Global.defense_penetration
 var knockback = 15
 var knockbackY = 0
 var stuntime = 20
+
+var fire_stacks = 0
 
 var player
 
@@ -35,6 +38,12 @@ func set_player(ply):
 func set_damage(dmg):
 	damage = dmg
 
+func set_defense_pen(def_pen):
+	defense_pen = def_pen
+
+func set_hitnum(value):
+	hitnum = value
+
 func set_direction(dir):
 	direction = dir
 
@@ -52,6 +61,9 @@ func set_lifetime(time):
 
 func set_angle(value):
 	angle = value
+
+func set_fire(value):
+	fire_stacks = value
 
 func _ready() -> void:
 	self.scale.x = size
@@ -74,8 +86,10 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	var collider = body
 	if collider.is_in_group("attackable") and collider.is_in_group("enemy") and hitnum >= 1:
-		collider.take_damage(damage)
+		collider.take_damage(damage, defense_pen)
 		collider.take_knockback(knockback, direction)
 		collider.take_knockbackY(knockbackY)
 		collider.take_stun(stuntime)
+		if fire_stacks > 0:
+			collider.inflict_fire(fire_stacks)
 		hitnum -= 1

@@ -12,8 +12,9 @@ var wave
 var descriptions = {
 "Punch": "A simple punch. Does [100% + str] damage and deals 15 knockback. Has a 1s cooldown.",
 "Flurry": "A punch that sends out 3 waves. Does [33% + 0.75str] x3 damage and deals 5 x3 knockback at a moderate range. Has a 2s cooldown.",
-"Barrage": "A wave of punches. Does [10% + 0.2str] x 15 damage and deals 1 x15 knockback. Has a 4s cooldown.",
-"Berserk": "Enrages the user. Gains 100% mana regen as well as 4 str and 6 agi stats for 7.5s. Has a 15s cooldown."
+"Barrage": "A stream of punches. Does [10% + 0.2str] x 15 damage and deals 1 x15 knockback. Has a 4s cooldown.",
+"Uppercut": "A punch that sends enemies flying. Does [100% + str] damage, flings enemies into the air and stuns for a long time. Has a 1.5s cooldown.",
+"Berserk": "Enrages the user. Gains 4 str, 6 agi and 100% mana regen for 7.5s. Also causes barrage attacks to inflict fire 1 and flurry attacks to inflict fire 3. Has a 15s cooldown."
 }
 
 @onready var player = get_parent().get_parent()
@@ -94,9 +95,12 @@ func attack_2():
 		if between(Global.attack2t, 30, 34) and Global.attack2t % 2 == 0:
 			wave = fist_wave.instantiate()
 			wave.set_player(player)
+			if status.get_berserk():
+				wave.set_fire(3)
 			wave.set_damage((0.33 * Global.power) + (0.75 * Global.strength))
 			wave.set_knockback(5)
 			wave.set_size(3)
+			wave.set_stuntime(30)
 			wave.set_pos(Vector2(player.position.x, player.position.y + randi_range(-150, -20)))
 			wave.set_speed(40 + randi_range(-10,20), 0)
 			get_tree().current_scene.get_node("Projectiles").add_child(wave)
@@ -135,11 +139,13 @@ func attack_3():
 		if between(Global.attack3t, 4, 60) and Global.attack3t % 4 == 0:
 			wave = fist_wave.instantiate()
 			wave.set_player(player)
+			if status.get_berserk():
+				wave.set_fire(1)
 			wave.set_damage((0.1 * Global.power) + (0.2 * Global.strength))
 			wave.set_knockback(1)
 			wave.set_size(2.5)
 			wave.set_lifetime(5)
-			wave.set_stuntime(45)
+			wave.set_stuntime(30)
 			wave.set_pos(Vector2(player.position.x + (80 * Global.player_dir), player.position.y + randi_range(-130, -60)))
 			wave.set_speed(20, 0)
 			get_tree().current_scene.get_node("Projectiles").add_child(wave)
@@ -182,7 +188,8 @@ func attack_4():
 			wave.set_knockback(5)
 			wave.set_knockbackY(-12)
 			wave.set_size(4.5)
-			wave.set_stuntime(90)
+			wave.set_stuntime(60)
+			wave.set_hitnum(10)
 			wave.set_lifetime(10)
 			wave.set_pos(Vector2(player.position.x + (80 * Global.player_dir), player.position.y + randi_range(-130, -60)))
 			wave.set_angle(30 * Global.player_dir)
@@ -210,20 +217,20 @@ func init_attack_5():
 		player.set_animation_visibility(false)
 		class_anim.visible = true
 		class_anim.frame = 0
-		class_anim.play("punch")
+		class_anim.play("scream")
 		Global.attack5t = 1
 		player.set_attacking(true)
 
 func attack_5():
-	if Global.attack5t >= 1 and Global.attack5t <= 30:
-		class_anim.speed_scale = 2.5
+	if Global.attack5t >= 1 and Global.attack5t <= 45:
+		class_anim.speed_scale = 9
 		player.set_speed_penalty(0)
 		
 		# spawns wave
 		if Global.attack5t == 20:
 			status.set_berserk(450)
 
-		if Global.attack5t == 30:
+		if Global.attack5t == 45:
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)

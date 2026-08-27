@@ -3,13 +3,26 @@ class_name enemyBase
 
 @export var Health := 100
 @export var Max_Health := Health
+@export var Defense := 0
+
 @export var Weight := 50 # used for friction and knockback reduction
 @export var Speed := 10
+@export var Damage := 20
+@export var Defense_pen := 0
 
-@export var player = null
+var player = null
+
+var fire_stacks = 0.0
+var fire_tick_delay = 0
+
+var venom_stacks = 0.0
+var venom_tick_delay = 0
 
 var direction := 1
 var stunnedf := 0 # stunned frames (stunned time shortened)
+
+func set_damage(value):
+	Damage = value
 
 func get_health():
 	return(Health)
@@ -34,8 +47,6 @@ func face_player(animation):
 
 func vert_velocities():
 	if stunnedf > 1:
-		stunnedf -= 1
-
 		if velocity.y >= 15:
 			velocity.y = 15
 		else:
@@ -61,8 +72,10 @@ func move(animation):
 		self.position.x += Speed
 		animation.flip_h = true
 
-func take_damage(dmg):
-	self.Health = maxi(self.Health - dmg, 0)
+func take_damage(dmg, defense_pen):
+	var def = maxi(Defense - defense_pen, 0)
+	var damage =  maxi(dmg - def, 1)
+	self.Health = maxi(self.Health - damage, 0)
 	$HealthBar.update_value(Health)
 	
 	if self.Health == 0:
@@ -74,9 +87,39 @@ func take_knockback(kb, dir):
 func take_knockbackY(kb):
 	self.velocity.y += kb * 100 # 100 cuz kb too weak otherwise (want to use lower values)
 
-
 func take_stun(stun_time):
 	stunnedf = stun_time
 
+## inflict funcs are used for player attacks
+func inflict_fire(stacks):
+	if fire_stacks < 50:
+		fire_stacks = mini(fire_stacks + stacks, 50)
+
+func inflict_venom(stacks):
+	if venom_stacks < 30:
+		venom_stacks = mini(venom_stacks + stacks, 30)
+
+## status effects
+func take_burn():
+	if fire_stacks >= 1 and fire_tick_delay == 0:
+		fire_stacks -= 1
+		take_damage(fire_stacks / 2, 10)
+		fire_tick_delay = 15
+	elif fire_tick_delay > 0:
+		fire_tick_delay -= 1
+
+func take_venom():
+	if venom_stacks >= 1 and venom_tick_delay == 0:
+		venom_stacks -= 1
+		take_damage(5, 25)
+		venom_tick_delay = 5
+	elif venom_tick_delay > 0:
+		venom_tick_delay -= 1
+
 func on_death():
 	pass
+
+func _ready() -> void:
+	$HealthBar.update_value(Health)
+	set_player_gen_1()
+	set_direction(self, player)

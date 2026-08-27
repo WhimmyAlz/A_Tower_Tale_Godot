@@ -138,9 +138,10 @@ func set_animation_visibility(boolean):
 # Next few functions are used for stat changes
 
 ## changes health and sets the hp bar
-func take_damage(value):
+func take_damage(value, defense_pen):
 	# makes sure health doesn't go below 0
-	var damage =  maxi(value - Global.defense, 1)
+	var def = maxi(Global.defense - defense_pen, 0)
+	var damage =  maxi(value - def, 1)
 	Global.health = maxi(Global.health - damage, 0)
 	$"../Non Attached UI Elements/Prog_Bars".Update_HP()
 

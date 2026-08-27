@@ -28,15 +28,12 @@ func throw_bone():
 	var proj_lifetime = 90
 	
 	projectile.init(proj_position, proj_speed, self.direction, proj_lifetime)
+	projectile.set_damage(Damage)
 	get_tree().current_scene.get_node("Projectiles").add_child(projectile)
 
 func on_death():
 	player.gain_xp(10)
 	queue_free()
-
-func _ready() -> void:
-	set_player_gen_1()
-	set_direction(self, player)
 
 func _physics_process(_delta: float) -> void:
 	
@@ -50,8 +47,6 @@ func _physics_process(_delta: float) -> void:
 			stunnedf -= 1
 		
 	elif attackt >= 134 and attackt <= 180:
-		stunnedf = 0
-		
 		if attackt == 134:
 			face_player(skeleton_animation)
 			$SkeleboneSprite.play("attack")
@@ -62,7 +57,10 @@ func _physics_process(_delta: float) -> void:
 		attackt += 1
 	if attackt >= 180:
 		attackt = 0
-
+	
+	take_burn()
+	take_venom()
+	
 	friction()
 	vert_velocities()
 	move_and_slide()
