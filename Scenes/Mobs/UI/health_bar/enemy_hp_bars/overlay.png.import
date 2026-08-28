@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://i5qpgulv147p"
-path="res://.godot/imported/overlay.png-889a72a743f384306fd3e5dc6ba5856c.ctex"
+path="res://.godot/imported/overlay.png-b49f9ab38837f148b898c81680f3f535.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/UI/health_bar/enemy_hp_bars/overlay.png"
-dest_files=["res://.godot/imported/overlay.png-889a72a743f384306fd3e5dc6ba5856c.ctex"]
+source_file="res://Scenes/Mobs/UI/health_bar/enemy_hp_bars/overlay.png"
+dest_files=["res://.godot/imported/overlay.png-b49f9ab38837f148b898c81680f3f535.ctex"]
 
 [params]
 

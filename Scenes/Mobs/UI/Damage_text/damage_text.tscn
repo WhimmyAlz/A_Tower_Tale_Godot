@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bybyorl1xtocg"]
+
+[ext_resource type="Script" uid="uid://be48yk0u78ffc" path="res://Scenes/Mobs/UI/Damage_text/damage_text.gd" id="1_y1l8h"]
+
+[node name="DamageText" type="Node2D" unique_id=2140984578]
+z_index = 1
+script = ExtResource("1_y1l8h")
+
+[node name="text" type="RichTextLabel" parent="." unique_id=744675966]
+offset_right = 137.0
+offset_bottom = 64.0
+theme_override_font_sizes/normal_font_size = 64
+text = "1"
+fit_content = true
+scroll_active = false

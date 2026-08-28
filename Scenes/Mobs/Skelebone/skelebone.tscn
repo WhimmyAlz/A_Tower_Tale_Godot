@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://crpq08o2r0phq" path="res://Scenes/Mobs/Skelebone/skelebone_body.gd" id="1_wahd0"]
 [ext_resource type="Texture2D" uid="uid://gtde3dantgls" path="res://Scenes/Mobs/Skelebone/Sprites/Skeleton_idle.png" id="2_wahd0"]
 [ext_resource type="Texture2D" uid="uid://csq805ox8oe7h" path="res://Scenes/Mobs/Skelebone/Sprites/Skeleton_walk.png" id="3_evf74"]
-[ext_resource type="PackedScene" uid="uid://c7tlcevue5q4l" path="res://Scenes/UI/health_bar/health_bar.tscn" id="5_wvn5m"]
+[ext_resource type="PackedScene" uid="uid://c7tlcevue5q4l" path="res://Scenes/Mobs/UI/health_bar/health_bar.tscn" id="5_wvn5m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8yul"]
 atlas = ExtResource("1_oakuy")
@@ -162,3 +162,5 @@ shape = SubResource("RectangleShape2D_kt8of")
 
 [node name="HealthBar" parent="." unique_id=542308091 instance=ExtResource("5_wvn5m")]
 position = Vector2(-1.25, -61.25)
+
+[node name="damage_text_holder" type="Node2D" parent="." unique_id=249516646]

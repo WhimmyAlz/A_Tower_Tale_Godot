@@ -83,3 +83,5 @@ Level = 10
 position = Vector2(2, 7)
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=752351717]
+
+[node name="Damage_text" type="Node2D" parent="." unique_id=1384257206]

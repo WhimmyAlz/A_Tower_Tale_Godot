@@ -3,7 +3,6 @@ extends enemyBase
 var bone = preload("res://Scenes/Mobs/Skelebone/bone.tscn")
 var attackt = 0
 
-
 var skeleton_animation
 
 func move(animation):
@@ -48,6 +47,10 @@ func set_level_stats():
 		Damage = 25 + (level * 2)
 		
 		update_hp_bar()
+
+## dto is damage text offset
+func set_dto():
+	damage_text_offset = Vector2(-40, -300)
 
 func _physics_process(_delta: float) -> void:
 	

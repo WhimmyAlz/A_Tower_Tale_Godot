@@ -3,15 +3,17 @@ class_name enemyBase
 
 @export var Level := 1
 
-@export var Health := 100
-@export var Max_Health := Health
-@export var Defense := 0
+@export var Health = 100
+@export var Max_Health = Health
+@export var Defense = 0
 
 @export var Weight := 50 # used for friction and knockback reduction
 @export var Speed := 10
-@export var Damage := 10
+@export var Damage := 10.0
 @export var Defense_pen := 0
 
+var damage_text = preload("res://Scenes/Mobs/UI/Damage_text/damage_text.tscn")
+var damage_text_offset = Vector2(0, 0)
 var player = null
 
 var fire_stacks = 0.0
@@ -77,12 +79,25 @@ func move(animation):
 		self.position.x += Speed
 		animation.flip_h = true
 
-func take_damage(dmg, defense_pen):
-	var def = maxi(Defense - defense_pen, 0)
-	var damage =  maxi(dmg - def, 1)
-	self.Health = maxi(self.Health - damage, 0)
+func take_damage(dmg, defense_pen, color = Color.WHITE):
+	var def = maxf(Defense - defense_pen, 0)
+	var damage =  maxf(dmg - def, 1)
+
+	#sets damage to int if close to x.0 and limits decimals to tenths
+	if is_zero_approx(damage - int(damage)):
+		damage = int(damage)
+	else: 
+		damage = snapped(damage, 0.1)
+
+	self.Health = maxf(self.Health - damage, 0)
 	$HealthBar.update_value(Health)
-	
+
+	var damageText = damage_text.instantiate()
+	damageText.set_text(damage)
+	damageText.set_position(position + damage_text_offset)
+	damageText.set_color(color)
+	get_tree().current_scene.get_node("Damage_text").add_child(damageText)
+
 	if self.Health == 0:
 		on_death()
 
@@ -115,7 +130,7 @@ func inflict_shock(stacks):
 func take_burn():
 	if fire_stacks >= 1 and fire_tick_delay == 0:
 		fire_stacks -= 1
-		take_damage(fire_stacks / 2, 10)
+		take_damage(fire_stacks / 2, 10, Color.DARK_ORANGE)
 		fire_tick_delay = 15
 	elif fire_tick_delay > 0:
 		fire_tick_delay -= 1
@@ -123,7 +138,7 @@ func take_burn():
 func take_venom():
 	if venom_stacks >= 1 and venom_tick_delay == 0:
 		venom_stacks -= 1
-		take_damage(5, 25)
+		take_damage(5, 25, Color.WEB_PURPLE)
 		venom_tick_delay = 5
 	elif venom_tick_delay > 0:
 		venom_tick_delay -= 1
@@ -142,6 +157,9 @@ func on_death():
 func set_level_stats():
 	pass
 
+func set_dto():
+	pass
+
 func check_stats_unchanged():
 	if Health == 100 and Defense == 0 and Weight == 50 and Speed == 10 and Defense == 0 and Damage == 10 and Defense_pen == 0:
 		return(true)
@@ -154,6 +172,7 @@ func update_hp_bar():
 
 func _ready() -> void:
 	set_level_stats()
+	set_dto()
 	update_hp_bar()
 	set_player_gen_1()
 	set_direction(self, player)
