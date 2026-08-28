@@ -65,18 +65,21 @@ func set_angle(value):
 func set_fire(value):
 	fire_stacks = value
 
-func _ready() -> void:
-	self.scale.x = size
-	self.scale.y = size
-
-func _physics_process(_delta: float) -> void:
-	self.position += speed
+func fix_rotation():
 	self.rotation = angle
 	if direction == -1:
 		$AnimatedSprite2D.flip_h = true
 	elif direction == 1:
 		$AnimatedSprite2D.flip_h = false
-		
+
+func _ready() -> void:
+	self.scale.x = size
+	self.scale.y = size
+	fix_rotation()
+
+func _physics_process(_delta: float) -> void:
+	self.position += speed
+	fix_rotation()
 	lifetime -= 1
 	
 	if lifetime == 0:

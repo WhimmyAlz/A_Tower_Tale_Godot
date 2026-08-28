@@ -74,6 +74,7 @@ func _physics_process(_delta: float) -> void:
 	
 	take_burn()
 	take_venom()
+	take_shock()
 	
 	friction()
 	vert_velocities()

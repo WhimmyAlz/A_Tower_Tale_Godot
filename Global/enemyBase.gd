@@ -20,6 +20,9 @@ var fire_tick_delay = 0
 var venom_stacks = 0.0
 var venom_tick_delay = 0
 
+var shock_stacks = 0.0
+var shock_tick_delay = 0
+
 var direction := 1
 var stunnedf := 0 # stunned frames (stunned time shortened)
 
@@ -90,7 +93,10 @@ func take_knockbackY(kb):
 	self.velocity.y += kb * 100 # 100 cuz kb too weak otherwise (want to use lower values)
 
 func take_stun(stun_time):
-	stunnedf = stun_time
+	if shock_stacks == 0 or stunnedf == 0: 
+		stunnedf = stun_time
+	else:
+		stunnedf += int(stun_time * (shock_stacks/100))
 
 ## inflict funcs are used for player attacks
 func inflict_fire(stacks):
@@ -100,6 +106,10 @@ func inflict_fire(stacks):
 func inflict_venom(stacks):
 	if venom_stacks < 30:
 		venom_stacks = mini(venom_stacks + stacks, 30)
+
+func inflict_shock(stacks):
+	if shock_stacks < 100:
+		shock_stacks += mini(shock_stacks + stacks, 10)
 
 ## status effects
 func take_burn():
@@ -117,6 +127,14 @@ func take_venom():
 		venom_tick_delay = 5
 	elif venom_tick_delay > 0:
 		venom_tick_delay -= 1
+
+func take_shock():
+	var shock_loss = int(shock_stacks/10)
+	if shock_stacks >= 1 and shock_tick_delay == 0:
+		shock_stacks -= maxi(1, shock_loss)
+		shock_tick_delay = 10
+	elif shock_tick_delay > 0:
+		shock_tick_delay -= 1
 
 func on_death():
 	pass
