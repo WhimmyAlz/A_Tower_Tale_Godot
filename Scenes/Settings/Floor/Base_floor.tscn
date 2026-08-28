@@ -77,6 +77,7 @@ Max_Health = 1000
 
 [node name="Skelebone" parent="Enemies" unique_id=1712150969 instance=ExtResource("8_u13yy")]
 position = Vector2(-863, 204)
+Level = 10
 
 [node name="Player" parent="." unique_id=150661442 instance=ExtResource("7_t2lht")]
 position = Vector2(2, 7)

@@ -6,3 +6,6 @@ func _ready() -> void:
 
 func update_value(hp):
 	$TextureProgressBar.value = hp
+
+func update_max_value(hp):
+	$TextureProgressBar.max_value = hp

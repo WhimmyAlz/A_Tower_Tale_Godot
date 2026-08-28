@@ -1,13 +1,15 @@
 extends CharacterBody2D
 class_name enemyBase
 
+@export var Level := 1
+
 @export var Health := 100
 @export var Max_Health := Health
 @export var Defense := 0
 
 @export var Weight := 50 # used for friction and knockback reduction
 @export var Speed := 10
-@export var Damage := 20
+@export var Damage := 10
 @export var Defense_pen := 0
 
 var player = null
@@ -119,7 +121,21 @@ func take_venom():
 func on_death():
 	pass
 
-func _ready() -> void:
+func set_level_stats():
+	pass
+
+func check_stats_unchanged():
+	if Health == 100 and Defense == 0 and Weight == 50 and Speed == 10 and Defense == 0 and Damage == 10 and Defense_pen == 0:
+		return(true)
+	else:
+		return(false)
+
+func update_hp_bar():
 	$HealthBar.update_value(Health)
+	$HealthBar.update_max_value(Max_Health)
+
+func _ready() -> void:
+	set_level_stats()
+	update_hp_bar()
 	set_player_gen_1()
 	set_direction(self, player)

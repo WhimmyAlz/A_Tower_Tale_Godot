@@ -3,6 +3,7 @@ extends enemyBase
 var bone = preload("res://Scenes/Mobs/Skelebone/bone.tscn")
 var attackt = 0
 
+
 var skeleton_animation
 
 func move(animation):
@@ -34,6 +35,19 @@ func throw_bone():
 func on_death():
 	player.gain_xp(10)
 	queue_free()
+
+func set_level_stats():
+	# Reminder to self:
+	# Level is display level while level is used functionally
+	var level = Level - 1
+	
+	if check_stats_unchanged():
+		Health = 100 + (level * 15)
+		Max_Health = 100 + (level * 15)
+		
+		Damage = 25 + (level * 2)
+		
+		update_hp_bar()
 
 func _physics_process(_delta: float) -> void:
 	
