@@ -275,11 +275,34 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fyps"]
+atlas = ExtResource("2_bxt8x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvm71"]
+atlas = ExtResource("2_bxt8x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvm71"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fyps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvm71")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Class_actions" type="Node2D" unique_id=130291011]
 z_index = 1
 script = ExtResource("1_51i2t")
 
 [node name="brawler" type="Node2D" parent="." unique_id=2128555396]
+visible = false
 script = ExtResource("2_8365r")
 
 [node name="skills" type="AnimatedSprite2D" parent="brawler" unique_id=1842856046]
@@ -296,3 +319,10 @@ animation = &"hat_run"
 autoplay = "hat_idle"
 frame = 1
 frame_progress = 0.49913576
+
+[node name="draco" type="Node2D" parent="." unique_id=2008310674]
+visible = false
+
+[node name="hat" type="AnimatedSprite2D" parent="draco" unique_id=1889193456]
+sprite_frames = SubResource("SpriteFrames_kvm71")
+frame_progress = 0.11015099

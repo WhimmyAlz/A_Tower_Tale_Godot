@@ -5,6 +5,9 @@ var attackt = 0
 
 var skeleton_animation
 
+func set_pos(pos):
+	position = pos
+
 func move(animation):
 	skeleton_animation = animation
 

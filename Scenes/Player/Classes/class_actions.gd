@@ -15,9 +15,14 @@ func set_class_items():
 		class_node = $brawler
 		animation = $brawler/skills
 		hat = $brawler/hat
+		$brawler.visible = true
 
-	#elif player_class == 10:
+	elif player_class == 10:
 		# implement later
+		class_node = $brawler
+		animation = $brawler/skills
+		hat = $draco/hat
+
 
 func attack_1():
 	if Input.is_action_pressed("attack 1") and Global.attack1t == 0 and not player.get_attacking():

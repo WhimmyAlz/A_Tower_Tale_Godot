@@ -12,7 +12,7 @@ var flight := 0
 var jump_power := 1500
 var jump_limit := 100
 
-var player_spd := 10
+var player_spd = 10
 var player_weight := 50
 var player_dir := 1
 
