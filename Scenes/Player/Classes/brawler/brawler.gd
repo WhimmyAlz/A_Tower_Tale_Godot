@@ -2,7 +2,7 @@ extends Node2D
 
 var attack1_max_t = 60
 var attack2_max_t = 120
-var attack3_max_t = 240
+var attack3_max_t = 180
 var attack4_max_t = 90
 var attack5_max_t = 900
 var ultimate_max_t = 1
@@ -19,10 +19,10 @@ var fist_wave = preload("res://Scenes/Player/Classes/brawler/fist_shockwave.tscn
 
 func get_description():
 	descriptions = {
-	"attack_1": ["[b]Punch[/b]\n", "A simple punch that does moderate damage and knockback. Useful for extending combos. \n[color=dodger_blue]Consumes 20 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + strength)\n" % (Global.power + Global.strength), "Cooldown: %.1fs\n" % (float(attack1_max_t)/60), "Knockback: 15\n", "Stuntime: 0.5s\n"],
-	"attack_2": ["[b]Flurry[/b]\n", "A punch that sends out 3 waves, each dealing low damage at a moderate range. Beware of attack windup. \n[color=dodger_blue]Consumes 50 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x3 (33%% + 0.75x str)x3\n" % ((0.33 * Global.power) + (0.75 * Global.strength)),"Cooldown: %.1fs\n" % (float(attack2_max_t)/60), "Knockback: 5 x3\n", "Stuntime: 0.5s\n\n", "Inflicts [color=orange]fire 3[/color] when berserk is active"],
+	"attack_1": ["[b]Punch[/b]\n", "A simple punch that does moderate damage and knockback. Useful for extending combos. \n[color=dodger_blue]Consumes 20 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + strength)\n" % (Global.power + Global.strength), "Cooldown: %.1fs\n" % (float(attack1_max_t)/60), "Knockback: 6\n", "Stuntime: 0.6s\n"],
+	"attack_2": ["[b]Flurry[/b]\n", "A punch that sends out 3 waves, each dealing low damage at a moderate range. Beware of attack windup. \n[color=dodger_blue]Consumes 50 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x3 (33%% + 0.75x str)x3\n" % ((0.33 * Global.power) + (0.75 * Global.strength)),"Cooldown: %.1fs\n" % (float(attack2_max_t)/60), "Knockback: 3 x3\n", "Stuntime: 0.5s\n\n", "Inflicts [color=orange]fire 3[/color] when berserk is active"],
 	"attack_3": ["[b]Barrage[/b]\n", "Sends out many small punches which deals small but quickly accumulates damage. Useful for keeping an enemy stunned. \n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x15 (10%% + 0.2x str)x3\n" % ((0.1 * Global.power) + (0.2 * Global.strength)),"Cooldown: %.1fs\n" % (float(attack3_max_t)/60), "Knockback: 1 x15\n", "Stuntime: 0.5s\n\n", "Inflicts [color=orange]fire 1[/color] when berserk is active"],
-	"attack_4": ["[b]Uppercut[/b]\n", "A upwards punch that does moderate damage and sends enemies upwards. Useful for extending combos. \n[color=dodger_blue]Consumes 30 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + strength)\n" % (Global.power + Global.strength),"Cooldown: %.1fs\n" % (float(attack4_max_t)/60), "Knockback: 5\n", "Stuntime: 1.0s\n"],
+	"attack_4": ["[b]Uppercut[/b]\n", "A upwards punch that does moderate damage and sends enemies upwards. Can hit multiple targets. \n[color=dodger_blue]Consumes 30 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + strength)\n" % (Global.power + Global.strength),"Cooldown: %.1fs\n" % (float(attack4_max_t)/60), "Knockback: 6\n", "Stuntime: 1.0s\n\n", "Vertical knockback on enemies that are off ground is a lot less effective"],
 	"attack_5": ["[b]Berserk[/b]\n", "Sends the player into a fit of rage which increases their strength by 4 and agility by 6 and boosts stamina regen by 100% for 6s. \n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]0[/color] (0)\n", "Cooldown: %.1fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0s\n\n", "Activates the [color=red]berserk[/color] status effect"],
 	}
 	return(descriptions)
@@ -57,9 +57,10 @@ func attack_1():
 			wave = fist_wave.instantiate()
 			wave.set_player(player)
 			wave.set_damage(Global.power + Global.strength)
+			wave.set_knockback(6)
 			wave.set_pos(player.position)
 			wave.set_speed(0, 0)
-			wave.set_stuntime(30)
+			wave.set_stuntime(36)
 			get_tree().current_scene.get_node("Projectiles").add_child(wave)
 
 		if between(Global.attack1t, 20, 30):
@@ -102,9 +103,9 @@ func attack_2():
 			if status.get_berserk():
 				wave.set_fire(3)
 			wave.set_damage((0.33 * Global.power) + (0.75 * Global.strength))
-			wave.set_knockback(5)
+			wave.set_knockback(3)
 			wave.set_size(3)
-			wave.set_stuntime(30)
+			wave.set_stuntime(60)
 			wave.set_pos(Vector2(player.position.x, player.position.y + randi_range(-150, -20)))
 			wave.set_speed(40 + randi_range(-10,20), 0)
 			get_tree().current_scene.get_node("Projectiles").add_child(wave)
@@ -189,8 +190,8 @@ func attack_4():
 			wave = fist_wave.instantiate()
 			wave.set_player(player)
 			wave.set_damage(Global.power + Global.strength)
-			wave.set_knockback(5)
-			wave.set_knockbackY(-12)
+			wave.set_knockback(6)
+			wave.set_knockbackY(-14)
 			wave.set_size(4.5)
 			wave.set_stuntime(60)
 			wave.set_hitnum(10)

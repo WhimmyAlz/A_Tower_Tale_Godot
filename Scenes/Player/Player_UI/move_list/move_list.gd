@@ -35,15 +35,20 @@ func display_attack_text(attack):
 
 func _on_bar_1_button_mouse_entered() -> void:
 	display_attack_text("attack_1")
+	$Text_display/RichTextLabel.scroll_to_line(0)
 
 func _on_bar_2_button_mouse_entered() -> void:
 	display_attack_text("attack_2")
+	$Text_display/RichTextLabel.scroll_to_line(0)
 
 func _on_bar_3_button_mouse_entered() -> void:
 	display_attack_text("attack_3")
+	$Text_display/RichTextLabel.scroll_to_line(0)
 
 func _on_bar_4_button_mouse_entered() -> void:
 	display_attack_text("attack_4")
+	$Text_display/RichTextLabel.scroll_to_line(0)
 
 func _on_bar_5_button_mouse_entered() -> void:
 	display_attack_text("attack_5")
+	$Text_display/RichTextLabel.scroll_to_line(0)

@@ -105,8 +105,10 @@ func take_knockback(kb, dir):
 	self.velocity.x += kb * dir * 100 # 100 cuz kb too weak otherwise (want to use lower values)
 
 func take_knockbackY(kb):
-	self.velocity.y += kb * 100 # 100 cuz kb too weak otherwise (want to use lower values)
-
+	if self.velocity.y == 15 and kb < 0:
+		self.velocity.y += kb * 50 # during stunned, this affects the enemy a lot less
+	else:
+		self.velocity.y += kb * 100 # 100 cuz kb too weak otherwise (want to use lower values)
 func take_stun(stun_time):
 	if shock_stacks == 0 or stunnedf == 0: 
 		stunnedf = stun_time
