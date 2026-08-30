@@ -42,7 +42,9 @@ func player_movement():
 
 ## Sets the gravity and values of jumps for the player. Also checks for player input on jumps and allows jumping. (fix colision with ceiling issue)
 func vert_velocities():
-	velocity.y += Global.Gravity
+	if not attacking or velocity.y < 10:
+		velocity.y += Global.Gravity
+		
 
 	if is_on_floor():
 		jumps = Global.max_jumps

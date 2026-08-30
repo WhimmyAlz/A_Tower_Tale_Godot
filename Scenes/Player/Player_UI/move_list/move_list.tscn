@@ -19,6 +19,7 @@ layout_mode = 0
 offset_right = 413.0
 offset_bottom = 48.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="bar_1_txt" type="RichTextLabel" parent="bar_1" unique_id=987873340]
 layout_mode = 0
@@ -29,6 +30,13 @@ offset_bottom = 48.0
 theme_override_font_sizes/normal_font_size = 32
 text = "Skill 1"
 scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="bar_1_button" type="Button" parent="bar_1" unique_id=1025956336]
+layout_mode = 0
+offset_right = 413.0
+offset_bottom = 48.0
+flat = true
 
 [node name="bar_2" type="Control" parent="." unique_id=152810246]
 layout_mode = 3
@@ -43,6 +51,7 @@ layout_mode = 0
 offset_right = 413.0
 offset_bottom = 48.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="bar_2_txt" type="RichTextLabel" parent="bar_2" unique_id=59155824]
 layout_mode = 0
@@ -53,6 +62,13 @@ offset_bottom = 48.0
 theme_override_font_sizes/normal_font_size = 32
 text = "Skill 2"
 scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="bar_2_button" type="Button" parent="bar_2" unique_id=1870971373]
+layout_mode = 0
+offset_right = 412.83334
+offset_bottom = 48.0
+flat = true
 
 [node name="bar_3" type="Control" parent="." unique_id=854474331]
 layout_mode = 3
@@ -67,6 +83,7 @@ layout_mode = 0
 offset_right = 413.0
 offset_bottom = 48.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="bar_3_txt" type="RichTextLabel" parent="bar_3" unique_id=831368478]
 layout_mode = 0
@@ -78,6 +95,13 @@ theme_override_font_sizes/normal_font_size = 32
 text = "Skill 3
 "
 scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="bar_3_button" type="Button" parent="bar_3" unique_id=79023633]
+layout_mode = 0
+offset_right = 412.83334
+offset_bottom = 48.0
+flat = true
 
 [node name="bar_4" type="Control" parent="." unique_id=2080699590]
 layout_mode = 3
@@ -92,6 +116,7 @@ layout_mode = 0
 offset_right = 413.0
 offset_bottom = 48.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="bar_4_txt" type="RichTextLabel" parent="bar_4" unique_id=1752405020]
 layout_mode = 0
@@ -103,6 +128,13 @@ theme_override_font_sizes/normal_font_size = 32
 text = "Skill 4
 "
 scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="bar_4_button" type="Button" parent="bar_4" unique_id=1292766113]
+layout_mode = 0
+offset_right = 412.83334
+offset_bottom = 48.0
+flat = true
 
 [node name="bar_5" type="Control" parent="." unique_id=1339666496]
 layout_mode = 3
@@ -117,6 +149,7 @@ layout_mode = 0
 offset_right = 413.0
 offset_bottom = 48.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="bar_5_txt" type="RichTextLabel" parent="bar_5" unique_id=1004563375]
 layout_mode = 0
@@ -128,3 +161,43 @@ theme_override_font_sizes/normal_font_size = 32
 text = "Skill 5
 "
 scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="bar_5_button" type="Button" parent="bar_5" unique_id=1552124957]
+layout_mode = 0
+offset_right = 412.83334
+offset_bottom = 48.0
+flat = true
+
+[node name="Text_display" type="Control" parent="." unique_id=386422438]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Text_display" unique_id=702157007]
+layout_mode = 0
+offset_left = -415.33334
+offset_top = -516.0
+offset_right = -0.6666565
+offset_bottom = -280.0
+color = Color(0, 0, 0, 0.6509804)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Text_display" unique_id=1949740797]
+layout_mode = 0
+offset_left = -408.0
+offset_top = -513.3334
+offset_right = 1194.6666
+offset_bottom = 412.00012
+scale = Vector2(0.25, 0.25)
+theme_override_constants/line_separation = 5
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 96
+bbcode_enabled = true
+text = "Hover over each skill for info"
+
+[connection signal="mouse_entered" from="bar_1/bar_1_button" to="." method="_on_bar_1_button_mouse_entered"]
+[connection signal="mouse_entered" from="bar_2/bar_2_button" to="." method="_on_bar_2_button_mouse_entered"]
+[connection signal="mouse_entered" from="bar_3/bar_3_button" to="." method="_on_bar_3_button_mouse_entered"]
+[connection signal="mouse_entered" from="bar_4/bar_4_button" to="." method="_on_bar_4_button_mouse_entered"]
+[connection signal="mouse_entered" from="bar_5/bar_5_button" to="." method="_on_bar_5_button_mouse_entered"]

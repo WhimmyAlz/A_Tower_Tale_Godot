@@ -24,3 +24,26 @@ func update_prog():
 
 func _physics_process(_delta: float) -> void:
 	update_prog()
+
+func display_attack_text(attack):
+	var label = $Text_display/RichTextLabel
+	var descriptions = $"../../PlayerBody/Class_Actions".get_description()
+	
+	label.text = descriptions[attack][0]
+	for i in range(1, len(descriptions[attack])):
+		label.text += descriptions[attack][i]
+
+func _on_bar_1_button_mouse_entered() -> void:
+	display_attack_text("attack_1")
+
+func _on_bar_2_button_mouse_entered() -> void:
+	display_attack_text("attack_2")
+
+func _on_bar_3_button_mouse_entered() -> void:
+	display_attack_text("attack_3")
+
+func _on_bar_4_button_mouse_entered() -> void:
+	display_attack_text("attack_4")
+
+func _on_bar_5_button_mouse_entered() -> void:
+	display_attack_text("attack_5")

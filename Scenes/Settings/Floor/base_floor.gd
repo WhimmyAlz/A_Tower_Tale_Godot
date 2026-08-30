@@ -19,7 +19,6 @@ func spawn_portal():
 	self.get_node("Enviroment").add_child(portal)
 
 func _physics_process(_delta: float) -> void:
-	print($Enviroment/Background.position.y)
 	
 	if $Enemies.get_child_count() == 0 and portal_limiter == 1:
 		spawn_portal()

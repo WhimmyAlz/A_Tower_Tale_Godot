@@ -23,6 +23,8 @@ func set_class_items():
 		animation = $brawler/skills
 		hat = $draco/hat
 
+func get_description():
+	return(class_node.get_description())
 
 func attack_1():
 	if Input.is_action_pressed("attack 1") and Global.attack1t == 0 and not player.get_attacking():

@@ -27,6 +27,8 @@ func spawn_skeleton(pos, level):
 func init_floor_mobs(floor_num):
 	if floor_num == 1:
 		spawn_skeleton(Vector2(0, 0), 10)
+	elif floor_num == 2:
+		spawn_skeleton(Vector2(0, 0), 100)
 
 func _physics_process(_delta: float) -> void:
 	if entered and Input.is_action_just_released("interact"):
