@@ -3,7 +3,7 @@ class_name enemyBase
 
 @export var Level := 1
 
-@export var Health = 100
+@export var Health = 100.0
 @export var Max_Health = Health
 @export var Defense = 0
 
@@ -24,6 +24,12 @@ var venom_tick_delay = 0
 
 var shock_stacks = 0.0
 var shock_tick_delay = 0
+
+var bleed_stacks = 0.0
+var bleed_tick_delay = 0
+
+var deathmark_stacks = 0.0
+var deathmark_tick_delay = 0
 
 var direction := 1
 var stunnedf := 0 # stunned frames (stunned time shortened)
@@ -109,6 +115,7 @@ func take_knockbackY(kb):
 		self.velocity.y += kb * 50 # during stunned, this affects the enemy a lot less
 	else:
 		self.velocity.y += kb * 100 # 100 cuz kb too weak otherwise (want to use lower values)
+
 func take_stun(stun_time):
 	if shock_stacks == 0 or stunnedf == 0: 
 		stunnedf = stun_time
@@ -117,16 +124,25 @@ func take_stun(stun_time):
 
 ## inflict funcs are used for player attacks
 func inflict_fire(stacks):
-	if fire_stacks < 50:
+	if fire_stacks <= 50:
 		fire_stacks = mini(fire_stacks + stacks, 50)
 
 func inflict_venom(stacks):
-	if venom_stacks < 30:
+	if venom_stacks <= 30:
 		venom_stacks = mini(venom_stacks + stacks, 30)
 
 func inflict_shock(stacks):
-	if shock_stacks < 100:
-		shock_stacks += mini(shock_stacks + stacks, 10)
+	if shock_stacks <= 100:
+		shock_stacks = mini(shock_stacks + stacks, 100)
+
+func inflict_bleed(stacks):
+	if bleed_stacks <= 10:
+		bleed_stacks = mini(bleed_stacks + stacks, 10)
+
+func inflict_deathmark(stacks):
+	if deathmark_stacks <= 1000:
+		deathmark_stacks = mini(deathmark_stacks + stacks, 1000)
+		deathmark_tick_delay = 300
 
 ## status effects
 func take_burn():
@@ -141,7 +157,7 @@ func take_venom():
 	if venom_stacks >= 1 and venom_tick_delay == 0:
 		venom_stacks -= 1
 		take_damage(5, 25, Color.WEB_PURPLE)
-		venom_tick_delay = 5
+		venom_tick_delay = 6
 	elif venom_tick_delay > 0:
 		venom_tick_delay -= 1
 
@@ -152,6 +168,30 @@ func take_shock():
 		shock_tick_delay = 10
 	elif shock_tick_delay > 0:
 		shock_tick_delay -= 1
+
+func take_bleed():
+	if bleed_stacks >= 1 and bleed_tick_delay == 0:
+		bleed_stacks -= 1
+		bleed_tick_delay = 60
+		take_damage(float(Max_Health/100), 1000, Color.DARK_RED)
+	elif bleed_tick_delay > 0:
+		bleed_tick_delay -= 1
+
+func take_deathmark():
+	if deathmark_stacks == 1000:
+		take_damage(float(Max_Health/5), 1000, Color.BLACK)
+		deathmark_stacks = 0
+	elif deathmark_stacks >= 1 and deathmark_tick_delay == 0:
+		deathmark_stacks = 0
+	elif deathmark_tick_delay > 0:
+		deathmark_tick_delay -= 1
+
+func take_all_status_effects():
+	take_burn()
+	take_venom()
+	take_shock()
+	take_bleed()
+	take_deathmark()
 
 func on_death():
 	pass

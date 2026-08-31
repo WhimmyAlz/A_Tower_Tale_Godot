@@ -7,6 +7,8 @@ var attack4_max_t = 90
 var attack5_max_t = 900
 var ultimate_max_t = 1
 
+var active = false
+
 var wave
 
 var descriptions 
@@ -260,10 +262,14 @@ func update_global_cds():
 	Global.attack5_max_t = attack5_max_t
 	Global.ultimate_max_t = ultimate_max_t
 
+func set_active(value):
+	active = value
+
 func _physics_process(_delta: float) -> void:
-	update_global_cds()
-	attack_1()
-	attack_2()
-	attack_3()
-	attack_4()
-	attack_5()
+	if active:
+		update_global_cds()
+		attack_1()
+		attack_2()
+		attack_3()
+		attack_4()
+		attack_5()

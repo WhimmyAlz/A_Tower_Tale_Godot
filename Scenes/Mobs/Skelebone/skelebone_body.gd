@@ -78,9 +78,7 @@ func _physics_process(_delta: float) -> void:
 	if attackt >= 180:
 		attackt = 0
 	
-	take_burn()
-	take_venom()
-	take_shock()
+	take_all_status_effects()
 	
 	friction()
 	vert_velocities()

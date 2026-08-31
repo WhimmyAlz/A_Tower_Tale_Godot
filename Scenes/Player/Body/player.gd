@@ -13,11 +13,9 @@ var speed_penalty := 0.2 # used as a speed multiplier
 ## Slows down the player's velocity when it's not zero.
 func player_friction():
 	if velocity.x > 0:
-		velocity.x -= Global.player_weight
+		velocity.x = maxf(velocity.x - Global.player_weight, 0)
 	elif velocity.x < 0:
-		velocity.x += Global.player_weight
-	else:
-		velocity.x = 0
+		velocity.x = minf(velocity.x + Global.player_weight, 0)
 
 ## Checks for player's inputs and adds speed based on results, also sets the running and idle animations.
 func player_movement():
@@ -158,11 +156,15 @@ func take_stun(stun_time):
 func gain_xp(amount):
 	Global.player_XP += amount
 
+func gain_stamina(value):
+	if Global.stamina < Global.max_stamina:
+		Global.stamina = minf(Global.stamina + value, Global.max_stamina)
+		$"../Non Attached UI Elements/Prog_Bars".Update_STAM()
+
 func stamina_regen():
 	if Global.stamina < Global.max_stamina:
 		Global.stamina += (1 + Global.stamina_regen_multi) * 0.5
 		$"../Non Attached UI Elements/Prog_Bars".Update_STAM()
-
 
 func _ready() -> void:
 	player_friction() # calls friction function 
@@ -170,6 +172,7 @@ func _ready() -> void:
 	vert_velocities() # calls player vertical movement function
 
 func _physics_process(_delta: float):
+	
 	stamina_regen()
 	check_free()
 

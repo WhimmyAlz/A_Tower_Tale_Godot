@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cy2objgu6ms5j"]
+
+[ext_resource type="Script" uid="uid://bc420nh7t5o3x" path="res://Scenes/Player/Classes/needle/needle_proj.gd" id="1_wu6id"]
+[ext_resource type="Texture2D" uid="uid://vunbd2fxlim7" path="res://Scenes/Player/Classes/needle/sprites/needle.png" id="2_dmp3y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqdvg"]
+size = Vector2(30, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uywiu"]
+atlas = ExtResource("2_dmp3y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqw73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uywiu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Needle_proj" type="Area2D" unique_id=1649349009]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_wu6id")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1908000633]
+position = Vector2(0, 0.5)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_qqdvg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1061723849]
+texture_filter = 1
+position = Vector2(0, 11)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_sqw73")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

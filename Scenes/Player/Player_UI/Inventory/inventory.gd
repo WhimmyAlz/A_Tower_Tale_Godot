@@ -37,8 +37,16 @@ func update_stats():
 	for i in range(len(listed_stats)):
 		stats_label.text += listed_stats[i] + "[br]"
 
+func toggle_inventory():
+		if self.visible:
+			self.visible = false
+		else:
+			self.visible = true
+
 func _ready() -> void:
 	update_stats()
 	
 func _physics_process(_delta: float) -> void:
+	if Input.is_action_just_pressed("inventory"):
+		toggle_inventory()
 	update_stats()

@@ -18,3 +18,15 @@ value = 100.0
 texture_under = ExtResource("1_u2mu3")
 texture_over = ExtResource("2_hft3l")
 texture_progress = ExtResource("3_v2i8e")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=974263669]
+visible = false
+offset_left = -80.0
+offset_top = -24.0
+offset_right = 80.0
+offset_bottom = 24.0
+theme_override_font_sizes/normal_font_size = 32
+text = "100
+"
+scroll_active = false
+horizontal_alignment = 1

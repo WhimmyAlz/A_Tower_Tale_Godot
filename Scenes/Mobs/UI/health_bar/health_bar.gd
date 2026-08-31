@@ -6,6 +6,7 @@ func _ready() -> void:
 
 func update_value(hp):
 	$TextureProgressBar.value = hp
+	$RichTextLabel.text = str(snappedf(hp, 0.1))
 
 func update_max_value(hp):
 	$TextureProgressBar.max_value = hp

@@ -1,7 +1,7 @@
 extends Node2D
 
 var player_class = Global.player_class
-var class_node
+@onready var class_node = $brawler
 
 var animation
 var hat
@@ -11,17 +11,27 @@ var hat
 func set_class_items():
 	player_class = Global.player_class
 
+	class_node.set_active(false)
+
 	if player_class == 0:
 		class_node = $brawler
 		animation = $brawler/skills
 		hat = $brawler/hat
 		$brawler.visible = true
 
+	elif player_class == 1:
+		class_node = $needle
+		animation = $needle/skills
+		hat = $needle/hat
+		$needle.visible = true
+
 	elif player_class == 10:
 		# implement later
 		class_node = $brawler
 		animation = $brawler/skills
 		hat = $draco/hat
+
+	class_node.set_active(true)
 
 func get_description():
 	return(class_node.get_description())

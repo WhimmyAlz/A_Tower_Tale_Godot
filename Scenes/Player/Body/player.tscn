@@ -211,6 +211,7 @@ texture_over = ExtResource("11_t0j56")
 texture_progress = ExtResource("12_iqdhd")
 
 [node name="Inventory" parent="Non Attached UI Elements" unique_id=951110833 instance=ExtResource("14_7rbim")]
+visible = false
 position = Vector2(0, -54)
 
 [node name="MoveList" parent="Non Attached UI Elements" unique_id=1954343084 instance=ExtResource("16_e2n6q")]

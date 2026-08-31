@@ -2,7 +2,7 @@ extends Node
 
 var floors := 0
 
-var player_class := 0
+var player_class := 1
 var player_XP := 0
 var player_XP_REQ := 100
 var player_Level := 1
@@ -89,6 +89,28 @@ func class_stats_brawler():
 	dexterity = 2 + bonus_dexterity
 	intellect = 1 + bonus_intellect
 
+## Sets stats for Needle [class:1]
+func class_stats_needle():
+	flight = 0
+	max_jumps = 2 + jump_adds
+	jump_power = round(1200 * (1 + jump_multi))
+	jump_limit = 100 # must be more than 0
+
+	player_spd = round(agility * (1 + speed_multi))
+	player_weight = 15
+
+	max_health = 300
+	max_stamina = 180
+
+	power = 20 + bonus_power
+	defense = 0 + bonus_defense
+	defense_penetration = 0 + defense_penetration_adds
+	
+	strength = 2 + bonus_strength
+	agility = 15 + bonus_agility
+	dexterity = 6 + bonus_dexterity
+	intellect = 1 + bonus_intellect
+
 ## Sets stats for Draco [class:10]
 func class_stats_draco():
 	flight = 1
@@ -118,6 +140,7 @@ func _ready() -> void:
 func _physics_process(_delta: float):
 	if player_class == 0:
 		class_stats_brawler()
-
+	elif player_class == 1:
+		class_stats_needle()
 	elif player_class == 10:
 		class_stats_draco()
