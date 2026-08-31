@@ -12,6 +12,9 @@ func set_pos(pos):
 func set_text(txt):
 	$text.text = str(txt)
 
+func set_size(value):
+	$text.add_theme_font_size_override("normal_font_size", value * 64)
+
 func set_color(col):
 	$text.set("theme_override_colors/default_color", col)
 

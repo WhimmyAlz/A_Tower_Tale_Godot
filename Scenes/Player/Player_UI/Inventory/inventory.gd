@@ -2,40 +2,33 @@ extends Node2D
 
 # Needed stats: Level, xp, Health, Stamina, Power, Crit Rate, Crit Damage, STR, AGI, INT, DEF, DPEN, HP Regen, STAM Regen, Jumps
 @onready
-var level_label = $stastList/VBoxContainer/Level
-
-@onready
-var stats_label = $stastList/VBoxContainer/stats
+var stats_label = $stastList/stats
 
 func update_stats():
-	# stats
-	var health = int(Global.health)
-	var max_health = int(Global.max_health)
-	var stamina = int(Global.stamina)
-	var max_stamina = int(Global.max_stamina)
-	var power = int(Global.power)
-	var crit_rate = int(Global.crit_chance)
-	var crit_damage = int(Global.crit_damage)
-	var strength = int(Global.strength)
-	var agility = int(Global.agility)
-	
 	# displayed texts
 	var listed_stats = [
-	"Exp: %s/%s" % [Global.player_XP, Global.player_XP_REQ],
-	"Health:" + str(health) + "/" + str(max_health),
-	"Stamina:" + str(stamina) + "/" + str(max_stamina),
-	"Power:" + str(power),
-	"Crit Rate:" + str(crit_rate),
-	"Crit Damage:" + str(crit_damage),
-	"STR:" + str(strength),
-	"AGI:" + str(agility)
+	"[b]Level %s[/b]\n" % Global.player_Level,
+	"Exp %d\n\n" % Global.player_XP,
+	"Health: %d/%d\n" % [Global.health, Global.max_health],
+	"Stamina: %d/%d\n\n" % [Global.stamina, Global.max_stamina],
+	"Crit Rate: %.1f%%\n" % Global.crit_chance,
+	"Crit Damage: %.1f%%\n\n" % (Global.crit_damage * 100),
+	"Power: %d\n" % Global.power,
+	"Strength: %d\n" % Global.strength,
+	"Dexterity: %d\n" % Global.dexterity,
+	"Intellect: %d\n" % Global.intellect,
+	"Agility: %d\n\n" % Global.agility,
+	"Defense: %d\n" % Global.defense,
+	"Defense penetration: %d\n\n" % Global.defense_penetration,
+	"Health regen: %d%%\n" % Global.health_regen_value,
+	"Stamina regen: %.01fx\n\n" % (1 + Global.stamina_regen_multi),
+	"Player weight: %d\n" % Global.player_weight,
+	"Max jumps: %d" % Global.max_jumps,
 	]
 	
-	level_label.text = "Level: %s" % Global.player_Level
-	
-	stats_label.text = ""
-	for i in range(len(listed_stats)):
-		stats_label.text += listed_stats[i] + "[br]"
+	stats_label.text = listed_stats[0]
+	for i in range(1, len(listed_stats)):
+		stats_label.text += listed_stats[i]
 
 func toggle_inventory():
 		if self.visible:

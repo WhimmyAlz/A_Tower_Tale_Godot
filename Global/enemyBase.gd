@@ -85,9 +85,14 @@ func move(animation):
 		self.position.x += Speed
 		animation.flip_h = true
 
-func take_damage(dmg, defense_pen, color = Color.WHITE):
+func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Color.WHITE):
 	var def = maxf(Defense - defense_pen, 0)
 	var damage =  maxf(dmg - def, 1)
+	var crit = randi_range(0, 100) < crit_chance
+
+	if crit:
+		damage =  maxf((dmg * Global.crit_damage) - def, 1)
+		color = Color.GOLD
 
 	#sets damage to int if close to x.0 and limits decimals to tenths
 	if is_zero_approx(damage - int(damage)):
@@ -102,6 +107,8 @@ func take_damage(dmg, defense_pen, color = Color.WHITE):
 	damageText.set_text(damage)
 	damageText.set_position(position + damage_text_offset)
 	damageText.set_color(color)
+	if crit:
+		damageText.set_size(2)
 	get_tree().current_scene.get_node("Damage_text").add_child(damageText)
 
 	if self.Health == 0:
@@ -148,7 +155,7 @@ func inflict_deathmark(stacks):
 func take_burn():
 	if fire_stacks >= 1 and fire_tick_delay == 0:
 		fire_stacks -= 1
-		take_damage(fire_stacks / 2, 10, Color.DARK_ORANGE)
+		take_damage(fire_stacks / 2, 10, 0, Color.DARK_ORANGE)
 		fire_tick_delay = 15
 	elif fire_tick_delay > 0:
 		fire_tick_delay -= 1
@@ -156,7 +163,7 @@ func take_burn():
 func take_venom():
 	if venom_stacks >= 1 and venom_tick_delay == 0:
 		venom_stacks -= 1
-		take_damage(5, 25, Color.WEB_PURPLE)
+		take_damage(5, 25, 0, Color.WEB_PURPLE)
 		venom_tick_delay = 6
 	elif venom_tick_delay > 0:
 		venom_tick_delay -= 1
@@ -173,13 +180,13 @@ func take_bleed():
 	if bleed_stacks >= 1 and bleed_tick_delay == 0:
 		bleed_stacks -= 1
 		bleed_tick_delay = 60
-		take_damage(float(Max_Health/100), 1000, Color.DARK_RED)
+		take_damage(float(Max_Health/100), 1000, 0, Color.DARK_RED)
 	elif bleed_tick_delay > 0:
 		bleed_tick_delay -= 1
 
 func take_deathmark():
 	if deathmark_stacks == 1000:
-		take_damage(float(Max_Health/5), 1000, Color.BLACK)
+		take_damage(float(Max_Health/5), 1000, 0, Color.BLACK)
 		deathmark_stacks = 0
 	elif deathmark_stacks >= 1 and deathmark_tick_delay == 0:
 		deathmark_stacks = 0

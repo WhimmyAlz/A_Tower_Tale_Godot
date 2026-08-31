@@ -63,6 +63,6 @@ func _physics_process(_delta: float) -> void:
 				player.gain_stamina(Global.max_stamina/10)
 			else:
 				needle_node.add_needle_stacks(1)
-			collider.take_damage(damage, defense_pen)
+			collider.take_damage(damage, defense_pen, 0)
 			collider.inflict_bleed(1)
 			hitnum -= 1

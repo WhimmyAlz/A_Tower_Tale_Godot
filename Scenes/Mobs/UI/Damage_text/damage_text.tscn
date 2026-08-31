@@ -7,9 +7,12 @@ z_index = 1
 script = ExtResource("1_y1l8h")
 
 [node name="text" type="RichTextLabel" parent="." unique_id=744675966]
-offset_right = 137.0
-offset_bottom = 64.0
+offset_left = -152.0
+offset_top = 44.0
+offset_right = 181.0
+offset_bottom = 233.0
 theme_override_font_sizes/normal_font_size = 64
 text = "1"
 fit_content = true
 scroll_active = false
+horizontal_alignment = 1

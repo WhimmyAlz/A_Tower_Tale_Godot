@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://b434ed6uucijh" path="res://Scenes/Player/Player_UI/Inventory/scroll_loop.png" id="1_heh5q"]
 [ext_resource type="Script" uid="uid://bhgte1fxkbj5r" path="res://Scenes/Player/Player_UI/Inventory/inventory.gd" id="1_wm164"]
 [ext_resource type="Texture2D" uid="uid://c3ns7nqc1jd4o" path="res://Scenes/Player/Player_UI/Inventory/scroll_start.png" id="2_ctxg8"]
-[ext_resource type="FontFile" uid="uid://djuj2ddb7qpuy" path="res://Assets/Swiggler V1.ttf" id="3_1vg8b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ctxg8"]
 atlas = ExtResource("1_heh5q")
@@ -162,29 +161,19 @@ animation = &"loop"
 autoplay = "loop"
 frame_progress = 0.06634152
 
-[node name="VBoxContainer" type="VBoxContainer" parent="stastList" unique_id=2136287063]
+[node name="stats" type="RichTextLabel" parent="stastList" unique_id=106963680]
 layout_mode = 0
-offset_left = -1340.0
+offset_left = -1350.0
 offset_top = -702.0
-offset_right = -883.0
-offset_bottom = 344.0
-
-[node name="Level" type="RichTextLabel" parent="stastList/VBoxContainer" unique_id=1922716191]
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("3_1vg8b")
-theme_override_font_sizes/normal_font_size = 96
+offset_right = -378.0
+offset_bottom = 1474.0
+scale = Vector2(0.5, 0.5)
+theme_override_constants/line_separation = -10
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 128
 bbcode_enabled = true
-text = "Level: 99
-"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="stats" type="RichTextLabel" parent="stastList/VBoxContainer" unique_id=106963680]
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("3_1vg8b")
-theme_override_font_sizes/normal_font_size = 48
-bbcode_enabled = true
-text = "Exp: 10000/10000
+text = "[b]Level: 100[/b]
+Exp: 10000/10000
 
 Health: 100/100
 Stamina: 100/100
@@ -205,3 +194,4 @@ STAM Regen: 1.10X
 Jumps : 1
 "
 fit_content = true
+horizontal_alignment = 1
