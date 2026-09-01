@@ -5,7 +5,7 @@ var attack2_max_t = 120
 var attack3_max_t = 180
 var attack4_max_t = 600
 var attack5_max_t = 480
-var ultimate_max_t = 20
+var ultimate_max_t = 15
 
 var active = false
 
@@ -71,6 +71,7 @@ func attack_1():
 			needle.set_speed(30, 0)
 			needle.set_size(1.2)
 			needle.set_stuntime(6)
+			needle.set_ult_charge_amount(20)
 			needle.set_bleed_chance(20)
 			needle.needle_stacks(1)
 
@@ -116,6 +117,7 @@ func attack_2():
 			needle.set_pos(player.position + Vector2(10 * Global.player_dir, -80 + Global.attack2t * 10))
 			needle.set_speed(60, 0)
 			needle.set_size(1.5)
+			needle.set_ult_charge_amount(30)
 			needle.set_stuntime(15)
 			needle.set_lifetime(18)
 			needle.set_bleed_chance(60)
@@ -165,6 +167,7 @@ func attack_3():
 			needle.set_size(1.5)
 			needle.set_venom(6)
 			needle.set_hitnum(1 + needle_stacks)
+			needle.set_ult_charge_amount(40)
 			needle.set_stuntime(15)
 			needle.set_lifetime(20)
 			needle.set_bleed_chance(60)
@@ -213,6 +216,7 @@ func attack_4():
 			needle.set_slicer(true)
 			needle.set_vex_regen(true)
 			needle.set_hitnum(5)
+			needle.set_ult_charge_amount(100)
 			needle.set_stuntime(15)
 			needle.set_lifetime(20)
 			get_tree().current_scene.get_node("Projectiles").add_child(needle)
@@ -261,6 +265,7 @@ func attack_5():
 			needle.set_size(1.5)
 			needle.set_hitnum(1)
 			needle.set_stuntime(20)
+			needle.set_ult_charge_amount(6)
 			needle.set_shock(20)
 			needle.set_lifetime(20)
 			get_tree().current_scene.get_node("Projectiles").add_child(needle)
@@ -310,6 +315,7 @@ func ultimate():
 			needle.set_slicer(true)
 			needle.set_size(3.25)
 			needle.set_knockback(50)
+			needle.set_ult_charge_amount(0)
 			get_tree().current_scene.get_node("Projectiles").add_child(needle)
 		
 		if between(Global.ultimatet, 2, 10):
@@ -321,6 +327,7 @@ func ultimate():
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)
+			Global.ultimate_charge = 0
 
 	if Global.ultimatet >= 1:
 		Global.ultimatet += 1

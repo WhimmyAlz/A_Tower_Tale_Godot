@@ -57,7 +57,7 @@ func attack_5():
 		class_node.init_attack_5()
 
 func ultimate():
-	if Input.is_action_pressed("ultimate") and Global.ultimatet == 0 and not player.get_attacking():
+	if Input.is_action_pressed("ultimate") and Global.ultimatet == 0 and Global.ultimate_charge == 1000 and not player.get_attacking():
 		class_node.init_ultimate()
 
 func hat_animations():

@@ -5,7 +5,7 @@ var attack2_max_t = 150
 var attack3_max_t = 180
 var attack4_max_t = 90
 var attack5_max_t = 900
-var ultimate_max_t = 100
+var ultimate_max_t = 90
 
 var active = false
 
@@ -66,6 +66,7 @@ func attack_1():
 			wave.set_pos(player.position)
 			wave.set_speed(0, 0)
 			wave.set_stuntime(36)
+			wave.set_ult_charge_amount(45)
 			wave.set_size(2.5)
 			get_tree().current_scene.get_node("Projectiles").add_child(wave)
 
@@ -112,6 +113,7 @@ func attack_2():
 			wave.set_knockback(3)
 			wave.set_size(3)
 			wave.set_stuntime(60)
+			wave.set_ult_charge_amount(20)
 			wave.set_hitnum(5)
 			wave.set_pos(Vector2(player.position.x, player.position.y + randi_range(-150, -20)))
 			wave.set_speed(50 + randi_range(-10,20), 0)
@@ -158,6 +160,7 @@ func attack_3():
 			wave.set_size(2.5)
 			wave.set_lifetime(5)
 			wave.set_stuntime(30)
+			wave.set_ult_charge_amount(10)
 			wave.set_pos(Vector2(player.position.x + (80 * Global.player_dir), player.position.y + randi_range(-130, -60)))
 			wave.set_speed(20, 0)
 			get_tree().current_scene.get_node("Projectiles").add_child(wave)
@@ -203,6 +206,7 @@ func attack_4():
 			wave.set_stuntime(60)
 			wave.set_hitnum(10)
 			wave.set_lifetime(10)
+			wave.set_ult_charge_amount(70)
 			wave.set_pos(Vector2(player.position.x + (80 * Global.player_dir), player.position.y + randi_range(-130, -60)))
 			wave.set_angle(30 * Global.player_dir)
 			wave.set_speed(2, -15)
@@ -278,18 +282,20 @@ func ultimate():
 			giant_fist.set_player(player)
 			giant_fist.set_damage((4 * Global.power) + (10 * Global.strength))
 			giant_fist.set_pos(Vector2(player.position.x + (Global.player_dir * 600), -1000))
-			giant_fist.set_stuntime(60)
+			giant_fist.set_stuntime(180)
 			giant_fist.set_hitnum(100)
 			giant_fist.set_lifetime(80)
 			giant_fist.set_size(2)
 			giant_fist.set_knockback(0)
 			giant_fist.set_knockbackY(10)
+			giant_fist.set_ult_charge_amount(0)
 			get_tree().current_scene.get_node("Projectiles").add_child(giant_fist)
 
 		if between(Global.ultimatet, 10, 60):
 			giant_fist.set_pos(Vector2(giant_fist.get_pos_x(), float(Global.ultimatet)/2.3 * (Global.ultimatet - 30) - 1000))
 
 		if Global.ultimatet == 60:
+			Global.ultimate_charge = 0
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)

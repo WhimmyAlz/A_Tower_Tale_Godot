@@ -14,6 +14,14 @@ var knockbackY = 0
 var stuntime = 20
 
 var player
+var ult_charge_amount := 10
+
+func set_ult_charge_amount(value):
+	ult_charge_amount = value
+
+func charge_ult():
+	if Global.ultimate_charge < 1000:
+		Global.ultimate_charge = mini(Global.ultimate_charge + ult_charge_amount,  1000)
 
 func set_speed(x, y):
 	speed = Vector2(x * direction, y)
@@ -90,7 +98,7 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	var collider = body
 	if collider.is_in_group("attackable") and collider.is_in_group("enemy") and hitnum >= 1:
-		collider.reset_gravity()
+		charge_ult()
 		collider.take_damage(damage, defense_pen)
 		collider.take_knockback(knockback, direction)
 		collider.take_knockbackY(knockbackY)

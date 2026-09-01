@@ -5,6 +5,10 @@ extends Node2D
 @onready var skill_3 = $bar_3/bar_3_prog
 @onready var skill_4 = $bar_4/bar_4_prog
 @onready var skill_5 = $bar_5/bar_5_prog
+@onready var ultimate = $ultimate_bar/ultimate_prog
+
+var ultimate_load = preload("res://Scenes/Player/Player_UI/move_list/ultimate bar sprites/ultimate_charge.png")
+var ultimate_complete = preload("res://Scenes/Player/Player_UI/move_list/ultimate bar sprites/ultimate_charge_complete.png")
 
 func update_prog():
 	skill_1.value = Global.attack1t
@@ -21,9 +25,16 @@ func update_prog():
 	
 	skill_5.value = Global.attack5t
 	skill_5.max_value = Global.attack5_max_t
+	
+	ultimate.value = Global.ultimate_charge
+	ultimate.max_value = 1000
 
 func _physics_process(_delta: float) -> void:
 	update_prog()
+	if Global.ultimate_charge == 1000:
+		$ultimate_bar/ultimate_prog.texture_progress = ultimate_complete
+	else: 
+		$ultimate_bar/ultimate_prog.texture_progress = ultimate_load
 
 func display_attack_text(attack):
 	var label = $Text_display/RichTextLabel

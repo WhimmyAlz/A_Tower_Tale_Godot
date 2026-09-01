@@ -29,6 +29,15 @@ var player
 
 var slice_preload = preload("res://Scenes/Player/Classes/needle/needle_slice.tscn")
 
+var ult_charge_amount := 10
+
+func set_ult_charge_amount(value):
+	ult_charge_amount = value
+
+func charge_ult():
+	if Global.ultimate_charge < 1000:
+		Global.ultimate_charge = mini(Global.ultimate_charge + ult_charge_amount,  1000)
+
 func set_slicer(value):
 	slicer = value
 
@@ -143,6 +152,8 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	var collider = body
 	if collider.is_in_group("attackable") and collider.is_in_group("enemy") and hitnum >= 1:
+		charge_ult()
+		collider.reset_gravity()
 		collider.take_damage(damage, defense_pen)
 		collider.take_knockback(knockback, direction)
 		collider.take_knockbackY(knockbackY)
