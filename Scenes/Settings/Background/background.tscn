@@ -1,13 +1,11 @@
 [gd_scene format=3 uid="uid://daaduesc7yxwm"]
 
-[ext_resource type="Script" uid="uid://sjgu17hybxoh" path="res://Scenes/Settings/Background/background.gd" id="1_t2ekf"]
 [ext_resource type="Texture2D" uid="uid://bjhtwo0op76sw" path="res://Scenes/Settings/Background/Sprites/black_strip.png" id="1_u7ovb"]
 [ext_resource type="Texture2D" uid="uid://bcf3xiho63rf" path="res://Scenes/Settings/Background/Sprites/bg_grad.png" id="2_t2ekf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jiu0x"]
 
 [node name="Background" type="Node2D" unique_id=1861313626]
-script = ExtResource("1_t2ekf")
 
 [node name="Background area" type="Area2D" parent="." unique_id=1797769590]
 

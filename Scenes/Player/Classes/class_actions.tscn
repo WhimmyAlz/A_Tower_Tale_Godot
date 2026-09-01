@@ -280,6 +280,30 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hiqi"]
+atlas = ExtResource("1_0qstu")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbu60"]
+atlas = ExtResource("1_0qstu")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2fpl"]
+atlas = ExtResource("1_0qstu")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nu0r"]
+atlas = ExtResource("1_0qstu")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lskmx"]
+atlas = ExtResource("1_0qstu")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujd6n"]
+atlas = ExtResource("1_0qstu")
+region = Rect2(640, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_oao5d"]
 atlas = ExtResource("11_ldyiv")
 region = Rect2(0, 0, 128, 128)
@@ -302,6 +326,29 @@ region = Rect2(512, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gtl3k"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hiqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbu60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2fpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nu0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lskmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujd6n")
+}],
+"loop": true,
+"name": &"punch",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oao5d")
@@ -448,7 +495,7 @@ script = ExtResource("10_0beey")
 visible = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gtl3k")
-animation = &"spike"
+animation = &"punch"
 
 [node name="hat" type="AnimatedSprite2D" parent="needle" unique_id=1831983982]
 texture_filter = 1

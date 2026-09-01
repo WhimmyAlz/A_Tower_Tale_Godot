@@ -5,7 +5,7 @@ var attack2_max_t = 120
 var attack3_max_t = 180
 var attack4_max_t = 600
 var attack5_max_t = 480
-var ultimate_max_t = 1
+var ultimate_max_t = 20
 
 var active = false
 
@@ -30,6 +30,7 @@ func get_description():
 	"attack_3": ["[b]Venom pins[/b]\n", "Throws two needles which deals abysmal damage, but inflicts heavy venom. Needles have increased piercing based on needle stacks. \n[color=dodger_blue]Consumes 30 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)x2\n" % ((0.1 * Global.power) + (0.1 * Global.dexterity)),"Cooldown: %.1fs\n" % (float(attack3_max_t)/60), "Knockback: 2 x2\n", "Stuntime: 0.25s\n\n", "Inflicts [color=purple]venom 6[/color]"],
 	"attack_4": ["[b]Vex[/b]\n", "Shoots a piercing needle that performs slices as it travels. \n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + dexterity)\n" % (Global.power + Global.dexterity),"Cooldown: %.1fs\n" % (float(attack4_max_t)/60), "Knockback: 2\n", "Stuntime: 0.25s\n\n", "Slice: deals 5 damage, ignores 10 defense, inflicts [color=red]bleed 1[/color], and gain 10% max stamina or 1 needle stack if stamina is full"],
 	"attack_5": ["[b]Needle therapy[/b]\n", "Throws out a burst of 20 needles in a wide angle each dealing low damage but inflicting shock. Consumes needle stacks to make the angle narrower.\n[color=dodger_blue]Consumes 70 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)\n" % (0.1 * Global.power + 0.1 * Global.dexterity), "Cooldown: %.1fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0.33s\n\n", "Inflicts [color=yellow]shock 20[/color]"],
+	"ultimate": ["[b]Vein cutter[/b]\n", "Quickly dashes forwards while holding out a giant needle infront of you which performs slices on the needle's end. Might hit multiple times.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (200%% + 4x dexterity)\n" % ((2 * Global.power) + (4 * Global.dexterity)), "Cooldown: %.1fs\n" % (float(ultimate_max_t)/60), "Knockback: 50\n", "Stuntime: 1s\n\n", "Slice: deals 10 damage, ignores 10 defense, and inflicts [color=red]bleed 1[/color], and gain 1 needle stack"],
 	}
 	return(descriptions)
 
@@ -210,6 +211,7 @@ func attack_4():
 			needle.set_speed(100, 0)
 			needle.set_size(1.5)
 			needle.set_slicer(true)
+			needle.set_vex_regen(true)
 			needle.set_hitnum(5)
 			needle.set_stuntime(15)
 			needle.set_lifetime(20)
@@ -275,6 +277,57 @@ func attack_5():
 	if Global.attack5t >= attack5_max_t:
 		Global.attack5t = 0
 
+func init_ultimate():
+	if Global.stamina >= 0:
+		set_dir()
+
+		Global.stamina -= 0
+		Global.ultimatet = 1
+
+		player.set_animation_visibility(false)
+		class_anim.visible = true
+		class_anim.frame = 0
+		class_anim.play("punch")
+		class_anim.frame = 5
+		class_anim.pause()
+		Global.ultimatet = 1
+		player.set_attacking(true)
+
+func ultimate():
+	if Global.ultimatet >= 1 and Global.ultimatet <= 10:
+		class_anim.speed_scale = 2
+		player.set_speed_penalty(0)
+		
+		# spawns wave
+		if Global.ultimatet == 1:
+			needle = needle_proj.instantiate()
+			needle.set_player(player)
+			needle.set_damage((2 * Global.power) + (4 * Global.dexterity))
+			needle.set_pos(player.position + Vector2(150 * Global.player_dir, -85))
+			needle.set_stuntime(60)
+			needle.set_hitnum(100)
+			needle.set_lifetime(15)
+			needle.set_slicer(true)
+			needle.set_size(3.25)
+			needle.set_knockback(50)
+			get_tree().current_scene.get_node("Projectiles").add_child(needle)
+		
+		if between(Global.ultimatet, 2, 10):
+			needle.set_pos(player.position + Vector2(250 * Global.player_dir, -85))
+			player.velocity.x = Global.player_dir * 6400
+		
+		if Global.ultimatet == 10:
+			player.velocity.x = 0
+			player.set_animation_visibility(true)
+			class_anim.visible = false
+			player.set_attacking(false)
+
+	if Global.ultimatet >= 1:
+		Global.ultimatet += 1
+
+	if Global.ultimatet >= ultimate_max_t:
+		Global.ultimatet = 0
+
 func between(variable, time1, time2):
 	if variable >= time1 and variable <= time2:
 		return(true)
@@ -300,3 +353,4 @@ func _physics_process(_delta: float) -> void:
 		attack_3()
 		attack_4()
 		attack_5()
+		ultimate()

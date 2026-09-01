@@ -56,6 +56,10 @@ func attack_5():
 	if Input.is_action_pressed("attack 5") and Global.attack5t == 0 and not player.get_attacking():
 		class_node.init_attack_5()
 
+func ultimate():
+	if Input.is_action_pressed("ultimate") and Global.ultimatet == 0 and not player.get_attacking():
+		class_node.init_ultimate()
+
 func hat_animations():
 	var hat_mode = get_parent().get_hat_mode()
 	
@@ -85,3 +89,4 @@ func _physics_process(_delta: float) -> void:
 	attack_3()
 	attack_4()
 	attack_5()
+	ultimate()

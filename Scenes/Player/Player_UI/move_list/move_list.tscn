@@ -169,6 +169,51 @@ offset_right = 412.83334
 offset_bottom = 48.0
 flat = true
 
+[node name="ultimate_bar" type="Control" parent="." unique_id=1792079677]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ultimate_prog" type="ProgressBar" parent="ultimate_bar" unique_id=382069749]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0375
+anchor_top = -1.2666664
+anchor_right = 0.0375
+anchor_bottom = -1.2666664
+offset_left = -414.83334
+offset_top = -249.99997
+offset_right = -1.8333435
+offset_bottom = -201.99997
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="ultimate_txt" type="RichTextLabel" parent="ultimate_bar" unique_id=914452535]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.004166412
+anchor_top = -1.3083328
+anchor_right = 0.004166412
+anchor_bottom = -1.3083328
+offset_left = -408.83334
+offset_top = -248.99997
+offset_right = -6.8333435
+offset_bottom = -201.99997
+theme_override_font_sizes/normal_font_size = 32
+text = "Ultimate Charge
+"
+scroll_active = false
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ultimate_button" type="Button" parent="ultimate_bar" unique_id=1024985733]
+layout_mode = 0
+offset_left = -413.33334
+offset_top = -301.3333
+offset_bottom = -253.33334
+flat = true
+
 [node name="Text_display" type="Control" parent="." unique_id=386422438]
 layout_mode = 3
 anchors_preset = 0
@@ -178,17 +223,17 @@ offset_bottom = 40.0
 [node name="ColorRect" type="ColorRect" parent="Text_display" unique_id=702157007]
 layout_mode = 0
 offset_left = -415.33334
-offset_top = -516.0
+offset_top = -556.6667
 offset_right = -0.6666565
-offset_bottom = -280.0
+offset_bottom = -320.6667
 color = Color(0, 0, 0, 0.6509804)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Text_display" unique_id=1949740797]
 layout_mode = 0
 offset_left = -408.0
-offset_top = -513.3334
+offset_top = -554.00006
 offset_right = 1194.6666
-offset_bottom = 412.00012
+offset_bottom = 371.33344
 scale = Vector2(0.25, 0.25)
 theme_override_constants/line_separation = 5
 theme_override_font_sizes/normal_font_size = 64
@@ -201,3 +246,4 @@ text = "Hover over each skill for info"
 [connection signal="mouse_entered" from="bar_3/bar_3_button" to="." method="_on_bar_3_button_mouse_entered"]
 [connection signal="mouse_entered" from="bar_4/bar_4_button" to="." method="_on_bar_4_button_mouse_entered"]
 [connection signal="mouse_entered" from="bar_5/bar_5_button" to="." method="_on_bar_5_button_mouse_entered"]
+[connection signal="mouse_entered" from="ultimate_bar/ultimate_button" to="." method="_on_ultimate_button_mouse_entered"]

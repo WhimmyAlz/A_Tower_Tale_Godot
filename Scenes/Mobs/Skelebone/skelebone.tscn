@@ -146,7 +146,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kt8of"]
 size = Vector2(53, 101.5)
 
-[node name="Skelebone" type="CharacterBody2D" unique_id=1712150969 groups=["attackable", "enemy"]]
+[node name="Skelebone" type="CharacterBody2D" unique_id=1712150969 groups=["enemy"]]
 scale = Vector2(4, 4)
 collision_layer = 4
 script = ExtResource("1_wahd0")

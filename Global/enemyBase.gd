@@ -16,6 +16,8 @@ var damage_text = preload("res://Scenes/Mobs/UI/Damage_text/damage_text.tscn")
 var damage_text_offset = Vector2(0, 0)
 var player = null
 
+var spawn_iframes = 5
+
 var fire_stacks = 0.0
 var fire_tick_delay = 0
 
@@ -60,11 +62,8 @@ func face_player(animation):
 
 func vert_velocities():
 	if stunnedf > 1:
-		if velocity.y >= 15:
-			velocity.y = 15
-		else:
-			velocity.y += Global.Gravity
-
+		if velocity.y <= 15:
+			velocity.y = minf(Global.Gravity + velocity.y, 15)
 	else:
 		velocity.y += Global.Gravity
 
@@ -116,6 +115,10 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 
 func take_knockback(kb, dir):
 	self.velocity.x += kb * dir * 100 # 100 cuz kb too weak otherwise (want to use lower values)
+
+func reset_gravity():
+	if velocity.y > 0:
+		self.velocity.y = 0
 
 func take_knockbackY(kb):
 	if self.velocity.y == 15 and kb < 0:
@@ -218,6 +221,13 @@ func check_stats_unchanged():
 func update_hp_bar():
 	$HealthBar.update_value(Health)
 	$HealthBar.update_max_value(Max_Health)
+
+func spawn_frames():
+	if spawn_iframes > 0:
+		spawn_iframes -= 1
+	
+	if spawn_iframes == 0:
+		self.add_to_group("attackable")
 
 func _ready() -> void:
 	set_level_stats()

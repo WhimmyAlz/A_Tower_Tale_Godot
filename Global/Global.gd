@@ -55,6 +55,8 @@ var attack4_max_t
 var attack5_max_t
 var ultimate_max_t
 
+var ultimate_charge := 0
+
 # Buffs
 var speed_multi : float = 0
 var jump_multi : float = 0

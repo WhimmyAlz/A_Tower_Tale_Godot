@@ -47,7 +47,7 @@ func set_level_stats():
 		Health = 100 + (level * 30)
 		Max_Health = 100 + (level * 30)
 		
-		Damage = 25 + (level * 2)
+		Damage = 25 + (level * 1.5)
 		
 		update_hp_bar()
 
@@ -80,6 +80,7 @@ func _physics_process(_delta: float) -> void:
 	
 	take_all_status_effects()
 	
+	spawn_frames()
 	friction()
 	vert_velocities()
 	move_and_slide()

@@ -28,6 +28,9 @@ func init_floor_mobs(floor_num):
 	if floor_num == 1:
 		spawn_skeleton(Vector2(0, 0), 10)
 	elif floor_num == 2:
+		spawn_skeleton(Vector2(600, 0), 30)
+		spawn_skeleton(Vector2(700, 0), 30)
+	elif floor_num == 3:
 		spawn_skeleton(Vector2(0, 0), 100)
 
 func _physics_process(_delta: float) -> void:

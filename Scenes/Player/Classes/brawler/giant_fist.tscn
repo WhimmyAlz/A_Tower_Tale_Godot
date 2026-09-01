@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dmecq5m7qdako"]
+
+[ext_resource type="Texture2D" uid="uid://cffh1mt0seb1o" path="res://Scenes/Player/Classes/brawler/sprites/giant_fist.png" id="1_2odt7"]
+[ext_resource type="Script" uid="uid://dm523mwq50v1k" path="res://Scenes/Player/Classes/brawler/giant_fist.gd" id="1_pms50"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sbaa"]
+atlas = ExtResource("1_2odt7")
+region = Rect2(0, 0, 1152, 1152)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ol1i7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sbaa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53r8i"]
+size = Vector2(777, 1160)
+
+[node name="Area2D" type="Area2D" unique_id=1028724903]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_pms50")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13218958]
+sprite_frames = SubResource("SpriteFrames_ol1i7")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1003841836]
+position = Vector2(10.5, 2)
+shape = SubResource("RectangleShape2D_53r8i")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://dehco6vp03dv1" path="res://Scenes/Player/Classes/brawler/fist_shockwave.gd" id="1_htjae"]
 [ext_resource type="Texture2D" uid="uid://hjwc5j5ceeo2" path="res://Scenes/Player/Classes/brawler/sprites/punch_shock_wave.png" id="1_nr6ji"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5xd5"]
-size = Vector2(38, 31)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hgum"]
 atlas = ExtResource("1_nr6ji")
 region = Rect2(0, 0, 32, 32)
@@ -21,18 +18,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5xd5"]
+size = Vector2(38, 31)
+
 [node name="Area2D" type="Area2D" unique_id=604256466]
 z_index = 2
 collision_layer = 16
 collision_mask = 4
 script = ExtResource("1_htjae")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2050692914]
-position = Vector2(-3, 0.5)
-shape = SubResource("RectangleShape2D_e5xd5")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1896765364]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_bjyrf")
+frame_progress = 0.29241005
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2050692914]
+position = Vector2(-3, 0.5)
+shape = SubResource("RectangleShape2D_e5xd5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -52,3 +52,7 @@ func _on_bar_4_button_mouse_entered() -> void:
 func _on_bar_5_button_mouse_entered() -> void:
 	display_attack_text("attack_5")
 	$Text_display/RichTextLabel.scroll_to_line(0)
+
+func _on_ultimate_button_mouse_entered() -> void:
+	display_attack_text("ultimate")
+	$Text_display/RichTextLabel.scroll_to_line(0)
