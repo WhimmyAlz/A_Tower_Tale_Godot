@@ -46,6 +46,22 @@ func display_attack_text(attack):
 	for i in range(1, len(descriptions[attack])):
 		label.text += descriptions[attack][i]
 
+## unhides and updates the position of newly unlocked attacks
+func unhide_attacks():
+	if Global.player_attacks >= 2:
+		$bar_2.visible = true
+		if Global.player_attacks >= 3:
+			$bar_3.visible = true
+			if Global.player_attacks >= 4:
+				$bar_4.visible = true
+				if Global.player_attacks >= 5:
+					$bar_5.visible = true
+	$Text_display.position = Vector2(0, 300 - Global.player_attacks * 50)
+	if Global.ultimate_attack == 1:
+		$ultimate_bar.visible = true
+		$ultimate_bar.position = Vector2(0, 245 - Global.player_attacks * 50)
+		$Text_display.position += Vector2(0, -60)
+
 func _on_bar_1_button_mouse_entered() -> void:
 	display_attack_text("attack_1")
 	$Text_display/RichTextLabel.scroll_to_line(0)

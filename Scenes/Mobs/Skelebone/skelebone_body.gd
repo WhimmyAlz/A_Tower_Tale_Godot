@@ -8,7 +8,7 @@ var stats_offset = Vector2(80, -20)
 var skeleton_animation
 
 func set_description():
-	description = "[b]Skeleton[/b]\nLevel: %d\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nA living skeleton. What dark forces has animated this being back into existence?" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Skeleton[/b]\nLevel: %d\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nA living skeleton. What dark forces has animated this being back into existence?\n\nDrops:\n10-20 xp" % [Level, Health, Damage, Defense, Defense_pen]
 
 func set_pos(pos):
 	position = pos

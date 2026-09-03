@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://crwvujpl7m17b" path="res://Scenes/Mobs/Nerd/Sprites/nerd_run.png" id="3_tnwtu"]
 [ext_resource type="PackedScene" uid="uid://c7tlcevue5q4l" path="res://Scenes/Mobs/UI/health_bar/health_bar.tscn" id="4_ruxq3"]
 [ext_resource type="PackedScene" uid="uid://d4j32rxliilcg" path="res://Scenes/Mobs/UI/Stats_list/enemy_stats_list.tscn" id="6_fa43r"]
+[ext_resource type="Texture2D" uid="uid://b5j6oe0qtkau6" path="res://Scenes/Mobs/Nerd/Sprites/text_box.png" id="7_vnjl2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fa43r"]
 atlas = ExtResource("1_3jsib")
@@ -140,6 +141,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jsib"]
 size = Vector2(47, 117)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_poxrc"]
+atlas = ExtResource("7_vnjl2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pnu8u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_poxrc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Nerd" type="CharacterBody2D" unique_id=2051148031 groups=["enemy"]]
 collision_layer = 4
 input_pickable = true
@@ -169,5 +185,28 @@ visible = false
 position = Vector2(-263, -29)
 scale = Vector2(3, 3)
 
+[node name="fun_facts" type="Node2D" parent="." unique_id=219530290]
+
+[node name="display" type="AnimatedSprite2D" parent="fun_facts" unique_id=904214201]
+texture_filter = 1
+position = Vector2(-270, -214)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_pnu8u")
+
+[node name="text" type="RichTextLabel" parent="fun_facts/display" unique_id=23650425]
+offset_left = -25.142857
+offset_top = -20.428572
+offset_right = 1011.99994
+offset_bottom = 422.42862
+scale = Vector2(0.05, 0.05)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+bbcode_enabled = true
+text = "[b]Hey, do you know that...[/b]"
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="meta_clicked" from="fun_facts/display/text" to="." method="_on_text_meta_clicked"]

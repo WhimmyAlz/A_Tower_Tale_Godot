@@ -37,27 +37,27 @@ func get_description():
 	return(class_node.get_description())
 
 func attack_1():
-	if Input.is_action_pressed("attack 1") and Global.attack1t == 0 and not player.get_attacking():
+	if Input.is_action_pressed("attack 1") and Global.attack1t == 0 and not player.get_attacking() and Global.player_attacks >= 1:
 		class_node.init_attack_1()
 
 func attack_2():
-	if Input.is_action_pressed("attack 2") and Global.attack2t == 0 and not player.get_attacking():
+	if Input.is_action_pressed("attack 2") and Global.attack2t == 0 and not player.get_attacking() and Global.player_attacks >= 2:
 		class_node.init_attack_2()
 
 func attack_3():
-	if Input.is_action_pressed("attack 3") and Global.attack3t == 0 and not player.get_attacking():
+	if Input.is_action_pressed("attack 3") and Global.attack3t == 0 and not player.get_attacking() and Global.player_attacks >= 3:
 		class_node.init_attack_3()
 
 func attack_4():
-	if Input.is_action_pressed("attack 4") and Global.attack4t == 0 and not player.get_attacking():
+	if Input.is_action_pressed("attack 4") and Global.attack4t == 0 and not player.get_attacking() and Global.player_attacks >= 4:
 		class_node.init_attack_4()
 
 func attack_5():
-	if Input.is_action_pressed("attack 5") and Global.attack5t == 0 and not player.get_attacking():
+	if Input.is_action_pressed("attack 5") and Global.attack5t == 0 and not player.get_attacking() and Global.player_attacks >= 5:
 		class_node.init_attack_5()
 
 func ultimate():
-	if Input.is_action_pressed("ultimate") and Global.ultimatet == 0 and Global.ultimate_charge == 1000 and not player.get_attacking():
+	if Input.is_action_pressed("ultimate") and Global.ultimatet == 0 and Global.ultimate_charge == 1000 and not player.get_attacking() and Global.ultimate_attack == 1:
 		class_node.init_ultimate()
 
 func hat_animations():

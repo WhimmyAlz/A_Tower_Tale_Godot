@@ -8,11 +8,6 @@ var preload_skelebone = preload("res://Scenes/Mobs/Skelebone/skelebone.tscn")
 func set_pos(vector2):
 	position = vector2
 
-func _on_body_entered(body: Node2D) -> void:
-	var collider = body
-	if collider.is_in_group("player"):
-		entered = true
-
 func progress_floor():
 	Global.floors += 1
 	base_floor.bg_add_y_pos()
@@ -38,3 +33,13 @@ func _physics_process(_delta: float) -> void:
 		progress_floor()
 		base_floor.reset_portal_limiter()
 		queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	var collider = body
+	if collider.is_in_group("player"):
+		entered = true
+
+func _on_body_exited(body: Node2D) -> void:
+	var collider = body
+	if collider.is_in_group("player"):
+		entered = false

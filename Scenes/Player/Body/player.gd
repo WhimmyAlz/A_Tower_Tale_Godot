@@ -137,6 +137,14 @@ func set_animation_visibility(boolean):
 	if boolean is bool:
 		$AnimatedSprite2D.visible = boolean
 
+func unlock_attack(amount):
+	Global.player_attacks += amount
+	$"../Non Attached UI Elements/MoveList".unhide_attacks()
+
+func unlock_ultimate():
+	Global.ultimate_attack = 1
+	$"../Non Attached UI Elements/MoveList".unhide_attacks()
+
 # Next few functions are used for stat changes
 
 ## changes health and sets the hp bar
@@ -172,7 +180,6 @@ func _ready() -> void:
 	vert_velocities() # calls player vertical movement function
 
 func _physics_process(_delta: float):
-	
 	stamina_regen()
 	check_free()
 

@@ -40,6 +40,8 @@ var crit_chance_adds := 0.0
 var crit_damage := 1.5 # damage multi from crits
 var crit_damage_adds := 0 # damage multi from crits
 
+var player_attacks = 1
+var ultimate_attack = 0
 # cooldowns
 var attack1t := 0
 var attack2t := 0

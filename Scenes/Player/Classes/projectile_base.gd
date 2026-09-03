@@ -20,7 +20,7 @@ func set_ult_charge_amount(value):
 	ult_charge_amount = value
 
 func charge_ult():
-	if Global.ultimate_charge < 1000:
+	if Global.ultimate_charge < 1000 and Global.ultimate_attack == 1:
 		Global.ultimate_charge = mini(Global.ultimate_charge + ult_charge_amount,  1000)
 
 func set_speed(x, y):
