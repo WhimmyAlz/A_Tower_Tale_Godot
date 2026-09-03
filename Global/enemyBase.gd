@@ -12,6 +12,9 @@ class_name enemyBase
 @export var Damage := 10.0
 @export var Defense_pen := 0
 
+@export var description  = "Blank"
+var mouse_over = false
+
 var damage_text = preload("res://Scenes/Mobs/UI/Damage_text/damage_text.tscn")
 var damage_text_offset = Vector2(0, 0)
 var player = null

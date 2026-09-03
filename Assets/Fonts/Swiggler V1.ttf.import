@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://djuj2ddb7qpuy"
-path="res://.godot/imported/Swiggler V1.ttf-31ab70388ec2a30034112382925a8ac8.fontdata"
+path="res://.godot/imported/Swiggler V1.ttf-1d28046568205d88d09f3e3e07cc6bf6.fontdata"
 
 [deps]
 
-source_file="res://Assets/Swiggler V1.ttf"
-dest_files=["res://.godot/imported/Swiggler V1.ttf-31ab70388ec2a30034112382925a8ac8.fontdata"]
+source_file="res://Assets/Fonts/Swiggler V1.ttf"
+dest_files=["res://.godot/imported/Swiggler V1.ttf-1d28046568205d88d09f3e3e07cc6bf6.fontdata"]
 
 [params]
 

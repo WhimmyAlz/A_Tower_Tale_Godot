@@ -33,8 +33,10 @@ func _physics_process(_delta: float) -> void:
 	update_prog()
 	if Global.ultimate_charge == 1000:
 		$ultimate_bar/ultimate_prog.texture_progress = ultimate_complete
+		$ultimate_bar/ultimate_5_txt.visible = true
 	else: 
 		$ultimate_bar/ultimate_prog.texture_progress = ultimate_load
+		$ultimate_bar/ultimate_5_txt.visible = false
 
 func display_attack_text(attack):
 	var label = $Text_display/RichTextLabel
@@ -67,3 +69,40 @@ func _on_bar_5_button_mouse_entered() -> void:
 func _on_ultimate_button_mouse_entered() -> void:
 	display_attack_text("ultimate")
 	$Text_display/RichTextLabel.scroll_to_line(0)
+
+
+func _on_bar_1_button_button_down() -> void:
+	Input.action_press("attack 1")
+
+func _on_bar_1_button_button_up() -> void:
+	Input.action_release("attack 1")
+
+func _on_bar_2_button_button_down() -> void:
+	Input.action_press("attack 2")
+
+func _on_bar_2_button_button_up() -> void:
+	Input.action_release("attack 2")
+
+func _on_bar_3_button_button_down() -> void:
+	Input.action_press("attack 3")
+
+func _on_bar_3_button_button_up() -> void:
+	Input.action_release("attack 3")
+
+func _on_bar_4_button_button_down() -> void:
+	Input.action_press("attack 4")
+
+func _on_bar_4_button_button_up() -> void:
+	Input.action_release("attack 4")
+
+func _on_bar_5_button_button_down() -> void:
+	Input.action_press("attack 5")
+
+func _on_bar_5_button_button_up() -> void:
+	Input.action_release("attack 5")
+
+func _on_ultimate_button_button_down() -> void:
+	Input.action_press("ultimate")
+
+func _on_ultimate_button_button_up() -> void:
+	Input.action_release("ultimate")

@@ -3,7 +3,12 @@ extends enemyBase
 var bone = preload("res://Scenes/Mobs/Skelebone/bone.tscn")
 var attackt = 0
 
+var stats_offset = Vector2(80, -20)
+
 var skeleton_animation
+
+func set_description():
+	description = "[b]Skeleton[/b]\nLevel: %d\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nA living skeleton. What dark forces has animated this being back into existence?" % [Level, Health, Damage, Defense, Defense_pen]
 
 func set_pos(pos):
 	position = pos
@@ -35,7 +40,7 @@ func throw_bone():
 	get_tree().current_scene.get_node("Projectiles").add_child(projectile)
 
 func on_death():
-	player.gain_xp(10)
+	player.gain_xp(randi_range(10, 20))
 	queue_free()
 
 func set_level_stats():
@@ -50,6 +55,11 @@ func set_level_stats():
 		Damage = 25 + (level * 1.5)
 		
 		update_hp_bar()
+	
+	set_description()
+	$EnemyStatsList.set_offset(stats_offset)
+	$EnemyStatsList.set_size(0.8)
+	$EnemyStatsList.set_text(description)
 
 ## dto is damage text offset
 func set_dto():
@@ -84,3 +94,19 @@ func _physics_process(_delta: float) -> void:
 	friction()
 	vert_velocities()
 	move_and_slide()
+	
+	if mouse_over:
+		update_description()
+
+func update_description():
+	set_description()
+	$EnemyStatsList.set_text(description)
+	$EnemyStatsList.fix_pos(direction)
+
+func _on_mouse_entered() -> void:
+	$EnemyStatsList.visible = true
+	mouse_over = true
+
+func _on_mouse_exited() -> void:
+	mouse_over = false
+	$EnemyStatsList.visible = false

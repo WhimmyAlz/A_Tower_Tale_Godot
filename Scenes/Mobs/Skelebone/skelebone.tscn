@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://gtde3dantgls" path="res://Scenes/Mobs/Skelebone/Sprites/Skeleton_idle.png" id="2_wahd0"]
 [ext_resource type="Texture2D" uid="uid://csq805ox8oe7h" path="res://Scenes/Mobs/Skelebone/Sprites/Skeleton_walk.png" id="3_evf74"]
 [ext_resource type="PackedScene" uid="uid://c7tlcevue5q4l" path="res://Scenes/Mobs/UI/health_bar/health_bar.tscn" id="5_wvn5m"]
+[ext_resource type="PackedScene" uid="uid://d4j32rxliilcg" path="res://Scenes/Mobs/UI/Stats_list/enemy_stats_list.tscn" id="6_l6un5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8yul"]
 atlas = ExtResource("1_oakuy")
@@ -149,6 +150,7 @@ size = Vector2(53, 101.5)
 [node name="Skelebone" type="CharacterBody2D" unique_id=1712150969 groups=["enemy"]]
 scale = Vector2(4, 4)
 collision_layer = 4
+input_pickable = true
 script = ExtResource("1_wahd0")
 
 [node name="SkeleboneSprite" type="AnimatedSprite2D" parent="." unique_id=830129671]
@@ -164,3 +166,10 @@ shape = SubResource("RectangleShape2D_kt8of")
 position = Vector2(-1.25, -61.25)
 
 [node name="damage_text_holder" type="Node2D" parent="." unique_id=249516646]
+
+[node name="EnemyStatsList" parent="." unique_id=952394224 instance=ExtResource("6_l6un5")]
+visible = false
+position = Vector2(-82.25, -0.75)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

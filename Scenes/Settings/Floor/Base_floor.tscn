@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://lmxe1uorsl4x" path="res://Scenes/Settings/Floor/Floor parts/Border_wall_ceiling.tscn" id="6_7qsdb"]
 [ext_resource type="PackedScene" uid="uid://daaduesc7yxwm" path="res://Scenes/Settings/Background/background.tscn" id="6_u13yy"]
 [ext_resource type="PackedScene" uid="uid://cnpq0jkyhjr73" path="res://Scenes/Player/Body/player.tscn" id="7_t2lht"]
-[ext_resource type="PackedScene" uid="uid://ccbgwns1go13h" path="res://Scenes/Mobs/Skelebone/skelebone.tscn" id="8_u13yy"]
+[ext_resource type="PackedScene" uid="uid://b8fva8sdhjebr" path="res://Scenes/Mobs/Nerd/nerd.tscn" id="9_4w8c0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubiir"]
 atlas = ExtResource("3_4w8c0")
@@ -61,8 +61,8 @@ position = Vector2(-26, 22)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1301696289]
 
-[node name="Skelebone" parent="Enemies" unique_id=1712150969 instance=ExtResource("8_u13yy")]
-position = Vector2(570, 147)
+[node name="Nerd" parent="Enemies" unique_id=2051148031 instance=ExtResource("9_4w8c0")]
+position = Vector2(743, 467)
 
 [node name="Player" parent="." unique_id=150661442 instance=ExtResource("7_t2lht")]
 position = Vector2(2, 7)

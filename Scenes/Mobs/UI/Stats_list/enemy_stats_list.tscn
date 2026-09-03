@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d4j32rxliilcg"]
+
+[ext_resource type="Script" uid="uid://ltokrm38h1ns" path="res://Scenes/Mobs/UI/Stats_list/enemy_stats_list.gd" id="1_0tbqx"]
+
+[node name="EnemyStatsList" type="Node2D" unique_id=952394224]
+script = ExtResource("1_0tbqx")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=701693954]
+offset_left = -60.0
+offset_top = -86.0
+offset_right = 184.0
+offset_bottom = 251.0
+scale = Vector2(0.5, 0.5)
+color = Color(0.050980393, 0.050980393, 0.050980393, 0.63529414)
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=362161716]
+offset_left = -56.0
+offset_top = -84.0
+offset_right = 856.0
+offset_bottom = 1228.0
+scale = Vector2(0.125, 0.125)
+theme_override_constants/line_separation = -10
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 80
+bbcode_enabled = true
+text = "[b]Skeleton[/b]
+Level 100"
+metadata/_edit_use_anchors_ = true
