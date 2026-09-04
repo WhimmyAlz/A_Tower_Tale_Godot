@@ -8,7 +8,8 @@ var stats_offset = Vector2(-200, -60)
 var typewriter_value = 0
 var fun_facts = [
 "[b]Hey did you know that you can hover your mouse over things to get information on them?[/b]", "[b]Hey did you know that this game was a remake of a highschool project which was made using code.org?[/b]", "[b]Hey did you know that I can drop between 20 and 30 xp or a new attack?[/b]", "[b]Hey did you know that the skeleton is actually only throwing his arm bone which he somehow regrows?[/b]", "[b]Erm actually...[/b]", "[b]Glub Glub.[/b]", "[b]Does anything else in this tower talk? None of the ones on the floors that I'm on do.[/b]","[b]According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee...[/b]", "[b]So let's say something has a 10% drop chance and you didn't get it in 10 attempts. The chance of that happening is 35%.[/b]",
-"[b]I used to look less nerdy and had soft poop colored hair, but that was before this game.[/b]", "[b]Did you know that cows have 3 stomaches? Interesting right?[/b]", "[b]In the old game, the game's lore was that all the characters were students role playing and the tower game was just a story book.[/b]","[b]If you want to play the original highschool project game, then you can just [i][url=https://studio.code.org/projects/gamelab/A-puNJUHMBbGf_pQGUwswzV_g6rH6wro0fhe6y7M_mE]Click Here[/url][/i][/b]", "[b]I must confess that I feel like a monster...[/b]", "[b]You should put the peashooter behind the sunflower since the sunflower costs less and pays for itself that way.[/b]", "[b]The bleed status effect takes 1% of your max hp per second, but you probably already know that if you read the status effect list.[/b]"
+"[b]I used to look less nerdy and had soft poop colored hair, but that was before this game.[/b]", "[b]Did you know that cows have 3 stomaches? Interesting right?[/b]", "[b]In the old game, the game's lore was that all the characters were students role playing and the tower game was just a story book.[/b]","[b]If you want to play the original highschool project game, then you can just [i][url=https://studio.code.org/projects/gamelab/A-puNJUHMBbGf_pQGUwswzV_g6rH6wro0fhe6y7M_mE]Click Here[/url][/i][/b]", "[b]I must confess that I feel like a monster...[/b]", "[b]You should put the peashooter behind the sunflower since the sunflower costs less and pays for itself that way.[/b]", "[b]The bleed status effect takes 1% of your max hp per second, but you probably already know that if you read the status effect list.[/b]", "[b]Did you know that you can hold S to fall faster once you start falling?[/b]",
+"[b]You don't wanna catch these fisticuffs, buddyo.[/b]"
 ]
 
 var fun_facts_pick = randi_range(0, len(fun_facts)-1)
@@ -70,10 +71,10 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
-		Health = 100 + (level * 20)
-		Max_Health = 100 + (level * 20)
+		Health = 100 + (level * 50)
+		Max_Health = 100 + (level * 50)
 		
-		Damage = 15 + (level * 1)
+		Damage = 25 + (level * 5)
 		
 		update_hp_bar()
 	

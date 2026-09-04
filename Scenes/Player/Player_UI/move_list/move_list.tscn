@@ -28,12 +28,12 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_left = 6.0
 offset_top = 1.0
-offset_right = 408.0
-offset_bottom = 48.0
-theme_override_font_sizes/normal_font_size = 32
+offset_right = 810.6667
+offset_bottom = 92.333336
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 64
 text = "[J] Skill 1"
 scroll_active = false
-metadata/_edit_use_anchors_ = true
 
 [node name="bar_1_button" type="Button" parent="bar_1" unique_id=1025956336]
 layout_mode = 0
@@ -62,12 +62,12 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_left = 6.0
 offset_top = 1.0
-offset_right = 408.0
-offset_bottom = 48.0
-theme_override_font_sizes/normal_font_size = 32
+offset_right = 813.0
+offset_bottom = 92.33333
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 64
 text = "[K] Skill 2"
 scroll_active = false
-metadata/_edit_use_anchors_ = true
 
 [node name="bar_2_button" type="Button" parent="bar_2" unique_id=1870971373]
 layout_mode = 0
@@ -96,13 +96,13 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_left = 6.0
 offset_top = 1.0
-offset_right = 408.0
-offset_bottom = 48.0
-theme_override_font_sizes/normal_font_size = 32
+offset_right = 809.0
+offset_bottom = 92.33333
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 64
 text = "[L] Skill 3
 "
 scroll_active = false
-metadata/_edit_use_anchors_ = true
 
 [node name="bar_3_button" type="Button" parent="bar_3" unique_id=79023633]
 layout_mode = 0
@@ -131,13 +131,13 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_left = 6.0
 offset_top = 1.0
-offset_right = 408.0
-offset_bottom = 48.0
-theme_override_font_sizes/normal_font_size = 32
+offset_right = 810.3333
+offset_bottom = 91.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 64
 text = "[I] Skill 4
 "
 scroll_active = false
-metadata/_edit_use_anchors_ = true
 
 [node name="bar_4_button" type="Button" parent="bar_4" unique_id=1292766113]
 layout_mode = 0
@@ -166,13 +166,13 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_left = 6.0
 offset_top = 1.0
-offset_right = 408.0
-offset_bottom = 48.0
-theme_override_font_sizes/normal_font_size = 32
+offset_right = 810.3333
+offset_bottom = 93.66666
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 64
 text = "[O] Skill 5
 "
 scroll_active = false
-metadata/_edit_use_anchors_ = true
 
 [node name="bar_5_button" type="Button" parent="bar_5" unique_id=1552124957]
 layout_mode = 0

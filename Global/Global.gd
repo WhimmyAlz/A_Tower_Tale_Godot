@@ -77,7 +77,7 @@ var stun_time := 0
 func class_stats_brawler():
 	flight = 0
 	max_jumps = 1 + jump_adds
-	jump_power = round(1500 * (1 + jump_multi))
+	jump_power = round(1800 * (1 + jump_multi))
 	jump_limit = 100 # must be more than 0
 
 	player_spd = round(agility * (1 + speed_multi))
@@ -101,8 +101,8 @@ func class_stats_brawler():
 func class_stats_needle():
 	flight = 0
 	max_jumps = 2 + jump_adds
-	jump_power = round(1200 * (1 + jump_multi))
-	jump_limit = 100 # must be more than 0
+	jump_power = round(1400 * (1 + jump_multi))
+	jump_limit = 1000 # must be more than 0
 
 	player_spd = round(agility * (1 + speed_multi))
 	player_weight = 15

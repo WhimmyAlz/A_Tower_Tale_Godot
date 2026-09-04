@@ -4,6 +4,7 @@ var entered = false
 @onready var base_floor = get_parent().get_parent()
 
 var preload_skelebone = preload("res://Scenes/Mobs/Skelebone/skelebone.tscn")
+var preload_nerd = preload("res://Scenes/Mobs/Nerd/nerd.tscn")
 
 func set_pos(vector2):
 	position = vector2
@@ -19,8 +20,15 @@ func spawn_skeleton(pos, level):
 	skelebone.Level = level
 	base_floor.add_enemy(skelebone)
 
+func spawn_nerd(pos, level):
+	var nerd = preload_nerd.instantiate()
+	nerd.set_pos(pos)
+	nerd.Level = level
+	base_floor.add_enemy(nerd)
+
 func init_floor_mobs(floor_num):
 	if floor_num == 1:
+		spawn_nerd(Vector2(500, 0), 10)
 		spawn_skeleton(Vector2(0, 0), 10)
 	elif floor_num == 2:
 		spawn_skeleton(Vector2(600, 0), 30)
