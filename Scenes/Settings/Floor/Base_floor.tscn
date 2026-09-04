@@ -62,7 +62,13 @@ position = Vector2(-26, 22)
 [node name="Enemies" type="Node2D" parent="." unique_id=1301696289]
 
 [node name="Nerd" parent="Enemies" unique_id=2051148031 instance=ExtResource("9_4w8c0")]
-position = Vector2(294, 454)
+position = Vector2(320, 398)
+
+[node name="Nerd2" parent="Enemies" unique_id=1794772760 instance=ExtResource("9_4w8c0")]
+position = Vector2(-690, 451)
+
+[node name="Nerd3" parent="Enemies" unique_id=1087646167 instance=ExtResource("9_4w8c0")]
+position = Vector2(806, 388)
 
 [node name="Player" parent="." unique_id=150661442 instance=ExtResource("7_t2lht")]
 position = Vector2(2, 7)
@@ -70,9 +76,3 @@ position = Vector2(2, 7)
 [node name="Projectiles" type="Node2D" parent="." unique_id=752351717]
 
 [node name="Damage_text" type="Node2D" parent="." unique_id=1384257206]
-
-[node name="Nerd" parent="." unique_id=1794772760 instance=ExtResource("9_4w8c0")]
-position = Vector2(-695, 472)
-
-[node name="Nerd2" parent="." unique_id=1087646167 instance=ExtResource("9_4w8c0")]
-position = Vector2(711, 401)
