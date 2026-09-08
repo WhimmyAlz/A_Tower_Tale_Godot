@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://5c3fbs7lqp61"]
+
+[ext_resource type="Script" uid="uid://krbgi0v5xply" path="res://Scenes/Mobs/UI/boss_health_bar/boss_health_bar.gd" id="1_g5jtr"]
+[ext_resource type="Texture2D" uid="uid://5stms863owdx" path="res://Scenes/Mobs/UI/boss_health_bar/sprites/Boss_bar_under.png" id="1_rfim3"]
+[ext_resource type="Texture2D" uid="uid://c6ou83t281fhm" path="res://Scenes/Mobs/UI/boss_health_bar/sprites/Boss_bar_over.png" id="2_g5jtr"]
+[ext_resource type="Texture2D" uid="uid://g8xounthepgl" path="res://Scenes/Mobs/UI/boss_health_bar/sprites/Boss_bar_prog.png" id="3_2ysbj"]
+
+[node name="Boss_Hp_bar" type="Control" unique_id=1374184935]
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3
+script = ExtResource("1_g5jtr")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1436163642]
+layout_mode = 1
+offset_left = -43.0
+offset_top = 159.0
+offset_right = 31.0
+offset_bottom = 169.0
+color = Color(0.24840015, 0.24840018, 0.24840015, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=526921372]
+layout_mode = 1
+offset_left = 1974.0
+offset_top = 128.0
+offset_right = 2063.0
+offset_bottom = 146.0
+color = Color(0.24840015, 0.24840018, 0.24840015, 1)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1002239093]
+texture_filter = 1
+layout_mode = 1
+offset_left = -27.0
+offset_top = -64.0
+offset_right = 229.0
+scale = Vector2(8, 8)
+value = 100.0
+texture_under = ExtResource("1_rfim3")
+texture_over = ExtResource("2_g5jtr")
+texture_progress = ExtResource("3_2ysbj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=965756555]
+layout_mode = 0
+offset_left = 518.0
+offset_top = 101.0
+offset_right = 1552.0
+offset_bottom = 211.0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "
+"
+horizontal_alignment = 1

@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://cjxa6aqkq45mh"]
+
+[ext_resource type="Script" uid="uid://d2jksgxofupvr" path="res://Scenes/Bosses/Sir Blob/sir_blob.gd" id="1_1g57h"]
+[ext_resource type="Texture2D" uid="uid://b5f0ekki18uu1" path="res://Scenes/Bosses/Sir Blob/Sprites/sir_blob_attack.png" id="1_yvubx"]
+[ext_resource type="Texture2D" uid="uid://dk17jkvka3atp" path="res://Scenes/Bosses/Sir Blob/Sprites/sir_blob_idle.png" id="2_1g57h"]
+[ext_resource type="Texture2D" uid="uid://vd0srflrkkef" path="res://Scenes/Bosses/Sir Blob/Sprites/sir_blob_run.png" id="3_7priy"]
+[ext_resource type="PackedScene" uid="uid://c7tlcevue5q4l" path="res://Scenes/Mobs/UI/health_bar/health_bar.tscn" id="5_7priy"]
+[ext_resource type="PackedScene" uid="uid://d4j32rxliilcg" path="res://Scenes/Mobs/UI/Stats_list/enemy_stats_list.tscn" id="6_32wqf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32wqf"]
+atlas = ExtResource("1_yvubx")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjyjs"]
+atlas = ExtResource("1_yvubx")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ojbm"]
+atlas = ExtResource("2_1g57h")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvbfc"]
+atlas = ExtResource("2_1g57h")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njucx"]
+atlas = ExtResource("2_1g57h")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dadtf"]
+atlas = ExtResource("3_7priy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5rc3"]
+atlas = ExtResource("3_7priy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dofxf"]
+atlas = ExtResource("3_7priy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6cof2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32wqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjyjs")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ojbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvbfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njucx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dadtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5rc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dofxf")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82jnr"]
+size = Vector2(51.166664, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cof2"]
+atlas = ExtResource("1_yvubx")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82jnr"]
+atlas = ExtResource("1_yvubx")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8vdl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cof2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82jnr")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yvubx"]
+radius = 359.1685
+
+[node name="sir_blob" type="CharacterBody2D" unique_id=1901925946 groups=["enemy"]]
+collision_layer = 4
+input_pickable = true
+script = ExtResource("1_1g57h")
+Level = null
+Health = null
+Defense = null
+Weight = null
+Speed = null
+Damage = null
+Defense_pen = null
+description = null
+
+[node name="SirBlobSprite" type="AnimatedSprite2D" parent="." unique_id=288298983]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_6cof2")
+animation = &"walk"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1576355703]
+position = Vector2(1.750001, -4.5)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_82jnr")
+
+[node name="HealthBar" parent="." unique_id=542308091 instance=ExtResource("5_7priy")]
+position = Vector2(2, -125)
+scale = Vector2(1, 1)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1320615992]
+visible = false
+position = Vector2(13, -245)
+disable_mode = 2
+collision_layer = 8
+collision_mask = 3
+input_pickable = false
+
+[node name="attack_sprite" type="AnimatedSprite2D" parent="Area2D" unique_id=147028275]
+texture_filter = 1
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_u8vdl")
+animation = &"attack"
+autoplay = "attack"
+frame_progress = 0.43949077
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=671660095]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_yvubx")
+disabled = true
+
+[node name="EnemyStatsList" parent="." unique_id=952394224 instance=ExtResource("6_32wqf")]
+visible = false
+position = Vector2(-209, -61)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

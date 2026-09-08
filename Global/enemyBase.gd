@@ -14,6 +14,7 @@ class_name enemyBase
 
 @export var description  = "Blank"
 var mouse_over = false
+var boss_bar = null
 
 var damage_text = preload("res://Scenes/Mobs/UI/Damage_text/damage_text.tscn")
 var damage_text_offset = Vector2(0, 0)
@@ -104,6 +105,8 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 
 	self.Health = maxf(self.Health - damage, 0)
 	$HealthBar.update_value(Health)
+	if boss_bar != null:
+		boss_bar.update_value(Health)
 
 	var damageText = damage_text.instantiate()
 	damageText.set_text(damage)
@@ -226,7 +229,7 @@ func update_hp_bar():
 	$HealthBar.update_max_value(Max_Health)
 
 func spawn_frames():
-	if spawn_iframes > 0:
+	if spawn_iframes > -1:
 		spawn_iframes -= 1
 	
 	if spawn_iframes == 0:

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://daaduesc7yxwm" path="res://Scenes/Settings/Background/background.tscn" id="6_u13yy"]
 [ext_resource type="PackedScene" uid="uid://cnpq0jkyhjr73" path="res://Scenes/Player/Body/player.tscn" id="7_t2lht"]
 [ext_resource type="PackedScene" uid="uid://b8fva8sdhjebr" path="res://Scenes/Mobs/Nerd/nerd.tscn" id="9_4w8c0"]
+[ext_resource type="PackedScene" uid="uid://cjxa6aqkq45mh" path="res://Scenes/Bosses/Sir Blob/sir_blob.tscn" id="9_pkiij"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubiir"]
 atlas = ExtResource("3_4w8c0")
@@ -57,18 +58,29 @@ scale = Vector2(4.725, 4.725)
 sprite_frames = SubResource("SpriteFrames_ks4c7")
 
 [node name="Background" parent="Enviroment" unique_id=1861313626 instance=ExtResource("6_u13yy")]
-position = Vector2(-26, 22)
+position = Vector2(-26, 66)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1301696289]
 
 [node name="Nerd" parent="Enemies" unique_id=2051148031 instance=ExtResource("9_4w8c0")]
-position = Vector2(320, 398)
+position = Vector2(789, 375)
 
 [node name="Nerd2" parent="Enemies" unique_id=1794772760 instance=ExtResource("9_4w8c0")]
 position = Vector2(-690, 451)
 
 [node name="Nerd3" parent="Enemies" unique_id=1087646167 instance=ExtResource("9_4w8c0")]
-position = Vector2(806, 388)
+position = Vector2(303, 427)
+
+[node name="sir_blob" parent="Enemies" unique_id=1901925946 instance=ExtResource("9_pkiij")]
+position = Vector2(813, 694)
+Level = 1
+Health = 100.0
+Defense = 0
+Weight = 50
+Speed = 10
+Damage = 10.0
+Defense_pen = 0
+description = "Blank"
 
 [node name="Player" parent="." unique_id=150661442 instance=ExtResource("7_t2lht")]
 position = Vector2(2, 7)
@@ -76,3 +88,23 @@ position = Vector2(2, 7)
 [node name="Projectiles" type="Node2D" parent="." unique_id=752351717]
 
 [node name="Damage_text" type="Node2D" parent="." unique_id=1384257206]
+
+[node name="Boss_Health_Bars" type="Control" parent="." unique_id=764907842]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -218.0
+offset_top = -600.0
+offset_right = 228.0
+offset_bottom = -560.0
+
+[node name="boss_hp_container" type="VBoxContainer" parent="Boss_Health_Bars" unique_id=1275439676]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 3.5500002
+anchor_right = 0.5
+anchor_bottom = 3.5500002
+offset_left = -1073.0
+offset_top = -400.0
+offset_right = 984.0
+offset_bottom = 400.0

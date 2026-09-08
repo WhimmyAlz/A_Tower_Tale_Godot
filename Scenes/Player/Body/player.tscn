@@ -157,6 +157,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="Dev" parent="Non Attached UI Elements" unique_id=1959197403 instance=ExtResource("4_os2qf")]
 visible = false
@@ -165,11 +166,12 @@ position = Vector2(-1416, -885)
 
 [node name="Prog_Bars" type="Control" parent="Non Attached UI Elements" unique_id=841381205]
 anchors_preset = 0
-offset_left = -1500.0
-offset_top = 750.0
-offset_right = -1126.0
-offset_bottom = 1044.0
+offset_left = -1507.0
+offset_top = 757.0
+offset_right = -1133.0
+offset_bottom = 1051.0
 scale = Vector2(4, 4)
+mouse_filter = 2
 script = ExtResource("5_t6byl")
 
 [node name="HP_BAR" type="TextureProgressBar" parent="Non Attached UI Elements/Prog_Bars" unique_id=1981042270]

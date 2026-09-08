@@ -32,6 +32,7 @@ Ceiling=""
 player=""
 enemy=""
 attackable=""
+walls=""
 
 [input]
 
