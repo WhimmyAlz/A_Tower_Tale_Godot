@@ -75,18 +75,18 @@ position = Vector2(2, 7)
 layout_mode = 3
 anchors_preset = 0
 offset_left = -218.0
-offset_top = -600.0
+offset_top = -897.0
 offset_right = 228.0
-offset_bottom = -560.0
+offset_bottom = -897.0
 
 [node name="boss_hp_container" type="VBoxContainer" parent="Boss_Health_Bars" unique_id=1275439676]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 3.5500002
-anchor_right = 0.5
-anchor_bottom = 3.5500002
+anchor_top = -0.01
+anchor_right = 1.0
 offset_left = -1073.0
-offset_top = -400.0
-offset_right = 984.0
-offset_bottom = 400.0
+offset_right = 762.0
+offset_bottom = 1808.0
+theme_override_constants/separation = 200

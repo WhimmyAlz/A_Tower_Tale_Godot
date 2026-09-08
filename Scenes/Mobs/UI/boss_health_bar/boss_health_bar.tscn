@@ -8,7 +8,7 @@
 [node name="Boss_Hp_bar" type="Control" unique_id=1374184935]
 layout_mode = 3
 anchors_preset = 0
-size_flags_vertical = 3
+size_flags_vertical = 0
 script = ExtResource("1_g5jtr")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1436163642]

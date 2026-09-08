@@ -36,7 +36,7 @@ func spawn_sir_blob(pos, level):
 
 func init_floor_mobs(floor_num):
 	if floor_num == 1:
-		spawn_nerd(Vector2(500, 0), 2)
+		spawn_nerd(Vector2(800, 0), 2)
 		spawn_skeleton(Vector2(0, 0), 3)
 	elif floor_num == 2:
 		spawn_skeleton(Vector2(-700, 0), 5)
