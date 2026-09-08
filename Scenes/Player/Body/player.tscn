@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cnpq0jkyhjr73"]
 
 [ext_resource type="Texture2D" uid="uid://gxq8bf5ermgw" path="res://Scenes/Player/Body/Sprites/base_idle.png" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://bjw70ndq5dohe" path="res://Scenes/Player/Body/main_player.gd" id="1_t0j56"]
 [ext_resource type="Texture2D" uid="uid://dajvrlwh2xhji" path="res://Scenes/Player/Body/Sprites/base_run.png" id="2_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://mhwc11sb4vfj" path="res://Scenes/Player/Classes/class_actions.tscn" id="2_b1gc2"]
 [ext_resource type="Script" uid="uid://dtmy4137r83in" path="res://Scenes/Player/Body/player.gd" id="3_6t5aa"]
@@ -94,6 +95,7 @@ expand_margin_bottom = 1.0
 bg_color = Color(1, 1, 1, 0.49019608)
 
 [node name="Player" type="Node2D" unique_id=150661442]
+script = ExtResource("1_t0j56")
 
 [node name="PlayerBody" type="CharacterBody2D" parent="." unique_id=1855640503 groups=["attackable", "player"]]
 z_index = 1

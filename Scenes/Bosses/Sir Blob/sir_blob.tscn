@@ -113,14 +113,6 @@ radius = 359.1685
 collision_layer = 4
 input_pickable = true
 script = ExtResource("1_1g57h")
-Level = null
-Health = null
-Defense = null
-Weight = null
-Speed = null
-Damage = null
-Defense_pen = null
-description = null
 
 [node name="SirBlobSprite" type="AnimatedSprite2D" parent="." unique_id=288298983]
 texture_filter = 1

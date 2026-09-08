@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://daaduesc7yxwm" path="res://Scenes/Settings/Background/background.tscn" id="6_u13yy"]
 [ext_resource type="PackedScene" uid="uid://cnpq0jkyhjr73" path="res://Scenes/Player/Body/player.tscn" id="7_t2lht"]
 [ext_resource type="PackedScene" uid="uid://b8fva8sdhjebr" path="res://Scenes/Mobs/Nerd/nerd.tscn" id="9_4w8c0"]
-[ext_resource type="PackedScene" uid="uid://cjxa6aqkq45mh" path="res://Scenes/Bosses/Sir Blob/sir_blob.tscn" id="9_pkiij"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubiir"]
 atlas = ExtResource("3_4w8c0")
@@ -64,23 +63,6 @@ position = Vector2(-26, 66)
 
 [node name="Nerd" parent="Enemies" unique_id=2051148031 instance=ExtResource("9_4w8c0")]
 position = Vector2(789, 375)
-
-[node name="Nerd2" parent="Enemies" unique_id=1794772760 instance=ExtResource("9_4w8c0")]
-position = Vector2(-690, 451)
-
-[node name="Nerd3" parent="Enemies" unique_id=1087646167 instance=ExtResource("9_4w8c0")]
-position = Vector2(303, 427)
-
-[node name="sir_blob" parent="Enemies" unique_id=1901925946 instance=ExtResource("9_pkiij")]
-position = Vector2(813, 694)
-Level = 1
-Health = 100.0
-Defense = 0
-Weight = 50
-Speed = 10
-Damage = 10.0
-Defense_pen = 0
-description = "Blank"
 
 [node name="Player" parent="." unique_id=150661442 instance=ExtResource("7_t2lht")]
 position = Vector2(2, 7)

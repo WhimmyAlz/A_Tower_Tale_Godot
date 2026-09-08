@@ -74,6 +74,7 @@ func attack():
 		bounce_cd -= 1
 	
 	if self.is_on_floor():
+		player.get_parent().set_screenshake(10)
 		self.velocity.y = -2500
 
 func deactivate_attack():
@@ -131,7 +132,7 @@ func _physics_process(_delta: float) -> void:
 	elif attackt == -1 and stunnedf == 0:
 		move(animation)
 		
-	if attackt >= 180 and attackt <= 680:
+	if attackt >= 180 and attackt <= 690:
 		if attackt == 180:
 			self.velocity.y = -3000
 
@@ -143,7 +144,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		friction()
 
-	if attackt >= 680:
+	if attackt >= 690:
 		deactivate_attack()
 		attackt = 0
 	

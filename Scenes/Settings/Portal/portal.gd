@@ -5,6 +5,7 @@ var entered = false
 
 var preload_skelebone = preload("res://Scenes/Mobs/Skelebone/skelebone.tscn")
 var preload_nerd = preload("res://Scenes/Mobs/Nerd/nerd.tscn")
+var preload_sir_blob = preload("res://Scenes/Bosses/Sir Blob/sir_blob.tscn")
 
 func set_pos(vector2):
 	position = vector2
@@ -26,15 +27,27 @@ func spawn_nerd(pos, level):
 	nerd.Level = level
 	base_floor.add_enemy(nerd)
 
+func spawn_sir_blob(pos, level):
+	var sir_blob = preload_sir_blob.instantiate()
+	sir_blob.set_pos(pos)
+	sir_blob.Level = level
+	base_floor.add_enemy(sir_blob)
+
+
 func init_floor_mobs(floor_num):
 	if floor_num == 1:
-		spawn_nerd(Vector2(500, 0), 10)
-		spawn_skeleton(Vector2(0, 0), 10)
+		spawn_nerd(Vector2(500, 0), 2)
+		spawn_skeleton(Vector2(0, 0), 3)
 	elif floor_num == 2:
-		spawn_skeleton(Vector2(600, 0), 30)
-		spawn_skeleton(Vector2(700, 0), 30)
+		spawn_skeleton(Vector2(-700, 0), 5)
+		spawn_skeleton(Vector2(700, 0), 5)
 	elif floor_num == 3:
-		spawn_skeleton(Vector2(0, 0), 100)
+		spawn_skeleton(Vector2(0, 0), 10)
+	elif floor_num == 4:
+		spawn_nerd(Vector2(500, 0), 2)
+		spawn_skeleton(Vector2(0, 0), 10)
+	elif floor_num == 5:
+		spawn_sir_blob(Vector2(700, 0), 1)
 
 func _physics_process(_delta: float) -> void:
 	if entered and Input.is_action_just_released("interact"):
