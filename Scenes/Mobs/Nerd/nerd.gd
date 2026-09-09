@@ -111,6 +111,7 @@ func typewriter():
 			$fun_facts/display.visible = true
 			typewriter_value = 0
 			fun_facts_pick = randi_range(0, len(fun_facts)-1)
+			fun_facts_pick = 12
 			$fun_facts/display/text.text = fun_facts[fun_facts_pick]
 			fun_facts_pick_cd = 420
 
@@ -170,7 +171,6 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	mouse_over = false
 	$EnemyStatsList.visible = false
-
 
 func _on_text_meta_clicked(meta: Variant) -> void:
 	OS.shell_open(meta)

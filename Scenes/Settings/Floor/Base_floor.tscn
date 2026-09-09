@@ -90,4 +90,5 @@ anchor_right = 1.0
 offset_left = -1073.0
 offset_right = 762.0
 offset_bottom = 1808.0
+mouse_filter = 2
 theme_override_constants/separation = 200

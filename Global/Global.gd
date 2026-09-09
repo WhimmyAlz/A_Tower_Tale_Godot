@@ -2,7 +2,7 @@ extends Node
 
 var floors := 0
 
-var player_class := 1
+var player_class := 0
 var player_XP := 0
 var player_XP_REQ := 100
 var player_Level := 1
@@ -77,7 +77,7 @@ var stun_time := 0
 func class_stats_brawler():
 	flight = 0
 	max_jumps = 1 + jump_adds
-	jump_power = round(1800 * (1 + jump_multi))
+	jump_power = round(1600 * (1 + jump_multi))
 	jump_limit = 100 # must be more than 0
 
 	player_spd = round(agility * (1 + speed_multi))

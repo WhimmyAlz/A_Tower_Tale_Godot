@@ -9,6 +9,7 @@
 layout_mode = 3
 anchors_preset = 0
 size_flags_vertical = 0
+mouse_filter = 2
 script = ExtResource("1_g5jtr")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1436163642]
@@ -17,6 +18,7 @@ offset_left = -43.0
 offset_top = 159.0
 offset_right = 31.0
 offset_bottom = 169.0
+mouse_filter = 2
 color = Color(0.24840015, 0.24840018, 0.24840015, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=526921372]
@@ -25,6 +27,7 @@ offset_left = 1974.0
 offset_top = 128.0
 offset_right = 2063.0
 offset_bottom = 146.0
+mouse_filter = 2
 color = Color(0.24840015, 0.24840018, 0.24840015, 1)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1002239093]
@@ -34,6 +37,7 @@ offset_left = -27.0
 offset_top = -64.0
 offset_right = 229.0
 scale = Vector2(8, 8)
+mouse_filter = 2
 value = 100.0
 texture_under = ExtResource("1_rfim3")
 texture_over = ExtResource("2_g5jtr")
@@ -45,6 +49,7 @@ offset_left = 518.0
 offset_top = 101.0
 offset_right = 1552.0
 offset_bottom = 211.0
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 64
 theme_override_font_sizes/bold_font_size = 64
 bbcode_enabled = true
