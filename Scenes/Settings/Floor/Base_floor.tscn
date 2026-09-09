@@ -78,6 +78,7 @@ offset_left = -218.0
 offset_top = -897.0
 offset_right = 228.0
 offset_bottom = -897.0
+mouse_filter = 2
 
 [node name="boss_hp_container" type="VBoxContainer" parent="Boss_Health_Bars" unique_id=1275439676]
 custom_minimum_size = Vector2(0, 100)
