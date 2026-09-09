@@ -25,7 +25,7 @@ var needle_proj = preload("res://Scenes/Player/Classes/needle/needle_proj.tscn")
 
 func get_description():
 	descriptions = {
-	"attack_1": ["[b]Jab[/b]\n", "A quick stab using a needle at a long melee range. Successful attacks gives you a needle stack. \nHas a 1 in 3 chance to perform a slice. \n[color=dodger_blue]Consumes 15 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (25%% + 0.5x dexterity)\n" % ((0.25 * Global.power) + (0.5 * Global.dexterity)), "Cooldown: %.1fs\n" % (float(attack1_max_t)/60), "Knockback: 2\n", "Stuntime: 0.1s\n\n", "Slice: deals 5 damage, ignores 10 defense, inflicts [color=red]bleed 1[/color], and gain 1 needle stack\n\n", "Has a 20% chance to inflict [color=red]bleed 1[/color]\n"],
+	"attack_1": ["[b]Jab[/b]\n", "A quick stab using a needle at a long melee range. Successful attacks gives you a needle stack. \nHas a 1 in 3 chance to perform a slice. \n[color=dodger_blue]Consumes 15 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (12.5%% + 0.25x dexterity)\n" % ((0.125 * Global.power) + (0.25 * Global.dexterity)), "Cooldown: %.1fs\n" % (float(attack1_max_t)/60), "Knockback: 2\n", "Stuntime: 0.1s\n\n", "Slice: deals 5 damage, ignores 10 defense, inflicts [color=red]bleed 1[/color], and gain 1 needle stack\n\n", "Has a 30% chance to inflict [color=red]bleed 1[/color]\n"],
 	"attack_2": ["[b]Needle storm[/b]\n", "Throws out 2-7 needles based on amount of needle stacks you have. Needles have long range and quick speed. \nHas a 1 in 2 chance to perform a slice. \n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x2-7 (0.25%% + 0.5x dexterity)x2-7\n" % ((0.25 * Global.power) + (0.5 * Global.dexterity)),"Cooldown: %.1fs\n" % (float(attack2_max_t)/60), "Knockback: 2 x2-7\n", "Stuntime: 0.25s\n\n", "Slice: deals 5 damage, ignores 10 defense, and inflicts [color=red]bleed 1[/color]\n\n", "Has a 60% chance to inflict [color=red]bleed 1[/color]"],
 	"attack_3": ["[b]Vex[/b]\n", "Shoots a piercing needle that performs slices as it travels. \n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + dexterity)\n" % (Global.power + Global.dexterity),"Cooldown: %.1fs\n" % (float(attack3_max_t)/60), "Knockback: 2\n", "Stuntime: 0.25s\n\n", "Slice: deals 5 damage, ignores 10 defense, inflicts [color=red]bleed 1[/color], and gain 10% max stamina or 1 needle stack if stamina is full"],
 	"attack_4": ["[b]Venom pins[/b]\n", "Throws two needles which deals abysmal damage, but inflicts heavy venom. Needles have increased piercing based on needle stacks. \n[color=dodger_blue]Consumes 30 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)x2\n" % ((0.1 * Global.power) + (0.1 * Global.dexterity)),"Cooldown: %.1fs\n" % (float(attack4_max_t)/60), "Knockback: 2 x2\n", "Stuntime: 0.25s\n\n", "Inflicts [color=purple]venom 6[/color]"],
@@ -65,14 +65,14 @@ func attack_1():
 		if Global.attack1t == 1:
 			needle = needle_proj.instantiate()
 			needle.set_player(player)
-			needle.set_damage((0.25 * Global.power) + (0.5 * Global.dexterity))
+			needle.set_damage((0.125 * Global.power) + (0.25 * Global.dexterity))
 			needle.set_knockback(2)
 			needle.set_pos(player.position + Vector2(10 * Global.player_dir, -35))
 			needle.set_speed(30, 0)
 			needle.set_size(1.2)
 			needle.set_stuntime(6)
 			needle.set_ult_charge_amount(20)
-			needle.set_bleed_chance(20)
+			needle.set_bleed_chance(30)
 			needle.needle_stacks(1)
 
 			if randi_range(0,2) == 0:

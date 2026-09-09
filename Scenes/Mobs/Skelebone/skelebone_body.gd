@@ -51,7 +51,7 @@ func set_level_stats():
 	if check_stats_unchanged():
 		Health = 100 + (level * 30)
 		Max_Health = 100 + (level * 30)
-		
+		Defense = 10
 		Damage = 25 + (level * 1.5)
 		
 		update_hp_bar()

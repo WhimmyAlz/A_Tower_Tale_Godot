@@ -50,10 +50,13 @@ func init_slice():
 	if vex_regen:
 		slice.set_pos(position)
 		slice.set_vex_regen(true)
-	else:
-		slice.set_pos(position + Vector2(direction * 100, 0))
-		slice.set_size(2.5)
+	elif slicer:
 		slice.set_damage(10)
+	else:
+		slice.set_damage(5)
+	slice.set_size(2.5)
+	slice.set_pos(position + Vector2(direction * 100, 0))
+		
 	get_tree().current_scene.get_node("Projectiles").call_deferred("add_child", slice)
 
 func set_slices(value):

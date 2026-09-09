@@ -111,7 +111,6 @@ func typewriter():
 			$fun_facts/display.visible = true
 			typewriter_value = 0
 			fun_facts_pick = randi_range(0, len(fun_facts)-1)
-			fun_facts_pick = 12
 			$fun_facts/display/text.text = fun_facts[fun_facts_pick]
 			fun_facts_pick_cd = 420
 

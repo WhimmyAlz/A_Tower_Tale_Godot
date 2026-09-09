@@ -188,7 +188,7 @@ func take_shock():
 func take_bleed():
 	if bleed_stacks >= 1 and bleed_tick_delay == 0:
 		bleed_stacks -= 1
-		bleed_tick_delay = 60
+		bleed_tick_delay = 30
 		take_damage(float(Max_Health/100), 1000, 0, Color.DARK_RED)
 	elif bleed_tick_delay > 0:
 		bleed_tick_delay -= 1
