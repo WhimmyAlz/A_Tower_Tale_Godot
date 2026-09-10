@@ -228,6 +228,9 @@ func update_hp_bar():
 	$HealthBar.update_value(Health)
 	$HealthBar.update_max_value(Max_Health)
 
+func update_display_name(txt):
+	$HealthBar.update_name("[b]%s[/b]"%txt)
+
 func spawn_frames():
 	if spawn_iframes > -1:
 		spawn_iframes -= 1

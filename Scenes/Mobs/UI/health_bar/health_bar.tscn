@@ -32,3 +32,14 @@ text = "100
 "
 scroll_active = false
 horizontal_alignment = 1
+
+[node name="name" type="RichTextLabel" parent="." unique_id=1818274988]
+offset_left = -100.0
+offset_top = -24.0
+offset_right = 100.0
+offset_bottom = 28.0
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[b]Nerd[/b]"
+horizontal_alignment = 1
+vertical_alignment = 1

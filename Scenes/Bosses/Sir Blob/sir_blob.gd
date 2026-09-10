@@ -103,6 +103,7 @@ func set_level_stats():
 		update_hp_bar()
 
 	set_description()
+	update_display_name("Sir Blob")
 	$EnemyStatsList.set_offset(stats_offset)
 	$EnemyStatsList.set_size(2.8)
 	$EnemyStatsList.set_text(description)

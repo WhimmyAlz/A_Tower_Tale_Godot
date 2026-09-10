@@ -57,6 +57,10 @@ func set_level_stats():
 		update_hp_bar()
 	
 	set_description()
+	if randi_range(1,10) == 1:
+		update_display_name("Skelly")
+	else:
+		update_display_name("Skelebone")
 	$EnemyStatsList.set_offset(stats_offset)
 	$EnemyStatsList.set_size(0.8)
 	$EnemyStatsList.set_text(description)

@@ -79,6 +79,7 @@ func set_level_stats():
 		update_hp_bar()
 	
 	set_description()
+	update_display_name("Nerd")
 	add_num_fact()
 	$EnemyStatsList.set_offset(stats_offset)
 	$EnemyStatsList.set_size(2.8)
