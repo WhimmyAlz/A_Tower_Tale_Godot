@@ -2,7 +2,7 @@ extends Node
 
 var floors := 0
 
-var player_class := 0
+var player_class := 1
 var player_XP := 0
 var player_XP_REQ := 100
 var player_Level := 1
@@ -40,7 +40,7 @@ var crit_chance_adds := 0.0
 var crit_damage := 1.5 # damage multi from crits
 var crit_damage_adds := 0 # damage multi from crits
 
-var player_attacks = 1
+var player_attacks = 4
 var ultimate_attack = 0
 # cooldowns
 var attack1t := 0
@@ -80,7 +80,7 @@ func class_stats_brawler():
 	jump_power = round(1600 * (1 + jump_multi))
 	jump_limit = 100 # must be more than 0
 
-	player_spd = round(agility * (1 + speed_multi))
+	player_spd = round((0.2 * agility) * (1 + speed_multi))
 	player_weight = 20
 
 	max_health = 400
@@ -92,10 +92,10 @@ func class_stats_brawler():
 	defense = 5 + bonus_defense
 	defense_penetration = 0 + defense_penetration_adds
 	
-	strength = 4 + bonus_strength
-	agility = 12 + bonus_agility
-	dexterity = 2 + bonus_dexterity
-	intellect = 1 + bonus_intellect
+	strength = 24 + bonus_strength
+	agility = 60 + bonus_agility
+	dexterity = 6 + bonus_dexterity
+	intellect = 4 + bonus_intellect
 
 ## Sets stats for Needle [class:1]
 func class_stats_needle():
@@ -104,7 +104,7 @@ func class_stats_needle():
 	jump_power = round(1400 * (1 + jump_multi))
 	jump_limit = 1000 # must be more than 0
 
-	player_spd = round(agility * (1 + speed_multi))
+	player_spd = round((0.2 * agility) * (1 + speed_multi))
 	player_weight = 15
 
 	max_health = 300
@@ -116,10 +116,10 @@ func class_stats_needle():
 	defense = 0 + bonus_defense
 	defense_penetration = 5 + defense_penetration_adds
 	
-	strength = 2 + bonus_strength
-	agility = 15 + bonus_agility
-	dexterity = 6 + bonus_dexterity
-	intellect = 1 + bonus_intellect
+	strength = 8 + bonus_strength
+	agility = 75 + bonus_agility
+	dexterity = 30 + bonus_dexterity
+	intellect = 6 + bonus_intellect
 
 ## Sets stats for Draco [class:10]
 func class_stats_draco():
@@ -128,7 +128,7 @@ func class_stats_draco():
 	jump_power = round(1050 * (1 + jump_multi))
 	jump_limit = 350 # must be more than 0
 
-	player_spd = round(agility * (1 + speed_multi))
+	player_spd = round((0.1 * agility) * (1 + speed_multi))
 	player_weight = 30
 
 	max_health = 250

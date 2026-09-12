@@ -20,7 +20,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health)
 
 func set_description():
-	description = "[b]SIR BLOB[/b]\nLevel: %d\n\n[i]\"...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription: Some say this is what happens when you leave an orange in a fridge for too long.\n\nDrops:\n50-90 xp" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]SIR BLOB[/b]\nLevel: %d\n\n[i]\"...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription: Some say this is what happens when you leave an orange in a fridge for too long.\n\nDrops:\n50-90 xp\n\nBoss perk: stunned for 25%% less time." % [Level, Health, Damage, Defense, Defense_pen]
 
 func set_pos(pos):
 	position = pos
@@ -97,7 +97,7 @@ func set_level_stats():
 		Max_Health = 1000 + (level * 100)
 		Damage = 45 + (level * 5)
 		Speed = 3
-		attackt = 1
+		attackt = -1
 
 		init_boss_bar()
 		update_hp_bar()
@@ -113,10 +113,12 @@ func set_dto():
 	damage_text_offset = Vector2(-40, -200)
 
 func take_stun(stun_time):
+	var reduced_stuntime = int(stun_time * 0.75)
+	
 	if shock_stacks == 0 or stunnedf == 0: 
-		stunnedf = stun_time
+		stunnedf = reduced_stuntime
 	else:
-		stunnedf += int(stun_time * (shock_stacks/100))
+		stunnedf += int(reduced_stuntime * (shock_stacks/100))
 
 func _physics_process(_delta: float) -> void:
 	if attackt >= 0 and attackt <= 179:
