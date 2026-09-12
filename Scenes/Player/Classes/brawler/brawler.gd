@@ -23,12 +23,12 @@ var giant_fist_preload = preload("res://Scenes/Player/Classes/brawler/giant_fist
 
 func get_description():
 	descriptions = {
-	"attack_1": ["[b]Punch[/b]\n", "A simple punch that does moderate damage and knockback. Useful for extending combos. \n[color=dodger_blue]Consumes 20 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + strength)\n" % (Global.power + Global.strength), "Cooldown: %.1fs\n" % (float(attack1_max_t)/60), "Knockback: 6\n", "Stuntime: 0.6s\n"],
-	"attack_2": ["[b]Flurry[/b]\n", "A punch that sends out 3 piercing waves, each dealing low damage at a moderate range. Beware of attack windup. \n[color=dodger_blue]Consumes 50 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x3 (60%% + strength)x3\n" % ((0.6 * Global.power) + Global.strength),"Cooldown: %.1fs\n" % (float(attack2_max_t)/60), "Knockback: 3 x3\n", "Stuntime: 1s\n\n", "Inflicts [color=orange]fire 6[/color] when berserk is active"],
-	"attack_3": ["[b]Uppercut[/b]\n", "A upwards punch that does moderate damage and sends enemies upwards. Can hit multiple targets. \n[color=dodger_blue]Consumes 30 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (150%% +  1.5x strength)\n" % ((1.5 * Global.power) + (1.5 * Global.strength)),"Cooldown: %.1fs\n" % (float(attack3_max_t)/60), "Knockback: 6\n", "Stuntime: 1.0s\n\n", "Vertical knockback on enemies that are off ground is a lot less effective"],
-	"attack_4": ["[b]Barrage[/b]\n", "Sends out many small punches which deals small but quickly accumulates damage. Useful for keeping an enemy stunned. \n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x15 (15%% + 0.2x str)x3\n" % ((0.15 * Global.power) + (0.2 * Global.strength)),"Cooldown: %.1fs\n" % (float(attack4_max_t)/60), "Knockback: 1 x15\n", "Stuntime: 0.75s\n\n", "Inflicts [color=orange]fire 1[/color] when berserk is active"],
-	"attack_5": ["[b]Berserk[/b]\n", "Sends the player into a fit of rage which increases their strength by 4 and agility by 6 and boosts stamina regen by 100% for 7.5s. \n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]0[/color] (0)\n", "Cooldown: %.1fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0s\n\n", "Activates the [color=red]berserk[/color] status effect"],
-	"ultimate": ["[b]Fist of God[/b]\n", "A massive fist comes from above and slams down all enemies dealing massive damage and creating a shockwave which deals 75% of the original attack's damage. \n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f + %.1f[/color] (600%% + 10x strength) + (450%% + 7.5x strength)\n" % [((6 * Global.power) + (10 * Global.strength)), ((4.5 * Global.power) + (7.5 * Global.strength))], "Cooldown: %.1fs\n" % (float(ultimate_max_t)/60), "Knockback: 30\n", "Stuntime: 3s\n"],
+	"attack_1": ["[b]Punch[/b]\n", "A simple punch that does moderate damage and knockback. Useful for extending combos. \n[color=dodger_blue]Consumes 25 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + strength)\n" % (Global.power + Global.strength), "Cooldown: %.2fs\n" % (float(attack1_max_t)/60), "Knockback: 6\n", "Stuntime: 0.5s\n"],
+	"attack_2": ["[b]Flurry[/b]\n", "A punch that sends out 3 piercing waves, each dealing low damage at a moderate range. Beware of attack windup. \n[color=dodger_blue]Consumes 45 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x3 (60%% + strength)x3\n" % ((0.6 * Global.power) + Global.strength),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 3 x3\n", "Stuntime: 1s\n\n", "Ignores 25% of enemy defense.\n\n", "Inflicts [color=orange]fire 6[/color] when berserk is active"],
+	"attack_3": ["[b]Uppercut[/b]\n", "A upwards punch that does moderate damage and sends enemies upwards. Can hit multiple targets. \n[color=dodger_blue]Consumes 35 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (150%% +  1.5x strength)\n" % ((1.5 * Global.power) + (1.5 * Global.strength)),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 6\n", "Stuntime: 0.75s\n\n", "Vertical knockback on enemies that are off ground is a lot less effective"],
+	"attack_4": ["[b]Barrage[/b]\n", "Sends out many small punches which deals small but quickly accumulates damage. Useful for keeping an enemy stunned. \n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x15 (15%% + 0.2x str)x3\n" % ((0.15 * Global.power) + (0.2 * Global.strength)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 1 x15\n", "Stuntime: 0.75s\n\n", "Inflicts [color=orange]fire 1[/color] when berserk is active"],
+	"attack_5": ["[b]Berserk[/b]\n", "Sends the player into a fit of rage which increases their strength by 4 and agility by 6 and boosts stamina regen by 100% for 7.5s. \n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]0[/color] (0)\n", "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0s\n\n", "Activates the [color=red]berserk[/color] status effect"],
+	"ultimate": ["[b]Fist of God[/b]\n", "A massive fist comes from above and slams down all enemies dealing massive damage and creating a shockwave which deals 75% of the original attack's damage. \n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f + %.1f[/color] (600%% + 10x strength) + (450%% + 7.5x strength)\n" % [((6 * Global.power) + (10 * Global.strength)), ((4.5 * Global.power) + (7.5 * Global.strength))], "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 30\n", "Stuntime: 3s\n"],
 	}
 	return(descriptions)
 
@@ -39,10 +39,10 @@ func set_dir():
 		class_anim.flip_h = false
 
 func init_attack_1():
-	if Global.stamina >= 20:
+	if Global.stamina >= 25:
 		set_dir()
 
-		Global.stamina -= 20
+		Global.stamina -= 25
 		player.set_animation_visibility(false)
 		class_anim.visible = true
 		class_anim.frame = 0
@@ -51,27 +51,28 @@ func init_attack_1():
 		player.set_attacking(true)
 
 func attack_1():
-	if Global.attack1t >= 1 and Global.attack1t <= 30:
-		class_anim.speed_scale = 2.5
+	if Global.attack1t >= 1 and Global.attack1t <= 24:
+		class_anim.speed_scale = 3
 		player.set_speed_penalty(0.25)
 		
 		# spawns wave
-		if Global.attack1t == 20:
+		if Global.attack1t == 16:
 			wave = fist_wave.instantiate()
 			wave.set_player(player)
 			wave.set_damage(Global.power + Global.strength)
 			wave.set_knockback(6)
 			wave.set_pos(player.position)
 			wave.set_speed(0, 0)
-			wave.set_stuntime(36)
-			wave.set_ult_charge_amount(45)
-			wave.set_size(2.5)
+			wave.set_lifetime(8)
+			wave.set_stuntime(30)
+			wave.set_ult_charge_amount(55)
+			wave.set_size(2.75)
 			get_tree().current_scene.get_node("Projectiles").add_child(wave)
 
-		if between(Global.attack1t, 20, 30):
-			wave.set_pos(player.position + Vector2((Global.player_dir * 7.75 * Global.attack1t) - (Global.player_dir * 95), -85))
+		if between(Global.attack1t, 16, 24):
+			wave.set_pos(player.position + Vector2((Global.player_dir * 8 * Global.attack1t) - (Global.player_dir * 75), -85))
 
-		if Global.attack1t == 30:
+		if Global.attack1t == 24:
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)
@@ -83,10 +84,10 @@ func attack_1():
 		Global.attack1t = 0
 
 func init_attack_2():
-	if Global.stamina >= 50:
+	if Global.stamina >= 45:
 		set_dir()
 
-		Global.stamina -= 50
+		Global.stamina -= 45
 
 		player.set_animation_visibility(false)
 		class_anim.visible = true
@@ -109,6 +110,7 @@ func attack_2():
 			wave.set_damage((0.6 * Global.power) + (1 * Global.strength))
 			wave.set_knockback(3)
 			wave.set_size(3)
+			wave.set_pierce(0.25)
 			wave.set_stuntime(60)
 			wave.set_ult_charge_amount(20)
 			wave.set_hitnum(5)
@@ -128,10 +130,10 @@ func attack_2():
 		Global.attack2t = 0
 
 func init_attack_3():
-	if Global.stamina >= 30:
+	if Global.stamina >= 35:
 		set_dir()
 
-		Global.stamina -= 30
+		Global.stamina -= 35
 
 		player.set_animation_visibility(false)
 		class_anim.visible = true
@@ -153,7 +155,7 @@ func attack_3():
 			wave.set_knockback(6)
 			wave.set_knockbackY(-14)
 			wave.set_size(4.5)
-			wave.set_stuntime(60)
+			wave.set_stuntime(45)
 			wave.set_hitnum(10)
 			wave.set_lifetime(10)
 			wave.set_ult_charge_amount(70)

@@ -1,7 +1,6 @@
 extends enemyBase
 
 var wave_preload = preload("res://Scenes/Mobs/Nerd/nerd_punch_wave.tscn")
-var attackt = -1
 
 var stats_offset = Vector2(-200, -60)
 
@@ -22,7 +21,10 @@ func add_num_fact():
 	fun_facts_pick = randi_range(0, len(fun_facts)-1)
 
 func set_description():
-	description = "[b]Nerd[/b]\nLevel: %d\n\n[i]\"Erm Ackually..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA typical Nerd. Hopefully he doesn't try to talk to me.\n\nDrops:\n10%% Ultimate attack\n\nMutually Exclusive drops:\n%.01f%% New attack\n%.01f%% 20-30 xp" % [Level, Health, Damage, Defense, Defense_pen, (100/float(Global.player_attacks)), (100 - 100/float(Global.player_attacks))]
+	var attack_chance = (100/float(Global.player_attacks))
+	if Global.player_attacks == 5:
+		attack_chance = 0
+	description = "[b]Nerd[/b]\nLevel: %d\n\n[i]\"Erm Ackually..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA typical Nerd. Hopefully he doesn't try to talk to me.\n\nDrops:\n10%% Ultimate attack\n\nMutually Exclusive drops:\n%.01f%% New attack\n%.01f%% 20-30 xp" % [Level, Health, Damage, Defense, Defense_pen, attack_chance, 100 - attack_chance]
 
 func set_pos(pos):
 	position = pos
@@ -71,10 +73,11 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
-		Health = 100 + (level * 50)
-		Max_Health = 100 + (level * 50)
+		Health = 80 + (level * 30)
+		Max_Health = 80 + (level * 30)
 		
-		Damage = 25 + (level * 5)
+		Damage = 25 + (level * 2)
+		attackt = -1
 		
 		update_hp_bar()
 	
@@ -89,14 +92,6 @@ func set_level_stats():
 ## dto is damage text offset
 func set_dto():
 	damage_text_offset = Vector2(-40, -300)
-
-func take_stun(stun_time):
-	if attackt == -1:
-		attackt = 0
-	if shock_stacks == 0 or stunnedf == 0: 
-		stunnedf = stun_time
-	else:
-		stunnedf += int(stun_time * (shock_stacks/100))
 
 func typewriter():
 	if typewriter_value < len(fun_facts[fun_facts_pick]):

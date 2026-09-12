@@ -1,7 +1,6 @@
 extends enemyBase
 
 var bone = preload("res://Scenes/Mobs/Skelebone/bone.tscn")
-var attackt = 0
 
 var stats_offset = Vector2(60, -20)
 
@@ -16,7 +15,7 @@ func set_pos(pos):
 func move(animation):
 	skeleton_animation = animation
 
-	animation.speed_scale = Speed * 0.1
+	animation.speed_scale = Speed * 0.5
 	if self.is_on_floor():
 		animation.play("walk")
 	else:
@@ -24,7 +23,7 @@ func move(animation):
 
 	if animation.frame >= 3 and animation.frame <= 4:
 		if self.is_on_floor(): # only move the skeleton x position if on ground
-			self.position.x += 0.2 * Speed * direction
+			self.position.x += Speed * direction
 			face_player(animation)
 
 	set_direction(self, player)
@@ -49,10 +48,11 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
-		Health = 100 + (level * 30)
-		Max_Health = 100 + (level * 30)
+		Health = 50 + (level * 15)
+		Max_Health = 50 + (level * 15)
 		Defense = 10
-		Damage = 25 + (level * 1.5)
+		Speed = 2
+		Damage = 25 + (level * 1)
 		
 		update_hp_bar()
 	

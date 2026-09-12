@@ -9,6 +9,8 @@ var angle = 0
 var hitnum = 1
 var damage = 15
 var defense_pen = Global.defense_penetration
+var piercing = 0
+
 var knockback = 15
 var knockbackY = 0
 var stuntime = 20
@@ -44,6 +46,9 @@ func get_pos_x():
 func get_pos_y():
 	return(position.y)
 
+func calc_pierce(enemy_defense):
+	return((enemy_defense * piercing) + defense_pen)
+
 func set_player(ply):
 	player = ply
 
@@ -52,6 +57,9 @@ func set_damage(dmg):
 
 func set_defense_pen(def_pen):
 	defense_pen = def_pen
+
+func set_pierce(value):
+	piercing = value
 
 func set_hitnum(value):
 	hitnum = value

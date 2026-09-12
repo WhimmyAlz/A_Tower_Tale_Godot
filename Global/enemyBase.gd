@@ -39,15 +39,19 @@ var deathmark_tick_delay = 0
 
 var direction := 1
 var stunnedf := 0 # stunned frames (stunned time shortened)
-
-func set_damage(value):
-	Damage = value
+var attackt := 0
 
 func get_health():
 	return(Health)
 
 func get_max_health():
 	return(Max_Health)
+
+func get_defense():
+	return(Defense)
+
+func set_damage(value):
+	Damage = value
 
 func set_player_gen_1():
 	player = get_tree().current_scene.get_node("Player").get_child(0)
@@ -92,6 +96,12 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 	var def = maxf(Defense - defense_pen, 0)
 	var damage =  maxf(dmg - def, 1)
 	var crit = randi_range(0, 100) < crit_chance
+	
+	# check if enemy is "passive" before damaged
+	if attackt == -1:
+		attackt = 0
+		if boss_bar != null:
+			boss_bar.visible = true
 
 	if crit:
 		damage =  maxf((dmg * Global.crit_damage) - def, 1)
@@ -112,6 +122,7 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 	damageText.set_text(damage)
 	damageText.set_position(position + damage_text_offset)
 	damageText.set_color(color)
+
 	if crit:
 		damageText.set_size(2)
 	get_tree().current_scene.get_node("Damage_text").add_child(damageText)

@@ -1,6 +1,5 @@
 extends enemyBase
 
-var attackt = -1
 var bounce_cd = 60
 var stats_offset = Vector2(-200, -150)
 
@@ -98,6 +97,7 @@ func set_level_stats():
 		Max_Health = 1000 + (level * 100)
 		Damage = 45 + (level * 5)
 		Speed = 3
+		attackt = 1
 
 		init_boss_bar()
 		update_hp_bar()
@@ -113,9 +113,6 @@ func set_dto():
 	damage_text_offset = Vector2(-40, -200)
 
 func take_stun(stun_time):
-	if attackt == -1:
-		attackt = 0
-		boss_bar.visible = true
 	if shock_stacks == 0 or stunnedf == 0: 
 		stunnedf = stun_time
 	else:

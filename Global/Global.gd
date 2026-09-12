@@ -2,7 +2,7 @@ extends Node
 
 var floors := 0
 
-var player_class := 1
+var player_class := 0
 var player_XP := 0
 var player_XP_REQ := 100
 var player_Level := 1
@@ -84,7 +84,7 @@ func class_stats_brawler():
 	player_weight = 20
 
 	max_health = 400
-	max_stamina = 120
+	max_stamina = 110
 
 	power = 18 + bonus_power
 	crit_chance = 0 + crit_chance_adds
