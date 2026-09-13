@@ -57,7 +57,7 @@ scale = Vector2(4.725, 4.725)
 sprite_frames = SubResource("SpriteFrames_ks4c7")
 
 [node name="Background" parent="Enviroment" unique_id=1861313626 instance=ExtResource("6_u13yy")]
-position = Vector2(-26, 66)
+position = Vector2(-52, 0)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1301696289]
 

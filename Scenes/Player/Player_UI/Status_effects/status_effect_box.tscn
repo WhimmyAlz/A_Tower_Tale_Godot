@@ -45,8 +45,8 @@ mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
-text = "[b]Mark of doom[/b]
-10s"
+text = "[b]Generic Debuff name[/b]
+69420.67s"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1

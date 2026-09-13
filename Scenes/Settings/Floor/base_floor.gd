@@ -8,7 +8,7 @@ func reset_portal_limiter():
 	portal_limiter = 1
 
 func bg_add_y_pos():
-	$Enviroment/Background.position.y = 22 + Global.floors * 1980
+	$Enviroment/Background.position.y = Global.floors * 1890
 
 func add_enemy(emy):
 	$Enemies.add_child(emy)

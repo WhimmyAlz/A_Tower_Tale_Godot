@@ -160,7 +160,7 @@ func _ready() -> void:
 	$Console_log.scroll_following = true
 
 func _physics_process(_delta: float) -> void:
-	if visible == true:
+	if visible == true and Global.stun_time < 2:
 		get_parent().get_parent().get_node("PlayerBody").take_stun(2)
 	console_toggle()
 	console_return_and_collect()
