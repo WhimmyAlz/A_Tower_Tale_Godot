@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dxfx6npj448rl"]
+
+[ext_resource type="Script" uid="uid://bndieiwtck4hc" path="res://Scenes/Player/Player_UI/Status_effects/status_effect_box.gd" id="1_iugn4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iugn4"]
+size = Vector2(125.5, 146)
+
+[node name="Status" type="Control" unique_id=1130927860]
+custom_minimum_size = Vector2(150, 170)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_iugn4")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1065111158]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 155.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.44705883)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=282886227]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 131.0
+offset_bottom = 150.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.15294118)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=2045223859]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 257.0
+offset_bottom = 295.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[b]Mark of doom[/b]
+10s"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="description" type="Control" parent="." unique_id=348607186]
+visible = false
+anchors_preset = 0
+offset_left = 11.0
+offset_top = -132.0
+offset_right = 267.0
+offset_bottom = 132.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="description" unique_id=185840957]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 249.0
+offset_bottom = 259.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.6509804)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="description" unique_id=1078608742]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 3.0
+offset_right = 460.0
+offset_bottom = 509.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "yap yap yap"
+
+[node name="box_area" type="Area2D" parent="." unique_id=1839923782]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="box_area" unique_id=1678439168]
+position = Vector2(68.25, 77)
+shape = SubResource("RectangleShape2D_iugn4")
+
+[connection signal="mouse_entered" from="box_area" to="." method="_on_box_area_mouse_entered"]
+[connection signal="mouse_exited" from="box_area" to="." method="_on_box_area_mouse_exited"]

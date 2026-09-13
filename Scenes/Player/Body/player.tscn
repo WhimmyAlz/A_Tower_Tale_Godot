@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cxenysspmiry6" path="res://Global/DEV.tscn" id="4_os2qf"]
 [ext_resource type="Texture2D" uid="uid://258dhlky5nq3" path="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_BG.png" id="5_86lyx"]
 [ext_resource type="Script" uid="uid://drnmkrhj51qsh" path="res://Scenes/Player/Player_UI/Progress_bars/Prog_bars.gd" id="5_t6byl"]
-[ext_resource type="PackedScene" uid="uid://btfb8iexjk6eb" path="res://Scenes/Player/Body/status_effects.tscn" id="5_unyjo"]
+[ext_resource type="PackedScene" uid="uid://btfb8iexjk6eb" path="res://Scenes/Player/Player_UI/Status_effects/status_effects.tscn" id="5_unyjo"]
 [ext_resource type="Texture2D" uid="uid://dl8xhycnyk4wn" path="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_EXTRA.png" id="6_t6byl"]
 [ext_resource type="Texture2D" uid="uid://38sd0eg67kr7" path="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_BAR.png" id="7_7rbim"]
 [ext_resource type="Texture2D" uid="uid://cqxyaaoft6q56" path="res://Scenes/Player/Player_UI/Progress_bars/level_emblem.png" id="8_b1gc2"]
@@ -126,8 +126,6 @@ collision_mask = 2147483648
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="Status_effects" parent="PlayerBody" unique_id=1381918084 instance=ExtResource("5_unyjo")]
-
 [node name="Attached UI Elements" type="Control" parent="PlayerBody" unique_id=384446543]
 layout_mode = 3
 anchors_preset = 0
@@ -220,3 +218,7 @@ position = Vector2(0, -54)
 
 [node name="MoveList" parent="Non Attached UI Elements" unique_id=1954343084 instance=ExtResource("16_e2n6q")]
 position = Vector2(1458, 870)
+
+[node name="Status_effects" parent="Non Attached UI Elements" unique_id=1381918084 instance=ExtResource("5_unyjo")]
+position = Vector2(-1467.0001, -205)
+scale = Vector2(1.25, 1.25)

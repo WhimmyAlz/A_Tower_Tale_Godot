@@ -16,7 +16,7 @@ var descriptions
 
 @onready var player = get_parent().get_parent()
 @onready var class_anim = $skills
-@onready var status = $"../../Status_effects"
+@onready var status = $"../../../Non Attached UI Elements/Status_effects"
 
 var fist_wave = preload("res://Scenes/Player/Classes/brawler/fist_shockwave.tscn")
 var giant_fist_preload = preload("res://Scenes/Player/Classes/brawler/giant_fist.tscn")
