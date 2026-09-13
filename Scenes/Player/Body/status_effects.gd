@@ -7,8 +7,8 @@ var berserk_time = 0
 
 func set_berserk(time):
 	if berserk == false:
-		Global.bonus_strength += 4
-		Global.bonus_agility += 6
+		Global.bonus_strength += 10
+		Global.bonus_agility += 15
 		Global.stamina_regen_multi += 1
 	berserk = true
 	berserk_time = time
@@ -20,8 +20,8 @@ func berserk_effect():
 	if berserk:
 		berserk_time -= 1
 		if berserk_time == 0:
-			Global.bonus_strength -= 4
-			Global.bonus_agility -= 6
+			Global.bonus_strength -= 10
+			Global.bonus_agility -= 15
 			Global.stamina_regen_multi -= 1
 			berserk = false
 

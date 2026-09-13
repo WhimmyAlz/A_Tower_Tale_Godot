@@ -29,8 +29,8 @@ func get_description():
 	"attack_2": ["[b]Needle storm[/b]\n", "Throws out 2-7 needles based on amount of needle stacks you have. Needles have long range and quick speed. \nHas a 1 in 2 chance to perform a slice. \n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x2-7 (0.25%% + 0.1x dexterity)x2-7\n" % ((0.25 * Global.power) + (0.25 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 2 x2-7\n", "Stuntime: 0.25s\n\n", "Slice: deals 5 damage, ignores 10 defense, and inflicts [color=red]bleed 1[/color]\n\n", "Has a 80% chance to inflict [color=red]bleed 1[/color]"],
 	"attack_3": ["[b]Vex[/b]\n", "Shoots a piercing needle that performs slices as it travels. \n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + 0.2x dexterity)\n" % (Global.power + (0.2 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 2\n", "Stuntime: 0.25s\n\n", "Slice: deals 5 damage, ignores 10 defense, inflicts [color=red]bleed 1[/color], and gain 10% max stamina or 1 needle stack if stamina is full"],
 	"attack_4": ["[b]Venom pins[/b]\n", "Throws two needles which deals abysmal damage, but inflicts heavy venom. Needles have increased piercing based on needle stacks. \n[color=dodger_blue]Consumes 30 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)x2\n" % ((0.1 * Global.power) + (0.1 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 2 x2\n", "Stuntime: 0.25s\n\n", "Inflicts [color=purple]venom 6[/color]"],
-	"attack_5": ["[b]Needle therapy[/b]\n", "Throws out a burst of 20 needles in a wide angle each dealing low damage but inflicting shock. Consumes needle stacks to make the angle narrower.\n[color=dodger_blue]Consumes 70 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)\n" % (0.1 * Global.power + 0.1 * Global.dexterity), "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0.33s\n\n", "Inflicts [color=yellow]shock 20[/color]"],
-	"ultimate": ["[b]Vein cutter[/b]\n", "Quickly dashes forwards while holding out a giant needle infront of you which performs slices on the needle's end. Might hit multiple times.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (200%% + 1.5x dexterity)\n" % ((2 * Global.power) + (1.5 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 50\n", "Stuntime: 1s\n\n", "Slice: deals 10 damage, ignores 10 defense, and inflicts [color=red]bleed 1[/color], and gain 1 needle stack"],
+	"attack_5": ["[b]Needle therapy[/b]\n", "Throws out a burst of 20 needles in a wide angle each dealing low damage but inflicting shock. Consumes needle stacks to make the angle narrower.\n[color=dodger_blue]Consumes 70 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)\n" % (0.1 * Global.power + 0.05 * Global.dexterity), "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0.33s\n\n", "Inflicts [color=yellow]shock 20[/color]"],
+	"ultimate": ["[b]Vein cutter[/b]\n", "Quickly dashes forwards while holding out a giant needle infront of you which performs slices on the needle's end. Might hit multiple times.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (125%% + 0.5x dexterity)\n" % ((1.25 * Global.power) + (0.5 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 50\n", "Stuntime: 1s\n\n", "Slice: deals 10 damage, ignores 10 defense, and inflicts [color=red]bleed 1[/color], and gain 1 needle stack"],
 	}
 	return(descriptions)
 
@@ -255,7 +255,7 @@ func attack_5():
 		if between(Global.attack5t, 1, 20):
 			needle = needle_proj.instantiate()
 			needle.set_player(player)
-			needle.set_damage((0.1 * Global.power) + (0.1 * Global.dexterity))
+			needle.set_damage((0.1 * Global.power) + (0.05 * Global.dexterity))
 			needle.set_knockback(0)
 			needle.set_pos(player.position + Vector2(5 * Global.player_dir * Global.attack5t, -40))
 			needle.set_speed(60, v_speed)
@@ -305,8 +305,8 @@ func ultimate():
 		if Global.ultimatet == 1:
 			needle = needle_proj.instantiate()
 			needle.set_player(player)
-			needle.set_damage((2 * Global.power) + (1.5 * Global.dexterity))
-			needle.set_pos(player.position + Vector2(150 * Global.player_dir, -85))
+			needle.set_damage((1.25 * Global.power) + (0.5 * Global.dexterity))
+			needle.set_pos(player.position + Vector2(150 * Global.player_dir, -70))
 			needle.set_stuntime(60)
 			needle.set_hitnum(100)
 			needle.set_lifetime(15)

@@ -184,7 +184,7 @@ func take_venom():
 	if venom_stacks >= 1 and venom_tick_delay == 0:
 		venom_stacks -= 1
 		take_damage(5, 25, 0, Color.WEB_PURPLE)
-		venom_tick_delay = 6
+		venom_tick_delay = 10
 	elif venom_tick_delay > 0:
 		venom_tick_delay -= 1
 

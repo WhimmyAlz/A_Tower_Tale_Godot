@@ -73,8 +73,8 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
-		Health = 80 + (level * 30)
-		Max_Health = 80 + (level * 30)
+		Health = 80 + (level * 40)
+		Max_Health = 80 + (level * 40)
 		
 		Damage = 25 + (level * 2)
 		attackt = -1

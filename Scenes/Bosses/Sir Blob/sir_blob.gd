@@ -93,8 +93,8 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
-		Health = 1000 + (level * 100)
-		Max_Health = 1000 + (level * 100)
+		Health = 1000 + (level * 150)
+		Max_Health = 1000 + (level * 150)
 		Damage = 45 + (level * 5)
 		Speed = 3
 		attackt = -1

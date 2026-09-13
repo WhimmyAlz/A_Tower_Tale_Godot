@@ -2,7 +2,7 @@ extends Node
 
 var floors := 0
 
-var player_class := 1
+var player_class := 0
 var player_XP := 0
 var player_XP_REQ := 100
 var player_Level := 1
@@ -37,10 +37,10 @@ var health := 100.0
 var health_regen_value := 15.0 # % of max health healed naturally per floor
 var crit_chance := 0.0 # chance to land crit
 var crit_chance_adds := 0.0
-var crit_damage := 1.5 # damage multi from crits
+var crit_damage := 1.25 # damage multi from crits
 var crit_damage_adds := 0 # damage multi from crits
 
-var player_attacks = 4
+var player_attacks = 1
 var ultimate_attack = 0
 # cooldowns
 var attack1t := 0
@@ -87,8 +87,8 @@ func class_stats_brawler():
 	max_stamina = 110
 
 	power = 18 + bonus_power
-	crit_chance = 0 + crit_chance_adds
-	crit_damage = 1.5 + crit_damage_adds
+	crit_chance = 5 + crit_chance_adds
+	crit_damage = 1.25 + crit_damage_adds
 	defense = 5 + bonus_defense
 	defense_penetration = 0 + defense_penetration_adds
 	
@@ -111,8 +111,8 @@ func class_stats_needle():
 	max_stamina = 180
 
 	power = 20 + bonus_power
-	crit_chance = 10 + crit_chance_adds
-	crit_damage = 2 + crit_damage_adds
+	crit_chance = 18 + crit_chance_adds
+	crit_damage = 1.5 + crit_damage_adds
 	defense = 0 + bonus_defense
 	defense_penetration = 5 + defense_penetration_adds
 	
@@ -136,12 +136,12 @@ func class_stats_draco():
 
 	power = 35 + bonus_power
 	crit_chance = 0 + crit_chance_adds
-	crit_damage = 1.5 + crit_damage_adds
+	crit_damage = 1.25 + crit_damage_adds
 	defense = 15
 	defense_penetration = 0 + defense_penetration_adds
 
 	strength = 4 + bonus_strength
-	agility = 10 + bonus_agility
+	agility = 70 + bonus_agility
 	dexterity = 4 + bonus_dexterity
 	intellect = 4 + bonus_intellect
 

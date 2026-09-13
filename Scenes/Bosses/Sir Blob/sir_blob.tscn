@@ -82,7 +82,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82jnr"]
-size = Vector2(51.166664, 59)
+size = Vector2(51.166664, 59.666668)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6cof2"]
 atlas = ExtResource("1_yvubx")
@@ -122,7 +122,7 @@ animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1576355703]
-position = Vector2(1.750001, -4.5)
+position = Vector2(1.750001, -5.500002)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_82jnr")
 
