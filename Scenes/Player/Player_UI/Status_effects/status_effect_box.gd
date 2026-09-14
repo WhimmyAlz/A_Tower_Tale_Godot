@@ -5,6 +5,7 @@ var status_level = 0
 var lifetime := 0
 var color = Color.WHITE
 var description = ""
+var text_size = 48
 
 func set_description():
 	if status == "Berserk":
@@ -24,11 +25,16 @@ func get_status():
 func set_time(value):
 	lifetime = value
 
+func set_text_size(value):
+	text_size = value
+
 func update_desc():
 	if status_level == 1:
-		$RichTextLabel.text = "[b]%s[/b]\n[color=white]%.2fs[/color]" % [status, float(lifetime)/60]
+		$RichTextLabel.text = "[b][font_size=%d]%s[/font_size][/b]\n[color=white]%.2fs[/color]" % [text_size, status, float(lifetime)/60]
+	elif status_level == int(status_level):
+		$RichTextLabel.text = "[b][font_size=%d]%s %.d[/font_size][/b]\n[color=white]%.2fs[/color]" % [text_size, status, int(status_level), float(lifetime)/60]
 	else:
-		$RichTextLabel.text = "[b]%s %f[/b]\n[color=white]%.2fs[/color]" % [status, status_level, float(lifetime)/60]
+		$RichTextLabel.text = "[b][font_size=%d]%s %.1f[/font_size][/b]\n[color=white]%.2fs[/color]" % [text_size, status, status_level, float(lifetime)/60]
 
 func delete():
 	queue_free()

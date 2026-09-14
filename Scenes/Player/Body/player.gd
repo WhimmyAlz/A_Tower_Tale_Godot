@@ -161,8 +161,25 @@ func take_damage(value, defense_pen):
 func take_knockback(kb, dir):
 	self.velocity.x += kb * dir * 100 # 100 cuz kb too weak otherwise (want to use lower values)
 
+func get_status_effect():
+	return(get_parent().get_status_effect())
+
 func take_stun(stun_time):
-	Global.stun_time = stun_time
+	
+	var status_effects = get_parent().get_status_effect()
+	var shock_stacks = status_effects.get_shock()
+
+	# checks if player has shocks or is stunned to apply extra stun if shocked
+	if shock_stacks == 0 or Global.stun_time == 0: 
+		Global.stun_time = stun_time
+	else:
+		Global.stun_time += int(stun_time * shock_stacks/100)
+
+	# Creates a stunned status box
+	if status_effects.check_dupes("Stunned"):
+		status_effects.update_status_box("Stunned", 1, Global.stun_time)
+	else:
+		status_effects.init_status_box("Stunned", 1, Global.stun_time, Color.WHITE)
 
 func gain_xp(amount):
 	Global.player_XP += amount

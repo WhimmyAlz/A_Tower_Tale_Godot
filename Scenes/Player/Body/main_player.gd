@@ -5,6 +5,9 @@ var screenshake_time = -1
 func get_body():
 	return($PlayerBody)
 
+func get_status_effect():
+	return($"Non Attached UI Elements/Status_effects")
+
 func set_screenshake(time):
 	screenshake_time = time
 
