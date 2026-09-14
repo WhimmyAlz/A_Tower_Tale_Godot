@@ -40,6 +40,7 @@ var deathmark_tick_delay = 0
 var direction := 1
 var stunnedf := 0 # stunned frames (stunned time shortened)
 var attackt := 0
+var attackt_start := 0
 
 func get_health():
 	return(Health)
@@ -99,7 +100,7 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 	
 	# check if enemy is "passive" before damaged
 	if attackt == -1:
-		attackt = 0
+		attackt = attackt_start
 		if boss_bar != null:
 			boss_bar.visible = true
 

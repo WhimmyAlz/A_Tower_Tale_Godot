@@ -98,6 +98,7 @@ func set_level_stats():
 		Damage = 45 + (level * 5)
 		Speed = 3
 		attackt = -1
+		attackt_start = 180
 
 		init_boss_bar()
 		update_hp_bar()
@@ -121,7 +122,7 @@ func take_stun(stun_time):
 		stunnedf += int(reduced_stuntime * (shock_stacks/100))
 
 func _physics_process(_delta: float) -> void:
-	if attackt >= 0 and attackt <= 179:
+	if attackt >= 0 and attackt <= 239:
 		if stunnedf == 0:
 			move(animation)
 			attackt += 1
@@ -132,11 +133,11 @@ func _physics_process(_delta: float) -> void:
 	elif attackt == -1 and stunnedf == 0:
 		move(animation)
 		
-	if attackt >= 180 and attackt <= 690:
-		if attackt == 180:
+	if attackt >= 240 and attackt <= 690:
+		if attackt == 240:
 			self.velocity.y = -3000
 
-		if attackt == 200:
+		if attackt == 260:
 			init_attack()
 		attack()
 		
