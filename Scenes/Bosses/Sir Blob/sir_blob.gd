@@ -97,7 +97,7 @@ func set_level_stats():
 		Max_Health = 1000 + (level * 150)
 		Damage = 45 + (level * 5)
 		Speed = 3
-		attackt = -1
+		phase = 0
 		attackt_start = 180
 
 		init_boss_bar()
@@ -151,6 +151,7 @@ func _physics_process(_delta: float) -> void:
 	
 	take_all_status_effects()
 	
+	check_phase()
 	spawn_frames()
 	vert_velocities()
 	move_and_slide()

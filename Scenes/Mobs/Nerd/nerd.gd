@@ -75,9 +75,8 @@ func set_level_stats():
 	if check_stats_unchanged():
 		Health = 80 + (level * 40)
 		Max_Health = 80 + (level * 40)
-		
 		Damage = 25 + (level * 2)
-		attackt = -1
+		phase = 0
 		
 		update_hp_bar()
 	
@@ -144,6 +143,7 @@ func _physics_process(_delta: float) -> void:
 	
 	take_all_status_effects()
 	
+	check_phase()
 	spawn_frames()
 	friction()
 	vert_velocities()

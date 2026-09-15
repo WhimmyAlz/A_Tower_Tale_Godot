@@ -16,6 +16,11 @@ class_name enemyBase
 var mouse_over = false
 var boss_bar = null
 
+var phase = 1
+
+# key = phase, values = next phase health threshold, phase change time
+var phases = {0: [100, 0], 1: [0, 1]}
+
 var damage_text = preload("res://Scenes/Mobs/UI/Damage_text/damage_text.tscn")
 var damage_text_offset = Vector2(0, 0)
 var player = null
@@ -39,7 +44,7 @@ var deathmark_tick_delay = 0
 
 var direction := 1
 var stunnedf := 0 # stunned frames (stunned time shortened)
-var attackt := 0
+var attackt := -1
 var attackt_start := 0
 
 func get_health():
@@ -93,16 +98,22 @@ func move(animation):
 		self.position.x += Speed
 		animation.flip_h = true
 
+func check_phase():
+	if phases[phase][1] > 0:
+
+		if phases[phase][1] == 1:
+			# check if enemy is "passive" before damaged
+			if phase == 1:
+				attackt = attackt_start
+				if boss_bar != null:
+					boss_bar.visible = true
+
+		phases[phase][1] -= 1
+
 func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Color.WHITE):
 	var def = maxf(Defense - defense_pen, 0)
 	var damage =  maxf(dmg - def, 1)
 	var crit = randi_range(0, 100) < crit_chance
-	
-	# check if enemy is "passive" before damaged
-	if attackt == -1:
-		attackt = attackt_start
-		if boss_bar != null:
-			boss_bar.visible = true
 
 	if crit:
 		damage =  maxf((dmg * Global.crit_damage) - def, 1)
@@ -127,6 +138,10 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 	if crit:
 		damageText.set_size(2)
 	get_tree().current_scene.get_node("Damage_text").add_child(damageText)
+
+	# checks if the health threshold has been hit to switch phases
+	if phases[phase][0] != 0 and Health <= Max_Health * (phases[phase][0]/100):
+		phase += 1
 
 	if self.Health == 0:
 		on_death()

@@ -94,6 +94,7 @@ func _physics_process(_delta: float) -> void:
 	
 	take_all_status_effects()
 	
+	check_phase()
 	spawn_frames()
 	friction()
 	vert_velocities()
