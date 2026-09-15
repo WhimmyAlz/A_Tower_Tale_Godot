@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://d30c6k7nniatq"]
+
+[ext_resource type="Texture2D" uid="uid://b77n53jgf8fl" path="res://Scenes/Bosses/Merchant/sprites/turtle_house_attack.png" id="1_45aw4"]
+[ext_resource type="Script" uid="uid://cmc5bj7ge7xes" path="res://Scenes/Bosses/Merchant/merchant.gd" id="1_noapy"]
+[ext_resource type="Texture2D" uid="uid://8eqrfvi0bx2s" path="res://Scenes/Bosses/Merchant/sprites/turtle_house.png" id="2_noapy"]
+[ext_resource type="PackedScene" uid="uid://c7tlcevue5q4l" path="res://Scenes/Mobs/UI/health_bar/health_bar.tscn" id="4_f7bvc"]
+[ext_resource type="PackedScene" uid="uid://d4j32rxliilcg" path="res://Scenes/Mobs/UI/Stats_list/enemy_stats_list.tscn" id="5_epd48"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udlmb"]
+atlas = ExtResource("1_45aw4")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msk1i"]
+atlas = ExtResource("1_45aw4")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7bvc"]
+atlas = ExtResource("1_45aw4")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epd48"]
+atlas = ExtResource("1_45aw4")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ray22"]
+atlas = ExtResource("2_noapy")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdt71"]
+atlas = ExtResource("2_noapy")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkk76"]
+atlas = ExtResource("2_noapy")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aem8j"]
+atlas = ExtResource("2_noapy")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iqy3q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udlmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msk1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7bvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epd48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udlmb")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ray22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdt71")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkk76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aem8j")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw20i"]
+size = Vector2(108, 69)
+
+[node name="Merchant" type="CharacterBody2D" unique_id=2060638562 groups=["enemy"]]
+collision_layer = 4
+input_pickable = true
+script = ExtResource("1_noapy")
+
+[node name="MerchantSprite" type="AnimatedSprite2D" parent="." unique_id=4692878]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_iqy3q")
+animation = &"idle"
+autoplay = "idle"
+frame = 1
+frame_progress = 0.32867956
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=201757636]
+position = Vector2(-11, 121.99999)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_sw20i")
+
+[node name="HealthBar" parent="." unique_id=542308091 instance=ExtResource("4_f7bvc")]
+position = Vector2(-3.000002, -332)
+scale = Vector2(1.25, 1.25)
+
+[node name="damage_text_holder" type="Node2D" parent="." unique_id=1631560093]
+
+[node name="EnemyStatsList" parent="." unique_id=952394224 instance=ExtResource("5_epd48")]
+visible = false
+position = Vector2(-504, 170)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

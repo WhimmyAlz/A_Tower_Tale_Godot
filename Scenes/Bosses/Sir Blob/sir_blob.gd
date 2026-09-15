@@ -4,6 +4,9 @@ var bounce_cd = 60
 var stats_offset = Vector2(-200, -150)
 
 var boss_bar_preload = preload("res://Scenes/Mobs/UI/boss_health_bar/boss_health_bar.tscn")
+var hitnum = 1
+var hitnumcd = 30
+
 
 @onready var animation = $SirBlobSprite
 
@@ -122,6 +125,12 @@ func take_stun(stun_time):
 		stunnedf += int(reduced_stuntime * (shock_stacks/100))
 
 func _physics_process(_delta: float) -> void:
+	if hitnumcd > 0 and hitnum == 0:
+		hitnumcd -= 1
+
+		if hitnumcd == 1:
+			hitnum = 1
+
 	if attackt >= 0 and attackt <= 239:
 		if stunnedf == 0:
 			move(animation)
@@ -180,7 +189,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	var kb_dir
 
-	if collider.is_in_group("player") and collider.is_in_group("attackable"):
+	if collider.is_in_group("player") and collider.is_in_group("attackable") and hitnum == 1:
 		if collider.position.x > position.x:
 			kb_dir = 1
 		else:
@@ -189,3 +198,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		collider.take_damage(Damage, Defense_pen)
 		collider.take_knockback(30, kb_dir)
 		collider.take_stun(30)
+		hitnum = 0
+		hitnumcd = 30

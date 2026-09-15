@@ -29,7 +29,7 @@ func init_status_box(status, status_level, time, color):
 	status_box.set_status_level(status_level)
 	status_box.set_time(time)
 	status_box.set_color(color)
-	$FlowContainer.add_child(status_box)
+	$FlowContainer.call_deferred("add_child", status_box)
 
 func set_status_font_size(status, size):
 	for i in range(self.get_child(0).get_child_count()):

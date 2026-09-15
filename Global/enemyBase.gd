@@ -140,7 +140,7 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 	get_tree().current_scene.get_node("Damage_text").add_child(damageText)
 
 	# checks if the health threshold has been hit to switch phases
-	if phases[phase][0] != 0 and Health <= Max_Health * (phases[phase][0]/100):
+	if phases[phase][0] != 0 and Health <= Max_Health * (float(phases[phase][0])/100):
 		phase += 1
 
 	if self.Health == 0:
