@@ -2,7 +2,7 @@ extends Node
 
 var floors := 0
 
-var player_class := 0
+var player_class := 1
 var player_XP := 0
 var player_XP_REQ := 100
 var player_Level := 1

@@ -103,8 +103,8 @@ func set_level_stats():
 		phase = 0
 		attackt_start = 180
 
-		init_boss_bar()
-		update_hp_bar()
+	init_boss_bar()
+	update_hp_bar()
 
 	set_description()
 	update_display_name("Sir Blob")

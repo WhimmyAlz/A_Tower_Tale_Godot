@@ -72,9 +72,9 @@ color = Color(0, 0, 0, 0.6509804)
 [node name="RichTextLabel" type="RichTextLabel" parent="description" unique_id=1078608742]
 layout_mode = 0
 offset_left = 18.0
-offset_top = 3.0
+offset_top = 8.0
 offset_right = 460.0
-offset_bottom = 509.0
+offset_bottom = 504.0
 scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48

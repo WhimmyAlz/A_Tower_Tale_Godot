@@ -1,16 +1,47 @@
 extends enemyBase
 
 var thorn_preload = preload("res://Scenes/Bosses/Merchant/thorn.tscn")
+var boss_bar_preload = preload("res://Scenes/Mobs/UI/boss_health_bar/boss_health_bar.tscn")
 
 var stats_offset = Vector2(-200, -60)
+static var deaths = 0
 
 @onready var animation = $MerchantSprite
 
+func init_boss_bar():
+	boss_bar = boss_bar_preload.instantiate()
+	boss_bar.visible = false
+	boss_bar.update_name("[b]EL TRUT[/b]")
+	get_tree().current_scene.get_node("Boss_Health_Bars").get_node("boss_hp_container").add_child(boss_bar)
+
+func update_hp_bar():
+	$HealthBar.update_value(Health)
+	$HealthBar.update_max_value(Max_Health)
+	boss_bar.update_value(Health)
+	boss_bar.update_max_value(Max_Health/2)
+
 func set_description():
-	description = "[b]El Trut or something[/b]\nLevel: %d\n\n[i]\"Erm Ackually..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA typical Nerd. Hopefully he doesn't try to talk to me.\n\nDrops:\n100%% 20-30 xp" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]A shell or something[/b]\nLevel: %d\n\n[i]\"Don't think I can't defend my merchandise.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA strange voice is coming from within.\n\nDrops:\n100%% 50-100 xp\n\nBoss perks: 50%% resistance to bleeding and mark of doom." % [Level, Health, Damage, Defense, Defense_pen]
 
 func set_pos(pos):
 	position = pos
+
+func take_bleed():
+	if bleed_stacks >= 1 and bleed_tick_delay == 0:
+		bleed_stacks -= 1
+		bleed_tick_delay = 30
+		take_damage(float(Max_Health/200), 1000, 0, Color.DARK_RED)
+	elif bleed_tick_delay > 0:
+		bleed_tick_delay -= 1
+
+func take_deathmark():
+	if deathmark_stacks == 1000:
+		take_damage(float(Max_Health/10), 1000, 0, Color.BLACK)
+		deathmark_stacks = 0
+	elif deathmark_stacks >= 1 and deathmark_tick_delay == 0:
+		deathmark_stacks = 0
+	elif deathmark_tick_delay > 0:
+		deathmark_tick_delay -= 1
 
 func move(_anim):
 	# move (he doesn't move)
@@ -23,7 +54,8 @@ func thorn():
 	get_tree().current_scene.get_node("Projectiles").add_child(shock_thorn)
 
 func on_death():
-	player.gain_xp(randi_range(20, 30))
+	boss_bar.queue_free()
+	player.gain_xp(randi_range(50, 100))
 
 	queue_free()
 
@@ -36,15 +68,19 @@ func set_level_stats():
 		Health = 1000 + (level * 10)
 		Max_Health = 1000 + (level * 10)
 		Damage = 10 + (level * 0.1)
+		Defense = 20 + (level * 0.2)
 		Defense_pen = 10
+		Weight = 360
 		Speed = 0
 		phase = 0
 		attackt_start = 110
 		phases = {0: [50, 0], 1: [0, 1]}
-		update_hp_bar()
+	
+	init_boss_bar()
+	update_hp_bar()
 	
 	set_description()
-	update_display_name("Merchant")
+	update_display_name("???")
 	$EnemyStatsList.set_offset(stats_offset)
 	$EnemyStatsList.set_size(3)
 	$EnemyStatsList.set_text(description)

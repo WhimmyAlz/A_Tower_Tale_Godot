@@ -10,6 +10,18 @@ var text_size = 48
 func set_description():
 	if status == "Berserk":
 		description = "+10 Strength\n+15 Agility\n+100% Stamina regen\n\nSecond and fourth attacks of the brawler class inflicts fire."
+	elif status == "Stunned":
+		description = "You are currently a vegetable"
+	elif status == "Fire":
+		description = "Lose 1/2 fire level amount of health every 1/4 second. Ignores 10 defense."
+	elif status == "Shock":
+		description = "Stun time can now be added instead of overwritten. Take 1% of stun time for each stack of shock you have."
+	elif status == "Venom":
+		description = "Lose 5 health every 1/6 second. Ignores 25 defense."
+	elif status == "Bleeding":
+		description = "Lose 1% of max health every 1/2 second. Ignores 1000 defense."
+	elif status == "Deathmark":
+		description = "Lose 20% of max health if 1000 stacks are reached. Ignores 1000 defense."
 	
 	$description/RichTextLabel.text = description
 

@@ -54,7 +54,7 @@ func set_level_stats():
 		Speed = 2
 		Damage = 25 + (level * 1)
 		
-		update_hp_bar()
+	update_hp_bar()
 	
 	set_description()
 	if randi_range(1,10) == 1:
