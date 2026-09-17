@@ -8,6 +8,9 @@ var status_box
 var berserk = false
 var berserk_time := 0
 
+var needle_stacks = 0
+var needle_tick_delay := 0
+
 var fire_stacks = 0.0
 var fire_tick_delay := 0
 
@@ -35,7 +38,7 @@ func set_status_font_size(status, size):
 	for i in range(self.get_child(0).get_child_count()):
 		var effect = self.get_child(0).get_child(i-1)
 		if effect.get_status() == status:
-			status_box.set_text_size(size)
+			effect.set_text_size(size)
 
 func check_dupes(status):
 	for i in range(self.get_child(0).get_child_count()):
@@ -58,6 +61,15 @@ func get_berserk():
 func get_shock():
 	return(shock_stacks)
 
+func get_needles():
+	return(needle_stacks)
+
+func remove_needles(stacks):
+	needle_stacks -= stacks
+	if needle_stacks <= 0:
+		needle_tick_delay = 1
+	update_status_box("Needle Stacks", needle_stacks, needle_tick_delay)
+
 
 func set_berserk(time):
 	if berserk == false:
@@ -69,6 +81,17 @@ func set_berserk(time):
 		update_status_box("Berserk", 1, time)
 	berserk = true
 	berserk_time = time
+
+func add_needles(stacks):
+	needle_tick_delay = 6000
+	if needle_stacks <= 10:
+		if needle_stacks > 0:
+			needle_stacks = mini(needle_stacks + stacks, 10)
+			update_status_box("Needle Stacks", needle_stacks, needle_tick_delay)
+		else:
+			needle_stacks = mini(needle_stacks + stacks, 10)
+			init_status_box("Needle Stacks", needle_stacks, needle_tick_delay, Color.WHITE)
+		set_status_font_size("Needle Stacks", 45)
 
 func inflict_fire(stacks):
 	if fire_stacks <= 50:
@@ -126,6 +149,13 @@ func berserk_effect():
 			Global.bonus_agility -= 15
 			Global.stamina_regen_multi -= 1
 			berserk = false
+
+func needle_effects():
+	update_status_box("Needle Stacks", needle_stacks, needle_tick_delay)
+	if needle_stacks >= 1 and needle_tick_delay == 0:
+		needle_stacks = 0
+	elif needle_stacks > 0:
+		needle_tick_delay -= 1
 
 func fire_effect():
 	if fire_stacks >= 1 and fire_tick_delay == 0:

@@ -9,7 +9,7 @@ var ultimate_max_t = 15
 
 var active = false
 
-var needle_stacks = 0
+var consumed_needle_stacks = 0
 var needle
 var wave
 
@@ -25,10 +25,10 @@ var needle_proj = preload("res://Scenes/Player/Classes/needle/needle_proj.tscn")
 func get_description():
 	descriptions = {
 	"attack_1": ["[b]Jab[/b]\n", "A quick stab using a needle at a long melee range. Successful attacks gives you a needle stack. \nHas a 1 in 3 chance to perform a slice. \n[color=dodger_blue]Consumes 15 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)\n" % ((0.1 * Global.power) + (0.1 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(attack1_max_t)/60), "Knockback: 2\n", "Stuntime: 0.1s\n\n", "Slice: deals 5 damage, ignores 10 defense, inflicts [color=red]bleed 1[/color], and gain 1 needle stack\n\n", "Has a 30% chance to inflict [color=red]bleed 1[/color]\n"],
-	"attack_2": ["[b]Needle storm[/b]\n", "Throws out 2-7 needles based on amount of needle stacks you have. Needles have long range and quick speed. \nHas a 1 in 2 chance to perform a slice. \n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x2-7 (0.25%% + 0.1x dexterity)x2-7\n" % ((0.25 * Global.power) + (0.25 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 2 x2-7\n", "Stuntime: 0.25s\n\n", "Slice: deals 5 damage, ignores 10 defense, and inflicts [color=red]bleed 1[/color]\n\n", "Has a 80% chance to inflict [color=red]bleed 1[/color]"],
+	"attack_2": ["[b]Needle storm[/b]\n", "Throws out up to 7 needles based on amount of needle stacks you have. Needles have long range and quick speed. \nHas a 1 in 2 chance to perform a slice. \n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x2-7 (0.25%% + 0.1x dexterity)x2-7\n" % ((0.25 * Global.power) + (0.25 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 2 x2-7\n", "Stuntime: 0.25s\n\n", "Slice: deals 5 damage, ignores 10 defense, and inflicts [color=red]bleed 1[/color]\n\n", "Has a 80% chance to inflict [color=red]bleed 1[/color]"],
 	"attack_3": ["[b]Vex[/b]\n", "Shoots a piercing needle that performs slices as it travels. \n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + 0.2x dexterity)\n" % (Global.power + (0.2 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 2\n", "Stuntime: 0.25s\n\n", "Slice: deals 5 damage, ignores 10 defense, inflicts [color=red]bleed 1[/color], and gain 10% max stamina or 1 needle stack if stamina is full"],
-	"attack_4": ["[b]Venom pins[/b]\n", "Throws two needles which deals abysmal damage, but inflicts heavy venom. Needles have increased piercing based on needle stacks. \n[color=dodger_blue]Consumes 30 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)x2\n" % ((0.1 * Global.power) + (0.1 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 2 x2\n", "Stuntime: 0.25s\n\n", "Inflicts [color=purple]venom 6[/color]"],
-	"attack_5": ["[b]Needle therapy[/b]\n", "Throws out a burst of 20 needles with a large fan-like spread, each dealing low damage but inflicting shock. Consumes needle stacks to make the spread narrower.\n[color=dodger_blue]Consumes 70 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)\n" % (0.1 * Global.power + 0.05 * Global.dexterity), "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0.33s\n\n", "Inflicts [color=yellow]shock 20[/color]"],
+	"attack_4": ["[b]Venom pins[/b]\n", "Throws two needles which deals abysmal damage, but inflicts heavy venom. Consumes up to 3 needle stacks to increase piercing. \n[color=dodger_blue]Consumes 30 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)x2\n" % ((0.1 * Global.power) + (0.1 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 2 x2\n", "Stuntime: 0.25s\n\n", "Inflicts [color=purple]venom 6[/color]"],
+	"attack_5": ["[b]Needle therapy[/b]\n", "Throws out a burst of 20 needles with a large fan-like spread, each dealing low damage but inflicting shock. Consumes up to 5 needle stacks to make the spread narrower.\n[color=dodger_blue]Consumes 70 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)\n" % (0.1 * Global.power + 0.05 * Global.dexterity), "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0.33s\n\n", "Inflicts [color=yellow]shock 20[/color]"],
 	"ultimate": ["[b]Vein cutter[/b]\n", "Quickly dashes forwards while holding out a giant needle infront of you which performs slices on the needle's end. Might hit multiple times.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (125%% + 0.5x dexterity)\n" % ((1.25 * Global.power) + (0.5 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 50\n", "Stuntime: 1s\n\n", "Slice: deals 10 damage, ignores 10 defense, and inflicts [color=red]bleed 1[/color], and gain 1 needle stack"],
 	}
 	return(descriptions)
@@ -38,10 +38,6 @@ func set_dir():
 		class_anim.flip_h = true
 	else:
 		class_anim.flip_h = false
-
-func add_needle_stacks(amount):
-	if needle_stacks < 5:
-		needle_stacks = mini(needle_stacks + amount, 5)
 
 func init_attack_1():
 	if Global.stamina >= 15:
@@ -101,6 +97,8 @@ func init_attack_2():
 		class_anim.play("spike")
 		Global.attack2t = 1
 		player.set_attacking(true)
+		
+		consumed_needle_stacks = mini(status.get_needles(), 5)
 
 func attack_2():
 	if Global.attack2t >= 1 and Global.attack2t <= 25:
@@ -108,7 +106,7 @@ func attack_2():
 		player.set_speed_penalty(0.5)
 		
 		# spawns needle
-		if between(Global.attack2t, 1, 2 + needle_stacks):
+		if between(Global.attack2t, 1, 2 + consumed_needle_stacks):
 			needle = needle_proj.instantiate()
 			needle.set_player(player)
 			needle.set_damage((0.25 * Global.power) + (0.1 * Global.dexterity))
@@ -127,7 +125,7 @@ func attack_2():
 			get_tree().current_scene.get_node("Projectiles").add_child(needle)
 
 		if Global.attack2t == 25:
-			needle_stacks = 0
+			status.remove_needles(consumed_needle_stacks)
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)
@@ -194,6 +192,8 @@ func init_attack_4():
 		class_anim.play("spike")
 		Global.attack4t = 1
 		player.set_attacking(true)
+		
+		consumed_needle_stacks = mini(status.get_needles(), 3)
 
 func attack_4():
 	if Global.attack4t >= 1 and Global.attack4t <= 20:
@@ -210,7 +210,7 @@ func attack_4():
 			needle.set_speed(100, 0)
 			needle.set_size(1.5)
 			needle.set_venom(6)
-			needle.set_hitnum(1 + needle_stacks)
+			needle.set_hitnum(1 + consumed_needle_stacks)
 			needle.set_ult_charge_amount(40)
 			needle.set_stuntime(15)
 			needle.set_lifetime(20)
@@ -218,7 +218,7 @@ func attack_4():
 			get_tree().current_scene.get_node("Projectiles").add_child(needle)
 
 		if Global.attack4t == 20:
-			needle_stacks = 0
+			status.remove_needles(consumed_needle_stacks)
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)
@@ -242,13 +242,15 @@ func init_attack_5():
 		class_anim.play("spike")
 		Global.attack5t = 1
 		player.set_attacking(true)
+		
+		consumed_needle_stacks = mini(status.get_needles(), 5)
 
 func attack_5():
 	if Global.attack5t >= 1 and Global.attack5t <= 20:
 		class_anim.speed_scale = 4
 		player.set_speed_penalty(0.5)
 		
-		var v_speed = randi_range(-80 + (15 * needle_stacks), 80 - (15 * needle_stacks))
+		var v_speed = randi_range(-80 + (15 * consumed_needle_stacks), 80 - (15 * consumed_needle_stacks))
 		
 		# spawns needle
 		if between(Global.attack5t, 1, 20):
@@ -271,7 +273,7 @@ func attack_5():
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)
-			needle_stacks = 0
+			status.remove_needles(consumed_needle_stacks)
 
 	if Global.attack5t >= 1:
 		Global.attack5t += 1

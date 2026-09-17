@@ -143,7 +143,7 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 	if phases[phase][0] != 0 and Health <= Max_Health * (float(phases[phase][0])/100):
 		phase += 1
 
-	if self.Health == 0:
+	if self.Health <= 0:
 		on_death()
 
 func take_knockback(kb, dir):

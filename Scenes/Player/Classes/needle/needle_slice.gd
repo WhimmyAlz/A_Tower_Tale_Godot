@@ -13,6 +13,7 @@ var bleed_stacks = 1
 var vex_regen = false
 
 var player
+@onready var status = player.get_status_effect()
 @onready var needle_node = player.get_node("Class_Actions").get_node("needle")
 
 func set_vex_regen(value):
@@ -61,8 +62,8 @@ func _physics_process(_delta: float) -> void:
 		if collider.is_in_group("attackable") and collider.is_in_group("enemy") and hitnum >= 1:
 			if vex_regen and Global.stamina != Global.max_stamina:
 				player.gain_stamina(Global.max_stamina/10)
-			else:
-				needle_node.add_needle_stacks(1)
+			elif vex_regen:
+				status.add_needles(1)
 			collider.take_damage(damage, defense_pen, 0)
 			collider.inflict_bleed(1)
 			hitnum -= 1

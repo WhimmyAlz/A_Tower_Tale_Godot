@@ -24,6 +24,7 @@ var slicer = false
 var vex_regen = false
 
 var player
+@onready var status = player.get_status_effect()
 @onready var needle_node = player.get_node("Class_Actions").get_node("needle")
 
 var slice_preload = preload("res://Scenes/Player/Classes/needle/needle_slice.tscn")
@@ -159,7 +160,8 @@ func _on_body_entered(body: Node2D) -> void:
 		collider.take_knockback(knockback, direction)
 		collider.take_knockbackY(knockbackY)
 		collider.take_stun(stuntime)
-		needle_node.add_needle_stacks(needle_stack_amount)
+		if needle_stack_amount > 0:
+			status.add_needles(1)
 
 		if slices:
 			init_slice()
