@@ -2,7 +2,7 @@ extends Node
 
 var floors := 0
 
-var player_class := 1
+var player_class := 0
 var player_XP := 0
 var player_XP_REQ := 100
 var player_Level := 1
@@ -40,8 +40,8 @@ var crit_chance_adds := 0.0
 var crit_damage := 1.25 # damage multi from crits
 var crit_damage_adds := 0 # damage multi from crits
 
-var player_attacks = 2
-var ultimate_attack = 1
+var player_attacks = 1
+var ultimate_attack = 0
 # cooldowns
 var attack1t := 0
 var attack2t := 0

@@ -129,6 +129,7 @@ func spawn(command):
 	var skelebone = preload("res://Scenes/Mobs/Skelebone/skelebone.tscn")
 	var nerd = preload("res://Scenes/Mobs/Nerd/nerd.tscn")
 	var sir_blob = preload("res://Scenes/Bosses/Sir Blob/sir_blob.tscn")
+	var merchant = preload("res://Scenes/Bosses/Merchant/merchant.tscn")
 	
 	if correct_args:
 		var valid = command[2].is_valid_int()
@@ -142,6 +143,8 @@ func spawn(command):
 				spawn_enemy(skelebone, command[2])
 			elif command[1] == "sir_blob":
 				spawn_enemy(sir_blob, command[2])
+			elif command[1] == "merchant":
+				spawn_enemy(merchant, command[2])
 			else:
 				log_text("Enemy name not found.")
 				return(false)

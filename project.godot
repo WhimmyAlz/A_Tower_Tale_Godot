@@ -33,6 +33,7 @@ player=""
 enemy=""
 attackable=""
 walls=""
+merchant=""
 
 [input]
 

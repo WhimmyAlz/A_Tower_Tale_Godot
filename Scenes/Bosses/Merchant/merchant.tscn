@@ -86,7 +86,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sw20i"]
 size = Vector2(108, 69)
 
-[node name="Merchant" type="CharacterBody2D" unique_id=2060638562 groups=["enemy"]]
+[node name="Merchant" type="CharacterBody2D" unique_id=2060638562 groups=["enemy", "merchant"]]
 collision_layer = 4
 input_pickable = true
 script = ExtResource("1_noapy")

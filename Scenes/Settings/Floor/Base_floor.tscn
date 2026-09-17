@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://csbsd546ckjx0" path="res://Scenes/Settings/Floor/Floor parts/Border_walls.tscn" id="5_p28ks"]
 [ext_resource type="PackedScene" uid="uid://lmxe1uorsl4x" path="res://Scenes/Settings/Floor/Floor parts/Border_wall_ceiling.tscn" id="6_7qsdb"]
 [ext_resource type="PackedScene" uid="uid://daaduesc7yxwm" path="res://Scenes/Settings/Background/background.tscn" id="6_u13yy"]
-[ext_resource type="PackedScene" uid="uid://d30c6k7nniatq" path="res://Scenes/Bosses/Merchant/merchant.tscn" id="7_4w8c0"]
 [ext_resource type="PackedScene" uid="uid://cnpq0jkyhjr73" path="res://Scenes/Player/Body/player.tscn" id="7_t2lht"]
 [ext_resource type="PackedScene" uid="uid://b8fva8sdhjebr" path="res://Scenes/Mobs/Nerd/nerd.tscn" id="9_4w8c0"]
 
@@ -93,6 +92,3 @@ offset_right = 762.0
 offset_bottom = 1808.0
 mouse_filter = 2
 theme_override_constants/separation = 200
-
-[node name="Merchant" parent="." unique_id=2060638562 instance=ExtResource("7_4w8c0")]
-position = Vector2(-670, 386)

@@ -12,6 +12,13 @@ func set_pos(vector2):
 
 func progress_floor():
 	Global.floors += 1
+	
+	var enemy_list = get_tree().current_scene.get_node("Enemies")
+	
+	for i in range(enemy_list.get_child_count()):
+		if enemy_list.get_child(i).is_in_group("merchant"):
+			enemy_list.get_child(i).queue_free()
+	
 	base_floor.bg_add_y_pos()
 	init_floor_mobs(Global.floors)
 
