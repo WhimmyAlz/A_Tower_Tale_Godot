@@ -21,10 +21,13 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health/2)
 
 func set_description():
-	description = "[b]A shell or something[/b]\nLevel: %d\n\n[i]\"Don't think I can't defend my merchandise.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA strange voice is coming from within.\n\nDrops:\n100%% 50-100 xp\n\nBoss perks: 50%% resistance to bleeding and mark of doom." % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]A shell or something[/b]\nLevel: %d\n\n[i]\"Don't think I can't defend my merchandise.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA strange voice is coming from within.\n\nDrops:\n100%% 50-100 xp\n\nBoss perks: Immune to knockback and 50%% resistance to bleeding and mark of doom." % [Level, Health, Damage, Defense, Defense_pen]
 
 func set_pos(pos):
 	position = pos
+
+func take_knockback(_kb, _dir):
+	pass
 
 func take_bleed():
 	if bleed_stacks >= 1 and bleed_tick_delay == 0:

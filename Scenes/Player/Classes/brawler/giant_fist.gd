@@ -9,6 +9,7 @@ func init_shockwave():
 	shockwave.set_damage(damage * 0.75)
 	shockwave.set_pos(Vector2(position.x, 850))
 	get_tree().current_scene.get_node("Projectiles").call_deferred("add_child", shockwave)
+	get_tree().current_scene.get_node("Player").set_screenshake(10)
 
 func _ready() -> void:
 	fix_rotation()

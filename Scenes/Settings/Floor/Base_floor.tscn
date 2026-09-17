@@ -62,9 +62,6 @@ position = Vector2(-52, 0)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1301696289]
 
-[node name="Merchant" parent="Enemies" unique_id=2060638562 instance=ExtResource("7_4w8c0")]
-position = Vector2(-670, 386)
-
 [node name="Nerd" parent="Enemies" unique_id=2051148031 instance=ExtResource("9_4w8c0")]
 position = Vector2(789, 375)
 
@@ -96,3 +93,6 @@ offset_right = 762.0
 offset_bottom = 1808.0
 mouse_filter = 2
 theme_override_constants/separation = 200
+
+[node name="Merchant" parent="." unique_id=2060638562 instance=ExtResource("7_4w8c0")]
+position = Vector2(-670, 386)

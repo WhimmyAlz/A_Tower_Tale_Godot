@@ -4,7 +4,6 @@ var speed := Vector2(0, 0)
 var size := 2
 var lifetime := 10
 var direction := Global.player_dir
-var angle = 0
 
 var hitnum = 1
 var damage = 15
@@ -111,7 +110,7 @@ func set_lifetime(time):
 	lifetime = time
 
 func set_angle(value):
-	angle = value
+	rotation = value
 
 func set_bleed_chance(value):
 	bleed_chance = value
@@ -129,7 +128,6 @@ func needle_stacks(value):
 	needle_stack_amount = value
 
 func fix_rotation():
-	self.rotation = angle
 	if direction == -1:
 		$AnimatedSprite2D.flip_h = true
 	elif direction == 1:
@@ -162,7 +160,7 @@ func _on_body_entered(body: Node2D) -> void:
 		collider.take_knockbackY(knockbackY)
 		collider.take_stun(stuntime)
 		needle_node.add_needle_stacks(needle_stack_amount)
-		
+
 		if slices:
 			init_slice()
 		if venom_stacks > 0:
