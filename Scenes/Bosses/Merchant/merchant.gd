@@ -3,7 +3,7 @@ extends enemyBase
 var thorn_preload = preload("res://Scenes/Bosses/Merchant/thorn.tscn")
 var boss_bar_preload = preload("res://Scenes/Mobs/UI/boss_health_bar/boss_health_bar.tscn")
 
-var stats_offset = Vector2(-200, -60)
+var stats_offset = Vector2(150, -60)
 static var deaths = 0
 
 @onready var animation = $MerchantSprite
@@ -128,7 +128,7 @@ func _physics_process(_delta: float) -> void:
 func update_description():
 	set_description()
 	$EnemyStatsList.set_text(description)
-	$EnemyStatsList.fix_pos(direction)
+	$EnemyStatsList.fix_pos()
 
 func _on_mouse_entered() -> void:
 	$EnemyStatsList.visible = true

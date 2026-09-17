@@ -2,7 +2,7 @@ extends enemyBase
 
 var wave_preload = preload("res://Scenes/Mobs/Nerd/nerd_punch_wave.tscn")
 
-var stats_offset = Vector2(-200, -60)
+var stats_offset = Vector2(200, -60)
 
 static var deaths = 0
 
@@ -159,7 +159,7 @@ func _physics_process(_delta: float) -> void:
 func update_description():
 	set_description()
 	$EnemyStatsList.set_text(description)
-	$EnemyStatsList.fix_pos(direction)
+	$EnemyStatsList.fix_pos()
 
 func _on_mouse_entered() -> void:
 	$EnemyStatsList.visible = true

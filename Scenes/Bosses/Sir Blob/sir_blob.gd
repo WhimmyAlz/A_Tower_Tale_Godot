@@ -1,7 +1,7 @@
 extends enemyBase
 
 var bounce_cd = 60
-var stats_offset = Vector2(-200, -150)
+var stats_offset = Vector2(200, -150)
 
 var boss_bar_preload = preload("res://Scenes/Mobs/UI/boss_health_bar/boss_health_bar.tscn")
 var hitnum = 1
@@ -171,10 +171,7 @@ func _physics_process(_delta: float) -> void:
 func update_description():
 	set_description()
 	$EnemyStatsList.set_text(description)
-	if direction == 0:
-		$EnemyStatsList.fix_pos(1)
-	else:
-		$EnemyStatsList.fix_pos(direction)
+	$EnemyStatsList.fix_pos()
 
 func _on_mouse_entered() -> void:
 	$EnemyStatsList.visible = true

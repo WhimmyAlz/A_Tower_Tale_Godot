@@ -2,7 +2,7 @@ extends enemyBase
 
 var bone = preload("res://Scenes/Mobs/Skelebone/bone.tscn")
 
-var stats_offset = Vector2(60, -20)
+var stats_offset = Vector2(50, -20)
 
 var skeleton_animation
 
@@ -106,7 +106,7 @@ func _physics_process(_delta: float) -> void:
 func update_description():
 	set_description()
 	$EnemyStatsList.set_text(description)
-	$EnemyStatsList.fix_pos(direction)
+	$EnemyStatsList.fix_pos()
 
 func _on_mouse_entered() -> void:
 	$EnemyStatsList.visible = true
