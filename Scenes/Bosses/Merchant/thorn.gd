@@ -8,6 +8,7 @@ var damage = 15
 var final_damage = damage * 0.1
 var defense_pen = 10
 
+var speed_multi = 1
 var velocity_vector = Vector2(randf_range(-2, 2), randf_range(-1, 1))
 var stun_time = 90
 
@@ -29,6 +30,10 @@ func set_final_damage(value):
 
 func set_defense_pen(value):
 	defense_pen = value
+
+func set_speed_multi(value):
+	speed_multi = value
+	velocity_vector = Vector2(randf_range(-2 * (1 + 0.1 * speed_multi), 2 * speed_multi), randf_range(-1, 1))
 
 func _ready() -> void:
 	self.scale.x = size
@@ -65,7 +70,6 @@ func _physics_process(_delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	var collider = body
-	
 	if collider.is_in_group("player") and collider.is_in_group("attackable"):
 		collider.take_damage(final_damage, defense_pen)
 		collider.take_knockback(0, 1)

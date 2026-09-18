@@ -112,7 +112,13 @@ func check_phase():
 		phases[phase][1] -= 1
 
 func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Color.WHITE):
-	var def = maxf(Defense - defense_pen, 0)
+	var def
+
+	if Defense > 0:
+		def = maxf(Defense - defense_pen, 0)
+	else:
+		def = Defense
+
 	var damage =  maxf(dmg - def, 1)
 	var crit = randi_range(0, 100) < crit_chance
 
@@ -126,7 +132,7 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 	else: 
 		damage = snapped(damage, 0.1)
 
-	self.Health = maxf(self.Health - damage, 0)
+	self.Health = maxf(self.Health - damage, 0.0)
 	$HealthBar.update_value(Health)
 	if boss_bar != null:
 		boss_bar.update_value(Health)
@@ -143,6 +149,7 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 	# checks if the health threshold has been hit to switch phases
 	if phases[phase][0] != 0 and Health <= Max_Health * (float(phases[phase][0])/100):
 		phase += 1
+		check_phase()
 
 	if self.Health <= 0:
 		on_death()

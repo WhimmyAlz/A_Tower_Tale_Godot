@@ -54,11 +54,36 @@ func move(_anim):
 	# move (he doesn't move)
 	animation.play("idle")
 
-func thorn():
+func thorn(spd):
 	var shock_thorn = thorn_preload.instantiate()
 	shock_thorn.set_pos(position + Vector2(220, -35))
 	shock_thorn.set_damage(Damage)
+	shock_thorn.set_speed_multi(spd)
 	get_tree().current_scene.get_node("Projectiles").add_child(shock_thorn)
+
+func check_phase():
+	if phases[phase][1] > 0:
+		
+		if phase == 2:
+			if Health <= 0:
+				Health = 1.0
+
+			attackt = 0
+			Health += (Max_Health * 0.0025)
+			update_hp_bar()
+			remove_from_group("attackable")
+		
+		if phases[phase][1] == 1:
+			# check if enemy is "passive" before damaged
+			if phase == 1:
+				attackt = attackt_start
+				if boss_bar != null:
+					boss_bar.visible = true
+			if phase == 2:
+				add_to_group("attackable")
+
+		phases[phase][1] -= 1
+
 
 func on_death():
 	boss_bar.queue_free()
@@ -81,7 +106,7 @@ func set_level_stats():
 		Speed = 0
 		phase = 0
 		attackt_start = 110
-		phases = {0: [50, 0], 1: [0, 1]}
+		phases = {0: [50, 0], 1: [1, 1], 2 : [0, 200]}
 		Name = "???"
 	
 	init_boss_bar()
@@ -98,28 +123,52 @@ func set_dto():
 	damage_text_offset = Vector2(-40, -300)
 
 func _physics_process(_delta: float) -> void:
-	if attackt >= 0 and attackt <= 119:
-		if stunnedf == 0:
-			move(animation)
-			attackt += 1
-		else:
-			animation.play("idle")
-			animation.pause()
-			stunnedf -= 1
-		
-	elif attackt >= 120 and attackt <= 170:
-		if attackt == 120:
-			animation.play("attack")
-		
-		if attackt == 160:
-			thorn()
+	if phase == 1:
+		if attackt >= 0 and attackt <= 119:
+			if stunnedf == 0:
+				move(animation)
+				attackt += 1
+			else:
+				animation.play("idle")
+				animation.pause()
+				stunnedf -= 1
+			
+		elif attackt >= 120 and attackt <= 170:
+			if attackt == 120:
+				animation.play("attack")
+			
+			if attackt == 160:
+				thorn(1)
 
-		if attackt >= 162 and attackt <= 166 and attackt % 2 == 0 and randi_range(0, 1) == 1:
-			thorn()
-	
-		attackt += 1
-	if attackt >= 170:
-		attackt = 0
+			if attackt >= 162 and attackt <= 166 and attackt % 2 == 0 and randi_range(0, 1) == 1:
+				thorn(1)
+		
+			attackt += 1
+		if attackt >= 170:
+			attackt = 0
+	elif phase == 2:
+		if attackt >= 0 and attackt <= 119:
+			if stunnedf == 0:
+				move(animation)
+				attackt += 1
+			else:
+				animation.play("idle")
+				animation.pause()
+				stunnedf -= 1
+			
+		elif attackt >= 120 and attackt <= 170:
+			if attackt == 120:
+				animation.play("attack")
+			
+			if attackt == 160:
+				thorn(3)
+
+			if attackt >= 160 and attackt <= 169 and attackt % 2 == 0 and randi_range(0, 1) == 1:
+				thorn(20)
+		
+			attackt += 1
+		if attackt >= 170:
+			attackt = 0
 
 	take_all_status_effects()
 	check_phase()
