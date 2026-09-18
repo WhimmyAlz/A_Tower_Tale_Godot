@@ -2,7 +2,7 @@ extends Node
 
 var floors := 0
 
-var player_class := 0
+var player_class := "brawler"
 var player_XP := 0
 var player_XP_REQ := 100
 var player_Level := 1
@@ -150,9 +150,9 @@ func _ready() -> void:
 	health = max_health
 
 func _physics_process(_delta: float):
-	if player_class == 0:
+	if player_class == "brawler":
 		class_stats_brawler()
-	elif player_class == 1:
+	elif player_class == "needle":
 		class_stats_needle()
-	elif player_class == 10:
+	elif player_class == "draco":
 		class_stats_draco()

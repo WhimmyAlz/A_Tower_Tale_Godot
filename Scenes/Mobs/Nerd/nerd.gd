@@ -79,11 +79,12 @@ func set_level_stats():
 		Max_Health = 80 + (level * 40)
 		Damage = 25 + (level * 2)
 		phase = 0
+		Name = "Nerd"
 	
 	update_hp_bar()
 
 	set_description()
-	update_display_name("Nerd")
+	update_display_name(Name)
 	add_num_fact()
 	$EnemyStatsList.set_offset(stats_offset)
 	$EnemyStatsList.set_size(2.8)

@@ -8,10 +8,11 @@ static var deaths = 0
 
 @onready var animation = $MerchantSprite
 
+@export var Boss_bar_name = "EL TRUT"
 func init_boss_bar():
 	boss_bar = boss_bar_preload.instantiate()
 	boss_bar.visible = false
-	boss_bar.update_name("[b]EL TRUT[/b]")
+	boss_bar.update_name("[b]%s[/b]" % Boss_bar_name)
 	get_tree().current_scene.get_node("Boss_Health_Bars").get_node("boss_hp_container").add_child(boss_bar)
 
 func update_hp_bar():
@@ -27,6 +28,9 @@ func set_pos(pos):
 	position = pos
 
 func take_knockback(_kb, _dir):
+	pass
+
+func take_knockbackY(_kb):
 	pass
 
 func take_bleed():
@@ -78,12 +82,13 @@ func set_level_stats():
 		phase = 0
 		attackt_start = 110
 		phases = {0: [50, 0], 1: [0, 1]}
+		Name = "???"
 	
 	init_boss_bar()
 	update_hp_bar()
 	
 	set_description()
-	update_display_name("???")
+	update_display_name(Name)
 	$EnemyStatsList.set_offset(stats_offset)
 	$EnemyStatsList.set_size(3)
 	$EnemyStatsList.set_text(description)

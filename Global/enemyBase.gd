@@ -13,6 +13,7 @@ class_name enemyBase
 @export var Defense_pen := 0
 
 @export var description  = "Blank"
+@export var Name = "Blank"
 var mouse_over = false
 var boss_bar = null
 

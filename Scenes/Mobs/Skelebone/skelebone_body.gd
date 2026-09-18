@@ -53,14 +53,16 @@ func set_level_stats():
 		Defense = 10
 		Speed = 2
 		Damage = 25 + (level * 1)
+		if randi_range(1,10) == 1:
+			Name = "Skelly"
+		else:
+			Name = "Skelebone"
 		
 	update_hp_bar()
 	
 	set_description()
-	if randi_range(1,10) == 1:
-		update_display_name("Skelly")
-	else:
-		update_display_name("Skelebone")
+
+	update_display_name(Name)
 	$EnemyStatsList.set_offset(stats_offset)
 	$EnemyStatsList.set_size(0.8)
 	$EnemyStatsList.set_text(description)

@@ -13,19 +13,19 @@ func set_class_items():
 
 	class_node.set_active(false)
 
-	if player_class == 0:
+	if player_class == "brawler":
 		class_node = $brawler
 		animation = $brawler/skills
 		hat = $brawler/hat
 		$brawler.visible = true
 
-	elif player_class == 1:
+	elif player_class == "needle":
 		class_node = $needle
 		animation = $needle/skills
 		hat = $needle/hat
 		$needle.visible = true
 
-	elif player_class == 10:
+	elif player_class == "draco":
 		# implement later
 		class_node = $brawler
 		animation = $brawler/skills

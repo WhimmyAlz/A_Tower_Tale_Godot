@@ -7,13 +7,14 @@ var boss_bar_preload = preload("res://Scenes/Mobs/UI/boss_health_bar/boss_health
 var hitnum = 1
 var hitnumcd = 30
 
-
 @onready var animation = $SirBlobSprite
+
+@export var Boss_bar_name = "SIR BLOB"
 
 func init_boss_bar():
 	boss_bar = boss_bar_preload.instantiate()
 	boss_bar.visible = false
-	boss_bar.update_name("[b]SIR BLOB[/b]")
+	boss_bar.update_name("[b]%s[/b]" % Boss_bar_name)
 	get_tree().current_scene.get_node("Boss_Health_Bars").get_node("boss_hp_container").add_child(boss_bar)
 
 func update_hp_bar():
@@ -102,12 +103,13 @@ func set_level_stats():
 		Speed = 3
 		phase = 0
 		attackt_start = 180
+		Name = "Sir Blob"
 
 	init_boss_bar()
 	update_hp_bar()
 
 	set_description()
-	update_display_name("Sir Blob")
+	update_display_name(Name)
 	$EnemyStatsList.set_offset(stats_offset)
 	$EnemyStatsList.set_size(2.8)
 	$EnemyStatsList.set_text(description)
