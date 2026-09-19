@@ -16,7 +16,7 @@ func add_enemy(emy):
 
 func spawn_merchant():
 	var merchant = merchant_preload.instantiate()
-	merchant.set_pos(Vector2(-700, 400))
+	merchant.set_pos(Vector2(-700, 670))
 	merchant.Level = Global.floors
 	add_enemy(merchant)
 

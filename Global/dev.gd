@@ -234,35 +234,40 @@ func kill_mobs(command):
 			log_text("Error: Bad argument type. Requires valid index Argument. Use fetchMobs command for indexes or use All argument.")
 			return(false)
 
+## runs the same command x amount of times
 func mass(command):
 	var correct_args = arg_check(command, 2)
 	
 	var valid_arg1 = false
 	var valid_arg2 = false
 	
-	if command[2].is_valid_int():
-		if int(command[2]) > 1:
-			valid_arg1 = true
-	
-	if command[1].begins_with("[") and command[1].ends_with("]"):
-		valid_arg2 = true
-	
-	if correct_args and valid_arg1 and valid_arg2:
-		var cmd = command[1]
-
-		cmd = cmd.trim_prefix("[").trim_suffix("]")
-		cmd = cmd.split(",")
+	if correct_args:
+		if command[2].is_valid_int():
+			if int(command[2]) > 1:
+				valid_arg2 = true
 		
-		for i in range(int(command[2])):
-			command_usage(cmd)
+		if command[1].begins_with("[") and command[1].ends_with("]"):
+			valid_arg1 = true
+		
+		if valid_arg1 and valid_arg2:
+			var cmd = command[1]
+
+			cmd = cmd.trim_prefix("[").trim_suffix("]")
+			cmd = cmd.split(",")
 			
-		return(true)
+			for i in range(int(command[2])):
+				command_usage(cmd)
+			return(true)
+		else:
+			if not valid_arg1:
+				log_text("Argument 1 was incorrect. Requires (list) argument.")
+			if not valid_arg2:
+				log_text("Argument 2 was incorrect. Requires (int>1) argument")
 	else:
-		log_text("Error: Bad argument type. Requires (list) argument and (int) argument.\nFormat: /mass [command,arg1,arg2,...] amount")
-		if not valid_arg1:
-			log_text("Argument 1 was incorrect")
-		if not valid_arg2:
-			log_text("Argument 2 was incorrect")
+		if not correct_args:
+			log_text("Error: Bad argument type. Requires (list) argument and (int) argument.\nFormat: /mass [command,arg1,arg2,...] amount.\nReminder: Argument 1 (list) should not contain spaces, use commas to seperate arguments")
+
+			
 		return(false)
 
 func _ready() -> void:
