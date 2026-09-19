@@ -6,6 +6,8 @@ var boss_bar_preload = preload("res://Scenes/Mobs/UI/boss_health_bar/boss_health
 var stats_offset = Vector2(150, -60)
 static var deaths = 0
 
+var entered
+
 @onready var animation = $MerchantSprite
 
 @export var Boss_bar_name = "EL TRUT"
@@ -123,6 +125,12 @@ func set_dto():
 	damage_text_offset = Vector2(-40, -300)
 
 func _physics_process(_delta: float) -> void:
+	if phase == 0 and entered and Input.is_action_just_pressed("interact"):
+		if $Shop.visible:
+			$Shop.visible = false
+		else:
+			$Shop.visible = true
+			
 	if phase == 1:
 		if attackt >= 0 and attackt <= 119:
 			if stunnedf == 0:
@@ -191,3 +199,14 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	mouse_over = false
 	$EnemyStatsList.visible = false
+
+func _on_shop_colision_body_entered(body: Node2D) -> void:
+	var collider = body
+	if collider.is_in_group("player"):
+		entered = true
+		print("true")
+
+func _on_shop_colision_body_exited(body: Node2D) -> void:
+	var collider = body
+	if collider.is_in_group("player"):
+		entered = false

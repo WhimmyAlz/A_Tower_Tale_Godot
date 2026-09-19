@@ -1,7 +1,7 @@
 extends Node2D
 
 var console_text
-var command_lib = {"stats" : 0, "setHealth" : 1, "setStamina" : 1, "spawn" : 2, "help" : 0, "fetchMobs" : 0, "killMobs" : 1} # has a command name then a 
+var command_lib = {"stats" : 0, "setHealth" : 1, "setStamina" : 1, "spawn" : 2, "help" : 0, "fetchMobs" : 0, "killMobs" : 1, "mass" : 2} # has a command name then a 
 var auto_close = true
 
 ## Closes and clears the console
@@ -69,7 +69,7 @@ func log_text(txt):
 ## Contains many commands that are ran based on whichever argument was provided
 func command_usage(txt):
 	var command = txt
-	
+	print(command)
 	if command[0] == "stats":
 		return(stats(command))
 	elif command[0] == "setHealth":
@@ -84,6 +84,8 @@ func command_usage(txt):
 		return(fetch_mobs(command))
 	elif command[0] == "killMobs":
 		return(kill_mobs(command))
+	elif command[0] == "mass":
+		return(mass(command))
 
 ## returns true or false based on correct amounts of arguments
 func arg_check(commands, args):
@@ -231,6 +233,37 @@ func kill_mobs(command):
 		else:
 			log_text("Error: Bad argument type. Requires valid index Argument. Use fetchMobs command for indexes or use All argument.")
 			return(false)
+
+func mass(command):
+	var correct_args = arg_check(command, 2)
+	
+	var valid_arg1 = false
+	var valid_arg2 = false
+	
+	if command[2].is_valid_int():
+		if int(command[2]) > 1:
+			valid_arg1 = true
+	
+	if command[1].begins_with("[") and command[1].ends_with("]"):
+		valid_arg2 = true
+	
+	if correct_args and valid_arg1 and valid_arg2:
+		var cmd = command[1]
+
+		cmd = cmd.trim_prefix("[").trim_suffix("]")
+		cmd = cmd.split(",")
+		
+		for i in range(int(command[2])):
+			command_usage(cmd)
+			
+		return(true)
+	else:
+		log_text("Error: Bad argument type. Requires (list) argument and (int) argument.\nFormat: /mass [command,arg1,arg2,...] amount")
+		if not valid_arg1:
+			log_text("Argument 1 was incorrect")
+		if not valid_arg2:
+			log_text("Argument 2 was incorrect")
+		return(false)
 
 func _ready() -> void:
 	$Console_log.scroll_following = true

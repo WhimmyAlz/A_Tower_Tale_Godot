@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://8eqrfvi0bx2s" path="res://Scenes/Bosses/Merchant/sprites/turtle_house.png" id="2_noapy"]
 [ext_resource type="PackedScene" uid="uid://c7tlcevue5q4l" path="res://Scenes/Mobs/UI/health_bar/health_bar.tscn" id="4_f7bvc"]
 [ext_resource type="PackedScene" uid="uid://d4j32rxliilcg" path="res://Scenes/Mobs/UI/Stats_list/enemy_stats_list.tscn" id="5_epd48"]
+[ext_resource type="Script" uid="uid://bajnrcqqwyyx3" path="res://Scenes/Bosses/Merchant/shop.gd" id="6_epd48"]
+[ext_resource type="Texture2D" uid="uid://dodjhlk64b3ep" path="res://Scenes/Bosses/Merchant/sprites/shop/bg_and_turtle.png" id="6_f7bvc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udlmb"]
 atlas = ExtResource("1_45aw4")
@@ -86,6 +88,43 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sw20i"]
 size = Vector2(108, 69)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epd48"]
+size = Vector2(542, 346)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqy3q"]
+atlas = ExtResource("6_f7bvc")
+region = Rect2(0, 0, 600, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw20i"]
+atlas = ExtResource("6_f7bvc")
+region = Rect2(0, 0, 600, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jev6w"]
+atlas = ExtResource("6_f7bvc")
+region = Rect2(600, 0, 600, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0cx21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqy3q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sw20i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jev6w")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 20.0
+}]
+
 [node name="Merchant" type="CharacterBody2D" unique_id=2060638562 groups=["enemy", "merchant"]]
 collision_layer = 4
 input_pickable = true
@@ -115,5 +154,26 @@ scale = Vector2(1.25, 1.25)
 visible = false
 position = Vector2(-504, 170)
 
+[node name="Shop_colision" type="Area2D" parent="." unique_id=1183845862]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop_colision" unique_id=841558570]
+position = Vector2(-11, 121)
+shape = SubResource("RectangleShape2D_epd48")
+
+[node name="Shop" type="Node2D" parent="." unique_id=2118587856]
+visible = false
+script = ExtResource("6_epd48")
+
+[node name="BG" type="AnimatedSprite2D" parent="Shop" unique_id=4077145]
+texture_filter = 1
+position = Vector2(702, -590)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_0cx21")
+animation = &"idle"
+frame_progress = 0.36451977
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="body_entered" from="Shop_colision" to="." method="_on_shop_colision_body_entered"]
+[connection signal="body_exited" from="Shop_colision" to="." method="_on_shop_colision_body_exited"]
