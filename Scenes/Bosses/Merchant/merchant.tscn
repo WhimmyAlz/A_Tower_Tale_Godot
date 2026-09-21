@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d4j32rxliilcg" path="res://Scenes/Mobs/UI/Stats_list/enemy_stats_list.tscn" id="5_epd48"]
 [ext_resource type="Script" uid="uid://bajnrcqqwyyx3" path="res://Scenes/Bosses/Merchant/shop.gd" id="6_epd48"]
 [ext_resource type="Texture2D" uid="uid://dodjhlk64b3ep" path="res://Scenes/Bosses/Merchant/sprites/shop/bg_and_turtle.png" id="6_f7bvc"]
+[ext_resource type="PackedScene" uid="uid://bq0sa0fu4rkt" path="res://Scenes/Bosses/Merchant/items.tscn" id="8_ray22"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udlmb"]
 atlas = ExtResource("1_45aw4")
@@ -163,6 +164,7 @@ shape = SubResource("RectangleShape2D_epd48")
 
 [node name="Shop" type="Node2D" parent="." unique_id=2118587856]
 visible = false
+z_index = 100
 script = ExtResource("6_epd48")
 
 [node name="BG" type="AnimatedSprite2D" parent="Shop" unique_id=4077145]
@@ -172,6 +174,10 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_0cx21")
 animation = &"idle"
 frame_progress = 0.36451977
+
+[node name="Items" parent="Shop" unique_id=2097734468 instance=ExtResource("8_ray22")]
+position = Vector2(120, -637)
+Item = "MEDKIT"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

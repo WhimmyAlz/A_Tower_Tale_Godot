@@ -22,7 +22,8 @@ func set_description():
 		description = "Lose 1% of max health every 1/2 second. Ignores 1000 defense."
 	elif status == "Deathmark":
 		description = "Lose 20% of max health if 1000 stacks are reached. Ignores 1000 defense."
-	
+	elif status == "Needle Stacks":
+		description = "Stacks are consumed to make your attacks stronger. Caps out at 10 stacks."
 	$description/RichTextLabel.text = description
 
 func set_status(txt):

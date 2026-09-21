@@ -69,7 +69,6 @@ func log_text(txt):
 ## Contains many commands that are ran based on whichever argument was provided
 func command_usage(txt):
 	var command = txt
-	print(command)
 	if command[0] == "stats":
 		return(stats(command))
 	elif command[0] == "setHealth":
