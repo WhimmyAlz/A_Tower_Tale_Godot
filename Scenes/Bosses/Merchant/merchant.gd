@@ -204,7 +204,6 @@ func _on_shop_colision_body_entered(body: Node2D) -> void:
 	var collider = body
 	if collider.is_in_group("player"):
 		entered = true
-		print("true")
 
 func _on_shop_colision_body_exited(body: Node2D) -> void:
 	var collider = body

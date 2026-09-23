@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7j4gt5bdtfdp"
-path="res://.godot/imported/halo_2.png-8fcf23a29fca877256cb3529abf20818.ctex"
+uid="uid://cgjcxfit1ldoi"
+path="res://.godot/imported/medkit_1.png-49e41f186178a5b709a205e22e1cdd03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Bosses/Merchant/sprites/shop/halo/halo_2.png"
-dest_files=["res://.godot/imported/halo_2.png-8fcf23a29fca877256cb3529abf20818.ctex"]
+source_file="res://Scenes/Bosses/Merchant/shop/sprites/medkit/medkit_1.png"
+dest_files=["res://.godot/imported/medkit_1.png-49e41f186178a5b709a205e22e1cdd03.ctex"]
 
 [params]
 

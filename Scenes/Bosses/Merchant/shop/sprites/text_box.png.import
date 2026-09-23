@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dodjhlk64b3ep"
-path="res://.godot/imported/bg_and_turtle.png-2824deb2427f111aaf3f53eeb675f26c.ctex"
+uid="uid://cb8n0ab586267"
+path="res://.godot/imported/text_box.png-43bd460a21865fd002e42e643faec71b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Bosses/Merchant/sprites/shop/bg_and_turtle.png"
-dest_files=["res://.godot/imported/bg_and_turtle.png-2824deb2427f111aaf3f53eeb675f26c.ctex"]
+source_file="res://Scenes/Bosses/Merchant/shop/sprites/text_box.png"
+dest_files=["res://.godot/imported/text_box.png-43bd460a21865fd002e42e643faec71b.ctex"]
 
 [params]
 

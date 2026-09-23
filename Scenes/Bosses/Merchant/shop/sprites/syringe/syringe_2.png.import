@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpmk2tfejkfx3"
-path="res://.godot/imported/class_ball_2.png-5967f93dfe469e95744418853c403683.ctex"
+uid="uid://kpcvsv76x7nq"
+path="res://.godot/imported/syringe_2.png-88eec26e5b53bd7f2d8514b1a7c95636.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Bosses/Merchant/sprites/shop/class_ball/class_ball_2.png"
-dest_files=["res://.godot/imported/class_ball_2.png-5967f93dfe469e95744418853c403683.ctex"]
+source_file="res://Scenes/Bosses/Merchant/shop/sprites/syringe/syringe_2.png"
+dest_files=["res://.godot/imported/syringe_2.png-88eec26e5b53bd7f2d8514b1a7c95636.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctsurv8gvyaxb"
-path="res://.godot/imported/medkit_2.png-0df8a15d83d1629c4a5a6f436548b20a.ctex"
+uid="uid://dnrwifbrbxxds"
+path="res://.godot/imported/class_ball_1.png-f3200cafa19258d90871683fb6ff743d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Bosses/Merchant/sprites/shop/medkit/medkit_2.png"
-dest_files=["res://.godot/imported/medkit_2.png-0df8a15d83d1629c4a5a6f436548b20a.ctex"]
+source_file="res://Scenes/Bosses/Merchant/shop/sprites/class_ball/class_ball_1.png"
+dest_files=["res://.godot/imported/class_ball_1.png-f3200cafa19258d90871683fb6ff743d.ctex"]
 
 [params]
 

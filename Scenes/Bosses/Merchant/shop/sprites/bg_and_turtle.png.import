@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgjcxfit1ldoi"
-path="res://.godot/imported/medkit_1.png-471d50aaa2a6a1ef2d3d2aa55c096f24.ctex"
+uid="uid://dodjhlk64b3ep"
+path="res://.godot/imported/bg_and_turtle.png-a39963b1455a61d21ad81ba85ac2e5b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Bosses/Merchant/sprites/shop/medkit/medkit_1.png"
-dest_files=["res://.godot/imported/medkit_1.png-471d50aaa2a6a1ef2d3d2aa55c096f24.ctex"]
+source_file="res://Scenes/Bosses/Merchant/shop/sprites/bg_and_turtle.png"
+dest_files=["res://.godot/imported/bg_and_turtle.png-a39963b1455a61d21ad81ba85ac2e5b5.ctex"]
 
 [params]
 

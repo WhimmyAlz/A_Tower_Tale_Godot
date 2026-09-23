@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8ltsikajjgt1"
-path="res://.godot/imported/syringe_1.png-b396890ed580760451f1886f77f676d6.ctex"
+uid="uid://cxu3pg068rw2g"
+path="res://.godot/imported/arrows_2.png-38b68f0f183c00de5f90d5040cef6601.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Bosses/Merchant/sprites/shop/syringe/syringe_1.png"
-dest_files=["res://.godot/imported/syringe_1.png-b396890ed580760451f1886f77f676d6.ctex"]
+source_file="res://Scenes/Bosses/Merchant/shop/sprites/arrows/arrows_2.png"
+dest_files=["res://.godot/imported/arrows_2.png-38b68f0f183c00de5f90d5040cef6601.ctex"]
 
 [params]
 

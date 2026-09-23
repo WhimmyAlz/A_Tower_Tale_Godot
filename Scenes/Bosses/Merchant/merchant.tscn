@@ -5,9 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://8eqrfvi0bx2s" path="res://Scenes/Bosses/Merchant/sprites/turtle_house.png" id="2_noapy"]
 [ext_resource type="PackedScene" uid="uid://c7tlcevue5q4l" path="res://Scenes/Mobs/UI/health_bar/health_bar.tscn" id="4_f7bvc"]
 [ext_resource type="PackedScene" uid="uid://d4j32rxliilcg" path="res://Scenes/Mobs/UI/Stats_list/enemy_stats_list.tscn" id="5_epd48"]
-[ext_resource type="Script" uid="uid://bajnrcqqwyyx3" path="res://Scenes/Bosses/Merchant/shop.gd" id="6_epd48"]
-[ext_resource type="Texture2D" uid="uid://dodjhlk64b3ep" path="res://Scenes/Bosses/Merchant/sprites/shop/bg_and_turtle.png" id="6_f7bvc"]
-[ext_resource type="PackedScene" uid="uid://bq0sa0fu4rkt" path="res://Scenes/Bosses/Merchant/items.tscn" id="8_ray22"]
+[ext_resource type="Script" uid="uid://bajnrcqqwyyx3" path="res://Scenes/Bosses/Merchant/shop/shop.gd" id="6_epd48"]
+[ext_resource type="Texture2D" uid="uid://dodjhlk64b3ep" path="res://Scenes/Bosses/Merchant/shop/sprites/bg_and_turtle.png" id="6_f7bvc"]
+[ext_resource type="PackedScene" uid="uid://bq0sa0fu4rkt" path="res://Scenes/Bosses/Merchant/shop/items.tscn" id="8_ray22"]
+[ext_resource type="Texture2D" uid="uid://cb8n0ab586267" path="res://Scenes/Bosses/Merchant/shop/sprites/text_box.png" id="9_jdt71"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udlmb"]
 atlas = ExtResource("1_45aw4")
@@ -126,6 +127,24 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cx21"]
+atlas = ExtResource("9_jdt71")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ga6u1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cx21")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdt71"]
+size = Vector2(311, 533)
+
 [node name="Merchant" type="CharacterBody2D" unique_id=2060638562 groups=["enemy", "merchant"]]
 collision_layer = 4
 input_pickable = true
@@ -175,11 +194,39 @@ sprite_frames = SubResource("SpriteFrames_0cx21")
 animation = &"idle"
 frame_progress = 0.36451977
 
+[node name="text" type="Node2D" parent="Shop" unique_id=537383686]
+
+[node name="text_bubble" type="AnimatedSprite2D" parent="Shop/text" unique_id=1694564901]
+texture_filter = 1
+position = Vector2(217.99994, -979)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_ga6u1")
+flip_h = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Shop/text" unique_id=1292377188]
+offset_left = -37.0
+offset_top = -1183.0
+offset_right = 476.0
+offset_bottom = -998.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[b]Hover over items to see what they do. You can hover over me to check how much xp you have left to spend."
+scroll_following_visible_characters = true
+
+[node name="Turtle_collider" type="Area2D" parent="Shop" unique_id=1945295492]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/Turtle_collider" unique_id=305175707]
+position = Vector2(-201.5, -754.5)
+shape = SubResource("RectangleShape2D_jdt71")
+
 [node name="Items" parent="Shop" unique_id=2097734468 instance=ExtResource("8_ray22")]
-position = Vector2(120, -637)
+position = Vector2(300, -466)
 Item = "MEDKIT"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="body_entered" from="Shop_colision" to="." method="_on_shop_colision_body_entered"]
 [connection signal="body_exited" from="Shop_colision" to="." method="_on_shop_colision_body_exited"]
+[connection signal="mouse_entered" from="Shop/Turtle_collider" to="Shop" method="_on_turtle_collider_mouse_entered"]
