@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bf3uw3bfudr6"]
+
+[ext_resource type="Script" uid="uid://uqyc3fl4sxux" path="res://Scenes/Bosses/Merchant/shop/arrows.gd" id="1_jth8p"]
+[ext_resource type="Texture2D" uid="uid://nkfsbmoljwka" path="res://Scenes/Bosses/Merchant/shop/sprites/arrows/arrows_1.png" id="1_pikel"]
+[ext_resource type="Texture2D" uid="uid://cxu3pg068rw2g" path="res://Scenes/Bosses/Merchant/shop/sprites/arrows/arrows_2.png" id="2_jth8p"]
+
+[node name="Arrows" type="Node2D" unique_id=364141572]
+script = ExtResource("1_jth8p")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1219321496]
+texture_filter = 1
+offset_left = -59.000008
+offset_top = -75.00001
+offset_right = -19.000008
+offset_bottom = -35.000008
+scale = Vector2(5, 5)
+texture_normal = ExtResource("1_pikel")
+texture_pressed = ExtResource("1_pikel")
+texture_hover = ExtResource("2_jth8p")
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]

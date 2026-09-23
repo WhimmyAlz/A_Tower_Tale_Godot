@@ -221,9 +221,15 @@ scroll_following_visible_characters = true
 position = Vector2(-201.5, -754.5)
 shape = SubResource("RectangleShape2D_jdt71")
 
-[node name="Items" parent="Shop" unique_id=2097734468 instance=ExtResource("8_ray22")]
+[node name="Items" type="Node2D" parent="Shop" unique_id=550930721]
+
+[node name="Medkit" parent="Shop/Items" unique_id=2097734468 instance=ExtResource("8_ray22")]
 position = Vector2(300, -466)
 Item = "MEDKIT"
+
+[node name="Class Ball" parent="Shop/Items" unique_id=415558679 instance=ExtResource("8_ray22")]
+position = Vector2(854, -1171)
+Item = "CLASS_BALL"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

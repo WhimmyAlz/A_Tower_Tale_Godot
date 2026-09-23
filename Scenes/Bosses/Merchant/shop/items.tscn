@@ -18,3 +18,4 @@ texture_normal = ExtResource("2_lk63x")
 
 [connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]

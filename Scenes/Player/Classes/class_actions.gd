@@ -13,6 +13,11 @@ func set_class_items():
 
 	class_node.set_active(false)
 
+	var class_actions = $"."
+
+	for i in range(class_actions.get_child_count()):
+		class_actions.get_child(i).visible = false
+
 	if player_class == "brawler":
 		class_node = $brawler
 		animation = $brawler/skills

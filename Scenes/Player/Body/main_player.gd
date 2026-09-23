@@ -20,3 +20,7 @@ func _physics_process(_delta: float) -> void:
 		
 		if screenshake_time == 0:
 			$Camera2D.position = Vector2(0,-10)
+
+func change_class(cls):
+	Global.player_class = cls
+	$PlayerBody/Class_Actions.set_class_items()

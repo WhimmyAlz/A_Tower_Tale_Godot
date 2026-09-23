@@ -63,7 +63,7 @@ func _physics_process(_delta: float) -> void:
 		active()
 
 func _on_turtle_collider_mouse_entered() -> void:
-	var insult_list = "You have no xp. Bum. Brokie. CS-major. Plebian. Boot-Licker. Vermin. Ungifted. Worthless. Barnicle. Penniless. Basement-Dweller. Chud. Trash-Diver. Spineless. Primate. Potato. Hobo. Shellfish. Impoverished. Underprivileged. "
+	var insult_list = "You have no xp. Bum. Brokie. CS-major. Plebian. Boot-Licker. Vermin. Ungifted. Worthless. Barnicle. Penniless. Basement-Dweller. Chud. Unemployed. Trash-Diver. Spineless. Primate. Potato. Hobo. Shellfish. Impoverished. Underprivileged. Monetary-disabled. Jobless. Xp-starved. "
 	if Global.player_XP > 0:
 		set_chat("[b]You have %d xp[/b]" % Global.player_XP, "You have %d xp" % Global.player_XP)
 	else:
