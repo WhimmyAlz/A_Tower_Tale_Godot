@@ -10,6 +10,24 @@ extends Node2D
 var ultimate_load = preload("res://Scenes/Player/Player_UI/move_list/ultimate bar sprites/ultimate_charge.png")
 var ultimate_complete = preload("res://Scenes/Player/Player_UI/move_list/ultimate bar sprites/ultimate_charge_complete.png")
 
+func ignore_filter(val):
+	if val:
+		$bar_1/bar_1_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		$bar_2/bar_2_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		$bar_3/bar_3_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		$bar_4/bar_4_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		$bar_5/bar_5_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		$ultimate_bar/ultimate_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		$Text_display/RichTextLabel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	else:
+		$bar_1/bar_1_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		$bar_2/bar_2_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		$bar_3/bar_3_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		$bar_4/bar_4_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		$bar_5/bar_5_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		$ultimate_bar/ultimate_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		$Text_display/RichTextLabel.mouse_filter = Control.MOUSE_FILTER_STOP
+
 func update_prog():
 	skill_1.value = Global.attack1t
 	skill_1.max_value = Global.attack1_max_t

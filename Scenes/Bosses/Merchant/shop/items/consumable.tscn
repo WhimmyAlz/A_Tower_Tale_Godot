@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c3kbpkmn4v4ns"]
+
+[ext_resource type="Texture2D" uid="uid://8ltsikajjgt1" path="res://Scenes/Bosses/Merchant/shop/sprites/syringe/syringe_1.png" id="1_0l6uh"]
+[ext_resource type="Script" uid="uid://cubjqx82qa1ct" path="res://Scenes/Bosses/Merchant/shop/items/consumable.gd" id="1_be7s0"]
+
+[node name="Consumable" type="Node2D" unique_id=1853192245]
+script = ExtResource("1_be7s0")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=887082010]
+z_index = 100
+texture_filter = 1
+offset_left = -159.0
+offset_top = -160.0
+offset_right = -127.0
+offset_bottom = -128.0
+scale = Vector2(10, 10)
+focus_mode = 0
+texture_normal = ExtResource("1_0l6uh")
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ytiw8chjo0bx"]
+
+[ext_resource type="Script" uid="uid://sbplcsiy6rq5" path="res://Scenes/Bosses/Merchant/shop/items/medkit.gd" id="1_jsrg5"]
+[ext_resource type="Texture2D" uid="uid://cgjcxfit1ldoi" path="res://Scenes/Bosses/Merchant/shop/sprites/medkit/medkit_1.png" id="1_kh1rd"]
+[ext_resource type="Texture2D" uid="uid://ctsurv8gvyaxb" path="res://Scenes/Bosses/Merchant/shop/sprites/medkit/medkit_2.png" id="2_jsrg5"]
+
+[node name="Medkit" type="Node2D" unique_id=905012584]
+script = ExtResource("1_jsrg5")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=916821761]
+texture_filter = 1
+offset_left = -172.99998
+offset_top = -163.99998
+offset_right = -132.99998
+offset_bottom = -123.999985
+scale = Vector2(10, 10)
+focus_mode = 0
+texture_normal = ExtResource("1_kh1rd")
+texture_pressed = ExtResource("1_kh1rd")
+texture_hover = ExtResource("2_jsrg5")
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

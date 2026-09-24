@@ -90,7 +90,7 @@ func check_phase():
 func on_death():
 	boss_bar.queue_free()
 	player.gain_xp(randi_range(50, 100))
-
+	player.get_parent().set_shop_opened(false)
 	queue_free()
 
 func set_level_stats():
@@ -128,8 +128,10 @@ func _physics_process(_delta: float) -> void:
 	if phase == 0 and entered and Input.is_action_just_pressed("interact"):
 		if $Shop.visible:
 			$Shop.visible = false
+			player.get_parent().set_shop_opened(false)
 		else:
 			$Shop.visible = true
+			player.get_parent().set_shop_opened(true)
 			
 	if phase == 1:
 		if attackt >= 0 and attackt <= 119:

@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://d4j32rxliilcg" path="res://Scenes/Mobs/UI/Stats_list/enemy_stats_list.tscn" id="5_epd48"]
 [ext_resource type="Script" uid="uid://bajnrcqqwyyx3" path="res://Scenes/Bosses/Merchant/shop/shop.gd" id="6_epd48"]
 [ext_resource type="Texture2D" uid="uid://dodjhlk64b3ep" path="res://Scenes/Bosses/Merchant/shop/sprites/bg_and_turtle.png" id="6_f7bvc"]
-[ext_resource type="PackedScene" uid="uid://bq0sa0fu4rkt" path="res://Scenes/Bosses/Merchant/shop/items.tscn" id="8_ray22"]
 [ext_resource type="Texture2D" uid="uid://cb8n0ab586267" path="res://Scenes/Bosses/Merchant/shop/sprites/text_box.png" id="9_jdt71"]
+[ext_resource type="PackedScene" uid="uid://i85n3ol557ut" path="res://Scenes/Bosses/Merchant/shop/items/class_ball.tscn" id="10_aem8j"]
+[ext_resource type="PackedScene" uid="uid://ytiw8chjo0bx" path="res://Scenes/Bosses/Merchant/shop/items/medkit.tscn" id="10_wkk76"]
+[ext_resource type="PackedScene" uid="uid://c3kbpkmn4v4ns" path="res://Scenes/Bosses/Merchant/shop/items/consumable.tscn" id="11_aem8j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udlmb"]
 atlas = ExtResource("1_45aw4")
@@ -223,13 +225,20 @@ shape = SubResource("RectangleShape2D_jdt71")
 
 [node name="Items" type="Node2D" parent="Shop" unique_id=550930721]
 
-[node name="Medkit" parent="Shop/Items" unique_id=2097734468 instance=ExtResource("8_ray22")]
-position = Vector2(300, -466)
-Item = "MEDKIT"
+[node name="Medkit" parent="Shop/Items" unique_id=905012584 instance=ExtResource("10_wkk76")]
+position = Vector2(228, -473)
 
-[node name="Class Ball" parent="Shop/Items" unique_id=415558679 instance=ExtResource("8_ray22")]
-position = Vector2(854, -1171)
-Item = "CLASS_BALL"
+[node name="ClassBall" parent="Shop/Items" unique_id=29738560 instance=ExtResource("10_aem8j")]
+position = Vector2(819, -1192)
+
+[node name="Consumable" parent="Shop/Items" unique_id=1853192245 instance=ExtResource("11_aem8j")]
+position = Vector2(808, -270)
+
+[node name="Consumable2" parent="Shop/Items" unique_id=1932468308 instance=ExtResource("11_aem8j")]
+position = Vector2(1325, -271)
+
+[node name="Consumable3" parent="Shop/Items" unique_id=1689159198 instance=ExtResource("11_aem8j")]
+position = Vector2(1858, -269)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

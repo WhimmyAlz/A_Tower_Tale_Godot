@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://i85n3ol557ut"]
+
+[ext_resource type="Texture2D" uid="uid://dnrwifbrbxxds" path="res://Scenes/Bosses/Merchant/shop/sprites/class_ball/class_ball_1.png" id="1_o6v7e"]
+[ext_resource type="Script" uid="uid://bgsnhtmtixm05" path="res://Scenes/Bosses/Merchant/shop/items/class_ball.gd" id="1_pn5ks"]
+[ext_resource type="Texture2D" uid="uid://bpmk2tfejkfx3" path="res://Scenes/Bosses/Merchant/shop/sprites/class_ball/class_ball_2.png" id="2_pn5ks"]
+
+[node name="ClassBall" type="Node2D" unique_id=29738560]
+script = ExtResource("1_pn5ks")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1248014955]
+texture_filter = 1
+offset_left = -151.0
+offset_top = -168.00002
+offset_right = -111.0
+offset_bottom = -128.00002
+scale = Vector2(10, 10)
+focus_mode = 0
+texture_normal = ExtResource("1_o6v7e")
+texture_pressed = ExtResource("1_o6v7e")
+texture_hover = ExtResource("2_pn5ks")
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]

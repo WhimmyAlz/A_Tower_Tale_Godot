@@ -1,6 +1,7 @@
 extends Node2D
 
 var screenshake_time = -1
+var shop_opened = false
 
 func get_body():
 	return($PlayerBody)
@@ -22,5 +23,15 @@ func _physics_process(_delta: float) -> void:
 			$Camera2D.position = Vector2(0,-10)
 
 func change_class(cls):
+	Global.attack1t = 0
+	Global.attack2t = 0
+	Global.attack3t = 0
+	Global.attack4t = 0
+	Global.attack5t = 0
+	Global.ultimatet = 0
 	Global.player_class = cls
 	$PlayerBody/Class_Actions.set_class_items()
+
+func set_shop_opened(val = true):
+	shop_opened = val
+	$"Non Attached UI Elements/MoveList".ignore_filter(val)

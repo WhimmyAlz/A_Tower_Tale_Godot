@@ -7,10 +7,10 @@ func set_arrow(val):
 
 func _ready() -> void:
 	if arrow == "left":
-		position.x = -245
+		position.x = -200
 		$TextureButton.flip_h = true
 	if arrow == "right":
-		position.x = 155
+		position.x = 200
 
 func _on_texture_button_button_up() -> void:
 	if arrow == "left":
