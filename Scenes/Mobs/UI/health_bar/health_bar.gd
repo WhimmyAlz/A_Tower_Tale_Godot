@@ -13,3 +13,6 @@ func update_max_value(hp):
 
 func update_name(txt):
 	$name.text = txt
+
+func set_name_size(val):
+	$name.set("theme_override_font_sizes/bold_font_size", val)

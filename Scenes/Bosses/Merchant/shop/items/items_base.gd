@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var shop = $"../.."
 
+@onready var player = get_tree().current_scene.get_node("Player").get_child(0)
+
+
 var description = ""
 var raw_description = ""
 var start_pause = 0

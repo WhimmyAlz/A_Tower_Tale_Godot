@@ -9,6 +9,7 @@ script = ExtResource("1_1u1m3")
 [node name="FlowContainer" type="FlowContainer" parent="." unique_id=1866357550]
 offset_right = 461.0
 offset_bottom = 664.0
+mouse_filter = 2
 
 [node name="Status" parent="FlowContainer" unique_id=1130927860 instance=ExtResource("2_ch33o")]
 layout_mode = 2

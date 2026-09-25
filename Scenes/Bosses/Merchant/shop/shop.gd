@@ -39,13 +39,17 @@ func active():
 	player.take_stun(2)
 	
 	if count_delay:
-		if count_delay_time > 0:
-			count_delay_time -= 1
-			$BG.play("idle")
-		if count_delay_time == 0:
+		if Global.instant_chat:
 			count_text()
-			if raw_description[count-1] == " " and count >= start_pause:
-				count_delay_time = 60
+			reset_count_delay()
+		else:
+			if count_delay_time > 0:
+				count_delay_time -= 1
+				$BG.play("idle")
+			if count_delay_time == 0:
+				count_text()
+				if raw_description[count-1] == " " and count >= start_pause:
+					count_delay_time = 60
 	else:
 		count_text()
 		reset_count_delay()
@@ -53,6 +57,10 @@ func active():
 func count_text():
 	if count < max_count:
 		count += 1
+		if Global.instant_chat:
+			count = max_count
+			$text/RichTextLabel.scroll_following_visible_characters = false
+			$text/RichTextLabel.scroll_to_line(0)
 		$text/RichTextLabel.visible_characters = count
 		$BG.play("talk")
 	else:
@@ -64,7 +72,11 @@ func _physics_process(_delta: float) -> void:
 
 func _on_turtle_collider_mouse_entered() -> void:
 	var insult_list = "You have no xp. Bum. Brokie. CS-major. Plebian. Boot-Licker. Vermin. Ungifted. Worthless. Barnicle. Penniless. Basement-Dweller. Chud. Unemployed. Trash-Diver. Spineless. Primate. Potato. Hobo. Shellfish. Impoverished. Underprivileged. Monetary-disabled. Jobless. Xp-starved. "
-	if Global.player_XP > 0:
-		set_chat("[b]You have %d xp[/b]" % Global.player_XP, "You have %d xp" % Global.player_XP)
+	
+	if Global.instant_chat:
+		set_chat("[b]You have %d xp.[/b]" % Global.player_XP, "You have %d xp." % Global.player_XP)
 	else:
-		set_pause_chat("[b]%s[/b]" % insult_list, "%s" % insult_list, 15)
+		if Global.player_XP > 0:
+			set_chat("[b]You have %d xp.[/b]" % Global.player_XP, "You have %d xp." % Global.player_XP)
+		else:
+			set_pause_chat("[b]%s[/b]" % insult_list, "%s" % insult_list, 15)

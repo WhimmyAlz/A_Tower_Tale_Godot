@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://i85n3ol557ut" path="res://Scenes/Bosses/Merchant/shop/items/class_ball.tscn" id="10_aem8j"]
 [ext_resource type="PackedScene" uid="uid://ytiw8chjo0bx" path="res://Scenes/Bosses/Merchant/shop/items/medkit.tscn" id="10_wkk76"]
 [ext_resource type="PackedScene" uid="uid://c3kbpkmn4v4ns" path="res://Scenes/Bosses/Merchant/shop/items/consumable.tscn" id="11_aem8j"]
+[ext_resource type="PackedScene" uid="uid://crk17gjkrmqkv" path="res://Scenes/Bosses/Merchant/shop/items/nerd_book.tscn" id="12_iqy3q"]
+[ext_resource type="PackedScene" uid="uid://bon3vn7jnrb7y" path="res://Scenes/Bosses/Merchant/shop/items/ultimate_book.tscn" id="13_sw20i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udlmb"]
 atlas = ExtResource("1_45aw4")
@@ -239,6 +241,12 @@ position = Vector2(1325, -271)
 
 [node name="Consumable3" parent="Shop/Items" unique_id=1689159198 instance=ExtResource("11_aem8j")]
 position = Vector2(1858, -269)
+
+[node name="NerdBook" parent="Shop/Items" unique_id=1129277497 instance=ExtResource("12_iqy3q")]
+position = Vector2(-429, -532)
+
+[node name="UltimateBook" parent="Shop/Items" unique_id=1373719681 instance=ExtResource("13_sw20i")]
+position = Vector2(1944, -1186)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

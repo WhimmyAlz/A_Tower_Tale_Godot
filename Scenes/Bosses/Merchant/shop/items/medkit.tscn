@@ -21,4 +21,3 @@ texture_hover = ExtResource("2_jsrg5")
 
 [connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
-[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://xlh6asxem068"]
+
+[ext_resource type="Texture2D" uid="uid://xt18ws3ek2sl" path="res://Scenes/Mobs/Undead_ranger/Sprites/undead_ranger_attack.png" id="1_51u7s"]
+[ext_resource type="Script" uid="uid://ci7fueyqvev0t" path="res://Scenes/Mobs/Undead_ranger/undead_ranger.gd" id="1_bmfnk"]
+[ext_resource type="Texture2D" uid="uid://c50ujw4mskxka" path="res://Scenes/Mobs/Undead_ranger/Sprites/undead_ranger_idle.png" id="2_bmfnk"]
+[ext_resource type="PackedScene" uid="uid://c7tlcevue5q4l" path="res://Scenes/Mobs/UI/health_bar/health_bar.tscn" id="3_3a6ym"]
+[ext_resource type="PackedScene" uid="uid://d4j32rxliilcg" path="res://Scenes/Mobs/UI/Stats_list/enemy_stats_list.tscn" id="4_63o6o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmfnk"]
+atlas = ExtResource("1_51u7s")
+region = Rect2(0, 0, 88, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a6ym"]
+atlas = ExtResource("1_51u7s")
+region = Rect2(88, 0, 88, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63o6o"]
+atlas = ExtResource("1_51u7s")
+region = Rect2(176, 0, 88, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6nef"]
+atlas = ExtResource("1_51u7s")
+region = Rect2(264, 0, 88, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqr0c"]
+atlas = ExtResource("1_51u7s")
+region = Rect2(352, 0, 88, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id3te"]
+atlas = ExtResource("1_51u7s")
+region = Rect2(440, 0, 88, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85fy7"]
+atlas = ExtResource("1_51u7s")
+region = Rect2(528, 0, 88, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aunt"]
+atlas = ExtResource("1_51u7s")
+region = Rect2(616, 0, 88, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tat5a"]
+atlas = ExtResource("2_bmfnk")
+region = Rect2(0, 0, 88, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnm8l"]
+atlas = ExtResource("2_bmfnk")
+region = Rect2(88, 0, 88, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lccev"]
+atlas = ExtResource("2_bmfnk")
+region = Rect2(176, 0, 88, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5bjq"]
+atlas = ExtResource("2_bmfnk")
+region = Rect2(0, 0, 88, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p46xh"]
+atlas = ExtResource("2_bmfnk")
+region = Rect2(88, 0, 88, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lldku"]
+atlas = ExtResource("2_bmfnk")
+region = Rect2(176, 0, 88, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kfexv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmfnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a6ym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63o6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6nef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqr0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_id3te")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85fy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aunt")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tat5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnm8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lccev")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5bjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p46xh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lldku")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4ovk"]
+size = Vector2(145, 355)
+
+[node name="UndeadRanger" type="CharacterBody2D" unique_id=572433298 groups=["enemy"]]
+collision_layer = 4
+input_pickable = true
+script = ExtResource("1_bmfnk")
+
+[node name="UndeadRangerSprite" type="AnimatedSprite2D" parent="." unique_id=1640250950]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_kfexv")
+animation = &"walk"
+autoplay = "idle"
+frame_progress = 0.942352
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1281485292]
+position = Vector2(-0.5, 15.5)
+shape = SubResource("RectangleShape2D_s4ovk")
+
+[node name="damage_text_holder" type="Node2D" parent="." unique_id=1705449464]
+
+[node name="HealthBar" parent="." unique_id=542308091 instance=ExtResource("3_3a6ym")]
+position = Vector2(1, -214)
+scale = Vector2(1.2, 1.2)
+
+[node name="EnemyStatsList" parent="." unique_id=952394224 instance=ExtResource("4_63o6o")]
+visible = false
+position = Vector2(-214, -1)
+scale = Vector2(2, 2)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

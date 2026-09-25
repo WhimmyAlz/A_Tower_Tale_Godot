@@ -8,7 +8,7 @@ static var deaths = 0
 
 var typewriter_value = 0
 var fun_facts = [
-"[b]Hey did you know that you can hover your mouse over things to get information on them?[/b]", "[b]Hey did you know that this game was a remake of a highschool project which was made using code.org?[/b]", "[b]Hey did you know that I can drop between 20 and 30 xp or a new attack?[/b]", "[b]Hey did you know that the skeleton is actually only throwing his arm bone which he somehow regrows?[/b]", "[b]Erm actually...[/b]", "[b]Glub Glub.[/b]", "[b]So El Trut is actually turtle spelled backwards. Wonder what that means...[/b]","[b]According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee...[/b]", "[b]So let's say something has a 10% drop chance and you didn't get it in 10 attempts. The chance of that happening is 34.86784401%.[/b]",
+"[b]Hey did you know that you can hover your mouse over things to get information on them?[/b]", "[b]Hey did you know that this game was a remake of a highschool project which was made using code.org?[/b]", "[b]Hey did you know that I can drop between 25 and 40 xp or a new attack?[/b]", "[b]Hey did you know that the skeleton is actually only throwing his arm bone which he somehow regrows?[/b]", "[b]Erm actually...[/b]", "[b]Glub Glub.[/b]", "[b]So El Trut is actually turtle spelled backwards. Wonder what that means...[/b]","[b]According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee...[/b]", "[b]So let's say something has a 10% drop chance and you didn't get it in 10 attempts. The chance of that happening is 34.86784401%.[/b]",
 "[b]I used to look less nerdy and had soft poop colored hair, but that was before this game.[/b]", "[b]Did you know that cows have 3 stomaches? Interesting right?[/b]", "[b]In the old game, the game's lore was that all the characters were students role playing and the tower game was just a story book.[/b]","[b]If you want to play the original highschool project game, then you can just [i][url=https://studio.code.org/projects/gamelab/A-puNJUHMBbGf_pQGUwswzV_g6rH6wro0fhe6y7M_mE]Click Here[/url][/i][/b]", "[b]I must confess that I feel like a monster...[/b]", "[b]You should put the peashooter behind the sunflower since the sunflower costs less and pays for itself that way.[/b]", "[b]The bleed status effect takes 1% of your max hp per second, but you probably already know that if you read the status effect list.[/b]", "[b]Did you know that you can hold S to fall faster once you start falling?[/b]",
 "[b]You don't wanna catch these fisticuffs, buddyo.[/b]", "[b]Alright, so you killed me %d times, that's cool.[/b]" % deaths,
 ]
@@ -26,7 +26,7 @@ func set_description():
 	var attack_chance = (100/float(Global.player_attacks))
 	if Global.player_attacks == 5:
 		attack_chance = 0
-	description = "[b]Nerd[/b]\nLevel: %d\n\n[i]\"Erm Ackually..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA typical Nerd. Hopefully he doesn't try to talk to me.\n\nDrops:\n10%% Ultimate attack\n\nMutually Exclusive drops:\n%.01f%% New attack\n%.01f%% 20-30 xp" % [Level, Health, Damage, Defense, Defense_pen, attack_chance, 100 - attack_chance]
+	description = "[b]Nerd[/b]\nLevel: %d\n\n[i]\"Erm Ackually..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA typical Nerd. Hopefully he doesn't try to talk to me.\n\nDrops:\n10%% Ultimate attack\n\nMutually Exclusive drops:\n%.01f%% New attack\n%.01f%% 25-40 xp" % [Level, Health, Damage, Defense, Defense_pen, attack_chance, 100 - attack_chance]
 
 func set_pos(pos):
 	position = pos
@@ -62,7 +62,7 @@ func on_death():
 	if Global.player_attacks < 5 and 100/float(Global.player_attacks) >= randi_range(1, 100):
 		player.unlock_attack(1)
 	else:
-		player.gain_xp(randi_range(20, 30))
+		player.gain_xp(randi_range(25, 40))
 
 	if Global.ultimate_attack == 0 and 10 >= randi_range(1, 100):
 		player.unlock_ultimate()

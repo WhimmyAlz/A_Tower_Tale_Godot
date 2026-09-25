@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bon3vn7jnrb7y"]
+
+[ext_resource type="Script" uid="uid://3or6skiqriyj" path="res://Scenes/Bosses/Merchant/shop/items/ultimate_book.gd" id="1_72pn3"]
+[ext_resource type="Texture2D" uid="uid://dn6oy20p7clgb" path="res://Scenes/Bosses/Merchant/shop/sprites/ultimate_book/ultimate_book_1.png" id="1_idnfg"]
+[ext_resource type="Texture2D" uid="uid://dkgpl2buiijeo" path="res://Scenes/Bosses/Merchant/shop/sprites/ultimate_book/ultimate_book_2.png" id="2_72pn3"]
+
+[node name="UltimateBook" type="Node2D" unique_id=1373719681]
+script = ExtResource("1_72pn3")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=2120950398]
+texture_filter = 1
+offset_left = -157.99998
+offset_top = -154.99998
+offset_right = -125.999985
+offset_bottom = -122.999985
+scale = Vector2(10, 10)
+texture_normal = ExtResource("1_idnfg")
+texture_pressed = ExtResource("1_idnfg")
+texture_hover = ExtResource("2_72pn3")
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]

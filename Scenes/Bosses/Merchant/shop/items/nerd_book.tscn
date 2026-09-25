@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://crk17gjkrmqkv"]
+
+[ext_resource type="Script" uid="uid://dbkxb7u8dhp1l" path="res://Scenes/Bosses/Merchant/shop/items/nerd_book.gd" id="1_24jce"]
+[ext_resource type="Texture2D" uid="uid://bdcql28pitht0" path="res://Scenes/Bosses/Merchant/shop/sprites/nerd_book/nerd_book_1.png" id="2_o53sa"]
+[ext_resource type="Texture2D" uid="uid://coyoown4mking" path="res://Scenes/Bosses/Merchant/shop/sprites/nerd_book/nerd_book_2.png" id="3_832i2"]
+
+[node name="NerdBook" type="Node2D" unique_id=1129277497]
+script = ExtResource("1_24jce")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1922646918]
+texture_filter = 1
+offset_left = -157.99998
+offset_top = -138.99998
+offset_right = -125.999985
+offset_bottom = -106.999985
+scale = Vector2(10, 10)
+focus_mode = 0
+texture_normal = ExtResource("2_o53sa")
+texture_pressed = ExtResource("2_o53sa")
+texture_hover = ExtResource("3_832i2")
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]

@@ -2,9 +2,11 @@ extends Node
 
 var floors := 0
 
+var instant_chat = false
+
 var player_class := "brawler"
 var player_XP := 0
-var player_XP_REQ := 100
+var player_XP_REQ := 1000
 var player_Level := 1
 
 var max_jumps := 1
@@ -145,14 +147,17 @@ func class_stats_draco():
 	dexterity = 4 + bonus_dexterity
 	intellect = 4 + bonus_intellect
 
-func _ready() -> void:
-	class_stats_brawler()
-	health = max_health
-
-func _physics_process(_delta: float):
+func check_class():
 	if player_class == "brawler":
 		class_stats_brawler()
 	elif player_class == "needle":
 		class_stats_needle()
 	elif player_class == "draco":
 		class_stats_draco()
+
+func _ready() -> void:
+	class_stats_brawler()
+	health = max_health
+
+func _physics_process(_delta: float):
+	check_class()
