@@ -63,6 +63,12 @@ func thorn(spd):
 	shock_thorn.set_speed_multi(spd)
 	get_tree().current_scene.get_node("Projectiles").add_child(shock_thorn)
 
+func get_passive():
+	if phase == 0:
+		return(true)
+	else:
+		return(false)
+
 func check_phase():
 	if phases[phase][1] > 0:
 		
@@ -79,6 +85,7 @@ func check_phase():
 			# check if enemy is "passive" before damaged
 			if phase == 1:
 				attackt = attackt_start
+				player.check_between_time()
 				if boss_bar != null:
 					boss_bar.visible = true
 			if phase == 2:

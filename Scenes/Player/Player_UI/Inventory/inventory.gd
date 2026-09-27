@@ -1,10 +1,12 @@
 extends Node2D
 
 # Needed stats: Level, xp, Health, Stamina, Power, Crit Rate, Crit Damage, STR, AGI, INT, DEF, DPEN, HP Regen, STAM Regen, Jumps
-@onready
-var stats_label = $stastList/stats
+@onready var stats_label = $stastList/stats
+@onready var player = $"../.."
 
 func update_stats():
+	var regen_amount_percentage = (player.get_child(0).get_regen_amount() * 100)/Global.max_health
+	
 	# displayed texts
 	var listed_stats = [
 	"[b]Level %s[/b]\n" % Global.player_Level,
@@ -20,7 +22,7 @@ func update_stats():
 	"Agility: %d\n\n" % Global.agility,
 	"Defense: %d\n" % Global.defense,
 	"Defense penetration: %d\n\n" % Global.defense_penetration,
-	"Health regen: %d%%\n" % Global.health_regen_value,
+	"Health regen: %0.01f%%/%0.01f%%\n" % [regen_amount_percentage, Global.health_regen_value],
 	"Stamina regen: %.01fx\n\n" % (1 + Global.stamina_regen_multi),
 	"Player weight: %d\n" % Global.player_weight,
 	"Max jumps: %d" % Global.max_jumps,

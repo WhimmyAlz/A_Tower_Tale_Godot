@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqiec1poet32x"
-path="res://.godot/imported/HP_BAR.png-de7185388b295bceb47af1908217b88a.ctex"
+uid="uid://cjxvp66qwyhq7"
+path="res://.godot/imported/chomper_attack.png-0abb93feb7161b123014a8097a4945d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_BAR.png"
-dest_files=["res://.godot/imported/HP_BAR.png-de7185388b295bceb47af1908217b88a.ctex"]
+source_file="res://Scenes/Mobs/chomper/Sprites/chomper_attack.png"
+dest_files=["res://.godot/imported/chomper_attack.png-0abb93feb7161b123014a8097a4945d3.ctex"]
 
 [params]
 

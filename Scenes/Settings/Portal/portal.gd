@@ -8,6 +8,8 @@ var preload_nerd = preload("res://Scenes/Mobs/Nerd/nerd.tscn")
 var preload_sir_blob = preload("res://Scenes/Bosses/Sir Blob/sir_blob.tscn")
 var preload_undead_ranger = preload("res://Scenes/Mobs/Undead_ranger/Undead_ranger.tscn")
 var preload_undead_warrior = preload("res://Scenes/Mobs/undead_warrior/undead_warrior.tscn")
+var preload_chomper = preload("res://Scenes/Mobs/chomper/chomper.tscn")
+
 
 func set_pos(vector2):
 	position = vector2
@@ -20,6 +22,9 @@ func progress_floor():
 	for i in range(enemy_list.get_child_count()):
 		if enemy_list.get_child(i).is_in_group("merchant"):
 			enemy_list.get_child(i).queue_free()
+	
+	var player = get_tree().current_scene.get_node("Player").get_child(0)
+	player.reset_regen_amount()
 	
 	base_floor.bg_add_y_pos()
 	init_floor_mobs(Global.floors)
@@ -54,6 +59,12 @@ func spawn_undead_warrior(pos, level):
 	undead_warrior.Level = level
 	base_floor.add_enemy(undead_warrior)
 
+func spawn_chomper(pos, level):
+	var chomper = preload_chomper.instantiate()
+	chomper.set_pos(pos)
+	chomper.Level = level
+	base_floor.add_enemy(chomper)
+
 func init_floor_mobs(floor_num):
 	if floor_num == 1:
 		spawn_nerd(Vector2(800, 0), 2)
@@ -77,6 +88,10 @@ func init_floor_mobs(floor_num):
 	elif floor_num == 8:
 		spawn_undead_warrior(Vector2(700, 0), 8)
 		spawn_undead_ranger(Vector2(-700, 0), 8)
+	elif floor_num == 9:
+		spawn_chomper(Vector2(700, 0), 3)
+		spawn_undead_ranger(Vector2(-700, 0), 8)
+		spawn_skeleton(Vector2(700, 0), 10)
 
 func _physics_process(_delta: float) -> void:
 	if entered and Input.is_action_just_released("interact"):

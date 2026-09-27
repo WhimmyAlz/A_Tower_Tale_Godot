@@ -9,6 +9,36 @@ var free := true # Used for stunned, frozen, unable to move, etc
 var hat_mode = "idle" # hat is idle when jumping or idle, otherwise stunned or run
 
 var speed_penalty := 0.2 # used as a speed multiplier
+var regen_amount = 0
+var regen_cooldown_time = 0
+
+var quick_regen = false
+
+func check_between_time():
+	var merchant_is_only_mob = get_tree().current_scene.get_node("Enemies").get_child_count() == 1 and get_tree().current_scene.get_node("Enemies").get_child(0).is_in_group("merchant")
+	var merchant_passive = false
+	if merchant_is_only_mob:
+		merchant_passive = get_tree().current_scene.get_node("Enemies").get_child(0).get_passive()
+		
+	quick_regen = merchant_passive
+
+func reset_regen_amount():
+	regen_amount = int((Global.health_regen_value * 0.01) * Global.max_health)
+
+func get_regen_amount():
+	return(regen_amount)
+
+func health_regen():
+	if regen_amount > 0 and Global.health != Global.max_health and regen_cooldown_time == 0:
+		Global.health += 1
+		regen_amount -= 1
+		if quick_regen:
+			regen_cooldown_time = 3
+		else:
+			regen_cooldown_time = 15
+	
+	if regen_cooldown_time > 0:
+		regen_cooldown_time -= 1
 
 ## Slows down the player's velocity when it's not zero.
 func player_friction():
@@ -190,7 +220,10 @@ func gain_stamina(value):
 
 func stamina_regen():
 	if Global.stamina < Global.max_stamina:
-		Global.stamina += (1 + Global.stamina_regen_multi) * 0.5
+		if quick_regen:
+			Global.stamina = minf(Global.stamina + (1 + Global.stamina_regen_multi) * 1, Global.max_stamina)
+		else:
+			Global.stamina = minf(Global.stamina + (1 + Global.stamina_regen_multi) * 0.5, Global.max_stamina)
 		$"../Non Attached UI Elements/Prog_Bars".Update_STAM()
 
 func _ready() -> void:
@@ -199,7 +232,9 @@ func _ready() -> void:
 	vert_velocities() # calls player vertical movement function
 
 func _physics_process(_delta: float):
+	check_between_time()
 	stamina_regen()
+	health_regen()
 	check_free()
 
 	# Movement functions

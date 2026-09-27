@@ -7,7 +7,7 @@ var bonus_hit_speed = 0
 
 
 func set_description():
-	description = "[b]Undead Warrior[/b]\nLevel: %d\n\n[i]\"Let me axe you a question...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nAnother long dead adventurer. Enrages after reaching half health.\n\nDrops:\n16-24 xp" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Undead Warrior[/b]\nLevel: %d\n\n[i]\"Let me axe you a question...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nAnother long dead adventurer. Enrages after reaching half health.\n\nDrops:\n12-18 xp" % [Level, Health, Damage, Defense, Defense_pen]
 
 func set_pos(pos):
 	position = pos
@@ -25,7 +25,7 @@ func move(animation):
 
 func on_death():
 	if death_rewards == 1:
-		player.gain_xp(randi_range(16, 24))
+		player.gain_xp(randi_range(12, 18))
 	death_rewards = 0
 	queue_free()
 

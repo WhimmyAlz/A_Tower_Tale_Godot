@@ -150,6 +150,7 @@ func spawn(command):
 	var merchant = preload("res://Scenes/Bosses/Merchant/merchant.tscn")
 	var undead_ranger = preload("res://Scenes/Mobs/Undead_ranger/Undead_ranger.tscn")
 	var undead_warrior = preload("res://Scenes/Mobs/undead_warrior/undead_warrior.tscn")
+	var chomper = preload("res://Scenes/Mobs/chomper/chomper.tscn")
 	
 	if correct_args:
 		var valid = command[2].is_valid_int()
@@ -169,6 +170,8 @@ func spawn(command):
 				spawn_enemy(undead_ranger, command[2])
 			elif command[1] == "undead_warrior":
 				spawn_enemy(undead_warrior, command[2])
+			elif command[1] == "chomper":
+				spawn_enemy(chomper, command[2])
 			else:
 				log_text("Enemy name not found.")
 				return(false)

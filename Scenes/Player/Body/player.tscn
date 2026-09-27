@@ -10,9 +10,9 @@
 [ext_resource type="Script" uid="uid://drnmkrhj51qsh" path="res://Scenes/Player/Player_UI/Progress_bars/Prog_bars.gd" id="5_t6byl"]
 [ext_resource type="PackedScene" uid="uid://btfb8iexjk6eb" path="res://Scenes/Player/Player_UI/Status_effects/status_effects.tscn" id="5_unyjo"]
 [ext_resource type="Texture2D" uid="uid://dl8xhycnyk4wn" path="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_EXTRA.png" id="6_t6byl"]
-[ext_resource type="Texture2D" uid="uid://38sd0eg67kr7" path="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_BAR.png" id="7_7rbim"]
 [ext_resource type="Texture2D" uid="uid://cqxyaaoft6q56" path="res://Scenes/Player/Player_UI/Progress_bars/level_emblem.png" id="8_b1gc2"]
 [ext_resource type="Texture2D" uid="uid://ceisp4mqgqot3" path="res://Scenes/Player/Player_UI/Progress_bars/level_prog.png" id="9_e2n6q"]
+[ext_resource type="Texture2D" uid="uid://cqiec1poet32x" path="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_BAR.png" id="10_t0j56"]
 [ext_resource type="Texture2D" uid="uid://0bjvnsxvoty2" path="res://Scenes/Player/Player_UI/Progress_bars/Stamina Bar/STAM_BG.png" id="10_unyjo"]
 [ext_resource type="Texture2D" uid="uid://camc4kf4l4hrg" path="res://Scenes/Player/Player_UI/Progress_bars/Stamina Bar/STAM_EXTRA.png" id="11_t0j56"]
 [ext_resource type="Texture2D" uid="uid://c7ty5h26li165" path="res://Scenes/Player/Player_UI/Progress_bars/Stamina Bar/STAM_BAR.png" id="12_iqdhd"]
@@ -188,7 +188,8 @@ value = 100.0
 fill_mode = 1
 texture_under = ExtResource("5_86lyx")
 texture_over = ExtResource("6_t6byl")
-texture_progress = ExtResource("7_7rbim")
+texture_progress = ExtResource("10_t0j56")
+texture_progress_offset = Vector2(1, 0)
 
 [node name="XP_BAR" type="TextureProgressBar" parent="Non Attached UI Elements/Prog_Bars" unique_id=2033860299]
 texture_filter = 1
@@ -215,6 +216,7 @@ value = 100.0
 texture_under = ExtResource("10_unyjo")
 texture_over = ExtResource("11_t0j56")
 texture_progress = ExtResource("12_iqdhd")
+texture_progress_offset = Vector2(9, 0)
 
 [node name="Inventory" parent="Non Attached UI Elements" unique_id=951110833 instance=ExtResource("14_7rbim")]
 visible = false
