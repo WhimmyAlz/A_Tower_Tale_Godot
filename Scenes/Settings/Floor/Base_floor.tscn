@@ -36,11 +36,11 @@ position = Vector2(-5, 937)
 scale = Vector2(2.0000002, 2.0000002)
 
 [node name="BorderWall_left" parent="Enviroment/Walls_and_sprites" unique_id=965109119 instance=ExtResource("5_p28ks")]
-position = Vector2(-1050, -25)
+position = Vector2(-1045.0001, -11.000001)
 scale = Vector2(1.85, 1.85)
 
 [node name="BorderWall_right" parent="Enviroment/Walls_and_sprites" unique_id=1415558213 instance=ExtResource("5_p28ks")]
-position = Vector2(944.99994, -25)
+position = Vector2(969.00006, -25)
 scale = Vector2(1.85, 1.85)
 
 [node name="BorderWall_Ceiling" parent="Enviroment/Walls_and_sprites" unique_id=245252224 instance=ExtResource("6_7qsdb")]

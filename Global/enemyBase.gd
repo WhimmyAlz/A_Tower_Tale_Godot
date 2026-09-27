@@ -18,6 +18,7 @@ var mouse_over = false
 var boss_bar = null
 
 var phase = 1
+var death_rewards = 1
 
 # key = phase, values = next phase health threshold, phase change time
 var phases = {0: [100, 0], 1: [0, 1]}
@@ -208,7 +209,7 @@ func take_venom():
 	if venom_stacks >= 1 and venom_tick_delay == 0:
 		venom_stacks -= 1
 		take_damage(5, 25, 0, Color.WEB_PURPLE)
-		venom_tick_delay = 10
+		venom_tick_delay = 20
 	elif venom_tick_delay > 0:
 		venom_tick_delay -= 1
 

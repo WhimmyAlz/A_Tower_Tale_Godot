@@ -3,11 +3,12 @@ extends enemyBase
 var arrow = preload("res://Scenes/Mobs/Undead_ranger/arrow.tscn")
 
 var stats_offset = Vector2(170, -50)
+var shots = 0
 
 @onready var undead_ranger_animation = $UndeadRangerSprite
 
 func set_description():
-	description = "[b]Undead Ranger[/b]\nLevel: %d\n\n[i]\"I was once an adventurer like you...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA long dead adventurer.. Incredibly weak to stuns.\n\nDrops:\n10-20 xp" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Undead Ranger[/b]\nLevel: %d\n\n[i]\"I was once an adventurer like you...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA long dead adventurer.. Incredibly weak to stuns.\n\nDrops:\n12-22 xp" % [Level, Health, Damage, Defense, Defense_pen]
 
 func set_pos(pos):
 	position = pos
@@ -23,10 +24,13 @@ func shoot():
 	projectile.set_pos(position + Vector2(60, -35))
 	projectile.set_damage(Damage)
 	projectile.set_direction(direction)
+	projectile.set_defense_pen(Defense_pen)
 	get_tree().current_scene.get_node("Projectiles").add_child(projectile)
 
 func on_death():
-	player.gain_xp(randi_range(10, 20))
+	if death_rewards == 1:
+		player.gain_xp(randi_range(12, 22))
+	death_rewards = 0
 	queue_free()
 
 func set_level_stats():
@@ -39,7 +43,8 @@ func set_level_stats():
 		Max_Health = 120 + (level * 35)
 		Defense = 0
 		Speed = 0
-		Damage = 30 + (level * 2)
+		Damage = 15 + (level * 1)
+		Defense_pen = 10
 		Name = "Undead Ranger"
 		
 	update_hp_bar()
@@ -59,6 +64,8 @@ func set_dto():
 func _physics_process(_delta: float) -> void:
 	
 	if attackt >= 0 and attackt <= 199:
+		if attackt == 0:
+			shots = 0
 		if stunnedf == 0:
 			move($UndeadRangerSprite)
 			attackt += 1
@@ -77,13 +84,14 @@ func _physics_process(_delta: float) -> void:
 			$UndeadRangerSprite.play("attack")
 		
 		if attackt == 240:
+			shots += 1
 			shoot()
 	
 		attackt += 1
 	if attackt >= 265:
-		if stunnedf == 0:
+		if stunnedf == 0 and shots < 3:
 			$UndeadRangerSprite.frame = 0
-			attackt = 170
+			attackt = 199
 		else:
 			attackt = 0
 		

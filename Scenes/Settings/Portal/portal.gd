@@ -7,7 +7,7 @@ var preload_skelebone = preload("res://Scenes/Mobs/Skelebone/skelebone.tscn")
 var preload_nerd = preload("res://Scenes/Mobs/Nerd/nerd.tscn")
 var preload_sir_blob = preload("res://Scenes/Bosses/Sir Blob/sir_blob.tscn")
 var preload_undead_ranger = preload("res://Scenes/Mobs/Undead_ranger/Undead_ranger.tscn")
-
+var preload_undead_warrior = preload("res://Scenes/Mobs/undead_warrior/undead_warrior.tscn")
 
 func set_pos(vector2):
 	position = vector2
@@ -48,6 +48,12 @@ func spawn_undead_ranger(pos, level):
 	undead_ranger.Level = level
 	base_floor.add_enemy(undead_ranger)
 
+func spawn_undead_warrior(pos, level):
+	var undead_warrior = preload_undead_warrior.instantiate()
+	undead_warrior.set_pos(pos)
+	undead_warrior.Level = level
+	base_floor.add_enemy(undead_warrior)
+
 func init_floor_mobs(floor_num):
 	if floor_num == 1:
 		spawn_nerd(Vector2(800, 0), 2)
@@ -64,6 +70,13 @@ func init_floor_mobs(floor_num):
 		spawn_sir_blob(Vector2(700, 0), 1)
 	elif floor_num == 6:
 		spawn_undead_ranger(Vector2(700, 0), 5)
+		spawn_undead_ranger(Vector2(-700, 0), 5)
+	elif floor_num == 7:
+		spawn_skeleton(Vector2(700, 0), 10)
+		spawn_undead_ranger(Vector2(-700, 0), 7)
+	elif floor_num == 8:
+		spawn_undead_warrior(Vector2(700, 0), 8)
+		spawn_undead_ranger(Vector2(-700, 0), 8)
 
 func _physics_process(_delta: float) -> void:
 	if entered and Input.is_action_just_released("interact"):

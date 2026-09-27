@@ -40,7 +40,7 @@ var health_regen_value := 15.0 # % of max health healed naturally per floor
 var crit_chance := 0.0 # chance to land crit
 var crit_chance_adds := 0.0
 var crit_damage := 1.25 # damage multi from crits
-var crit_damage_adds := 0 # damage multi from crits
+var crit_damage_adds := 0.0 # damage multi from crits
 
 var player_attacks = 1
 var ultimate_attack = 0
@@ -85,7 +85,7 @@ func class_stats_brawler():
 	player_spd = round((0.2 * agility) * (1 + speed_multi))
 	player_weight = 20
 
-	max_health = 400
+	max_health = 300
 	max_stamina = 110
 
 	power = 18 + bonus_power
@@ -109,7 +109,7 @@ func class_stats_needle():
 	player_spd = round((0.2 * agility) * (1 + speed_multi))
 	player_weight = 15
 
-	max_health = 300
+	max_health = 210
 	max_stamina = 180
 
 	power = 20 + bonus_power

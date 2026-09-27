@@ -86,11 +86,12 @@ func check_phase():
 
 		phases[phase][1] -= 1
 
-
 func on_death():
 	boss_bar.queue_free()
-	player.gain_xp(randi_range(50, 100))
-	player.get_parent().set_shop_opened(false)
+	if death_rewards == 1:
+		player.gain_xp(randi_range(50, 100))
+		player.get_parent().set_shop_opened(false)
+	death_rewards = 0
 	queue_free()
 
 func set_level_stats():
@@ -101,8 +102,8 @@ func set_level_stats():
 	if check_stats_unchanged():
 		Health = 1000 + (level * 10)
 		Max_Health = 1000 + (level * 10)
-		Damage = 10 + (level * 0.1)
-		Defense = 20 + (level * 0.2)
+		Damage = 10 + (level * 0.5)
+		Defense = 20 + (level * 0.5)
 		Defense_pen = 10
 		Weight = 360
 		Speed = 0
@@ -110,7 +111,7 @@ func set_level_stats():
 		attackt_start = 110
 		phases = {0: [50, 0], 1: [1, 1], 2 : [0, 200]}
 		Name = "???"
-	
+
 	init_boss_bar()
 	update_hp_bar()
 	

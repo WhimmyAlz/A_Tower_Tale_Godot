@@ -7,7 +7,7 @@ var stats_offset = Vector2(50, -20)
 var skeleton_animation
 
 func set_description():
-	description = "[b]Skeleton[/b]\nLevel: %d\n\n[i]\"Clank Clank.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA living skeleton. He needs some milk.\n\nDrops:\n10-20 xp" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Skeleton[/b]\nLevel: %d\n\n[i]\"Clank Clank.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA living skeleton. He needs some milk.\n\nDrops:\n8-14xp" % [Level, Health, Damage, Defense, Defense_pen]
 
 func set_pos(pos):
 	position = pos
@@ -39,7 +39,9 @@ func throw_bone():
 	get_tree().current_scene.get_node("Projectiles").add_child(projectile)
 
 func on_death():
-	player.gain_xp(randi_range(10, 20))
+	if death_rewards == 1:
+		player.gain_xp(randi_range(8, 14))
+	death_rewards = 0
 	queue_free()
 
 func set_level_stats():
@@ -52,7 +54,7 @@ func set_level_stats():
 		Max_Health = 50 + (level * 25)
 		Defense = 7
 		Speed = 2
-		Damage = 25 + (level * 1)
+		Damage = 15 + (level * 1)
 		if randi_range(1,10) == 1:
 			Name = "Skelly"
 		else:

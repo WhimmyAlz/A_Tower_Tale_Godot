@@ -1,10 +1,12 @@
 extends "res://Scenes/Bosses/Merchant/shop/items/items_base.gd"
 
-static var consumable_list = ["syringe", "crochet"]
-static var buff_values = ["+2 STR", "+2 DEX\n+0.5% crit chance"]
+static var consumable_list = ["syringe", "crochet", "rubix cube", "milk"]
+static var buff_values = ["+2 STR\n+1 Power", "+2 DEX\n+0.5% crit chance", "+2 INT\n+0.3% crit chance\n+1.5% crit damage","+1 defense"]
 
 static var syringe_sprites = [preload("res://Scenes/Bosses/Merchant/shop/sprites/syringe/syringe_1.png"), preload("res://Scenes/Bosses/Merchant/shop/sprites/syringe/syringe_2.png")]
 static var crochet_sprites = [preload("res://Scenes/Bosses/Merchant/shop/sprites/crochet/crochet_1.png"), preload("res://Scenes/Bosses/Merchant/shop/sprites/crochet/crochet_2.png")]
+static var rubix_cube_sprites = [preload("res://Scenes/Bosses/Merchant/shop/sprites/rubix_cube/rubix_cube_1.png"), preload("res://Scenes/Bosses/Merchant/shop/sprites/rubix_cube/rubix_cube_2.png")]
+static var milk_sprites = [preload("res://Scenes/Bosses/Merchant/shop/sprites/milk/milk_1.png"), preload("res://Scenes/Bosses/Merchant/shop/sprites/milk/milk_2.png")]
 
 var Item = "CONSUMABLE"
 
@@ -17,6 +19,14 @@ func set_textures():
 		$TextureButton.texture_normal = crochet_sprites[0]
 		$TextureButton.texture_pressed = crochet_sprites[0]
 		$TextureButton.texture_hover = crochet_sprites[1]
+	elif Item == "RUBIX CUBE":
+		$TextureButton.texture_normal = rubix_cube_sprites[0]
+		$TextureButton.texture_pressed = rubix_cube_sprites[0]
+		$TextureButton.texture_hover = rubix_cube_sprites[1]
+	elif Item == "MILK":
+		$TextureButton.texture_normal = milk_sprites[0]
+		$TextureButton.texture_pressed = milk_sprites[0]
+		$TextureButton.texture_hover = milk_sprites[1]
 
 func set_button_descriptions():
 	if check_price("%s\n\nYou need at least %d xp to buy the %s brokie." % [buff_values[value], price, consumable_list[value]]):
@@ -28,6 +38,10 @@ func set_item_values():
 		price = randi_range(10,20)
 	if value == 1:
 		price =  randi_range(15,25)
+	if value == 2:
+		price = randi_range(20,30)
+	if value == 3:
+		price = randi_range(24,32)
 
 func _ready() -> void:
 	value = randi_range(0, len(consumable_list) - 1)
@@ -53,11 +67,20 @@ func _on_texture_button_button_up() -> void:
 
 	if Global.player_XP >= price:
 		if Item == "SYRINGE":
+			Global.bonus_power += 1
 			Global.bonus_strength += 2
 			Global.player_XP -= price
 		elif Item == "CROCHET":
 			Global.bonus_dexterity += 2
 			Global.crit_chance_adds += 0.5
+			Global.player_XP -= price
+		elif Item == "RUBIX CUBE":
+			Global.bonus_intellect += 2
+			Global.crit_chance_adds += 0.3
+			Global.crit_damage_adds += 0.015
+			Global.player_XP -= price
+		elif Item == "MILK":
+			Global.bonus_defense += 1
 			Global.player_XP -= price
 
 		set_item_values()

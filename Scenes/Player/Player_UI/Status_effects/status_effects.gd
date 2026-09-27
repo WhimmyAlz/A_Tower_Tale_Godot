@@ -106,10 +106,10 @@ func inflict_venom(stacks):
 	if venom_stacks <= 30:
 		if venom_stacks > 0:
 			venom_stacks = mini(venom_stacks + stacks, 30)
-			update_status_box("Venom", venom_stacks, 10 * venom_stacks)
+			update_status_box("Venom", venom_stacks, 20 * venom_stacks)
 		else:
 			venom_stacks = mini(venom_stacks + stacks, 30)
-			init_status_box("Venom", venom_stacks, 10 * venom_stacks, Color.PURPLE)
+			init_status_box("Venom", venom_stacks, 20 * venom_stacks, Color.PURPLE)
 
 func inflict_shock(stacks):
 	if shock_stacks <= 100:
@@ -170,8 +170,8 @@ func venom_effect():
 	if venom_stacks >= 1 and venom_tick_delay == 0:
 		venom_stacks -= 1
 		player.take_damage(5, 25)
-		update_status_box("Venom", venom_stacks, 15 * venom_stacks)
-		venom_tick_delay = 10
+		update_status_box("Venom", venom_stacks, 20 * venom_stacks)
+		venom_tick_delay = 20
 	elif venom_tick_delay > 0:
 		venom_tick_delay -= 1
 

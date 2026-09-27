@@ -46,9 +46,8 @@ func vert_velocities():
 		velocity.y = 30
 	
 	if not attacking and velocity.y > -100 and Global.stun_time == 0 and Input.is_action_pressed("down"):
-		velocity.y += 200
-	
-	
+		velocity.y += 400
+
 	if is_on_floor():
 		jumps = Global.max_jumps
 		jump_pause = false

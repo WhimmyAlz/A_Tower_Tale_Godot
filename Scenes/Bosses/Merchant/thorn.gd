@@ -4,7 +4,7 @@ var size = 3
 var proj_speed
 var direction 
 var proj_life_time = 150
-var damage = 15
+var damage = 10
 var final_damage = damage * 0.1
 var defense_pen = 10
 
@@ -43,6 +43,8 @@ func _physics_process(_delta: float) -> void:
 	proj_life_time -= 1
 
 	if proj_life_time >= 90 and proj_life_time <= 150:
+		if proj_life_time == 149:
+			set_final_damage(damage * 0.1)
 		position.y -= (0.25 * (proj_life_time - 90))
 
 		if proj_life_time > 110:
@@ -74,7 +76,7 @@ func _on_body_entered(body: Node2D) -> void:
 		collider.take_damage(final_damage, defense_pen)
 		collider.take_knockback(0, 1)
 		collider.take_stun(stun_time)
-		collider.get_status_effect().inflict_shock(10)
+		collider.get_status_effect().inflict_shock(15)
 		
 		if proj_life_time <= 80:
 			collider.get_status_effect().inflict_venom(2)

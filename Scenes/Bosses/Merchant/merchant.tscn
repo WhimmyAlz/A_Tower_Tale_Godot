@@ -172,8 +172,6 @@ shape = SubResource("RectangleShape2D_sw20i")
 position = Vector2(-3.000002, -332)
 scale = Vector2(1.25, 1.25)
 
-[node name="damage_text_holder" type="Node2D" parent="." unique_id=1631560093]
-
 [node name="EnemyStatsList" parent="." unique_id=952394224 instance=ExtResource("5_epd48")]
 visible = false
 position = Vector2(-504, 170)

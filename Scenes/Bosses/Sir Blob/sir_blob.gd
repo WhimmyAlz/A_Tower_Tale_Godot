@@ -24,7 +24,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health)
 
 func set_description():
-	description = "[b]SIR BLOB[/b]\nLevel: %d\n\n[i]\"...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription: Some say this is what happens when you leave an orange in a fridge for too long.\n\nDrops:\n50-90 xp\n\nBoss perk: stunned for 25%% less time." % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]SIR BLOB[/b]\nLevel: %d\n\n[i]\"...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription: Some say this is what happens when you leave an orange in a fridge for too long.\n\nDrops:\n64-84 xp\n\nBoss perk: stunned for 25%% less time." % [Level, Health, Damage, Defense, Defense_pen]
 
 func set_pos(pos):
 	position = pos
@@ -87,8 +87,10 @@ func deactivate_attack():
 
 func on_death():
 	boss_bar.queue_free()
-	player.gain_xp(randi_range(50, 90))
 	
+	if death_rewards == 1:
+		player.gain_xp(randi_range(64, 84))
+	death_rewards = 0
 	queue_free()
 
 func set_level_stats():
@@ -99,7 +101,7 @@ func set_level_stats():
 	if check_stats_unchanged():
 		Health = 1000 + (level * 150)
 		Max_Health = 1000 + (level * 150)
-		Damage = 45 + (level * 5)
+		Damage = 60 + (level * 5)
 		Speed = 3
 		phase = 0
 		attackt_start = 180

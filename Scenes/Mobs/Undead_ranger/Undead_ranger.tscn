@@ -142,8 +142,6 @@ frame_progress = 0.942352
 position = Vector2(-0.5, 15.5)
 shape = SubResource("RectangleShape2D_s4ovk")
 
-[node name="damage_text_holder" type="Node2D" parent="." unique_id=1705449464]
-
 [node name="HealthBar" parent="." unique_id=542308091 instance=ExtResource("3_3a6ym")]
 position = Vector2(1, -214)
 scale = Vector2(1.2, 1.2)

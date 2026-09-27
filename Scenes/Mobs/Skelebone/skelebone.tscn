@@ -165,8 +165,6 @@ shape = SubResource("RectangleShape2D_kt8of")
 [node name="HealthBar" parent="." unique_id=542308091 instance=ExtResource("5_wvn5m")]
 position = Vector2(-1.25, -61.25)
 
-[node name="damage_text_holder" type="Node2D" parent="." unique_id=249516646]
-
 [node name="EnemyStatsList" parent="." unique_id=952394224 instance=ExtResource("6_l6un5")]
 visible = false
 position = Vector2(-82.25, -0.75)
