@@ -160,7 +160,7 @@ func needle_effects():
 func fire_effect():
 	if fire_stacks >= 1 and fire_tick_delay == 0:
 		fire_stacks -= 1
-		player.take_damage(fire_stacks / 2, 10)
+		player.take_damage(fire_stacks / 2, 10, Color.DARK_ORANGE)
 		update_status_box("Fire", fire_stacks, 15 * fire_stacks)
 		fire_tick_delay = 15
 	elif fire_tick_delay > 0:
@@ -169,7 +169,7 @@ func fire_effect():
 func venom_effect():
 	if venom_stacks >= 1 and venom_tick_delay == 0:
 		venom_stacks -= 1
-		player.take_damage(5, 25)
+		player.take_damage(5, 25, Color.WEB_PURPLE)
 		update_status_box("Venom", venom_stacks, 20 * venom_stacks)
 		venom_tick_delay = 20
 	elif venom_tick_delay > 0:
@@ -189,7 +189,7 @@ func bleed_effects():
 	if bleed_stacks >= 1 and bleed_tick_delay == 0:
 		bleed_stacks -= 1
 		bleed_tick_delay = 30
-		player.take_damage(float(Global.max_health/100), 1000)
+		player.take_damage(float(Global.max_health/100), 1000, Color.DARK_RED)
 		update_status_box("Bleeding", 1, 30 * bleed_stacks)
 	elif bleed_tick_delay > 0:
 		bleed_tick_delay -= 1
@@ -197,7 +197,7 @@ func bleed_effects():
 func deathmark_effects():
 	update_status_box("Deathmark", deathmark_stacks, deathmark_tick_delay)
 	if deathmark_stacks == 1000:
-		player.take_damage(float(Global.max_health/5), 1000)
+		player.take_damage(float(Global.max_health/5), 1000, Color.BLACK)
 		deathmark_tick_delay = 0
 		deathmark_stacks = 0
 	elif deathmark_stacks >= 1 and deathmark_tick_delay == 0:

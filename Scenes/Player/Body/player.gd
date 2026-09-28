@@ -12,6 +12,8 @@ var speed_penalty := 0.2 # used as a speed multiplier
 var regen_amount = 0
 var regen_cooldown_time = 0
 
+var damage_text = preload("res://Scenes/Mobs/UI/Damage_text/damage_text.tscn")
+
 var quick_regen = false
 
 func check_between_time():
@@ -180,12 +182,24 @@ func unlock_ultimate():
 # Next few functions are used for stat changes
 
 ## changes health and sets the hp bar
-func take_damage(value, defense_pen):
+func take_damage(value, defense_pen, color = Color.WHITE_SMOKE):
 	# makes sure health doesn't go below 0
 	var def = maxi(Global.defense - defense_pen, 0)
-	var damage =  maxi(value - def, 1)
+	var damage =  maxf(value - def, 1)
 	Global.health = maxi(Global.health - damage, 0)
 	$"../Non Attached UI Elements/Prog_Bars".Update_HP()
+	
+	# fixes 1.0 to 1 for damage text
+	if is_zero_approx(damage - int(damage)):
+		damage = int(damage)
+	else: 
+		damage = snapped(damage, 0.1)
+	var damageText = damage_text.instantiate()
+	damageText.set_text(damage)
+	damageText.set_position(position + Vector2(0, -400))
+	damageText.set_color(color)
+	damageText.set_size(1 + (float(damage)/50))
+	get_tree().current_scene.get_node("Damage_text").add_child(damageText)
 
 func take_knockback(kb, dir):
 	self.velocity.x += kb * dir * 100 # 100 cuz kb too weak otherwise (want to use lower values)
