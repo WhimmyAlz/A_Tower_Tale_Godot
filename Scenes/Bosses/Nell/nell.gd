@@ -1,30 +1,49 @@
 extends enemyBase
 
-var arrow = preload("res://Scenes/Mobs/Undead_ranger/arrow.tscn")
+var arrow = preload("res://Scenes/Bosses/Nell/fire_arrow.tscn")
 
-var stats_offset = Vector2(170, -50)
+var stats_offset = Vector2(170, -70)
 var shots = 0
-
-@onready var undead_ranger_animation = $UndeadRangerSprite
+var dodge_cd = 0
+@onready var nell_animation = $NellSprite
 
 func set_description():
-	description = "[b]Undead Ranger[/b]\nLevel: %d\n\n[i]\"I was once an adventurer like you...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA long dead adventurer.. Incredibly weak to stuns.\n\nDrops:\n10-16 xp" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Nell[/b]\nLevel: %d\n\n[i]\"I was once an adventurer like you...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA long dead adventurer.. Incredibly weak to stuns.\n\nDrops:\n10-16 xp" % [Level, Health, Damage, Defense, Defense_pen]
 
 func set_pos(pos):
 	position = pos
 
 func move(animation):
-	undead_ranger_animation = animation
-	animation.play("idle")
 	face_player(animation)
+	if self.is_on_floor() and abs(self.position.x - player.position.x) < 1200:
+		if abs(self.position.x - player.position.x) < 200 and dodge_cd == 0:
+			dodge()
+			dodge_cd = 600
+		elif abs(self.position.x - player.position.x) < 1200:
+			animation.play("walk")
+			self.position.x -= Speed * direction
+	else:
+		animation.play("idle")
 	set_direction(self, player)
 
+func dodge():
+	var enemy_list
+	var closest_enemy = null
+	enemy_list = get_tree().current_scene.get_node("Enemies")
+	if enemy_list.get_child_count() > 0:
+		closest_enemy = enemy_list.get_child(0)
+		for i in range(enemy_list.get_child_count()):
+			if enemy_list.get_child(i) != self and abs(enemy_list.get_child(i).position.x - position.x) < abs(closest_enemy.position.x - position.x):
+				closest_enemy = enemy_list.get_child(i)
+		closest_enemy.velocity.x = 2 * (player.position.x - closest_enemy.position.x)
+		velocity.x = direction * 2500
 func shoot():
 	var projectile = arrow.instantiate()
 	projectile.set_pos(position + Vector2(direction * 60, -35))
 	projectile.set_damage(Damage)
 	projectile.set_direction(direction)
 	projectile.set_defense_pen(Defense_pen)
+	projectile.get_shooter(self)
 	get_tree().current_scene.get_node("Projectiles").add_child(projectile)
 
 func on_death():
@@ -39,16 +58,15 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
-		Health = 120 + (level * 35)
-		Max_Health = 120 + (level * 35)
-		Defense = 0
-		Speed = 0
-		Damage = 15 + (level * 1)
-		Defense_pen = 10
-		Name = "Undead Ranger"
+		Health = 600 + (level * 35)
+		Max_Health = 600 + (level * 35)
+		Defense = 2
+		Speed = 4
+		Damage = 10 + (level * 1)
+		Defense_pen = 5
+		Name = "Nell"
 		
 	update_hp_bar()
-	$HealthBar.set_name_size(18)
 	
 	set_description()
 
@@ -62,16 +80,17 @@ func set_dto():
 	damage_text_offset = Vector2(-40, -300)
 
 func _physics_process(_delta: float) -> void:
-	
+	if dodge_cd > 0:
+		dodge_cd -= 1
 	if attackt >= 0 and attackt <= 199:
 		if attackt == 0:
 			shots = 0
 		if stunnedf == 0:
-			move($UndeadRangerSprite)
+			move($NellSprite)
 			attackt += 1
 		else:
-			undead_ranger_animation.play("idle")
-			undead_ranger_animation.pause()
+			nell_animation.play("idle")
+			nell_animation.pause()
 			stunnedf -= 1
 			attackt = 0
 		
@@ -80,17 +99,17 @@ func _physics_process(_delta: float) -> void:
 			attackt = 0
 		if attackt == 201:
 			set_direction(self, player)
-			face_player(undead_ranger_animation)
-			$UndeadRangerSprite.play("attack")
+			face_player(nell_animation)
+			$NellSprite.play("attack")
 		
-		if attackt == 240:
+		if attackt == 220:
 			shots += 1
 			shoot()
 	
 		attackt += 1
 	if attackt >= 265:
 		if stunnedf == 0 and shots < 3:
-			$UndeadRangerSprite.frame = 0
+			$NellSprite.frame = 0
 			attackt = 199
 		else:
 			attackt = 0

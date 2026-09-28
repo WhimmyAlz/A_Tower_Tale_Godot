@@ -53,7 +53,6 @@ func attack_1_attacking():
 		var collider = colliders[i]
 		if collider.is_in_group("player") and collider.is_in_group("attackable") and hitnum == 1:
 			collider.take_damage(Damage, Defense_pen)
-			collider.get_status_effect().inflict_bleed(3)
 			collider.take_knockback(11, direction)
 			collider.take_stun(45)
 			hitnum = 0
@@ -89,7 +88,7 @@ func set_level_stats():
 		Max_Health = 880 + (level * 120)
 		Defense = 3
 		Speed = 4
-		Damage = 50 + (level * 5)
+		Damage = 30 + (level * 5)
 		Name = "Odon"
 		phase = 0
 		
