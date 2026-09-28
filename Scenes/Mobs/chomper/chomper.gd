@@ -16,7 +16,7 @@ func move(animation):
 	if animation == 1:
 		$ChomperSprite.modulate.a = (31-float(attackt))/30
 	else:
-		$ChomperSprite.modulate.a =  float(attackt-120)/30
+		$ChomperSprite.modulate.a =  float(attackt-130)/20
 	if self.is_on_floor():
 		if abs(self.position.x - player.position.x) > 10:
 			self.position.x -= Speed * direction * animation
@@ -37,8 +37,8 @@ func attacking():
 		var collider = colliders[i]
 		if collider.is_in_group("player") and collider.is_in_group("attackable"):
 			collider.take_damage(Damage, Defense_pen)
-			collider.take_knockback(2, direction)
-			collider.take_stun(40)
+			collider.take_knockback(1, direction)
+			collider.take_stun(5)
 
 func set_level_stats():
 	# Reminder to self:
@@ -46,11 +46,11 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
-		Health = 250 + (level * 50)
-		Max_Health = 250 + (level * 50)
+		Health = 350 + (level * 50)
+		Max_Health = 350 + (level * 50)
 		Defense = 1
 		Speed = 7
-		Damage = 50 + (level * 4)
+		Damage = 40 + (level * 4)
 		Name = "Chomper"
 		
 	update_hp_bar()
@@ -65,7 +65,7 @@ func set_level_stats():
 
 ## dto is damage text offset
 func set_dto():
-	damage_text_offset = Vector2(-40, -300)
+	damage_text_offset = Vector2(-40, -50)
 
 func _physics_process(_delta: float) -> void:
 	
@@ -77,14 +77,14 @@ func _physics_process(_delta: float) -> void:
 				self.visible = false
 				self.remove_from_group("attackable")
 			
-			if attackt == 120:
+			if attackt == 130:
 				self.visible = true
 				self.add_to_group("attackable")
 				if abs(player.position.x + (200 * direction)) > 1000:
 					direction *= -1
 				self.position = player.position + Vector2(200 * direction, 0)
 		
-			if attackt >= 120 and attackt <= 150:
+			if attackt >= 130 and attackt <= 150:
 				move(-1)
 			
 			if attackt == 151:

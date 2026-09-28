@@ -24,7 +24,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health)
 
 func set_description():
-	description = "[b]Odon[/b]\nLevel: %d\n\n[i]\"Baby spin me round..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. Has a twin sister.\n\nDrops:\n50-60 xp" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Odon[/b]\nLevel: %d\n\n[i]\"Baby spin me round..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The juggernaut of the twins.\n\nDrops:\n50-60 xp\n\nBoss perk: stunned for 70%% less time." % [Level, Health, Damage, Defense, Defense_pen]
 
 func set_pos(pos):
 	position = pos
@@ -53,8 +53,9 @@ func attack_1_attacking():
 		var collider = colliders[i]
 		if collider.is_in_group("player") and collider.is_in_group("attackable") and hitnum == 1:
 			collider.take_damage(Damage, Defense_pen)
+			collider.get_status_effect().inflict_bleed(3)
 			collider.take_knockback(11, direction)
-			collider.take_stun(40)
+			collider.take_stun(45)
 			hitnum = 0
 
 func attack_2_attacking():
@@ -63,12 +64,20 @@ func attack_2_attacking():
 		var collider = colliders[i]
 		if collider.is_in_group("player") and collider.is_in_group("attackable") and attack2cd == 0:
 			if hitnum != 1:
-				collider.take_damage(float(Damage) * 0.1, 100)
+				collider.take_damage(float(Damage) * 0.05, 100)
 				collider.take_knockback(0.75, direction)
 			else:
 				collider.take_damage(float(Damage), Defense_pen)
 				collider.take_knockback(10, direction)
 			collider.take_stun(10)
+
+func take_stun(stun_time):
+	var reduced_stuntime = int(stun_time * 0.3)
+	
+	if shock_stacks == 0 or stunnedf == 0: 
+		stunnedf = reduced_stuntime
+	else:
+		stunnedf += int(reduced_stuntime * (shock_stacks/100))
 
 func set_level_stats():
 	# Reminder to self:

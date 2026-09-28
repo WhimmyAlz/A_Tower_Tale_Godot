@@ -96,7 +96,7 @@ func init_floor_mobs(floor_num):
 		spawn_undead_warrior(Vector2(700, 0), 8)
 		spawn_undead_ranger(Vector2(-700, 0), 8)
 	elif floor_num == 9:
-		spawn_chomper(Vector2(700, 0), 3)
+		spawn_chomper(Vector2(700, 0), 7)
 		spawn_undead_ranger(Vector2(-700, 0), 8)
 		spawn_skeleton(Vector2(700, 0), 10)
 	elif floor_num == 10:
