@@ -79,9 +79,9 @@ func set_level_stats():
 		Health = 80 + (level * 40)
 		Max_Health = 80 + (level * 40)
 		Damage = 25 + (level * 2)
-		phase = 0
-		Name = "Nerd"
-	
+
+	phase = 0
+	Name = "Nerd"
 	update_hp_bar()
 
 	set_description()

@@ -51,8 +51,8 @@ func set_level_stats():
 		Defense = 1
 		Speed = 7
 		Damage = 40 + (level * 4)
-		Name = "Chomper"
-		
+
+	Name = "Chomper"
 	update_hp_bar()
 	$HealthBar.set_name_size(22)
 	

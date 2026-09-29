@@ -75,9 +75,9 @@ func set_level_stats():
 		Defense = 2
 		Speed = 10
 		Damage = 30 + (level * 2)
-		Name = "Undead Warrior"
-		phases = {0: [100, 0], 1: [50, 1], 2 : [0, 80]}
-		
+
+	Name = "Undead Warrior"
+	phases = {0: [100, 0], 1: [50, 1], 2 : [0, 80]}
 	update_hp_bar()
 	$HealthBar.set_name_size(18)
 	

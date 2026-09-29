@@ -41,12 +41,11 @@ func set_level_stats():
 	if check_stats_unchanged():
 		Health = 120 + (level * 35)
 		Max_Health = 120 + (level * 35)
-		Defense = 0
 		Speed = 0
 		Damage = 15 + (level * 1)
 		Defense_pen = 10
-		Name = "Undead Ranger"
-		
+
+	Name = "Undead Ranger"
 	update_hp_bar()
 	$HealthBar.set_name_size(18)
 	

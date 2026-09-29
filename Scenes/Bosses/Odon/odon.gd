@@ -20,7 +20,7 @@ func check_phase():
 				var enemy_list = get_tree().current_scene.get_node("Enemies")
 				attackt = attackt_start
 				for i in range(enemy_list.get_child_count()):
-					if enemy_list.get_child(i).Name == "Odon":
+					if enemy_list.get_child(i).Name == "Nell":
 						enemy_list.get_child(i).take_damage(fire_stacks / 2, 10, 0, Color.WHITE)
 				if boss_bar != null:
 					boss_bar.visible = true
@@ -106,9 +106,10 @@ func set_level_stats():
 		Defense = 3
 		Speed = 4
 		Damage = 30 + (level * 5)
-		Name = "Odon"
-		phase = 0
-		
+
+	Name = "Odon"
+	phase = 0
+	Boss = true
 	init_boss_bar()
 	update_hp_bar()
 	

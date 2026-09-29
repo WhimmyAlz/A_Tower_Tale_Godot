@@ -55,11 +55,11 @@ func set_level_stats():
 		Defense = 7
 		Speed = 2
 		Damage = 15 + (level * 1)
-		if randi_range(1,10) == 1:
-			Name = "Skelly"
-		else:
-			Name = "Skelebone"
-		
+
+	if randi_range(1,50) == 1:
+		Name = "Skelly"
+	else:
+		Name = "Skelebone"
 	update_hp_bar()
 	
 	set_description()

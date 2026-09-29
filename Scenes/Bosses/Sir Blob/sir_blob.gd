@@ -103,10 +103,11 @@ func set_level_stats():
 		Max_Health = 1000 + (level * 150)
 		Damage = 60 + (level * 5)
 		Speed = 3
-		phase = 0
-		attackt_start = 180
-		Name = "Sir Blob"
 
+	phase = 0
+	attackt_start = 180
+	Name = "Sir Blob"
+	Boss = true
 	init_boss_bar()
 	update_hp_bar()
 

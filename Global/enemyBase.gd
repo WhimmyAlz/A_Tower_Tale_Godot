@@ -16,6 +16,7 @@ class_name enemyBase
 @export var Name = "Blank"
 var mouse_over = false
 var boss_bar = null
+var Boss = false
 
 var phase = 1
 var death_rewards = 1

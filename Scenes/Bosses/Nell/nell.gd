@@ -97,9 +97,10 @@ func set_level_stats():
 		Speed = 4
 		Damage = 10 + (level * 1)
 		Defense_pen = 5
-		Name = "Nell"
-		phase = 0
-	
+
+	Name = "Nell"
+	phase = 0
+	Boss = true
 	init_boss_bar()
 	update_hp_bar()
 	
