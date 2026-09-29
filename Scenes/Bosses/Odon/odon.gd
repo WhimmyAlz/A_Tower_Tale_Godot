@@ -11,6 +11,23 @@ var bonus_hit_speed = 0
 var attack = 1
 var attack2cd = 0
 
+func check_phase():
+	if phases[phase][1] > 0:
+
+		if phases[phase][1] == 1:
+			# check if enemy is "passive" before damaged
+			if phase == 1:
+				var enemy_list = get_tree().current_scene.get_node("Enemies")
+				attackt = attackt_start
+				for i in range(enemy_list.get_child_count()):
+					if enemy_list.get_child(i).Name == "Odon":
+						enemy_list.get_child(i).take_damage(fire_stacks / 2, 10, 0, Color.WHITE)
+				if boss_bar != null:
+					boss_bar.visible = true
+
+		phases[phase][1] -= 1
+
+
 func init_boss_bar():
 	boss_bar = boss_bar_preload.instantiate()
 	boss_bar.visible = false

@@ -7,8 +7,40 @@ var shots = 0
 var dodge_cd = 0
 @onready var nell_animation = $NellSprite
 
+@export var Boss_bar_name = "NELL"
+
+var boss_bar_preload = preload("res://Scenes/Mobs/UI/boss_health_bar/boss_health_bar.tscn")
+
+func init_boss_bar():
+	boss_bar = boss_bar_preload.instantiate()
+	boss_bar.visible = false
+	boss_bar.update_name("[b]%s[/b]" % Boss_bar_name)
+	get_tree().current_scene.get_node("Boss_Health_Bars").get_node("boss_hp_container").add_child(boss_bar)
+
+func update_hp_bar():
+	$HealthBar.update_value(Health)
+	$HealthBar.update_max_value(Max_Health)
+	boss_bar.update_value(Health)
+	boss_bar.update_max_value(Max_Health)
+
 func set_description():
-	description = "[b]Nell[/b]\nLevel: %d\n\n[i]\"I was once an adventurer like you...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA long dead adventurer.. Incredibly weak to stuns.\n\nDrops:\n10-16 xp" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Nell[/b]\nLevel: %d\n\n[i]\"My arrows will do something.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The ranger of the twins.\n\nDrops:\n10-16 xp" % [Level, Health, Damage, Defense, Defense_pen]
+
+func check_phase():
+	if phases[phase][1] > 0:
+
+		if phases[phase][1] == 1:
+			# check if enemy is "passive" before damaged
+			if phase == 1:
+				var enemy_list = get_tree().current_scene.get_node("Enemies")
+				attackt = attackt_start
+				for i in range(enemy_list.get_child_count()):
+					if enemy_list.get_child(i).Name == "Odon":
+						enemy_list.get_child(i).take_damage(fire_stacks / 2, 10, 0, Color.WHITE)
+				if boss_bar != null:
+					boss_bar.visible = true
+
+		phases[phase][1] -= 1
 
 func set_pos(pos):
 	position = pos
@@ -27,9 +59,8 @@ func move(animation):
 	set_direction(self, player)
 
 func dodge():
-	var enemy_list
+	var enemy_list = get_tree().current_scene.get_node("Enemies")
 	var closest_enemy = null
-	enemy_list = get_tree().current_scene.get_node("Enemies")
 	if enemy_list.get_child_count() > 0:
 		closest_enemy = enemy_list.get_child(0)
 		for i in range(enemy_list.get_child_count()):
@@ -37,6 +68,7 @@ func dodge():
 				closest_enemy = enemy_list.get_child(i)
 		closest_enemy.velocity.x = 2 * (player.position.x - closest_enemy.position.x)
 		velocity.x = direction * 2500
+
 func shoot():
 	var projectile = arrow.instantiate()
 	projectile.set_pos(position + Vector2(direction * 60, -35))
@@ -50,6 +82,7 @@ func on_death():
 	if death_rewards == 1:
 		player.gain_xp(randi_range(10, 16))
 	death_rewards = 0
+	boss_bar.queue_free()
 	queue_free()
 
 func set_level_stats():
@@ -65,7 +98,9 @@ func set_level_stats():
 		Damage = 10 + (level * 1)
 		Defense_pen = 5
 		Name = "Nell"
-		
+		phase = 0
+	
+	init_boss_bar()
 	update_hp_bar()
 	
 	set_description()

@@ -1,5 +1,6 @@
 extends Control
 
+var parent
 
 func update_value(hp):
 	$TextureProgressBar.value = hp
