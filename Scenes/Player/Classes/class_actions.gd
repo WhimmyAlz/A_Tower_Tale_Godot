@@ -30,6 +30,12 @@ func set_class_items():
 		hat = $needle/hat
 		$needle.visible = true
 
+	elif player_class == "reaper":
+		class_node = $reaper
+		animation = $reaper/skills
+		hat = $reaper/hat
+		$reaper.visible = true
+
 	elif player_class == "draco":
 		# implement later
 		class_node = $brawler

@@ -30,9 +30,13 @@ func reset_regen_amount():
 func get_regen_amount():
 	return(regen_amount)
 
+func update_hp_bar():
+	$"../Non Attached UI Elements/Prog_Bars".Update_HP()
+
 func health_regen():
-	if regen_amount > 0 and Global.health != Global.max_health and regen_cooldown_time == 0:
+	if regen_amount > 0 and Global.health < Global.max_health and regen_cooldown_time == 0:
 		Global.health += 1
+		update_hp_bar()
 		regen_amount -= 1
 		if quick_regen:
 			regen_cooldown_time = 3

@@ -33,7 +33,7 @@ func _on_texture_button_button_up() -> void:
 
 	set_item_values()
 	set_button_descriptions()
-	
+	player.update_hp_bar()
 	if consumable:
 		shop.set_chat("[b]Thank you for buying, please come again.[/b]", "Thank you for buying, please come again.")
 	else:

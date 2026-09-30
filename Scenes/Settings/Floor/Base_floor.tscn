@@ -57,7 +57,6 @@ scale = Vector2(4.725, 4.725)
 sprite_frames = SubResource("SpriteFrames_ks4c7")
 
 [node name="Background" parent="Enviroment" unique_id=1861313626 instance=ExtResource("6_u13yy")]
-position = Vector2(-52, 0)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1301696289]
 
@@ -65,7 +64,6 @@ position = Vector2(-52, 0)
 position = Vector2(789, 375)
 
 [node name="Player" parent="." unique_id=150661442 instance=ExtResource("7_t2lht")]
-position = Vector2(2, 7)
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=752351717]
 

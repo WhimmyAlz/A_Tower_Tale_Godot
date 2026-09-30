@@ -4,7 +4,7 @@ var floors := 0
 
 var instant_chat = false
 
-var player_class := "brawler"
+var player_class := "reaper"
 var player_XP := 0
 var player_XP_REQ := 1000
 var player_Level := 1
@@ -74,6 +74,7 @@ var defense_penetration_adds : int = 0
 # Misc
 var Gravity := 50
 var stun_time := 0
+var Souls = 0
 
 ## Sets stats for Brawler [class:0]
 func class_stats_brawler():
@@ -123,6 +124,30 @@ func class_stats_needle():
 	dexterity = 30 + bonus_dexterity
 	intellect = 6 + bonus_intellect
 
+## Sets stats for Reaper [class:2]
+func class_stats_reaper():
+	flight = 0
+	max_jumps = 1 + jump_adds
+	jump_power = round(1500 * (1 + jump_multi))
+	jump_limit = 100 # must be more than 0
+
+	player_spd = round((0.2 * agility) * (1 + speed_multi))
+	player_weight = 15
+
+	max_health = 240
+	max_stamina = 240
+
+	power = 20 + bonus_power + int(0.5 * Souls)
+	crit_chance = 10 + crit_chance_adds
+	crit_damage = 1.25 + crit_damage_adds
+	defense = 0 + bonus_defense
+	defense_penetration = 0 + defense_penetration_adds + int(0.5 * Souls)
+	
+	strength = 15 + bonus_strength
+	agility = 75 + bonus_agility + int(Souls * 0.25)
+	dexterity = 25 + bonus_dexterity
+	intellect = 25 + bonus_intellect
+
 ## Sets stats for Draco [class:10]
 func class_stats_draco():
 	flight = 1
@@ -152,6 +177,8 @@ func check_class():
 		class_stats_brawler()
 	elif player_class == "needle":
 		class_stats_needle()
+	elif player_class == "reaper":
+		class_stats_reaper()
 	elif player_class == "draco":
 		class_stats_draco()
 

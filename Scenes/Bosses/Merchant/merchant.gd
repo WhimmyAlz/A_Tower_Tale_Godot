@@ -101,6 +101,11 @@ func on_death():
 	death_rewards = 0
 	queue_free()
 
+func delete():
+	boss_bar.queue_free()
+	player.get_parent().set_shop_opened(false)
+	queue_free()
+
 func set_level_stats():
 	# Reminder to self:
 	# Level is display level while level is used functionally

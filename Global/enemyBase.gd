@@ -154,7 +154,12 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 		check_phase()
 
 	if self.Health <= 0:
+		check_class_misc()
 		on_death()
+
+func check_class_misc():
+	if Global.player_class == "reaper":
+		Global.Souls += 1
 
 func take_knockback(kb, dir):
 	self.velocity.x += kb * dir * 100 # 100 cuz kb too weak otherwise (want to use lower values)

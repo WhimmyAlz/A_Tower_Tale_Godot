@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://b0qk7cpk01wtm"]
+
+[ext_resource type="Script" uid="uid://da7xoxod8ojih" path="res://Scenes/Player/Classes/reaper/soul_needle.gd" id="1_0usop"]
+[ext_resource type="Texture2D" uid="uid://cva0nb73vp43y" path="res://Scenes/Player/Classes/reaper/sprites/soul_needle_loop.png" id="1_haxld"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0usop"]
+atlas = ExtResource("1_haxld")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdth2"]
+atlas = ExtResource("1_haxld")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ftww"]
+atlas = ExtResource("1_haxld")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o63l0"]
+atlas = ExtResource("1_haxld")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pm020"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0usop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdth2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ftww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o63l0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7tyf"]
+size = Vector2(83, 8)
+
+[node name="soul_needle" type="Area2D" unique_id=1303662185]
+rotation = 1.5707964
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_0usop")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1341851298]
+texture_filter = 1
+position = Vector2(8.940697e-08, -3)
+rotation = 3.9374628
+scale = Vector2(1.05, 1.05)
+sprite_frames = SubResource("SpriteFrames_pm020")
+autoplay = "default"
+frame_progress = 0.06444988
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=376932239]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_i7tyf")

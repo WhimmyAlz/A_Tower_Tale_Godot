@@ -6,6 +6,11 @@ extends Node2D
 
 func update_stats():
 	var regen_amount_percentage = (player.get_child(0).get_regen_amount() * 100)/Global.max_health
+	var Misc
+	if Global.player_class == "reaper":
+		Misc = "Souls: %d" % Global.Souls
+	else:
+		Misc = ""
 	
 	# displayed texts
 	var listed_stats = [
@@ -25,7 +30,8 @@ func update_stats():
 	"Health regen: %0.01f%%/%0.01f%%\n" % [regen_amount_percentage, Global.health_regen_value],
 	"Stamina regen: %.01fx\n\n" % (1 + Global.stamina_regen_multi),
 	"Player weight: %d\n" % Global.player_weight,
-	"Max jumps: %d" % Global.max_jumps,
+	"Max jumps: %d\n\n" % Global.max_jumps,
+	"%s" % Misc
 	]
 	
 	stats_label.text = listed_stats[0]

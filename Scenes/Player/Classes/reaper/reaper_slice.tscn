@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://0f7jm08pco7j"]
+
+[ext_resource type="Script" uid="uid://dtrpiqk53364b" path="res://Scenes/Player/Classes/reaper/reaper_slice.gd" id="1_314px"]
+[ext_resource type="Texture2D" uid="uid://dbtu7b4dwr08o" path="res://Scenes/Player/Classes/reaper/sprites/reaper_slice.png" id="1_ti0vp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_314px"]
+atlas = ExtResource("1_ti0vp")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_286ps"]
+atlas = ExtResource("1_ti0vp")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhu5m"]
+atlas = ExtResource("1_ti0vp")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6dw0"]
+atlas = ExtResource("1_ti0vp")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yokxy"]
+atlas = ExtResource("1_ti0vp")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_305n2"]
+atlas = ExtResource("1_ti0vp")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kn0w"]
+atlas = ExtResource("1_ti0vp")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xo2g0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_314px")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_286ps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhu5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6dw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yokxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_305n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kn0w")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wbpdo"]
+radius = 173.01157
+
+[node name="Area2D" type="Area2D" unique_id=1730805503]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_314px")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=846288503]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_xo2g0")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1067901561]
+position = Vector2(-93, -3)
+shape = SubResource("CircleShape2D_wbpdo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

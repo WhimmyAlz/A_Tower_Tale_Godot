@@ -22,7 +22,7 @@ func progress_floor():
 	
 	for i in range(enemy_list.get_child_count()):
 		if enemy_list.get_child(i).is_in_group("merchant"):
-			enemy_list.get_child(i).queue_free()
+			enemy_list.get_child(i).delete()
 	
 	var player = get_tree().current_scene.get_node("Player").get_child(0)
 	player.reset_regen_amount()

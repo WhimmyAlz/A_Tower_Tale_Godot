@@ -26,7 +26,7 @@ func charge_ult():
 		Global.ultimate_charge = mini(Global.ultimate_charge + ult_charge_amount,  1000)
 
 func set_speed(x, y):
-	speed = Vector2(x * direction, y)
+	self.speed = Vector2(x * direction, y)
 
 func set_size(sz):
 	size = sz
@@ -67,8 +67,9 @@ func set_hitnum(value):
 func set_direction(dir):
 	direction = dir
 
-func set_knockback(kb):
+func set_knockback(kb, kbY = 0):
 	knockback = kb
+	knockbackY = kbY
 
 func set_knockbackY(kb):
 	knockbackY = kb
