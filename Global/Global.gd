@@ -5,7 +5,7 @@ var floors := 0
 var instant_chat = false
 
 var player_class := "reaper"
-var player_XP := 0
+var player_XP := 150
 var player_XP_REQ := 1000
 var player_Level := 1
 
@@ -42,8 +42,8 @@ var crit_chance_adds := 0.0
 var crit_damage := 1.25 # damage multi from crits
 var crit_damage_adds := 0.0 # damage multi from crits
 
-var player_attacks = 1
-var ultimate_attack = 0
+var player_attacks = 4
+var ultimate_attack = 1
 # cooldowns
 var attack1t := 0
 var attack2t := 0
@@ -59,7 +59,7 @@ var attack4_max_t
 var attack5_max_t
 var ultimate_max_t
 
-var ultimate_charge := 0
+var ultimate_charge := 1000
 
 # Buffs
 var speed_multi : float = 0

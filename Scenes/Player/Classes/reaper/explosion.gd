@@ -27,10 +27,13 @@ func _physics_process(_delta: float) -> void:
 		
 		for collider in collisions:
 			if collider.is_in_group("attackable") and collider.is_in_group("enemy") and collider not in already_hit and hitnum >= 1:
+				if not status.get_river():
+					charge_ult()
 				collider.take_damage(damage, defense_pen, 0)
 				if collider.position.x > position.x:
 					kb_dir = 1
-				collider.take_stun(stuntime)
+				if stuntime > 0:
+					collider.take_stun(stuntime)
 				collider.take_knockback(knockback, kb_dir)
 				collider.take_knockbackY(knockbackY)
 				collider.reset_gravity()

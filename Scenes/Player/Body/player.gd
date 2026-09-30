@@ -27,6 +27,12 @@ func check_between_time():
 func reset_regen_amount():
 	regen_amount = int((Global.health_regen_value * 0.01) * Global.max_health)
 
+func add_regen_amount(val):
+	if int(regen_amount + val) < int((Global.health_regen_value * 0.01) * Global.max_health):
+		regen_amount += int(val)
+	else:
+		reset_regen_amount()
+
 func get_regen_amount():
 	return(regen_amount)
 

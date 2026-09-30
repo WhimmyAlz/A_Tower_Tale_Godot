@@ -2,11 +2,34 @@ extends Node2D
 
 @onready var player = get_parent().get_parent().get_body()
 
+var preload_river_bg = preload("res://Scenes/Player/Classes/reaper/river_bg.tscn")
+var river_bg
+
 var preload_status_box = preload("res://Scenes/Player/Player_UI/Status_effects/status_effect_box.tscn")
 var status_box
 
+var explosion_preload = preload("res://Scenes/Player/Classes/reaper/explosion.tscn")
+
+func spawn_explosion(collider):
+	var explosion = explosion_preload.instantiate()
+	explosion.set_damage(Global.power)
+	explosion.set_knockback(1)
+	explosion.set_pos(collider.position + Vector2(randi_range(-100,100),randi_range(-250,250)))
+	explosion.set_lifetime(50)
+	explosion.set_stuntime(0)
+	explosion.set_ult_charge_amount(0)
+	explosion.set_size(randi_range(2,6))
+	explosion.set_hitnum(100)
+	explosion.set_angle(randi_range(1,360))
+	explosion.set_early_explosion(3)
+	get_tree().current_scene.get_node("Projectiles").call_deferred("add_child",explosion)
+
+
 var berserk = false
 var berserk_time := 0
+
+var river = false
+var river_time := 0
 
 var needle_stacks = 0
 var needle_tick_delay := 0
@@ -58,6 +81,9 @@ func update_status_box(status, status_level, time):
 func get_berserk():
 	return(berserk)
 
+func get_river():
+	return(river)
+
 func get_shock():
 	return(shock_stacks)
 
@@ -81,6 +107,22 @@ func set_berserk(time):
 		update_status_box("Berserk", 1, time)
 	berserk = true
 	berserk_time = time
+
+func start_river(time):
+	if river == false:
+		init_status_box("River", 1, time, Color.DARK_SLATE_BLUE)
+		river_bg = preload_river_bg.instantiate()
+		get_tree().current_scene.get_node("Enviroment").get_node("Walls_and_sprites").get_node("Sprites").add_child(river_bg)
+	else:
+		update_status_box("River", 1, time)
+	river = true
+	if river_time < time:
+		river_time = time
+
+func add_river(time):
+	if river == true:
+		river_time += time
+		update_status_box("River", 1, river_time)
 
 func add_needles(stacks):
 	needle_tick_delay = 6000
@@ -150,6 +192,21 @@ func berserk_effect():
 			Global.stamina_regen_multi -= 1
 			berserk = false
 
+func river_effect():
+		if river:
+			if river_time % 30 == 0:
+				player.add_regen_amount(2)
+				
+				var enemy_list = get_tree().current_scene.get_node("Enemies")
+				if enemy_list.get_child_count() > 0:
+					var target = enemy_list.get_child(randi_range(0, enemy_list.get_child_count()-1))
+					spawn_explosion(target)
+				
+			river_time -= 1
+			if river_time == 0:
+				river_bg.end()
+				river = false
+
 func needle_effects():
 	update_status_box("Needle Stacks", needle_stacks, needle_tick_delay)
 	if needle_stacks >= 1 and needle_tick_delay == 0:
@@ -207,6 +264,7 @@ func deathmark_effects():
 
 func _physics_process(_delta: float) -> void:
 	berserk_effect()
+	river_effect()
 	fire_effect()
 	venom_effect()
 	shock_effects()

@@ -17,6 +17,7 @@ var stuntime = 20
 
 var player
 var ult_charge_amount := 10
+var status
 
 func set_ult_charge_amount(value):
 	ult_charge_amount = value
@@ -51,6 +52,9 @@ func calc_pierce(enemy_defense):
 
 func set_player(ply):
 	player = ply
+
+func set_status():
+	status = get_tree().current_scene.get_node("Player").get_status_effect()
 
 func set_damage(dmg):
 	damage = dmg
@@ -91,6 +95,7 @@ func fix_rotation():
 		$AnimatedSprite2D.flip_h = false
 
 func _ready() -> void:
+	set_status()
 	self.scale.x = size
 	self.scale.y = size
 	fix_rotation()

@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://cnn261d2fswv2" path="res://Scenes/Player/Classes/reaper/sprites/reaper_scythe_swipe.png" id="18_3pw07"]
 [ext_resource type="Texture2D" uid="uid://bvvcqia02xix0" path="res://Scenes/Player/Classes/reaper/sprites/reaper_hat_run.png" id="18_x5e2f"]
 [ext_resource type="Texture2D" uid="uid://60njny680xl8" path="res://Scenes/Player/Classes/reaper/sprites/reaper_hat_stun.png" id="19_dlji3"]
+[ext_resource type="Texture2D" uid="uid://dbpg2c1nf3036" path="res://Scenes/Player/Classes/reaper/sprites/reaper_swipe_2.png" id="20_dlji3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kva02"]
 atlas = ExtResource("3_imllr")
@@ -540,6 +541,42 @@ region = Rect2(1800, 0, 300, 300)
 atlas = ExtResource("18_3pw07")
 region = Rect2(2100, 0, 300, 300)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_43888"]
+atlas = ExtResource("20_dlji3")
+region = Rect2(0, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trsl1"]
+atlas = ExtResource("20_dlji3")
+region = Rect2(350, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uttq2"]
+atlas = ExtResource("20_dlji3")
+region = Rect2(700, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdcrg"]
+atlas = ExtResource("20_dlji3")
+region = Rect2(1050, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h78iv"]
+atlas = ExtResource("20_dlji3")
+region = Rect2(1400, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkkgj"]
+atlas = ExtResource("20_dlji3")
+region = Rect2(1750, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls3ue"]
+atlas = ExtResource("20_dlji3")
+region = Rect2(2100, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq7c7"]
+atlas = ExtResource("20_dlji3")
+region = Rect2(2450, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt1ev"]
+atlas = ExtResource("20_dlji3")
+region = Rect2(2800, 0, 350, 350)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ldyiv"]
 animations = [{
 "frames": [{
@@ -626,6 +663,38 @@ animations = [{
 }],
 "loop": true,
 "name": &"swipe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43888")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trsl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uttq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdcrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h78iv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkkgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls3ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lq7c7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kt1ev")
+}],
+"loop": true,
+"name": &"swipe_2",
 "speed": 5.0
 }]
 
@@ -772,7 +841,7 @@ script = ExtResource("15_7nok7")
 visible = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ldyiv")
-animation = &"recover"
+animation = &"swipe_2"
 
 [node name="hat" type="AnimatedSprite2D" parent="reaper" unique_id=2060032046]
 texture_filter = 1
