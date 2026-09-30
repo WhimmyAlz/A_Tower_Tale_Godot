@@ -81,6 +81,7 @@ func shoot():
 func on_death():
 	if death_rewards == 1:
 		player.gain_xp(randi_range(10, 16))
+		check_class_misc()
 	death_rewards = 0
 	boss_bar.queue_free()
 	queue_free()
@@ -128,11 +129,8 @@ func _physics_process(_delta: float) -> void:
 			nell_animation.play("idle")
 			nell_animation.pause()
 			stunnedf -= 1
-			attackt = 0
 		
 	elif attackt >= 200 and attackt <= 265:
-		if stunnedf != 0:
-			attackt = 0
 		if attackt == 201:
 			set_direction(self, player)
 			face_player(nell_animation)

@@ -67,6 +67,7 @@ func on_death():
 
 		if Global.ultimate_attack == 0 and 10 >= randi_range(1, 100):
 			player.unlock_ultimate()
+		check_class_misc()
 	death_rewards = 0
 	queue_free()
 

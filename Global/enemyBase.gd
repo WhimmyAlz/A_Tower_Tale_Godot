@@ -154,7 +154,6 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 		check_phase()
 
 	if self.Health <= 0:
-		check_class_misc()
 		on_death()
 
 func check_class_misc():

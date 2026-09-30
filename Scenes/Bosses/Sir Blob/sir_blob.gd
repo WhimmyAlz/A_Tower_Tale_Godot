@@ -90,6 +90,7 @@ func on_death():
 	
 	if death_rewards == 1:
 		player.gain_xp(randi_range(64, 84))
+		check_class_misc()
 	death_rewards = 0
 	queue_free()
 

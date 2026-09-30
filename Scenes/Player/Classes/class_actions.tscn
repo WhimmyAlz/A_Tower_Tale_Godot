@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b11205rygft4a" path="res://Scenes/Player/Classes/reaper/sprites/base_punch.png" id="15_nbnk7"]
 [ext_resource type="Texture2D" uid="uid://b6ih6oqcrb2a" path="res://Scenes/Player/Classes/reaper/sprites/base_spike.png" id="16_7nok7"]
 [ext_resource type="Texture2D" uid="uid://drpykehcjjwa6" path="res://Scenes/Player/Classes/reaper/sprites/reaper_hat_idle.png" id="17_3pw07"]
+[ext_resource type="Texture2D" uid="uid://bijpnm5btyjhd" path="res://Scenes/Player/Classes/reaper/sprites/recover.png" id="17_x5e2f"]
 [ext_resource type="Texture2D" uid="uid://cnn261d2fswv2" path="res://Scenes/Player/Classes/reaper/sprites/reaper_scythe_swipe.png" id="18_3pw07"]
 [ext_resource type="Texture2D" uid="uid://bvvcqia02xix0" path="res://Scenes/Player/Classes/reaper/sprites/reaper_hat_run.png" id="18_x5e2f"]
 [ext_resource type="Texture2D" uid="uid://60njny680xl8" path="res://Scenes/Player/Classes/reaper/sprites/reaper_hat_stun.png" id="19_dlji3"]
@@ -471,6 +472,26 @@ region = Rect2(512, 0, 128, 128)
 atlas = ExtResource("15_nbnk7")
 region = Rect2(640, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqyau"]
+atlas = ExtResource("17_x5e2f")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2fhn"]
+atlas = ExtResource("17_x5e2f")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ekwc"]
+atlas = ExtResource("17_x5e2f")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjell"]
+atlas = ExtResource("17_x5e2f")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1iwa5"]
+atlas = ExtResource("17_x5e2f")
+region = Rect2(512, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cpmrs"]
 atlas = ExtResource("16_7nok7")
 region = Rect2(128, 0, 128, 128)
@@ -539,6 +560,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"punch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqyau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2fhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ekwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjell")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1iwa5")
+}],
+"loop": true,
+"name": &"recover",
 "speed": 5.0
 }, {
 "frames": [{
@@ -731,7 +772,7 @@ script = ExtResource("15_7nok7")
 visible = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ldyiv")
-animation = &"swipe"
+animation = &"recover"
 
 [node name="hat" type="AnimatedSprite2D" parent="reaper" unique_id=2060032046]
 texture_filter = 1

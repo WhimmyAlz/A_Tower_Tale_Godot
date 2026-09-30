@@ -59,6 +59,7 @@ func move(animation):
 func on_death():
 	if death_rewards == 1:
 		player.gain_xp(randi_range(50, 60))
+		check_class_misc()
 	death_rewards = 0
 	boss_bar.queue_free()
 	queue_free()

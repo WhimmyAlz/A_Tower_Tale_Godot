@@ -4,7 +4,7 @@ var attack1_max_t = 90
 var attack2_max_t = 240
 var attack3_max_t = 300
 var attack4_max_t = 720
-var attack5_max_t = 900
+var attack5_max_t = 21
 var ultimate_max_t = 90
 
 var active = false
@@ -15,6 +15,7 @@ var reaper_slice
 var giant_fist
 var wave
 var descriptions 
+var closest_enemy
 
 @onready var player = get_parent().get_parent()
 @onready var class_anim = $skills
@@ -35,7 +36,7 @@ func get_description():
 	"attack_2": ["[b]Recursive Bombs[/b]\n", "Fires out a row of soul fragments each slightly bigger than the previous and each explosion deals 4% more damage than the previous. \n[color=dodger_blue]Consumes 80 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color]+4%%(i) x5 (50%% + 0.5x intellect)x5\n" % ((0.5 * Global.power) + (0.5 * Global.intellect)),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 5 x5\n", "Stuntime: 1s\n\n"],
 	"attack_3": ["[b]Soul needles[/b]\n", "Summons needles above your character which propels themselves into enemies and constantly do damage and inflict stun once they land. More needles are summoned based on enemy count.\n[color=dodger_blue]Consumes 75 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% +  0.1x intellect)\n" % ((0.1 * Global.power) + (0.1 * Global.intellect)),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 0\n", "Stuntime: 0.16s\n\n", "Inflicts [color=gray]Deathmark 25[/color]"],
 	"attack_4": ["[b]Reap[/b]\n", "Jumps towards the direction you're facing and summons a scythe to perform a soul slice. Enemies hit by the soul slice spawns 4 soul explosions each doing 50% of this attack's damage.\n[color=dodger_blue]Consumes 120 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + 0.5x intellect + 0.75x dexterity)\n" % (Global.power + (0.5 * Global.intellect) + (0.75 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 0\n", "Stuntime: 0.5s"],
-	"attack_5": ["[b]Berserk[/b]\n", "Sends the player into a fit of rage which increases their strength by 10 and agility by 15 and boosts stamina regen by 100% for 7.5s. \n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]0[/color] (0)\n", "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0s\n\n", "Activates the [color=red]berserk[/color] status effect"],
+	"attack_5": ["[b]Recover[/b]\n", "Reduces all skills cooldowns by 0.33s and recover 20 stamina per use.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]NA[/color] (NA)\n", "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0s\n\n"],
 	"ultimate": ["[b]Fist of God[/b]\n", "A massive fist comes from above and slams down all enemies dealing massive damage and creating a shockwave which deals 75% of the original attack's damage. \n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f + %.1f[/color] (400%% + 4x strength) + (300%% + 3x strength)\n" % [((4 * Global.power) + (4 * Global.strength)), ((3 * Global.power) + (3 * Global.strength))], "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 30\n", "Stuntime: 3s\n"],
 	}
 	return(descriptions)
@@ -179,10 +180,10 @@ func attack_3():
 		Global.attack3t = 0
 
 func init_attack_4():
-	if Global.stamina >= 60:
+	if Global.stamina >= 120:
 		set_dir()
 
-		Global.stamina -= 60
+		Global.stamina -= 120
 		Global.attack4t = 1
 
 		player.set_animation_visibility(false)
@@ -242,20 +243,27 @@ func init_attack_5():
 		player.set_animation_visibility(false)
 		class_anim.visible = true
 		class_anim.frame = 0
-		class_anim.play("scream")
+		class_anim.play("recover")
 		Global.attack5t = 1
 		player.set_attacking(true)
 
 func attack_5():
-	if Global.attack5t >= 1 and Global.attack5t <= 45:
-		class_anim.speed_scale = 9
+	if Global.attack5t >= 1 and Global.attack5t <= 20:
+		class_anim.speed_scale = 3
 		player.set_speed_penalty(0)
 		
-		# spawns wave
-		if Global.attack5t == 20:
-			status.set_berserk(450)
-
-		if Global.attack5t == 45:
+		player.gain_stamina(1)
+		
+		if Global.attack1t != 0:
+			Global.attack1t += 1
+		if Global.attack2t != 0:
+			Global.attack2t += 1
+		if Global.attack3t != 0:
+			Global.attack3t += 1
+		if Global.attack4t != 0:
+			Global.attack4t += 1
+		
+		if Global.attack5t >= 20:
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)

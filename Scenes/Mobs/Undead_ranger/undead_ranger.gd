@@ -30,6 +30,7 @@ func shoot():
 func on_death():
 	if death_rewards == 1:
 		player.gain_xp(randi_range(10, 16))
+		check_class_misc()
 	death_rewards = 0
 	queue_free()
 

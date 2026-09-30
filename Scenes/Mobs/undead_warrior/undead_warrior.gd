@@ -26,6 +26,7 @@ func move(animation):
 func on_death():
 	if death_rewards == 1:
 		player.gain_xp(randi_range(12, 18))
+		check_class_misc()
 	death_rewards = 0
 	queue_free()
 
@@ -62,7 +63,6 @@ func check_phase():
 				attackt = 0
 
 		phases[phase][1] -= 1
-
 
 func set_level_stats():
 	# Reminder to self:

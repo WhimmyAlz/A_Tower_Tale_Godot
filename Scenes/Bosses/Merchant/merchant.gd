@@ -98,6 +98,7 @@ func on_death():
 	if death_rewards == 1:
 		player.gain_xp(randi_range(50, 100))
 		player.get_parent().set_shop_opened(false)
+		check_class_misc()
 	death_rewards = 0
 	queue_free()
 

@@ -251,7 +251,8 @@ func _ready() -> void:
 
 func _physics_process(_delta: float):
 	check_between_time()
-	stamina_regen()
+	if not attacking:
+		stamina_regen()
 	health_regen()
 	check_free()
 
