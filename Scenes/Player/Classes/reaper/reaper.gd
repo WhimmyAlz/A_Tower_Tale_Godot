@@ -33,7 +33,7 @@ var total_targets
 func get_description():
 	descriptions = {
 	"attack_1": ["[b]Soul explosion[/b]\n", "Sends out a soul fragment that causes a small explosion dealing heavy damage at a moderate range.\n[color=dodger_blue]Consumes 45 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + 0.75x intellect + 0.25x dexterity)\n" % (Global.power + (0.75 * Global.intellect) + (0.25 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(attack1_max_t)/60), "Knockback: 5\n", "Stuntime: 0.5s\n"],
-	"attack_2": ["[b]Recursive Bombs[/b]\n", "Fires out a row of soul fragments each slightly bigger than the previous and each explosion deals 4% more damage than the previous. \n[color=dodger_blue]Consumes 80 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color]+4%%(i) x5 (50%% + 0.5x intellect)x5\n" % ((0.5 * Global.power) + (0.5 * Global.intellect)),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 5 x5\n", "Stuntime: 1s\n"],
+	"attack_2": ["[b]Recursive Bombs[/b]\n", "Fires out a row of soul fragments each slightly bigger than the previous and each explosion deals 8% more damage than the previous. Explosions flings enemies up.\n[color=dodger_blue]Consumes 80 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color]+8%%(i) x5 (50%% + 0.5x intellect)x5\n" % ((0.5 * Global.power) + (0.5 * Global.intellect)),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 5 x5\n", "Stuntime: 1s\n"],
 	"attack_3": ["[b]Soul needles[/b]\n", "Summons needles above your character which propels themselves into enemies and constantly do damage and inflict stun once they land. More needles are summoned based on enemy count.\n[color=dodger_blue]Consumes 75 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% +  0.1x intellect)\n" % ((0.1 * Global.power) + (0.1 * Global.intellect)),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 0\n", "Stuntime: 0.16s\n\n", "Inflicts [color=gray]Deathmark 25[/color]"],
 	"attack_4": ["[b]Reap[/b]\n", "Jumps towards the direction you're facing and summons a scythe to perform a soul slice. Enemies hit by the soul slice spawns 4 soul explosions each doing 50% of this attack's damage.\n[color=dodger_blue]Consumes 120 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + 0.5x intellect + 0.75x dexterity)\n" % (Global.power + (0.5 * Global.intellect) + (0.75 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 0\n", "Stuntime: 0.5s"],
 	"attack_5": ["[b]Recover[/b]\n", "Reduces all skills cooldowns by 0.33s and recover 20 stamina per use. If river styx is active, then add 5s to it but consume a soul.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]0[/color] (0)\n", "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0s\n\n"],
@@ -74,7 +74,7 @@ func attack_1():
 			explosion.set_speed(20, 0)
 			explosion.set_lifetime(50)
 			explosion.set_stuntime(30)
-			explosion.set_ult_charge_amount(95)
+			explosion.set_ult_charge_amount(75)
 			explosion.set_size(5)
 			explosion.set_hitnum(100)
 			get_tree().current_scene.get_node("Projectiles").add_child(explosion)
@@ -112,13 +112,13 @@ func attack_2():
 		if between(Global.attack2t, 16, 34) and Global.attack2t % 4 == 0:
 			explosion = explosion_preload.instantiate()
 			explosion.set_player(player)
-			explosion.set_damage((0.5 * Global.power + 0.5 * Global.intellect) * (1 + 0.01 * (Global.attack2t-16)))
+			explosion.set_damage((0.5 * Global.power + 0.5 * Global.intellect) * (1 + 0.02 * (Global.attack2t-16)))
 			explosion.set_knockback(5, -7)
 			explosion.set_pos(player.position + Vector2(15 * Global.player_dir, -60))
 			explosion.set_speed(1 + 8 * (Global.attack2t-16), 0)
 			explosion.set_lifetime(50)
 			explosion.set_stuntime(30)
-			explosion.set_ult_charge_amount(35)
+			explosion.set_ult_charge_amount(40)
 			explosion.set_size(2.25 + 0.75 * (Global.attack2t-16))
 			explosion.set_hitnum(100)
 			get_tree().current_scene.get_node("Projectiles").add_child(explosion)
@@ -217,7 +217,7 @@ func attack_4():
 			reaper_slice.set_speed(30, 0)
 			reaper_slice.set_lifetime(40)
 			reaper_slice.set_stuntime(25)
-			reaper_slice.set_ult_charge_amount(65)
+			reaper_slice.set_ult_charge_amount(95)
 			reaper_slice.set_size(2)
 			reaper_slice.set_hitnum(100)
 			get_tree().current_scene.get_node("Projectiles").add_child(reaper_slice)

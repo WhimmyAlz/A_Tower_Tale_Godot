@@ -190,7 +190,7 @@ script = ExtResource("6_epd48")
 
 [node name="BG" type="AnimatedSprite2D" parent="Shop" unique_id=4077145]
 texture_filter = 1
-position = Vector2(702, -590)
+position = Vector2(700, -590)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_0cx21")
 animation = &"idle"

@@ -139,7 +139,6 @@ func _physics_process(_delta: float) -> void:
 		if attackt == 220:
 			shots += 1
 			shoot()
-	
 		attackt += 1
 	if attackt >= 265:
 		if stunnedf == 0 and shots < 3:

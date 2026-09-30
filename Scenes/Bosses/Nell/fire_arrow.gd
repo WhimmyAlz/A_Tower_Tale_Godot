@@ -42,7 +42,7 @@ func _physics_process(_delta: float) -> void:
 
 	if proj_life_time < 115:
 		position += direction * velocity_vector
-	else:
+	elif parent != null:
 		position.x = parent.position.x + direction * (proj_life_time-115)
 	if proj_life_time == 115:
 		$AnimatedSprite2D.play("looping")
