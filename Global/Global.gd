@@ -4,7 +4,7 @@ var floors := 0
 
 var instant_chat = false
 
-var player_class := "reaper"
+var player_class := "needle"
 var player_XP := 0
 var player_XP_REQ := 1000
 var player_Level := 1

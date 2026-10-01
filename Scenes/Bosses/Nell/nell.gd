@@ -73,7 +73,7 @@ func dodge():
 				break
 		closest_enemy.velocity.x = 2 * (player.position.x - closest_enemy.position.x)
 		velocity.x = direction * 2500
-		attackt = 200
+		attackt = 190
 
 func shoot():
 	var projectile = arrow.instantiate()
@@ -103,7 +103,7 @@ func set_level_stats():
 		Defense = 2
 		Speed = 4
 		Damage = 10 + (level * 1)
-		Defense_pen = 5
+		Defense_pen = 10
 
 	Name = "Nell"
 	phase = 0
@@ -150,6 +150,8 @@ func _physics_process(_delta: float) -> void:
 		if stunnedf == 0 and shots < 3:
 			$NellSprite.frame = 0
 			attackt = 199
+		elif stunnedf != 0:
+			dodge()
 		else:
 			attackt = 0
 		

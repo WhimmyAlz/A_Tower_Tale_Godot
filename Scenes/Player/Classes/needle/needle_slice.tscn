@@ -5,19 +5,19 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xc7h8"]
 atlas = ExtResource("1_gn16c")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ch0r"]
 atlas = ExtResource("1_gn16c")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ehmyg"]
 atlas = ExtResource("1_gn16c")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_46ilf"]
 atlas = ExtResource("1_gn16c")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h7071"]
 animations = [{
@@ -40,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2b24"]
-size = Vector2(12.767813, 91.278915)
+size = Vector2(7.79313, 91.278915)
 
 [node name="needle_slice" type="Area2D" unique_id=1582272701]
 collision_layer = 16
@@ -49,12 +49,11 @@ script = ExtResource("1_xc7h8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=845731003]
 texture_filter = 1
-scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_h7071")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=805564367]
-position = Vector2(0.24520755, -0.26540095)
+position = Vector2(0.023347318, -0.49837708)
 rotation = 0.80983275
-scale = Vector2(0.99999994, 0.99999994)
+scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_v2b24")
