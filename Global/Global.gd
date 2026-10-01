@@ -4,7 +4,7 @@ var floors := 0
 
 var instant_chat = false
 
-var player_class := "needle"
+var player_class := "reaper"
 var player_XP := 0
 var player_XP_REQ := 1000
 var player_Level := 1
@@ -134,8 +134,8 @@ func class_stats_reaper():
 	player_spd = round((0.2 * agility) * (1 + speed_multi))
 	player_weight = 15
 
-	max_health = 240
-	max_stamina = 240
+	max_health = 250
+	max_stamina = 250
 
 	power = 20 + bonus_power + int(0.5 * Souls)
 	crit_chance = 10 + crit_chance_adds

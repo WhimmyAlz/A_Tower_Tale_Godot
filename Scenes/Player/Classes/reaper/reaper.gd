@@ -4,7 +4,7 @@ var attack1_max_t = 90
 var attack2_max_t = 240
 var attack3_max_t = 300
 var attack4_max_t = 720
-var attack5_max_t = 21
+var attack5_max_t = 31
 var ultimate_max_t = 90
 
 var active = false
@@ -12,8 +12,6 @@ var active = false
 var explosion
 var soul_needle
 var reaper_slice
-var giant_fist
-var wave
 var descriptions 
 var closest_enemy
 
@@ -26,8 +24,7 @@ var soul_needle_preload = preload("res://Scenes/Player/Classes/reaper/soul_needl
 var giant_fist_preload = preload("res://Scenes/Player/Classes/brawler/giant_fist.tscn")
 var reaper_slice_preload = preload("res://Scenes/Player/Classes/reaper/reaper_slice.tscn")
 
-var fist_wave
-
+var used_styx_souls = 0
 var total_targets
 
 func get_description():
@@ -36,8 +33,8 @@ func get_description():
 	"attack_2": ["[b]Recursive Bombs[/b]\n", "Fires out a row of soul fragments each slightly bigger than the previous and each explosion deals 8% more damage than the previous. Explosions flings enemies up.\n[color=dodger_blue]Consumes 80 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color]+8%%(i) x5 (50%% + 0.5x intellect)x5\n" % ((0.5 * Global.power) + (0.5 * Global.intellect)),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 5 x5\n", "Stuntime: 1s\n"],
 	"attack_3": ["[b]Soul needles[/b]\n", "Summons needles above your character which propels themselves into enemies and constantly do damage and inflict stun once they land. More needles are summoned based on enemy count.\n[color=dodger_blue]Consumes 75 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% +  0.1x intellect)\n" % ((0.1 * Global.power) + (0.1 * Global.intellect)),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 0\n", "Stuntime: 0.16s\n\n", "Inflicts [color=gray]Deathmark 25[/color]"],
 	"attack_4": ["[b]Reap[/b]\n", "Jumps towards the direction you're facing and summons a scythe to perform a soul slice. Enemies hit by the soul slice spawns 4 soul explosions each doing 50% of this attack's damage.\n[color=dodger_blue]Consumes 120 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + 0.5x intellect + 0.75x dexterity)\n" % (Global.power + (0.5 * Global.intellect) + (0.75 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 0\n", "Stuntime: 0.5s"],
-	"attack_5": ["[b]Recover[/b]\n", "Reduces all skills cooldowns by 0.33s and recover 20 stamina per use. If river styx is active, then add 5s to it but consume a soul.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]0[/color] (0)\n", "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0s\n\n"],
-	"ultimate": ["[b]Not a domain expansion[/b]\n", "Spawns an area that heals 4hp/s and also does soul explosions to a random mob for 10s. Consumes up to 2 Souls to increase time by 7s each.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%%)\n" % Global.power, "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 0\n", "Stuntime: 0s\n"],
+	"attack_5": ["[b]Recover[/b]\n", "Reduces all skills cooldowns by 0.33s and recover 20 stamina per use. If river styx is active, then consume a soul to add 3s to it up to 5 times.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]0[/color] (0)\n", "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0s\n\n"],
+	"ultimate": ["[b]River Styx[/b]\n", "Spawns an area that heals 4hp/s and summons skulls who frequently casts soul explosions to a random mob for 10s. Consumes up to 2 Souls to increase time by 3.5s each.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%%)\n" % Global.power, "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 0\n", "Stuntime: 0s\n"],
 	}
 	return(descriptions)
 
@@ -74,7 +71,7 @@ func attack_1():
 			explosion.set_speed(20, 0)
 			explosion.set_lifetime(50)
 			explosion.set_stuntime(30)
-			explosion.set_ult_charge_amount(75)
+			explosion.set_ult_charge_amount(55)
 			explosion.set_size(5)
 			explosion.set_hitnum(100)
 			get_tree().current_scene.get_node("Projectiles").add_child(explosion)
@@ -163,7 +160,7 @@ func attack_3():
 			soul_needle.set_pos(player.position + Vector2(-1800 + (150 * Global.attack3t), -1200))
 			soul_needle.set_lifetime(60)
 			soul_needle.set_stuntime(10)
-			soul_needle.set_ult_charge_amount(5)
+			soul_needle.set_ult_charge_amount(3)
 			soul_needle.set_size(3)
 			soul_needle.set_hitnum(100)
 			get_tree().current_scene.get_node("Projectiles").add_child(soul_needle)
@@ -248,7 +245,7 @@ func init_attack_5():
 		player.set_attacking(true)
 
 func attack_5():
-	if Global.attack5t >= 1 and Global.attack5t <= 20:
+	if Global.attack5t >= 1 and Global.attack5t <= 30:
 		class_anim.speed_scale = 3
 		player.set_speed_penalty(0)
 		
@@ -263,12 +260,12 @@ func attack_5():
 		if Global.attack4t != 0:
 			Global.attack4t += 1
 			
-		if Global.attack5t == 10:
+		if Global.attack5t == 10 and used_styx_souls < 5:
 			if status.get_river() and Global.Souls > 0:
-				status.add_river(300)
+				status.add_river(240)
 				Global.Souls -= 1
 		
-		if Global.attack5t >= 20:
+		if Global.attack5t >= 30:
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)
@@ -304,9 +301,10 @@ func ultimate():
 				var amount = mini(Global.Souls, 2)
 				status.add_river(amount * 420)
 				Global.Souls -= amount
-				status.start_river(600 + amount * 420)
+				status.start_river(600 + amount * 210)
 			else:
 				status.start_river(600)
+			used_styx_souls = 0
 
 		if Global.ultimatet == 41:
 			Global.ultimate_charge = 0

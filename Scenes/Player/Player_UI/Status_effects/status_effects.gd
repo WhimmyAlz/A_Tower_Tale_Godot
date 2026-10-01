@@ -8,23 +8,6 @@ var river_bg
 var preload_status_box = preload("res://Scenes/Player/Player_UI/Status_effects/status_effect_box.tscn")
 var status_box
 
-var explosion_preload = preload("res://Scenes/Player/Classes/reaper/explosion.tscn")
-
-func spawn_explosion(collider):
-	var explosion = explosion_preload.instantiate()
-	explosion.set_damage(Global.power)
-	explosion.set_knockback(1)
-	explosion.set_pos(collider.position + Vector2(randi_range(-100,100),randi_range(-250,250)))
-	explosion.set_lifetime(50)
-	explosion.set_stuntime(0)
-	explosion.set_ult_charge_amount(0)
-	explosion.set_size(randi_range(2,6))
-	explosion.set_hitnum(100)
-	explosion.set_angle(randi_range(1,360))
-	explosion.set_early_explosion(3)
-	get_tree().current_scene.get_node("Projectiles").call_deferred("add_child",explosion)
-
-
 var berserk = false
 var berserk_time := 0
 
@@ -196,12 +179,6 @@ func river_effect():
 		if river:
 			if river_time % 30 == 0:
 				player.add_regen_amount(2)
-				
-				var enemy_list = get_tree().current_scene.get_node("Enemies")
-				if enemy_list.get_child_count() > 0:
-					var target = enemy_list.get_child(randi_range(0, enemy_list.get_child_count()-1))
-					spawn_explosion(target)
-				
 			river_time -= 1
 			if river_time == 0:
 				river_bg.end()

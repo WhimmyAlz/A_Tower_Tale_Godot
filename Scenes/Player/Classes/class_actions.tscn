@@ -826,7 +826,6 @@ sprite_frames = SubResource("SpriteFrames_gtl3k")
 animation = &"punch"
 
 [node name="hat" type="AnimatedSprite2D" parent="needle" unique_id=1831983982]
-visible = false
 texture_filter = 1
 position = Vector2(3, -65)
 sprite_frames = SubResource("SpriteFrames_37k1y")

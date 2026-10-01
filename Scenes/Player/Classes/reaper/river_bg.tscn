@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://yrlvglw7lkwx" path="res://Scenes/Player/Classes/reaper/sprites/river_loop.png" id="1_x5tu8"]
 [ext_resource type="Texture2D" uid="uid://ctcov63hki0bj" path="res://Scenes/Player/Classes/reaper/sprites/river_open.png" id="2_l0w4u"]
 [ext_resource type="Script" uid="uid://b433083ctobte" path="res://Scenes/Player/Classes/reaper/river_bg.gd" id="3_l0w4u"]
+[ext_resource type="PackedScene" uid="uid://emh7q8taywd8" path="res://Scenes/Player/Classes/reaper/lanterns.tscn" id="4_h6u6h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l0w4u"]
 atlas = ExtResource("2_l0w4u")
@@ -170,4 +171,8 @@ animation = &"start"
 autoplay = "start"
 script = ExtResource("3_l0w4u")
 
+[node name="Lanterns" parent="." unique_id=565033947 instance=ExtResource("4_h6u6h")]
+scale = Vector2(1e-05, 1e-05)
+
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="frame_changed" from="." to="." method="_on_frame_changed"]
