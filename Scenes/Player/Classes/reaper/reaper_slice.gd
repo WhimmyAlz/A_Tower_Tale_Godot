@@ -1,5 +1,6 @@
 extends "res://Scenes/Player/Classes/projectile_base.gd"
 var already_hit = []
+var max_explosions = 8
 
 var explosion_preload = preload("res://Scenes/Player/Classes/reaper/explosion.tscn")
 
@@ -43,7 +44,9 @@ func _on_body_entered(body: Node2D) -> void:
 		collider.take_knockbackY(knockbackY)
 		collider.reset_gravity()
 		collider.take_stun(stuntime)
-		for i in range(4):
-			spawn_explosion(collider)
+		if max_explosions > 0:
+			for i in range(4):
+				spawn_explosion(collider)
+				max_explosions -= 1
 		already_hit += [collider]
 		hitnum -= 1

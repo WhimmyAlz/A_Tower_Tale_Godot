@@ -53,7 +53,7 @@ func _on_body_entered(body: Node2D) -> void:
 	var collider = body
 	if collider.is_in_group("player") and collider.is_in_group("attackable") and proj_life_time < 140:
 		collider.take_damage(damage, defense_pen)
-		collider.get_status_effect().inflict_fire(6)
+		collider.get_status_effect().inflict_fire(4)
 		collider.take_knockback(6, direction)
 		collider.take_stun(stun_time)
 		hitnum = 0

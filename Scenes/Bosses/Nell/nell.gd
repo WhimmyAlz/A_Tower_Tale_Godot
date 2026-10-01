@@ -66,8 +66,14 @@ func dodge():
 		for i in range(enemy_list.get_child_count()):
 			if enemy_list.get_child(i) != self and abs(enemy_list.get_child(i).position.x - position.x) < abs(closest_enemy.position.x - position.x):
 				closest_enemy = enemy_list.get_child(i)
+				
+			# prefers dodging using odon
+			if enemy_list.get_child(i).Name == "Odon":
+				closest_enemy = enemy_list.get_child(i)
+				break
 		closest_enemy.velocity.x = 2 * (player.position.x - closest_enemy.position.x)
 		velocity.x = direction * 2500
+		attackt = 200
 
 func shoot():
 	var projectile = arrow.instantiate()
@@ -92,8 +98,8 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
-		Health = 600 + (level * 35)
-		Max_Health = 600 + (level * 35)
+		Health = 900 + (level * 90)
+		Max_Health = 900 + (level * 90)
 		Defense = 2
 		Speed = 4
 		Damage = 10 + (level * 1)

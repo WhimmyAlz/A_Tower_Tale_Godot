@@ -84,7 +84,7 @@ func attack_2_attacking():
 				collider.take_damage(float(Damage) * 0.05, 100)
 				collider.take_knockback(0.75, direction)
 			else:
-				collider.take_damage(float(Damage), Defense_pen)
+				collider.take_damage(float(Damage) * 0.75, Defense_pen)
 				collider.take_knockback(10, direction)
 			collider.take_stun(10)
 
@@ -102,9 +102,9 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
-		Health = 880 + (level * 120)
-		Max_Health = 880 + (level * 120)
-		Defense = 3
+		Health = 1400 + (level * 120)
+		Max_Health = 1400 + (level * 120)
+		Defense = 4
 		Speed = 4
 		Damage = 30 + (level * 5)
 

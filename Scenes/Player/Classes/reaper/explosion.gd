@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 	if early_explosion > 0 and lifetime == 20:
 		$AnimatedSprite2D.frame = 9
 
-	if lifetime == 20:
+	if lifetime >= 15 and lifetime <= 20:
 		var collisions = self.get_overlapping_bodies()
 		var kb_dir = -1
 		
