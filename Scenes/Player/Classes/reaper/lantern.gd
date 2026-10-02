@@ -16,7 +16,7 @@ var explosion_preload = preload("res://Scenes/Player/Classes/reaper/explosion.ts
 
 func spawn_explosion(collider):
 	var explosion = explosion_preload.instantiate()
-	explosion.set_damage(Global.power * 0.5)
+	explosion.set_damage(Global.power * 0.25)
 	explosion.set_knockback(1)
 	explosion.set_pos(collider.position + Vector2(randi_range(-100,100),randi_range(-250,250)))
 	explosion.set_lifetime(50)

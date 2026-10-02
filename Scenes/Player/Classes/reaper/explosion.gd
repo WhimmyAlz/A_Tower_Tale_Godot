@@ -36,6 +36,7 @@ func _physics_process(_delta: float) -> void:
 					collider.take_stun(stuntime)
 				collider.take_knockback(knockback, kb_dir)
 				collider.take_knockbackY(knockbackY)
-				collider.reset_gravity()
+				if stuntime == 0:
+					collider.reset_gravity()
 				already_hit += [collider]
 				hitnum -= 1

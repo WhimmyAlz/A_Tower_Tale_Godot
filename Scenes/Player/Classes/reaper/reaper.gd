@@ -264,6 +264,7 @@ func attack_5():
 			if status.get_river() and Global.Souls > 0:
 				status.add_river(240)
 				Global.Souls -= 1
+				used_styx_souls += 1
 		
 		if Global.attack5t >= 30:
 			player.set_animation_visibility(true)
