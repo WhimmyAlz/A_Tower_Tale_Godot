@@ -87,6 +87,9 @@ func set_lifetime(time):
 func set_angle(value):
 	angle = value
 
+func set_rotate(value):
+	rotation = deg_to_rad(value)
+
 func fix_rotation():
 	self.rotation = angle
 	if direction == -1:

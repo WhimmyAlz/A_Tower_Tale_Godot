@@ -29,6 +29,8 @@ var player
 
 var slice_preload = preload("res://Scenes/Player/Classes/needle/needle_slice.tscn")
 
+var falling_needle_preload = preload("res://Scenes/Player/Classes/needle/falling_needle.tscn")
+
 var ult_charge_amount := 10
 
 func set_ult_charge_amount(value):
@@ -43,6 +45,20 @@ func set_slicer(value):
 
 func set_vex_regen(value):
 	vex_regen = value
+
+func init_falling_needle(collider):
+	for i in range(-1,2):
+		var falling = falling_needle_preload.instantiate()
+		falling.set_player(player)
+		falling.set_damage(Global.power)
+		falling.set_knockback(5)
+		falling.set_target(collider)
+		falling.set_stuntime(60)
+		falling.set_size(1)
+		falling.set_hitnum(100)
+		falling.set_rotate(60 * i)
+		falling.set_angle(60 * i)
+		get_tree().current_scene.get_node("Projectiles").call_deferred("add_child",falling)
 
 func init_slice():
 	var slice = slice_preload.instantiate()
@@ -160,9 +176,10 @@ func _on_body_entered(body: Node2D) -> void:
 		collider.take_knockback(knockback, direction)
 		collider.take_knockbackY(knockbackY)
 		collider.take_stun(stuntime)
+		if slicer and not vex_regen:
+			init_falling_needle(collider)
 		if needle_stack_amount > 0:
 			status.add_needles(1)
-
 		if slices:
 			init_slice()
 		if venom_stacks > 0:

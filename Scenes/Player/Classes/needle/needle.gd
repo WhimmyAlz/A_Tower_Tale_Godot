@@ -29,7 +29,7 @@ func get_description():
 	"attack_3": ["[b]Vex[/b]\n", "Shoots a piercing needle that performs slices as it travels. \n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (50%% + 0.25x dexterity)\n" % ((0.5 * Global.power) + (0.25 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 2\n", "Stuntime: 0.25s\n\n", "Slice: deals 5 damage, ignores 10 defense, inflicts [color=red]bleed 1[/color], and gain 10% max stamina or 1 needle stack if stamina is full"],
 	"attack_4": ["[b]Venom pins[/b]\n", "Throws two needles which deals abysmal damage, but inflicts heavy venom. Consumes up to 3 needle stacks to increase piercing. \n[color=dodger_blue]Consumes 30 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)x2\n" % ((0.1 * Global.power) + (0.1 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 2 x2\n", "Stuntime: 0.25s\n\n", "Inflicts [color=purple]venom 6[/color]"],
 	"attack_5": ["[b]Needle therapy[/b]\n", "Throws out a burst of 20 needles with a large fan-like spread, each dealing low damage but inflicting shock. Consumes up to 5 needle stacks to make the spread narrower.\n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)\n" % (0.1 * Global.power + 0.1 * Global.dexterity), "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0.33s\n\n", "Inflicts [color=yellow]shock 20[/color]"],
-	"ultimate": ["[b]Vein cutter[/b]\n", "Quickly dashes forwards while holding out a giant needle infront of you which performs slices on the needle's end. Might hit multiple times.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (125%% + 0.5x dexterity)\n" % ((1.25 * Global.power) + (0.5 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 50\n", "Stuntime: 1s\n\n", "Slice: deals 10 damage, ignores 10 defense, and inflicts [color=red]bleed 1[/color], and gain 1 needle stack"],
+	"ultimate": ["[b]Vein cutter[/b]\n", "Quickly dashes forwards while holding out a giant needle infront of you which performs slices on the needle's end. Enemies hit by the needle gets hit by 3 falling needles after a second passes.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (125%% + 0.5x dexterity)\n" % ((1.25 * Global.power) + (0.5 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 50\n", "Stuntime: 1s\n\n", "Slice: deals 10 damage, ignores 10 defense, and inflicts [color=red]bleed 1[/color], and gain 1 needle stack", "Falling needle: Deals 100%% damage and stuns for 0.5s"],
 	}
 	return(descriptions)
 
@@ -313,7 +313,7 @@ func ultimate():
 			needle.set_lifetime(20)
 			needle.set_slicer(true)
 			needle.set_size(3.25)
-			needle.set_knockback(50)
+			needle.set_knockback(10)
 			needle.set_ult_charge_amount(0)
 			get_tree().current_scene.get_node("Projectiles").add_child(needle)
 		
