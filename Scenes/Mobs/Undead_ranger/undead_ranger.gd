@@ -44,7 +44,7 @@ func set_level_stats():
 		Max_Health = 120 + (level * 35)
 		Speed = 0
 		Damage = 15 + (level * 1)
-		Defense_pen = 10
+		Defense_pen = 5
 
 	Name = "Undead Ranger"
 	update_hp_bar()

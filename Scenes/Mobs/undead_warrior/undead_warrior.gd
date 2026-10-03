@@ -57,9 +57,9 @@ func check_phase():
 					boss_bar.visible = true
 			if phase == 2:
 				scale = Vector2(1.2, 1.2)
-				bonus_hit_speed = 100
+				bonus_hit_speed = 60
 				Damage *= 1.25
-				Speed = 15
+				Speed = 13
 				attackt = 0
 
 		phases[phase][1] -= 1
@@ -74,7 +74,7 @@ func set_level_stats():
 		Max_Health = 220 + (level * 45)
 		Defense = 2
 		Speed = 10
-		Damage = 30 + (level * 2)
+		Damage = 22 + (level * 1.5)
 
 	Name = "Undead Warrior"
 	phases = {0: [100, 0], 1: [50, 1], 2 : [0, 80]}

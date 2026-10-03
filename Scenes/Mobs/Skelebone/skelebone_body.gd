@@ -55,7 +55,7 @@ func set_level_stats():
 		Max_Health = 50 + (level * 25)
 		Defense = 7
 		Speed = 2
-		Damage = 15 + (level * 1)
+		Damage = 20 + (level * 1)
 
 	if randi_range(1,50) == 1:
 		Name = "Skelly"

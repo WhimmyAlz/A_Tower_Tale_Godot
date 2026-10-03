@@ -50,7 +50,7 @@ func set_level_stats():
 		Max_Health = 350 + (level * 50)
 		Defense = 1
 		Speed = 7
-		Damage = 40 + (level * 4)
+		Damage = 30 + (level * 3)
 
 	Name = "Chomper"
 	update_hp_bar()
@@ -80,7 +80,7 @@ func _physics_process(_delta: float) -> void:
 			if attackt == 130:
 				self.visible = true
 				self.add_to_group("attackable")
-				if abs(player.position.x + (200 * direction)) > 1000:
+				if abs(player.position.x + (200 * direction)) > 950:
 					direction *= -1
 				self.position = player.position + Vector2(200 * direction, 0)
 		
