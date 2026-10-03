@@ -68,7 +68,8 @@ func attack_1():
 			wave.set_ult_charge_amount(55)
 			wave.set_size(2.75)
 			get_tree().current_scene.get_node("Projectiles").add_child(wave)
-
+		
+		# wave follows player's current position
 		if between(Global.attack1t, 16, 24):
 			wave.set_pos(player.position + Vector2((Global.player_dir * 8 * Global.attack1t) - (Global.player_dir * 75), -85))
 
@@ -101,7 +102,7 @@ func attack_2():
 		class_anim.speed_scale = 1.75
 		player.set_speed_penalty(0.05)
 		
-		# spawns wave
+		# spawns 3 waves
 		if between(Global.attack2t, 30, 34) and Global.attack2t % 2 == 0:
 			wave = fist_wave.instantiate()
 			wave.set_player(player)
@@ -194,7 +195,7 @@ func attack_4():
 		class_anim.speed_scale = 3
 		player.set_speed_penalty(0.1)
 		
-		# spawns wave
+		# spawnsm15 waves
 		if between(Global.attack4t, 4, 60) and Global.attack4t % 4 == 0:
 			wave = fist_wave.instantiate()
 			wave.set_player(player)
@@ -240,7 +241,7 @@ func attack_5():
 		class_anim.speed_scale = 9
 		player.set_speed_penalty(0)
 		
-		# spawns wave
+		# activates the berserk buff
 		if Global.attack5t == 20:
 			status.set_berserk(450)
 
@@ -274,7 +275,7 @@ func ultimate():
 		class_anim.speed_scale = 2
 		player.set_speed_penalty(0)
 		
-		# spawns wave
+		# spawns giant fist
 		if Global.ultimatet == 10:
 			giant_fist = giant_fist_preload.instantiate()
 			giant_fist.set_player(player)

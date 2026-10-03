@@ -61,7 +61,7 @@ func attack_1():
 		class_anim.speed_scale = 4
 		player.set_speed_penalty(0.25)
 		
-		# spawns wave
+		# spawns soul explosion
 		if Global.attack1t == 12:
 			explosion = explosion_preload.instantiate()
 			explosion.set_player(player)
@@ -105,7 +105,7 @@ func attack_2():
 		class_anim.speed_scale = 3
 		player.set_speed_penalty(0.15)
 		
-		# spawns wave
+		# spawns soul explosions
 		if between(Global.attack2t, 16, 34) and Global.attack2t % 4 == 0:
 			explosion = explosion_preload.instantiate()
 			explosion.set_player(player)
@@ -151,7 +151,7 @@ func attack_3():
 		class_anim.speed_scale = 2.5
 		player.set_speed_penalty(0.1)
 		
-		# spawns wave
+		# spawns soul needles
 		if between(Global.attack3t, 1, 20) and Global.attack3t % total_targets == 0:
 			soul_needle = soul_needle_preload.instantiate()
 			soul_needle.set_player(player)
@@ -204,7 +204,7 @@ func attack_4():
 			if player.position.x + 60 < 1000 and player.position.x - 60 > -1000:
 				player.position.x += 60 * Global.player_dir
 		
-		# spawns wave
+		# spawns soul wave
 		if Global.attack4t == 30:
 			reaper_slice = reaper_slice_preload.instantiate()
 			reaper_slice.set_player(player)
@@ -296,7 +296,7 @@ func ultimate():
 		class_anim.speed_scale = 3
 		player.set_speed_penalty(0)
 		
-		# spawns wave
+		# activates the river styx buff
 		if Global.ultimatet == 40:
 			if Global.Souls > 0:
 				var amount = mini(Global.Souls, 2)

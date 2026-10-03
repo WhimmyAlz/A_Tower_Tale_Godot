@@ -105,7 +105,7 @@ func attack_2():
 		class_anim.speed_scale = 3
 		player.set_speed_penalty(0.5)
 		
-		# spawns needle
+		# spawns needles
 		if between(Global.attack2t, 1, 2 + consumed_needle_stacks):
 			needle = needle_proj.instantiate()
 			needle.set_player(player)
@@ -153,7 +153,7 @@ func attack_3():
 		class_anim.speed_scale = 4
 		player.set_speed_penalty(0.5)
 		
-		# spawns needle
+		# spawns slicer needle
 		if Global.attack3t == 1:
 			needle = needle_proj.instantiate()
 			needle.set_player(player)
@@ -200,7 +200,7 @@ func attack_4():
 		class_anim.speed_scale = 7
 		player.set_speed_penalty(0.5)
 		
-		# spawns needle
+		# spawns venom needles
 		if between(Global.attack4t, 1, 10) and Global.attack4t % 5 == 0:
 			needle = needle_proj.instantiate()
 			needle.set_player(player)
@@ -252,7 +252,7 @@ func attack_5():
 		
 		var v_speed = randi_range(-80 + (15 * consumed_needle_stacks), 80 - (15 * consumed_needle_stacks))
 		
-		# spawns needle
+		# spawns shock needles
 		if between(Global.attack5t, 1, 20):
 			needle = needle_proj.instantiate()
 			needle.set_player(player)
@@ -302,7 +302,7 @@ func ultimate():
 		class_anim.speed_scale = 2
 		player.set_speed_penalty(0)
 		
-		# spawns wave
+		# spawns needle blade
 		if Global.ultimatet == 1:
 			needle = needle_proj.instantiate()
 			needle.set_player(player)
