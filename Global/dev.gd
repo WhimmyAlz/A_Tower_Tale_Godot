@@ -153,6 +153,7 @@ func spawn(command):
 	var chomper = preload("res://Scenes/Mobs/chomper/chomper.tscn")
 	var odon = preload("res://Scenes/Bosses/Odon/odon.tscn")
 	var nell = preload("res://Scenes/Bosses/Nell/Nell.tscn")
+	var gray_bird = preload("res://Scenes/Mobs/gray_bird/gray_bird.tscn")
 	
 	if correct_args:
 		var valid = command[2].is_valid_int()
@@ -178,6 +179,8 @@ func spawn(command):
 				spawn_enemy(odon, command[2])
 			elif command[1] == "nell":
 				spawn_enemy(nell, command[2])
+			elif command[1] == "gray_bird":
+				spawn_enemy(gray_bird, command[2])
 			else:
 				log_text("Enemy name not found.")
 				return(false)

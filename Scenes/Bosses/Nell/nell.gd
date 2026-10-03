@@ -24,7 +24,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health)
 
 func set_description():
-	description = "[b]Nell[/b]\nLevel: %d\n\n[i]\"My arrows will do something.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The ranger of the twins.\n\nDrops:\n10-16 xp\n\nBoss Perk: prolly don't need one" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Nell[/b]\nLevel: %d\n\n[i]\"My arrows will do something.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The ranger of the twins.\n\nDrops:\n50-65 xp\n\nBoss Perk: prolly don't need one" % [Level, Health, Damage, Defense, Defense_pen]
 
 func check_phase():
 	if phases[phase][1] > 0:
@@ -86,7 +86,7 @@ func shoot():
 
 func on_death():
 	if death_rewards == 1:
-		player.gain_xp(randi_range(10, 16))
+		player.gain_xp(randi_range(50, 66))
 		check_class_misc()
 	death_rewards = 0
 	boss_bar.queue_free()

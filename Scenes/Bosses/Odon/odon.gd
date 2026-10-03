@@ -41,7 +41,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health)
 
 func set_description():
-	description = "[b]Odon[/b]\nLevel: %d\n\n[i]\"Baby spin me round..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The juggernaut of the twins.\n\nDrops:\n50-60 xp\n\nBoss perk: stunned for 70%% less time." % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Odon[/b]\nLevel: %d\n\n[i]\"Baby spin me round..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The juggernaut of the twins.\n\nDrops:\n60-80 xp\n\nBoss perk: stunned for 70%% less time." % [Level, Health, Damage, Defense, Defense_pen]
 
 func set_pos(pos):
 	position = pos
@@ -58,7 +58,7 @@ func move(animation):
 
 func on_death():
 	if death_rewards == 1:
-		player.gain_xp(randi_range(50, 60))
+		player.gain_xp(randi_range(60, 80))
 		check_class_misc()
 	death_rewards = 0
 	boss_bar.queue_free()

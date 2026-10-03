@@ -1,6 +1,6 @@
 extends "res://Scenes/Bosses/Merchant/shop/items/items_base.gd"
 
-static var class_list = ["brawler", "needle"]
+static var class_list = ["brawler", "needle", "reaper"]
 
 var Item = "CLASS_BALL"
 

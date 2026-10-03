@@ -11,6 +11,7 @@ var preload_undead_warrior = preload("res://Scenes/Mobs/undead_warrior/undead_wa
 var preload_chomper = preload("res://Scenes/Mobs/chomper/chomper.tscn")
 var preload_odon = preload("res://Scenes/Bosses/Odon/odon.tscn")
 var preload_nell = preload("res://Scenes/Bosses/Nell/Nell.tscn")
+var preload_gray_bird = preload("res://Scenes/Mobs/gray_bird/gray_bird.tscn")
 
 func set_pos(vector2):
 	position = vector2
@@ -78,6 +79,12 @@ func spawn_nell(pos, level):
 	nell.Level = level
 	base_floor.add_enemy(nell)
 
+func spawn_gray_bird(pos, level):
+	var gray_bird = preload_gray_bird.instantiate()
+	gray_bird.set_pos(pos)
+	gray_bird.Level = level
+	base_floor.add_enemy(gray_bird)
+
 func init_floor_mobs(floor_num):
 	if floor_num == 1:
 		spawn_nerd(Vector2(800, 0), 2)
@@ -110,9 +117,20 @@ func init_floor_mobs(floor_num):
 	elif floor_num == 10:
 		spawn_odon(Vector2(-700, 0), 1)
 		spawn_nell(Vector2(700, 0), 1)
+	elif floor_num == 11:
+		spawn_gray_bird(Vector2(-800, 0), 6)
+	elif floor_num == 12:
+		spawn_gray_bird(Vector2(-800, 0), 4)
+		spawn_gray_bird(Vector2(800, 0), 4)
+	elif floor_num == 13:
+		spawn_chomper(Vector2(700, 0), 7)
+		spawn_gray_bird(Vector2(800, 0), 7)
+	elif floor_num == 14:
+		spawn_undead_warrior(Vector2(600, 0), 8)
+		spawn_gray_bird(Vector2(800, 0), 10)
 
 func _physics_process(_delta: float) -> void:
-	if entered and Input.is_action_just_released("interact"):
+	if Global.stun_time == 0 and entered and Input.is_action_just_released("interact"):
 		progress_floor()
 		base_floor.reset_portal_limiter()
 		queue_free()
