@@ -73,7 +73,7 @@ self_modulate = Color(1, 1, 1, 0.3019608)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jj2ln")
 autoplay = "default"
-frame_progress = 0.3827257
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=867163614]
 position = Vector2(0.5, -21)

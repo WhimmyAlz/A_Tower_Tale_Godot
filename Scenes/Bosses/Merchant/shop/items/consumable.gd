@@ -55,6 +55,7 @@ func _ready() -> void:
 
 ## item hover
 func _on_texture_button_mouse_entered() -> void:
+	mouse_over = true
 	set_button_descriptions()
 	create_arrows()
 	hide_buttons()
@@ -64,32 +65,36 @@ func _on_texture_button_mouse_entered() -> void:
 
 ## item used
 func _on_texture_button_button_up() -> void:
+	if mouse_over:
+		if Global.player_XP >= price:
+			if Item == "SYRINGE":
+				Global.bonus_power += 1
+				Global.bonus_strength += 2
+				Global.player_XP -= price
+			elif Item == "CROCHET":
+				Global.bonus_dexterity += 2
+				Global.crit_chance_adds += 0.5
+				Global.player_XP -= price
+			elif Item == "RUBIX CUBE":
+				Global.bonus_intellect += 2
+				Global.crit_chance_adds += 0.3
+				Global.crit_damage_adds += 0.015
+				Global.player_XP -= price
+			elif Item == "MILK":
+				Global.bonus_defense += 1
+				Global.player_XP -= price
 
-	if Global.player_XP >= price:
-		if Item == "SYRINGE":
-			Global.bonus_power += 1
-			Global.bonus_strength += 2
-			Global.player_XP -= price
-		elif Item == "CROCHET":
-			Global.bonus_dexterity += 2
-			Global.crit_chance_adds += 0.5
-			Global.player_XP -= price
-		elif Item == "RUBIX CUBE":
-			Global.bonus_intellect += 2
-			Global.crit_chance_adds += 0.3
-			Global.crit_damage_adds += 0.015
-			Global.player_XP -= price
-		elif Item == "MILK":
-			Global.bonus_defense += 1
-			Global.player_XP -= price
+			set_item_values()
+			set_button_descriptions()
+			
+			if consumable:
+				shop.set_chat("[b]Thank you for buying, please come again.[/b]", "Thank you for buying, please come again.")
+			else:
+				reset_chat()
 
-		set_item_values()
-		set_button_descriptions()
-		
-		if consumable:
-			shop.set_chat("[b]Thank you for buying, please come again.[/b]", "Thank you for buying, please come again.")
-		else:
-			reset_chat()
+			if consumable:
+				queue_free()
 
-		if consumable:
-			queue_free()
+
+func _on_texture_button_mouse_exited() -> void:
+	mouse_over = false

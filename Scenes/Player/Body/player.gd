@@ -221,7 +221,9 @@ func take_stun(stun_time):
 	
 	var status_effects = get_parent().get_status_effect()
 	var shock_stacks = status_effects.get_shock()
-
+	var new_stun = false
+	if Global.stun_time == 0:
+		new_stun = true
 	# checks if player has shocks or is stunned to apply extra stun if shocked
 	if shock_stacks == 0 or Global.stun_time == 0: 
 		Global.stun_time = stun_time
@@ -229,10 +231,10 @@ func take_stun(stun_time):
 		Global.stun_time += int(stun_time * shock_stacks/100)
 
 	# Creates a stunned status box
-	if status_effects.check_dupes("Stunned"):
-		status_effects.update_status_box("Stunned", 1, Global.stun_time)
-	else:
+	if new_stun:
 		status_effects.init_status_box("Stunned", 1, Global.stun_time, Color.WHITE)
+	else:
+		status_effects.update_status_box("Stunned", 1, Global.stun_time)
 
 func gain_xp(amount):
 	Global.player_XP += amount

@@ -27,6 +27,7 @@ func _ready() -> void:
 
 ## item hover
 func _on_texture_button_mouse_entered() -> void:
+	mouse_over = true
 	set_item_values()
 	set_button_descriptions()
 	create_arrows()
@@ -37,17 +38,22 @@ func _on_texture_button_mouse_entered() -> void:
 
 ## item used
 func _on_texture_button_button_up() -> void:
-	if Global.player_XP >= price and Global.player_class != class_list[value] and not player.get_attacking():
-		player.get_parent().change_class(class_list[value])
-		Global.player_XP -= price
+	if mouse_over:
+		if Global.player_XP >= price and Global.player_class != class_list[value] and not player.get_attacking():
+			player.get_parent().change_class(class_list[value])
+			Global.player_XP -= price
 
-		set_item_values()
-		set_button_descriptions()
-		
-		if consumable:
-			shop.set_chat("[b]Thank you for buying, please come again.[/b]", "Thank you for buying, please come again.")
-		else:
-			reset_chat()
+			set_item_values()
+			set_button_descriptions()
+			
+			if consumable:
+				shop.set_chat("[b]Thank you for buying, please come again.[/b]", "Thank you for buying, please come again.")
+			else:
+				reset_chat()
 
-		if consumable:
-			queue_free()
+			if consumable:
+				queue_free()
+
+
+func _on_texture_button_mouse_exited() -> void:
+	mouse_over = false

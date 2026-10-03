@@ -26,11 +26,13 @@ func _physics_process(_delta: float) -> void:
 		queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	
+	var kb_dir = -1
 	var collider = body
 	if collider.is_in_group("attackable") and collider.is_in_group("enemy") and hitnum >= 1:
 		collider.take_damage(damage, defense_pen)
-		collider.take_knockback(knockback, direction)
+		if collider.position.x > position.x:
+			kb_dir = 1
+		collider.take_knockback(knockback, kb_dir)
 		collider.take_knockbackY(knockbackY)
 		collider.take_stun(stuntime)
 		hitnum -= 1

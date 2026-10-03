@@ -17,6 +17,8 @@ var value_range = [0, 0]
 var button_left = null
 var button_right = null
 
+var mouse_over = false
+
 func set_consumable(val):
 	consumable = val
 

@@ -24,7 +24,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health)
 
 func set_description():
-	description = "[b]Nell[/b]\nLevel: %d\n\n[i]\"My arrows will do something.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The ranger of the twins.\n\nDrops:\n10-16 xp" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Nell[/b]\nLevel: %d\n\n[i]\"My arrows will do something.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The ranger of the twins.\n\nDrops:\n10-16 xp\n\nBoss Perk: prolly don't need one" % [Level, Health, Damage, Defense, Defense_pen]
 
 func check_phase():
 	if phases[phase][1] > 0:

@@ -91,7 +91,7 @@ func _physics_process(_delta: float) -> void:
 	if attackt >= 265:
 		if stunnedf == 0 and shots < 3:
 			$UndeadRangerSprite.frame = 0
-			attackt = 199
+			attackt = 189
 		else:
 			attackt = 0
 		
