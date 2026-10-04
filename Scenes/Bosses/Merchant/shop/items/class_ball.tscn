@@ -19,6 +19,21 @@ texture_normal = ExtResource("1_o6v7e")
 texture_pressed = ExtResource("1_o6v7e")
 texture_hover = ExtResource("2_pn5ks")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=886648435]
+modulate = Color(0, 0, 0, 0.6313726)
+offset_left = -85.0
+offset_top = -148.0
+offset_right = 125.0
+offset_bottom = 54.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 128
+theme_override_font_sizes/bold_font_size = 128
+bbcode_enabled = true
+text = "[b]B[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]

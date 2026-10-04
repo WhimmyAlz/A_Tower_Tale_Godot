@@ -817,6 +817,7 @@ animation = &"hat_idle"
 autoplay = "hat_idle"
 
 [node name="needle" type="Node2D" parent="." unique_id=1004946765]
+visible = false
 script = ExtResource("10_0beey")
 
 [node name="skills" type="AnimatedSprite2D" parent="needle" unique_id=1938883237]
