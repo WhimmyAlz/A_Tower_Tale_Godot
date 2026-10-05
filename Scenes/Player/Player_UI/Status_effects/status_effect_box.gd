@@ -11,7 +11,9 @@ func set_description():
 	if status == "Berserk":
 		description = "+10 Strength\n+15 Agility\n+100% Stamina regen\n\nSecond and fourth attacks of the brawler class inflicts fire."
 	elif status == "River":
-		description = "Creates an area that lets you regen 4hp/s and creates explosions on random enemies."
+		description = "Creates an area that lets you regen at 4hp/s and creates explosions on random enemies."
+	elif status == "Defensive Stance":
+		description = "You gain 10 * X amount of defense where X is the status level"
 	elif status == "Stunned":
 		description = "You are currently a vegetable"
 	elif status == "Fire":

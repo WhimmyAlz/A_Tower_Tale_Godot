@@ -204,16 +204,16 @@ func inflict_deathmark(stacks):
 ## status effects
 func take_burn():
 	if fire_stacks >= 1 and fire_tick_delay == 0:
-		fire_stacks -= 1
 		take_damage(fire_stacks / 2, 10, 0, Color.DARK_ORANGE)
+		fire_stacks -= 1
 		fire_tick_delay = 15
 	elif fire_tick_delay > 0:
 		fire_tick_delay -= 1
 
 func take_venom():
 	if venom_stacks >= 1 and venom_tick_delay == 0:
-		venom_stacks -= 1
 		take_damage(5, 25, 0, Color.WEB_PURPLE)
+		venom_stacks -= 1
 		venom_tick_delay = 20
 	elif venom_tick_delay > 0:
 		venom_tick_delay -= 1
@@ -228,9 +228,9 @@ func take_shock():
 
 func take_bleed():
 	if bleed_stacks >= 1 and bleed_tick_delay == 0:
+		take_damage(float(Max_Health/100), 1000, 0, Color.DARK_RED)
 		bleed_stacks -= 1
 		bleed_tick_delay = 30
-		take_damage(float(Max_Health/100), 1000, 0, Color.DARK_RED)
 	elif bleed_tick_delay > 0:
 		bleed_tick_delay -= 1
 

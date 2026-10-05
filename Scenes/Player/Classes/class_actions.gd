@@ -10,8 +10,6 @@ var hat
 
 @onready var player = get_parent()
 
-
-
 func set_class_items():
 	player_class = Global.player_class
 
@@ -39,6 +37,12 @@ func set_class_items():
 		animation = $reaper/skills
 		hat = $reaper/hat
 		$reaper.visible = true
+
+	elif player_class == "paladin":
+		class_node = $paladin
+		animation = $paladin/skills
+		hat = $paladin/hat
+		$paladin.visible = true
 
 	elif player_class == "draco":
 		# implement later

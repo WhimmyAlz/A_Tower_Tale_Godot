@@ -210,6 +210,12 @@ func take_damage(value, defense_pen, color = Color.WHITE_SMOKE):
 	damageText.set_color(color)
 	damageText.set_size(1 + (float(damage)/50))
 	get_tree().current_scene.get_node("Damage_text").add_child(damageText)
+	
+	damage_misc(damage)
+
+func damage_misc(damage):
+	if Global.player_class == "paladin" and not get_status_effect().get_borrowed_time():
+		get_status_effect().add_retribution(damage)
 
 func take_knockback(kb, dir):
 	self.velocity.x += kb * dir * 100 # 100 cuz kb too weak otherwise (want to use lower values)

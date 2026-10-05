@@ -4,7 +4,7 @@ var Item = "NERD_BOOK"
 
 func set_button_descriptions():
 	if Global.player_attacks == 5:
-		raw_description = "You already got all the attacks"
+		raw_description = "You already got all the attacks."
 	elif check_price("You need at least %d xp to buy another attack brokie." % price):
 		raw_description = "I found this book from some nerd, looks like it teaches new attacks. Buy your next attack for %d xp?" % price
 	description = "[b]%s[/b]" % raw_description

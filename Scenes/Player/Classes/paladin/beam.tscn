@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://hkj3dlgfxqmm"]
+
+[ext_resource type="Texture2D" uid="uid://bik6qxgdbgo63" path="res://Scenes/Player/Classes/paladin/sprites/paladin_beam.png" id="1_a2iws"]
+[ext_resource type="Script" uid="uid://dkq60gg4r4wpc" path="res://Scenes/Player/Classes/paladin/beam.gd" id="1_h4wgq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4wgq"]
+atlas = ExtResource("1_a2iws")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdhxn"]
+atlas = ExtResource("1_a2iws")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryeyi"]
+atlas = ExtResource("1_a2iws")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hefax"]
+atlas = ExtResource("1_a2iws")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_baevx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4wgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdhxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryeyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hefax")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 15.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u2cf"]
+atlas = ExtResource("1_a2iws")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltxbp"]
+atlas = ExtResource("1_a2iws")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtpvu"]
+atlas = ExtResource("1_a2iws")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sign"]
+atlas = ExtResource("1_a2iws")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2mp4d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u2cf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltxbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtpvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sign")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Beam" type="Node2D" unique_id=851991812]
+scale = Vector2(10, 10)
+script = ExtResource("1_h4wgq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2055890134]
+texture_filter = 1
+position = Vector2(6, 51)
+sprite_frames = SubResource("SpriteFrames_baevx")
+animation = &"new_animation"
+autoplay = "new_animation"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1730078054]
+texture_filter = 1
+position = Vector2(6, -49)
+sprite_frames = SubResource("SpriteFrames_2mp4d")
+autoplay = "default"
+frame_progress = 0.53705835

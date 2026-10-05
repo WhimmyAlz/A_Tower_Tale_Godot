@@ -4,7 +4,7 @@ var floors := 0
 
 var instant_chat = false
 
-var player_class := "needle"
+var player_class := "paladin"
 var player_XP := 0
 var player_XP_REQ := 1000
 var player_Level := 1
@@ -148,6 +148,30 @@ func class_stats_reaper():
 	dexterity = 25 + bonus_dexterity
 	intellect = 25 + bonus_intellect
 
+func class_stats_paladin():
+	flight = 0
+	max_jumps = 1 + jump_adds
+	jump_power = round(1300 * (1 + jump_multi))
+	jump_limit = 100 # must be more than 0
+
+	player_spd = round((0.2 * agility) * (1 + speed_multi))
+	player_weight = 35
+
+	max_health = 350
+	max_stamina = 200
+
+	power = 20 + bonus_power
+	crit_chance = 2 + crit_chance_adds
+	crit_damage = 1.25 + crit_damage_adds
+	defense = 10 + bonus_defense
+	defense_penetration = 0 + defense_penetration_adds
+	
+	strength = 20 + bonus_strength
+	agility = 45 + bonus_agility
+	dexterity = 5 + bonus_dexterity
+	intellect = 30 + bonus_intellect
+
+
 ## Sets stats for Draco [class:10]
 func class_stats_draco():
 	flight = 1
@@ -179,6 +203,8 @@ func check_class():
 		class_stats_needle()
 	elif player_class == "reaper":
 		class_stats_reaper()
+	elif player_class == "paladin":
+		class_stats_paladin()
 	elif player_class == "draco":
 		class_stats_draco()
 

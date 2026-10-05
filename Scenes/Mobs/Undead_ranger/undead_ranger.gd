@@ -42,7 +42,7 @@ func set_level_stats():
 	if check_stats_unchanged():
 		Health = 120 + (level * 35)
 		Max_Health = 120 + (level * 35)
-		Speed = 0
+		Speed = 1
 		Damage = 15 + (level * 1)
 		Defense_pen = 5
 

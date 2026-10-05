@@ -21,7 +21,6 @@ var closest_enemy
 
 var explosion_preload = preload("res://Scenes/Player/Classes/reaper/explosion.tscn")
 var soul_needle_preload = preload("res://Scenes/Player/Classes/reaper/soul_needle.tscn")
-var giant_fist_preload = preload("res://Scenes/Player/Classes/brawler/giant_fist.tscn")
 var reaper_slice_preload = preload("res://Scenes/Player/Classes/reaper/reaper_slice.tscn")
 
 var used_styx_souls = 0

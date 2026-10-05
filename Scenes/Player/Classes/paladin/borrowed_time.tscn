@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://3d4e8etrgckv"]
+
+[ext_resource type="Script" uid="uid://cglbjwvsleffj" path="res://Scenes/Player/Classes/paladin/borrowed_time.gd" id="1_7gbc7"]
+[ext_resource type="Texture2D" uid="uid://dlbuf8i6ukqco" path="res://Scenes/Player/Classes/paladin/sprites/paladin_borrowed_time.png" id="1_k4bkm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gbc7"]
+atlas = ExtResource("1_k4bkm")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5w1u"]
+atlas = ExtResource("1_k4bkm")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3be7"]
+atlas = ExtResource("1_k4bkm")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kv2v3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gbc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5w1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3be7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="BorrowedTime" type="Node2D" unique_id=1175535928]
+z_index = 10
+script = ExtResource("1_7gbc7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1731449936]
+modulate = Color(1, 1, 1, 0.5803922)
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_kv2v3")
+autoplay = "default"
+frame_progress = 0.89158636
