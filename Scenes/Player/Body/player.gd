@@ -194,7 +194,12 @@ func unlock_ultimate():
 ## changes health and sets the hp bar
 func take_damage(value, defense_pen, color = Color.WHITE_SMOKE):
 	# makes sure health doesn't go below 0
-	var def = maxi(Global.defense - defense_pen, 0)
+	var def 
+	if Global.defense > 0:
+		def = maxf(Global.defense - defense_pen, 0)
+	else:
+		def = Global.defense
+	
 	var damage =  maxf(value - def, 1)
 	Global.health = maxi(Global.health - damage, 0)
 	$"../Non Attached UI Elements/Prog_Bars".Update_HP()

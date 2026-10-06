@@ -90,7 +90,6 @@ func init_floor_mobs(floor_num):
 		spawn_nerd(Vector2(800, 0), 2)
 		spawn_skeleton(Vector2(0, 0), 3)
 	elif floor_num == 2:
-		spawn_nerd(Vector2(800, 0), 2)
 		spawn_skeleton(Vector2(-700, 0), 5)
 		spawn_skeleton(Vector2(700, 0), 5)
 	elif floor_num == 3:
@@ -98,7 +97,6 @@ func init_floor_mobs(floor_num):
 		spawn_skeleton(Vector2(0, 0), 8)
 	elif floor_num == 4:
 		spawn_nerd(Vector2(500, 0), 3)
-		spawn_skeleton(Vector2(-700, 0), 5)
 		spawn_skeleton(Vector2(0, 0), 10)
 	elif floor_num == 5:
 		spawn_sir_blob(Vector2(700, 0), 1)
@@ -109,8 +107,8 @@ func init_floor_mobs(floor_num):
 		spawn_skeleton(Vector2(700, 0), 10)
 		spawn_undead_ranger(Vector2(-700, 0), 7)
 	elif floor_num == 8:
-		spawn_nerd(Vector2(800, 0), 6)
-		spawn_undead_warrior(Vector2(600, 0), 8)
+		spawn_nerd(Vector2(800, 0), 10)
+		spawn_undead_warrior(Vector2(500, 0), 8)
 		spawn_undead_ranger(Vector2(-700, 0), 8)
 	elif floor_num == 9:
 		spawn_chomper(Vector2(700, 0), 7)
@@ -131,9 +129,10 @@ func init_floor_mobs(floor_num):
 		spawn_chomper(Vector2(0, 0), 7)
 		spawn_skeleton(Vector2(-700, 0), 10)
 	elif floor_num == 14:
-		spawn_nerd(Vector2(800, 0), 16)
-		spawn_undead_warrior(Vector2(600, 0), 8)
-		spawn_gray_bird(Vector2(-800, 0), 10)
+		spawn_nerd(Vector2(800, 0), 20)
+		spawn_undead_warrior(Vector2(600, 0), 9)
+		spawn_undead_ranger(Vector2(-700, 0), 14)
+		spawn_gray_bird(Vector2(-800, 0), 7)
 
 func _physics_process(_delta: float) -> void:
 	if Global.stun_time == 0 and entered and Input.is_action_just_released("interact"):
