@@ -23,9 +23,9 @@ var stab_wave_preload = preload("res://Scenes/Player/Classes/paladin/stab_wave.t
 func get_description():
 	descriptions = {
 	"attack_1": ["[b]Sword thrust[/b]\n", "Spawns a sword in your hands and stab in a forward direction with it.\n[color=dodger_blue]Consumes 45 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + 0.75 x Strength)\n" % (Global.power + 0.75 * Global.strength), "Cooldown: %.2fs\n" % (float(attack1_max_t)/60), "Knockback: 12\n", "Stuntime: 0.75s\n"],
-	"attack_2": ["[b]Beams of Judgment[/b]\n", "Sets enemies on fire using the power of God and Anime. Damage from this attack increases with your iq points.\n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]0[/color] (0)\n","Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 0\n", "Stuntime: 0.5s\n\n", "Enemies hit are inflicted with [color=orange]fire X[/color] (X = 0.5 * int)."],
-	"attack_3": ["[b]Shield bash[/b]\n", "Dashes forward with a shield infront of you, shoving any enemy in your way. Defensive stance is activated while using the shield. \n[color=dodger_blue]Consumes 55 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + Strength)\n" % (Global.power + Global.strength),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 30\n", "Stuntime: 1.25s\n\n", "Activates [color=dim_gray]Defensive Stance 3[/color]"],
-	"attack_4": ["[b]Retribution[/b]\n", "Performs a powerful slice that carries enemies dealing 10% of intial damage per tick. Does more damage the more retibution stacks you have.\n[color=dodger_blue]Consumes 75 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] 250-750%%\n" % (Global.power * 2.5),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 4\n", "Stuntime: 0.5s"],
+	"attack_2": ["[b]Beams of Judgment[/b]\n", "Sets enemies on fire using the power of God and Anime. Damage from this attack increases with your iq points.\n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]0[/color] (0)\n","Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 0\n", "Stuntime: 0.5s\n\n", "Enemies hit are inflicted with [color=orange]fire X[/color] (X = 0.75 * int)."],
+	"attack_3": ["[b]Shield bash[/b]\n", "Dashes forward with a shield infront of you, shoving any enemy in your way. Defensive stance is activated while using the shield. \n[color=dodger_blue]Consumes 55 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + 3x Defense)\n" % (Global.power + 3 * Global.defense),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 30\n", "Stuntime: 1.25s\n\n", "Activates [color=dim_gray]Defensive Stance 3[/color]"],
+	"attack_4": ["[b]Retribution[/b]\n", "Performs a powerful slice that carries enemies dealing 10% of intial damage per tick. Does more damage the more retibution stacks you have.\n[color=dodger_blue]Consumes 75 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (250%%-750%%)\n" % (Global.power * 2.5),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 4\n", "Stuntime: 0.5s"],
 	"attack_5": ["[b]Borrowed time[/b]\n", "Creates a shield that heals you for all your damage taken, but it all gets dealt back to you after the shield wears off. The damage is reduced by the amount of retribution that you have.\n[color=dodger_blue]Consumes 30 stamina.[/color]\n\n", "Damage: [color=red]0[/color] (0)\n", "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0s\n\n", "Activates [color=sky_blue]Borrowed Time[/color]"],
 	"ultimate": ["[b]Holy Impalement[/b]\n", "Freezes all enemies then spawns a cross above them and smites them down. 1/3 Chance to spawn a mini cross which deals half of the damage of the original's damage.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (500%% + 3x Intellect)\n" % (5 * Global.power + 3 * Global.intellect), "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 0\n", "Stuntime: 0s\n"],
 	}
@@ -106,14 +106,14 @@ func attack_2():
 					var target = enemy_list.get_child(i)
 					if target.is_in_group("attackable") and target.is_in_group("enemy"):
 						if Global.player_dir == -1 and target.position.x < player.position.x:
-								target.inflict_fire(int(0.5 * Global.intellect))
+								target.inflict_fire(int(0.75 * Global.intellect))
 								target.take_stun(30)
 								var beam = preload("res://Scenes/Player/Classes/paladin/beam.tscn").instantiate()
 								beam.position.x = target.position.x
 								beam.position.y = -1000
 								get_tree().current_scene.get_node("Projectiles").add_child(beam)
 						elif Global.player_dir == 1 and target.position.x > player.position.x:
-								target.inflict_fire(int(0.5 * Global.intellect))
+								target.inflict_fire(int(0.75 * Global.intellect))
 								target.take_stun(30)
 								var beam = preload("res://Scenes/Player/Classes/paladin/beam.tscn").instantiate()
 								beam.position.x = target.position.x
@@ -156,7 +156,7 @@ func attack_3():
 		if Global.attack3t == 15:
 			wave = preload("res://Scenes/Player/Classes/brawler/fist_shockwave.tscn").instantiate()
 			wave.set_player(player)
-			wave.set_damage(Global.power + Global.strength)
+			wave.set_damage(Global.power + Global.defense)
 			wave.set_knockback(30)
 			wave.set_pos(player.position)
 			wave.set_speed(0, 0)

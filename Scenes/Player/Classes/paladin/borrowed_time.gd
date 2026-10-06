@@ -33,8 +33,6 @@ func _physics_process(_delta: float) -> void:
 				negated_damage = status.get_retribution()
 			else:
 				negated_damage = accumlated_damage
-			print(negated_damage)
-			print(accumlated_damage)
 			player.take_damage(accumlated_damage - negated_damage, 10000)
 			status.remove_retribution(negated_damage)
 			queue_free()

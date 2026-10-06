@@ -168,8 +168,8 @@ func class_stats_paladin():
 	
 	strength = 20 + bonus_strength
 	agility = 45 + bonus_agility
-	dexterity = 5 + bonus_dexterity
-	intellect = 30 + bonus_intellect
+	dexterity = 1 + bonus_dexterity
+	intellect = 20 + bonus_intellect
 
 
 ## Sets stats for Draco [class:10]
