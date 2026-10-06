@@ -13,7 +13,6 @@ func set_item_values():
 	if Global.health < Global.max_health:
 		start_pause = 0
 		value = minf(((1 - (Global.health/Global.max_health)) * 100), Global.player_XP)
-		print(value)
 		if is_zero_approx(value - int(value)):
 			value = int(value)
 		else: 

@@ -34,6 +34,7 @@ enemy=""
 attackable=""
 walls=""
 merchant=""
+ground=""
 
 [input]
 

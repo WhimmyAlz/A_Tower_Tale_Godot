@@ -3,10 +3,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qys5"]
 size = Vector2(2018, 20)
 
-[node name="Border" type="Node2D" unique_id=600890904]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1250999421]
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1250999421 groups=["ground"]]
 collision_layer = 2147483649
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=613483206]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=613483206 groups=["ground"]]
 shape = SubResource("RectangleShape2D_2qys5")

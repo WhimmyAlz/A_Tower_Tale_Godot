@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bv7o1qg3fx6k1"]
+
+[ext_resource type="Texture2D" uid="uid://c1dneol4ru5o7" path="res://Scenes/Player/Classes/paladin/sprites/cross.png" id="1_4hssu"]
+[ext_resource type="Script" uid="uid://bedsvxf3y60u2" path="res://Scenes/Player/Classes/paladin/paladin_cross.gd" id="1_l5iir"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5iir"]
+atlas = ExtResource("1_4hssu")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enkrr"]
+atlas = ExtResource("1_4hssu")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbk3t"]
+atlas = ExtResource("1_4hssu")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wu13o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5iir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enkrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbk3t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7eqr"]
+size = Vector2(432, 77)
+
+[node name="Area2D" type="Area2D" unique_id=439862234]
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_l5iir")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1349714763]
+texture_filter = 1
+rotation = -2.3736477
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_wu13o")
+autoplay = "default"
+frame_progress = 0.5470545
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2021753152]
+position = Vector2(-95, 3.5)
+shape = SubResource("RectangleShape2D_x7eqr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
