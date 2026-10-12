@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://daaduesc7yxwm" path="res://Scenes/Settings/Background/background.tscn" id="6_u13yy"]
 [ext_resource type="PackedScene" uid="uid://cnpq0jkyhjr73" path="res://Scenes/Player/Body/player.tscn" id="7_t2lht"]
 [ext_resource type="PackedScene" uid="uid://b8fva8sdhjebr" path="res://Scenes/Mobs/Nerd/nerd.tscn" id="9_4w8c0"]
+[ext_resource type="PackedScene" uid="uid://cc1nw4yhjyw36" path="res://Global/pause_menu/pause_menu.tscn" id="9_pkiij"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubiir"]
 atlas = ExtResource("3_4w8c0")
@@ -36,11 +37,11 @@ position = Vector2(-5, 937)
 scale = Vector2(2.0000002, 2.0000002)
 
 [node name="BorderWall_left" parent="Enviroment/Walls_and_sprites" unique_id=965109119 instance=ExtResource("5_p28ks")]
-position = Vector2(-1045.0001, -11.000001)
+position = Vector2(-1025, -11)
 scale = Vector2(1.85, 1.85)
 
 [node name="BorderWall_right" parent="Enviroment/Walls_and_sprites" unique_id=1415558213 instance=ExtResource("5_p28ks")]
-position = Vector2(969.00006, -25)
+position = Vector2(1025, -25)
 scale = Vector2(1.85, 1.85)
 
 [node name="BorderWall_Ceiling" parent="Enviroment/Walls_and_sprites" unique_id=245252224 instance=ExtResource("6_7qsdb")]
@@ -52,7 +53,7 @@ scale = Vector2(2, 2)
 [node name="Tower_sprite_1" type="AnimatedSprite2D" parent="Enviroment/Walls_and_sprites/Sprites" unique_id=1468190379]
 z_index = -1
 texture_filter = 1
-position = Vector2(0, -25)
+position = Vector2(50, -25)
 scale = Vector2(4.725, 4.725)
 sprite_frames = SubResource("SpriteFrames_ks4c7")
 
@@ -90,3 +91,6 @@ offset_right = 762.0
 offset_bottom = 1808.0
 mouse_filter = 2
 theme_override_constants/separation = 200
+
+[node name="PauseMenu" parent="." unique_id=1743787274 instance=ExtResource("9_pkiij")]
+position = Vector2(1589, -961)

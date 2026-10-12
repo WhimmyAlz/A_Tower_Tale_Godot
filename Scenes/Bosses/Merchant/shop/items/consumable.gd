@@ -42,6 +42,8 @@ func set_item_values():
 		price = randi_range(20,30)
 	if value == 3:
 		price = randi_range(24,32)
+	
+	$TextureButton/ColorRect/RichTextLabel.text = "[b]%d xp[/b]" % price
 
 func _ready() -> void:
 	value = randi_range(0, len(consumable_list) - 1)

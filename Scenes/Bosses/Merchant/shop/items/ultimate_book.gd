@@ -11,7 +11,7 @@ func set_button_descriptions():
 
 func set_item_values():
 	value = 0
-	price = 175
+	price = 225
 
 func _ready() -> void:
 	value = 0

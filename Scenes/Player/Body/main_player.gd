@@ -34,6 +34,7 @@ func change_class(cls):
 	Global.player_class = cls
 
 	Global.check_class()
+	Global.stamina = Global.max_stamina
 	Global.health = Global.max_health * current_health_percentage
 	$PlayerBody/Class_Actions.set_class_items()
 

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cc1nw4yhjyw36"]
+
+[ext_resource type="Script" uid="uid://crefk238ej0s4" path="res://Global/pause_menu/pause_menu.gd" id="1_5fp10"]
+[ext_resource type="Texture2D" uid="uid://ums6uj064ir3" path="res://Global/pause_menu/pause_1.png" id="2_drg5q"]
+[ext_resource type="Texture2D" uid="uid://dsyn8yvna83dw" path="res://Global/pause_menu/pause_2.png" id="3_so02e"]
+
+[node name="PauseMenu" type="Node2D" unique_id=1743787274]
+process_mode = 3
+z_index = 1001
+script = ExtResource("1_5fp10")
+
+[node name="pause_menu" type="Node2D" parent="." unique_id=1518274080]
+visible = false
+
+[node name="BG Duller" type="ColorRect" parent="pause_menu" unique_id=672790827]
+offset_left = -3200.0
+offset_bottom = 1900.0
+color = Color(0, 0, 0, 0.47058824)
+
+[node name="pause_button_main" type="TextureButton" parent="." unique_id=1850436905]
+texture_filter = 1
+offset_left = -273.0
+offset_top = 59.999992
+offset_right = -209.0
+offset_bottom = 150.0
+scale = Vector2(2.5, 2.5)
+focus_mode = 0
+texture_normal = ExtResource("2_drg5q")
+texture_pressed = ExtResource("2_drg5q")
+texture_hover = ExtResource("3_so02e")
+
+[connection signal="button_up" from="pause_button_main" to="." method="_on_pause_button_main_button_up"]

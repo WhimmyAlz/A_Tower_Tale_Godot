@@ -4,7 +4,7 @@ var floors := 0
 
 var instant_chat = false
 
-var player_class := "paladin"
+var player_class := "brawler"
 var player_XP := 0
 var player_XP_REQ := 1000
 var player_Level := 1
@@ -144,7 +144,7 @@ func class_stats_reaper():
 	defense_penetration = 0 + defense_penetration_adds + int(0.25 * Souls)
 	
 	strength = 15 + bonus_strength
-	agility = 75 + bonus_agility + int(Souls * 0.25)
+	agility = 70 + bonus_agility + int(Souls * 0.25)
 	dexterity = 25 + bonus_dexterity
 	intellect = 25 + bonus_intellect
 
