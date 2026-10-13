@@ -34,6 +34,7 @@ func close():
 func nc_clear():
 	auto_close = false
 	$LineEdit.clear()
+	$LineEdit.edit()
 
 ## Opens and begins editing the console
 func open():
@@ -69,6 +70,7 @@ func console_return_and_collect():
 					$LineEdit.edit()
 		else:
 			$LineEdit.clear()
+			$LineEdit.edit()
 
 ## Searches to see if command is valid and returns the command and it's arguments if it is
 func find_and_return():
@@ -76,8 +78,9 @@ func find_and_return():
 
 	# removes an extra space if there is one
 	# Note: only removes one extra space
-	if full_command[len(full_command)-1] == " ":
-		full_command = full_command.substr(0, len(full_command)-1)
+	if len(full_command) > 0:
+		if full_command[len(full_command)-1] == " ":
+			full_command = full_command.substr(0, len(full_command)-1)
 
 	var split_command = full_command.split(" ") # splits command by spaces
 	var command = split_command[0]
@@ -262,14 +265,14 @@ func kill_mobs(command):
 				valid = true
 			else:
 				valid = false
-		elif command[1] == "All":
+		elif (command[1] == "All" or command[1] == "."):
 			valid = true
 
-		if valid and command[1] != "All":
+		if valid and not (command[1] == "All" or command[1] == "."):
 			log_text("Killed %s" % enemy_list.get_child(int(command[1])))
 			enemy_list.get_child(int(command[1])).on_death()
 			return(true)
-		elif valid and command[1] == "All":
+		elif valid and (command[1] == "All" or command[1] == "."):
 			for i in range(enemy_list.get_child_count()):
 				log_text("Killed %s" % enemy_list.get_child(i))
 				enemy_list.get_child(i).on_death()
