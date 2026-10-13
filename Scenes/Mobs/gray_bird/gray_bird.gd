@@ -7,7 +7,7 @@ var attack = 2
 var momentum = 0
 
 func set_description():
-	description = "[b]Gray Bird[/b]\nLevel: %d\n\n[i]\"Why are my legs so messed up?\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\n\"Sorry i'm bad at drawing legs\" -Developer\n\nDrops:\n15-25 xp" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Gray Bird[/b]\nLevel: %d\n\n[i]\"Why are my legs so messed up?\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\n\"Sorry i'm bad at drawing legs\" -Developer\n\nDrops:\n%d-%d xp" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos
@@ -25,7 +25,7 @@ func move(animation):
 
 func on_death():
 	if death_rewards == 1:
-		player.gain_xp(randi_range(15, 25))
+		player.gain_xp(randi_range(xp_range[0], xp_range[1]))
 		check_class_misc()
 	death_rewards = 0
 	queue_free()
@@ -51,6 +51,7 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
+		xp_range = [14, 22]
 		Health = 180 + (level * 40)
 		Max_Health = 180 + (level * 40)
 		Defense = 8

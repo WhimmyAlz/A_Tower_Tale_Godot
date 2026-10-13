@@ -26,7 +26,7 @@ func set_description():
 	var attack_chance = (100/float(Global.player_attacks))
 	if Global.player_attacks == 5:
 		attack_chance = 0
-	description = "[b]Nerd[/b]\nLevel: %d\n\n[i]\"Erm Ackually..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA typical Nerd. Hopefully he doesn't try to talk to me.\n\nDrops:\n10%% Ultimate attack\n\nMutually Exclusive drops:\n%.01f%% New attack\n%.01f%% 36-48 xp" % [Level, Health, Damage, Defense, Defense_pen, attack_chance, 100 - attack_chance]
+	description = "[b]Nerd[/b]\nLevel: %d\n\n[i]\"Erm Ackually..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA typical Nerd. Hopefully he doesn't try to talk to me.\n\nDrops:\n10%% Ultimate attack\n\nMutually Exclusive drops:\n%.01f%% New attack\n%.01f%% %d-%d xp" % [Level, Health, Damage, Defense, Defense_pen, attack_chance, 100 - attack_chance, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos
@@ -63,7 +63,7 @@ func on_death():
 		if Global.player_attacks < 5 and 100/float(Global.player_attacks) >= randi_range(1, 100):
 			player.unlock_attack(1)
 		else:
-			player.gain_xp(randi_range(36, 48))
+			player.gain_xp(randi_range(xp_range[0], xp_range[1]))
 
 		if Global.ultimate_attack == 0 and 10 >= randi_range(1, 100):
 			player.unlock_ultimate()
@@ -77,10 +77,10 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
+		xp_range = [36, 48]
 		Health = 80 + (level * 40)
 		Max_Health = 80 + (level * 40)
 		Damage = 25 + (level * 2)
-
 	phase = 0
 	Name = "Nerd"
 	update_hp_bar()

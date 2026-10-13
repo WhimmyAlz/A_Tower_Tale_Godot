@@ -8,7 +8,7 @@ var shots = 0
 @onready var undead_ranger_animation = $UndeadRangerSprite
 
 func set_description():
-	description = "[b]Undead Ranger[/b]\nLevel: %d\n\n[i]\"I was once an adventurer like you...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA long dead adventurer.. Incredibly weak to stuns.\n\nDrops:\n10-16 xp" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Undead Ranger[/b]\nLevel: %d\n\n[i]\"I was once an adventurer like you...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA long dead adventurer.. Incredibly weak to stuns.\n\nDrops:\n%d-%d xp" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos
@@ -29,7 +29,7 @@ func shoot():
 
 func on_death():
 	if death_rewards == 1:
-		player.gain_xp(randi_range(10, 16))
+		player.gain_xp(randi_range(xp_range[0], xp_range[1]))
 		check_class_misc()
 	death_rewards = 0
 	queue_free()
@@ -40,6 +40,7 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
+		xp_range = [10, 16]
 		Health = 120 + (level * 35)
 		Max_Health = 120 + (level * 35)
 		Speed = 1

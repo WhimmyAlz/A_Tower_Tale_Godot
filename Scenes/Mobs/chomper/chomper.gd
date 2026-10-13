@@ -5,7 +5,7 @@ var stats_offset = Vector2(170, -5)
 var bonus_hit_speed = 0
 
 func set_description():
-	description = "[b]Chomper[/b]\nLevel: %d\n\n[i]\"...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nThat friend that asks for a bite.\n\nDrops:\n12-18 xp" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Chomper[/b]\nLevel: %d\n\n[i]\"...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nThat friend that asks for a bite.\n\nDrops:\n%d-%d xp" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos
@@ -26,7 +26,7 @@ func move(animation):
 
 func on_death():
 	if death_rewards == 1:
-		player.gain_xp(randi_range(12, 18))
+		player.gain_xp(randi_range(xp_range[0], xp_range[1]))
 	death_rewards = 0
 	queue_free()
 
@@ -46,6 +46,7 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
+		xp_range = [12, 18]
 		Health = 350 + (level * 50)
 		Max_Health = 350 + (level * 50)
 		Defense = 1

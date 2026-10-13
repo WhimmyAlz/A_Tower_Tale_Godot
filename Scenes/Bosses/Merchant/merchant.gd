@@ -24,7 +24,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health/2)
 
 func set_description():
-	description = "[b]A shell or something[/b]\nLevel: %d\n\n[i]\"Don't think I can't defend my merchandise.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA strange voice is coming from within.\n\nDrops:\n100%% 50-100 xp\n\nBoss perks: Immune to knockback and 50%% resistance to bleeding and mark of doom." % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]A shell or something[/b]\nLevel: %d\n\n[i]\"Don't think I can't defend my merchandise.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA strange voice is coming from within.\n\nDrops:\n100%% %d-%d xp\n\nBoss perks: Immune to knockback and 50%% resistance to bleeding and mark of doom." % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos
@@ -96,7 +96,7 @@ func check_phase():
 func on_death():
 	boss_bar.queue_free()
 	if death_rewards == 1:
-		player.gain_xp(randi_range(50, 100))
+		player.gain_xp(randi_range(xp_range[0], xp_range[1]))
 		player.get_parent().set_shop_opened(false)
 		check_class_misc()
 	death_rewards = 0
@@ -113,6 +113,7 @@ func set_level_stats():
 	var level = Level - 1
 	
 	if check_stats_unchanged():
+		xp_range = [50, 100]
 		Health = 1000 + (level * 10)
 		Max_Health = 1000 + (level * 10)
 		Damage = 10 + (level * 0.5)

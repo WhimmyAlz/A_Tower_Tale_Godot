@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name enemyBase
 
 @export var Level := 1
+var xp_range = [0, 0]
 
 @export var Health = 100.0
 @export var Max_Health = Health
