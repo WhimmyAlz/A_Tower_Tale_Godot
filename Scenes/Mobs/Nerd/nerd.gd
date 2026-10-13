@@ -164,13 +164,14 @@ func update_description():
 	$EnemyStatsList.set_text(description)
 	$EnemyStatsList.fix_pos()
 
-func _on_mouse_entered() -> void:
-	$EnemyStatsList.visible = true
-	mouse_over = true
-
-func _on_mouse_exited() -> void:
-	mouse_over = false
-	$EnemyStatsList.visible = false
-
 func _on_text_meta_clicked(meta: Variant) -> void:
 	OS.shell_open(meta)
+
+func _on_stats_collider_mouse_entered() -> void:
+	$EnemyStatsList.visible = true
+	mouse_over = true
+	update_description()
+
+func _on_stats_collider_mouse_exited() -> void:
+	mouse_over = false
+	$EnemyStatsList.visible = false

@@ -147,6 +147,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kt8of"]
 size = Vector2(53, 101.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6un5"]
+size = Vector2(50.75, 98)
+
 [node name="Skelebone" type="CharacterBody2D" unique_id=1712150969 groups=["enemy"]]
 scale = Vector2(4, 4)
 collision_layer = 4
@@ -169,5 +172,12 @@ position = Vector2(-1.25, -61.25)
 visible = false
 position = Vector2(-82.25, -0.75)
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="stats_collider" type="Area2D" parent="." unique_id=1302901195]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stats_collider" unique_id=191338962]
+position = Vector2(-2.375, -0.25)
+shape = SubResource("RectangleShape2D_l6un5")
+
+[connection signal="mouse_entered" from="stats_collider" to="." method="_on_stats_collider_mouse_entered"]
+[connection signal="mouse_exited" from="stats_collider" to="." method="_on_stats_collider_mouse_exited"]

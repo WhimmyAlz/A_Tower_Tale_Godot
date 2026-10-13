@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://cc1nw4yhjyw36"]
 
 [ext_resource type="Script" uid="uid://crefk238ej0s4" path="res://Global/pause_menu/pause_menu.gd" id="1_5fp10"]
-[ext_resource type="Texture2D" uid="uid://ums6uj064ir3" path="res://Global/pause_menu/pause_1.png" id="2_drg5q"]
-[ext_resource type="Texture2D" uid="uid://dsyn8yvna83dw" path="res://Global/pause_menu/pause_2.png" id="3_so02e"]
+[ext_resource type="Texture2D" uid="uid://dvro8anhgt1tt" path="res://Global/pause_menu/buttons/button1_1.png" id="2_4jk17"]
+[ext_resource type="Texture2D" uid="uid://ums6uj064ir3" path="res://Global/pause_menu/pause_buttons/pause_1.png" id="2_drg5q"]
+[ext_resource type="Script" uid="uid://bwgcjm16ihqj4" path="res://Global/pause_menu/buttons/buttons.gd" id="2_v6rfh"]
+[ext_resource type="Texture2D" uid="uid://dsyn8yvna83dw" path="res://Global/pause_menu/pause_buttons/pause_2.png" id="3_so02e"]
+[ext_resource type="Texture2D" uid="uid://bk6asq376s781" path="res://Global/pause_menu/buttons/button1_2.png" id="3_v6rfh"]
 
 [node name="PauseMenu" type="Node2D" unique_id=1743787274]
 process_mode = 3
@@ -15,7 +18,93 @@ visible = false
 [node name="BG Duller" type="ColorRect" parent="pause_menu" unique_id=672790827]
 offset_left = -3200.0
 offset_bottom = 1900.0
+mouse_filter = 2
 color = Color(0, 0, 0, 0.47058824)
+
+[node name="buttons_container" type="FlowContainer" parent="pause_menu" unique_id=1058275247]
+offset_left = -1897.0
+offset_top = 405.00003
+offset_right = -1765.0
+offset_bottom = 469.00003
+scale = Vector2(5, 5)
+mouse_filter = 2
+script = ExtResource("2_v6rfh")
+
+[node name="pls_help_button" type="TextureButton" parent="pause_menu/buttons_container" unique_id=619975475]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("2_4jk17")
+texture_pressed = ExtResource("2_4jk17")
+texture_hover = ExtResource("3_v6rfh")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pause_menu/buttons_container/pls_help_button" unique_id=1554312485]
+layout_mode = 0
+offset_left = 8.399988
+offset_top = 11.399992
+offset_right = 1178.4
+offset_bottom = 415.4
+scale = Vector2(0.1, 0.1)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 160
+theme_override_font_sizes/bold_font_size = 140
+bbcode_enabled = true
+text = "[b]PLS HELP BUTTON[/b]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pls_help_buttons" type="VBoxContainer" parent="pause_menu/buttons_container/pls_help_button" unique_id=566734787]
+visible = false
+layout_mode = 0
+offset_left = 135.40001
+offset_top = -1.0000085
+offset_right = 267.40002
+offset_bottom = 130.99998
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+
+[node name="skill_issue_button" type="TextureButton" parent="pause_menu/buttons_container/pls_help_button/pls_help_buttons" unique_id=324295036]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("2_4jk17")
+texture_pressed = ExtResource("2_4jk17")
+texture_hover = ExtResource("3_v6rfh")
+
+[node name="skill_issue_label" type="RichTextLabel" parent="pause_menu/buttons_container/pls_help_button/pls_help_buttons/skill_issue_button" unique_id=652226586]
+layout_mode = 0
+offset_left = 33.399998
+offset_top = 21.999998
+offset_right = 727.4
+offset_bottom = 187.0
+scale = Vector2(0.1, 0.1)
+mouse_filter = 2
+theme_override_font_sizes/bold_font_size = 120
+bbcode_enabled = true
+text = "[b]Skill Issue?[/b]"
+fit_content = true
+scroll_active = false
+
+[node name="instructions_button" type="TextureButton" parent="pause_menu/buttons_container/pls_help_button/pls_help_buttons" unique_id=1086872893]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("2_4jk17")
+texture_pressed = ExtResource("2_4jk17")
+texture_hover = ExtResource("3_v6rfh")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pause_menu/buttons_container/pls_help_button/pls_help_buttons/instructions_button" unique_id=896567202]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 23.2
+offset_right = 796.0
+offset_bottom = 188.2
+scale = Vector2(0.1, 0.1)
+mouse_filter = 2
+theme_override_font_sizes/bold_font_size = 120
+bbcode_enabled = true
+text = "[b]Instructions[/b]"
+fit_content = true
+scroll_active = false
 
 [node name="pause_button_main" type="TextureButton" parent="." unique_id=1850436905]
 texture_filter = 1
@@ -29,4 +118,6 @@ texture_normal = ExtResource("2_drg5q")
 texture_pressed = ExtResource("2_drg5q")
 texture_hover = ExtResource("3_so02e")
 
+[connection signal="pressed" from="pause_menu/buttons_container/pls_help_button" to="pause_menu/buttons_container" method="_on_pls_help_button_pressed"]
+[connection signal="pressed" from="pause_menu/buttons_container/pls_help_button/pls_help_buttons/skill_issue_button" to="pause_menu/buttons_container" method="_on_skill_issue_button_pressed"]
 [connection signal="button_up" from="pause_button_main" to="." method="_on_pause_button_main_button_up"]

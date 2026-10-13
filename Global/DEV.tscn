@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bltoxcx4anq8m" path="res://Global/dev.gd" id="1_u0jf5"]
 
 [node name="Dev" type="Node2D" unique_id=1959197403]
+process_mode = 3
 script = ExtResource("1_u0jf5")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1214934853]

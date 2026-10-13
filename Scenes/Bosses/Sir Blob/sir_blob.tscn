@@ -109,6 +109,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_yvubx"]
 radius = 359.1685
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32wqf"]
+size = Vector2(151, 180)
+
 [node name="sir_blob" type="CharacterBody2D" unique_id=1901925946 groups=["enemy"]]
 collision_layer = 4
 input_pickable = true
@@ -155,6 +158,13 @@ disabled = true
 visible = false
 position = Vector2(-209, -61)
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="stats_collider" type="Area2D" parent="." unique_id=384539933]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stats_collider" unique_id=1257123616]
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_32wqf")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="mouse_entered" from="stats_collider" to="." method="_on_stats_collider_mouse_entered"]
+[connection signal="mouse_exited" from="stats_collider" to="." method="_on_stats_collider_mouse_exited"]

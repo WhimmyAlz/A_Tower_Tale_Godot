@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://ltokrm38h1ns" path="res://Scenes/Mobs/UI/Stats_list/enemy_stats_list.gd" id="1_0tbqx"]
 
 [node name="EnemyStatsList" type="Node2D" unique_id=952394224]
+process_mode = 3
+z_index = 5
 script = ExtResource("1_0tbqx")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=701693954]

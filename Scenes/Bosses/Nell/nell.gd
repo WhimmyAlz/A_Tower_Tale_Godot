@@ -24,7 +24,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health)
 
 func set_description():
-	description = "[b]Nell[/b]\nLevel: %d\n\n[i]\"My arrows will do something.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The ranger of the twins.\n\nDrops:\n50-65 xp\n\nBoss Perk: prolly don't need one" % [Level, Health, Damage, Defense, Defense_pen]
+	description = "[b]Nell[/b]\nLevel: %d\n\n[i]\"My arrows will pierce your heart!\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The ranger of the twins.\n\nDrops:\n50-65 xp\n\nBoss Perk: prolly don't need one" % [Level, Health, Damage, Defense, Defense_pen]
 
 func check_phase():
 	if phases[phase][1] > 0:
@@ -171,10 +171,11 @@ func update_description():
 	$EnemyStatsList.set_text(description)
 	$EnemyStatsList.fix_pos()
 
-func _on_mouse_entered() -> void:
+func _on_stats_collider_mouse_entered() -> void:
 	$EnemyStatsList.visible = true
 	mouse_over = true
+	update_description()
 
-func _on_mouse_exited() -> void:
+func _on_stats_collider_mouse_exited() -> void:
 	mouse_over = false
 	$EnemyStatsList.visible = false

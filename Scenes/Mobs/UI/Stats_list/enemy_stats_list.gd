@@ -18,3 +18,6 @@ func fix_pos():
 
 func set_text(txt):
 	$RichTextLabel.text = txt
+
+func _physics_process(_delta: float) -> void:
+	fix_pos()

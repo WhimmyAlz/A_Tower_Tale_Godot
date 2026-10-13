@@ -94,6 +94,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sw20i"]
 size = Vector2(108, 69)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jev6w"]
+size = Vector2(546, 342)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epd48"]
 size = Vector2(542, 346)
 
@@ -176,6 +179,13 @@ scale = Vector2(1.25, 1.25)
 visible = false
 position = Vector2(-504, 170)
 
+[node name="stats_collider" type="Area2D" parent="." unique_id=1010703625]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stats_collider" unique_id=4864072]
+position = Vector2(-17, 115)
+shape = SubResource("RectangleShape2D_jev6w")
+
 [node name="Shop_colision" type="Area2D" parent="." unique_id=1183845862]
 collision_mask = 2
 
@@ -246,8 +256,8 @@ position = Vector2(-429, -532)
 [node name="UltimateBook" parent="Shop/Items" unique_id=1373719681 instance=ExtResource("13_sw20i")]
 position = Vector2(1944, -1186)
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="stats_collider" to="." method="_on_stats_collider_mouse_entered"]
+[connection signal="mouse_exited" from="stats_collider" to="." method="_on_stats_collider_mouse_exited"]
 [connection signal="body_entered" from="Shop_colision" to="." method="_on_shop_colision_body_entered"]
 [connection signal="body_exited" from="Shop_colision" to="." method="_on_shop_colision_body_exited"]
 [connection signal="mouse_entered" from="Shop/Turtle_collider" to="Shop" method="_on_turtle_collider_mouse_entered"]

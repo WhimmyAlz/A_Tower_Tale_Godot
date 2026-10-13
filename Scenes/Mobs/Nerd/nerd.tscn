@@ -156,6 +156,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnjl2"]
+size = Vector2(142, 350)
+
 [node name="Nerd" type="CharacterBody2D" unique_id=2051148031 groups=["enemy"]]
 collision_layer = 4
 input_pickable = true
@@ -207,6 +210,14 @@ visible = false
 position = Vector2(-263, -29)
 scale = Vector2(3, 3)
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="Stats_collider" type="Area2D" parent="." unique_id=55447449]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stats_collider" unique_id=1602253067]
+process_mode = 3
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_vnjl2")
+
 [connection signal="meta_clicked" from="fun_facts/display/text" to="." method="_on_text_meta_clicked"]
+[connection signal="mouse_entered" from="Stats_collider" to="." method="_on_stats_collider_mouse_entered"]
+[connection signal="mouse_exited" from="Stats_collider" to="." method="_on_stats_collider_mouse_exited"]

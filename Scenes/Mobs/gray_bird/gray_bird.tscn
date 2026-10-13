@@ -139,6 +139,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0s23"]
 size = Vector2(518, 505)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61lbi"]
+size = Vector2(237, 526)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u34a0"]
 size = Vector2(282.75, 430)
 
@@ -166,6 +169,13 @@ scale = Vector2(1.5, 1.5)
 visible = false
 position = Vector2(-360, 11)
 
+[node name="stats_collider" type="Area2D" parent="." unique_id=1378734383]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stats_collider" unique_id=243300138]
+position = Vector2(13.5, 12)
+shape = SubResource("RectangleShape2D_61lbi")
+
 [node name="Attack_area" type="Area2D" parent="." unique_id=2030300896]
 position = Vector2(-120, 0)
 collision_layer = 8
@@ -174,5 +184,5 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_area" unique_id=2136084324]
 shape = SubResource("RectangleShape2D_u34a0")
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="stats_collider" to="." method="_on_stats_collider_mouse_entered"]
+[connection signal="mouse_exited" from="stats_collider" to="." method="_on_stats_collider_mouse_exited"]

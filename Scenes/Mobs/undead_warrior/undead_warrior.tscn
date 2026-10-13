@@ -178,6 +178,9 @@ size = Vector2(126, 413)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_susja"]
 size = Vector2(85.14289, 62.285717)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_letet"]
+size = Vector2(127, 411)
+
 [node name="undead_Warrior" type="CharacterBody2D" unique_id=1024809342 groups=["enemy"]]
 collision_layer = 4
 input_pickable = true
@@ -215,5 +218,12 @@ position = Vector2(0, 32)
 scale = Vector2(0.99999946, 0.99999946)
 shape = SubResource("RectangleShape2D_susja")
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="stats_collider" type="Area2D" parent="." unique_id=622220896]
+process_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stats_collider" unique_id=1302162923]
+position = Vector2(-3.5, 16.5)
+shape = SubResource("RectangleShape2D_letet")
+
+[connection signal="mouse_entered" from="stats_collider" to="." method="_on_stats_collider_mouse_entered"]
+[connection signal="mouse_exited" from="stats_collider" to="." method="_on_stats_collider_mouse_exited"]
