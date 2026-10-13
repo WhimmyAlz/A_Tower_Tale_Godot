@@ -2,7 +2,28 @@ extends Node2D
 
 var console_text
 var command_lib = {"stats" : 0, "setHealth" : 1, "setStamina" : 1, "spawn" : 2, "help" : 0, "fetchMobs" : 0, "killMobs" : 1, "mass" : 2} # has a command name then a 
+var track_increment = 0
 var auto_close = true
+
+## Fast track through commands
+func fast_track():
+	var command_list = command_lib.keys()
+	
+	if Input.is_action_just_pressed("Console_up") or Input.is_action_just_pressed("Console_down"):
+		if $LineEdit.text == "":
+			$LineEdit.text = " "
+		if $LineEdit.text.substr(1, len($LineEdit.text)-2) not in command_lib:
+			$LineEdit.text = "/" + command_list[0] + " "
+			track_increment = 0
+			print(command_list)
+	
+		elif Input.is_action_just_pressed("Console_up") and track_increment < len(command_list)-1:
+			track_increment += 1
+			$LineEdit.text = "/" + command_list[track_increment] + " "
+		elif Input.is_action_just_pressed("Console_down") and track_increment > 0:
+			track_increment -= 1
+			$LineEdit.text = "/" + command_list[track_increment] + " "
+		$LineEdit.caret_column = len($LineEdit.text)
 
 ## Closes and clears the console
 func close():
@@ -52,6 +73,12 @@ func console_return_and_collect():
 ## Searches to see if command is valid and returns the command and it's arguments if it is
 func find_and_return():
 	var full_command = console_text.substr(1) # removes "/" of command
+
+	# removes an extra space if there is one
+	# Note: only removes one extra space
+	if full_command[len(full_command)-1] == " ":
+		full_command = full_command.substr(0, len(full_command)-1)
+
 	var split_command = full_command.split(" ") # splits command by spaces
 	var command = split_command[0]
 
@@ -295,3 +322,4 @@ func _physics_process(_delta: float) -> void:
 		get_parent().get_parent().get_node("PlayerBody").take_stun(2)
 	console_toggle()
 	console_return_and_collect()
+	fast_track()
