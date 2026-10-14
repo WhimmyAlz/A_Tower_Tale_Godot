@@ -241,7 +241,6 @@ func help(command):
 func keep(command):
 	var correct_args = arg_check(command, 0)
 	nc_clear()
-
 	if correct_args:
 		if keep_:
 			log_text("Keep: Inactive")

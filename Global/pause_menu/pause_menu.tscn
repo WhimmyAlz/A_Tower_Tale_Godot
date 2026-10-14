@@ -134,6 +134,10 @@ text = "[b]Instructions[/b]"
 fit_content = true
 scroll_active = false
 
+[node name="TextureButton" type="TextureButton" parent="pause_menu/buttons_container" unique_id=2073409837]
+visible = false
+layout_mode = 2
+
 [node name="Instructions" type="Node2D" parent="pause_menu" unique_id=1456490157]
 visible = false
 position = Vector2(-1600, 500)
