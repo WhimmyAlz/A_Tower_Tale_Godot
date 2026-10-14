@@ -184,6 +184,7 @@ scale = Vector2(1, 1)
 scale = Vector2(3, 3)
 
 [node name="fun_facts" type="Node2D" parent="." unique_id=219530290]
+process_mode = 3
 
 [node name="display" type="AnimatedSprite2D" parent="fun_facts" unique_id=904214201]
 texture_filter = 1

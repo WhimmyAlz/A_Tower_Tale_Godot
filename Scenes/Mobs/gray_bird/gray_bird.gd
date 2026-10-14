@@ -58,7 +58,7 @@ func set_level_stats():
 		Speed = 8
 		Damage = 30 + (level * 1.5)
 
-	Name = "Gray Bird"
+		Name = "Gray Bird"
 	update_hp_bar()
 	$HealthBar.set_name_size(18)
 	

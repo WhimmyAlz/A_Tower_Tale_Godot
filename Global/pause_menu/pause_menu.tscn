@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cc1nw4yhjyw36"]
+[gd_scene format=4 uid="uid://cc1nw4yhjyw36"]
 
 [ext_resource type="Script" uid="uid://crefk238ej0s4" path="res://Global/pause_menu/pause_menu.gd" id="1_5fp10"]
 [ext_resource type="Texture2D" uid="uid://dvro8anhgt1tt" path="res://Global/pause_menu/buttons/button1_1.png" id="2_4jk17"]
@@ -6,6 +6,34 @@
 [ext_resource type="Script" uid="uid://bwgcjm16ihqj4" path="res://Global/pause_menu/buttons/buttons.gd" id="2_v6rfh"]
 [ext_resource type="Texture2D" uid="uid://dsyn8yvna83dw" path="res://Global/pause_menu/pause_buttons/pause_2.png" id="3_so02e"]
 [ext_resource type="Texture2D" uid="uid://bk6asq376s781" path="res://Global/pause_menu/buttons/button1_2.png" id="3_v6rfh"]
+[ext_resource type="Texture2D" uid="uid://c17yhbwjr37ay" path="res://Global/pause_menu/scroll/scroll_top.png" id="5_hjic6"]
+[ext_resource type="Script" uid="uid://boqbhgsqqqms5" path="res://Global/pause_menu/movable.gd" id="5_n7wge"]
+[ext_resource type="Texture2D" uid="uid://j13acv3gn8r5" path="res://Global/pause_menu/scroll/scroll_center.png" id="6_n7wge"]
+[ext_resource type="Texture2D" uid="uid://dqx21uxbs2xt0" path="res://Global/pause_menu/scroll/scroll_bottom.png" id="7_kytvl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pfknq"]
+texture = ExtResource("5_hjic6")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxmu7"]
+texture = ExtResource("6_n7wge")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sg4wm"]
+texture = ExtResource("7_kytvl")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_li04m"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_pfknq")
+sources/1 = SubResource("TileSetAtlasSource_sxmu7")
+sources/2 = SubResource("TileSetAtlasSource_sg4wm")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kytvl"]
+size = Vector2(1386, 8963)
 
 [node name="PauseMenu" type="Node2D" unique_id=1743787274]
 process_mode = 3
@@ -106,6 +134,82 @@ text = "[b]Instructions[/b]"
 fit_content = true
 scroll_active = false
 
+[node name="Instructions" type="Node2D" parent="pause_menu" unique_id=1456490157]
+visible = false
+position = Vector2(-1600, 500)
+script = ExtResource("5_n7wge")
+
+[node name="mouse_input_block" type="Control" parent="pause_menu/Instructions" unique_id=685585970]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -809.0
+offset_top = -262.0
+offset_right = 808.0
+offset_bottom = 8806.0
+mouse_filter = 1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="pause_menu/Instructions" unique_id=839788435]
+texture_filter = 1
+position = Vector2(-793, 245)
+scale = Vector2(25, 25)
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_li04m")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pause_menu/Instructions" unique_id=1425772129]
+offset_left = -633.0
+offset_top = 102.0
+offset_right = 700.0
+offset_bottom = 8191.0
+mouse_filter = 2
+theme_override_font_sizes/bold_font_size = 80
+bbcode_enabled = true
+text = "[b]Bad at the game ey?
+This is the perfect thing for you.
+
+First off, you can drag this scroll to read things that are below.
+
+...
+
+...
+
+...
+
+You can also hold right click and drag it horizontally to change it's size.
+
+
+
+Alright, these are your controls:
+
+Movement
+Jump: W or Space
+Left: A
+Right: D
+Fast fall: S
+
+Attacks
+Skill 1: J or 1
+Skill 2: K or 2
+Skill 3: L or 3
+Skill 4: I or 4
+Skill 5: O or 5
+Ultimate: U or 6
+
+Misc
+Inventory: Q
+Interact: E
+Console: Enter
+
+
+[/b]"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="drag_collider" type="Area2D" parent="pause_menu/Instructions" unique_id=412126166]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pause_menu/Instructions/drag_collider" unique_id=860441067]
+position = Vector2(29, 4233.5)
+shape = SubResource("RectangleShape2D_kytvl")
+
 [node name="pause_button_main" type="TextureButton" parent="." unique_id=1850436905]
 texture_filter = 1
 offset_left = -273.0
@@ -120,4 +224,7 @@ texture_hover = ExtResource("3_so02e")
 
 [connection signal="pressed" from="pause_menu/buttons_container/pls_help_button" to="pause_menu/buttons_container" method="_on_pls_help_button_pressed"]
 [connection signal="pressed" from="pause_menu/buttons_container/pls_help_button/pls_help_buttons/skill_issue_button" to="pause_menu/buttons_container" method="_on_skill_issue_button_pressed"]
+[connection signal="pressed" from="pause_menu/buttons_container/pls_help_button/pls_help_buttons/instructions_button" to="pause_menu/buttons_container" method="_on_instructions_button_pressed"]
+[connection signal="mouse_entered" from="pause_menu/Instructions/drag_collider" to="pause_menu/Instructions" method="_on_drag_collider_mouse_entered"]
+[connection signal="mouse_exited" from="pause_menu/Instructions/drag_collider" to="pause_menu/Instructions" method="_on_drag_collider_mouse_exited"]
 [connection signal="button_up" from="pause_button_main" to="." method="_on_pause_button_main_button_up"]

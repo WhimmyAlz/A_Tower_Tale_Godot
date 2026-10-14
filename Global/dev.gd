@@ -1,9 +1,11 @@
 extends Node2D
 
 var console_text
-var command_lib = {"stats" : 0, "setHealth" : 1, "setStamina" : 1, "spawn" : 2, "help" : 0, "fetchMobs" : 0, "killMobs" : 1, "mass" : 2} # has a command name then a 
+var command_lib = {"stats" : 0, "setHealth" : 1, "setStamina" : 1, "spawn" : 2, "help" : 0, "fetchMobs" : 0, "killMobs" : 1, "mass" : 2, "keep" : 0} # has a command name then a 
 var track_increment = 0
 var auto_close = true
+var keep_ = false
+var keep_delay = 1
 
 ## Fast track through commands
 func fast_track():
@@ -27,17 +29,20 @@ func fast_track():
 
 ## Closes and clears the console
 func close():
-	$LineEdit.clear()
+	if not keep_:
+		$LineEdit.clear()
 	$".".hide()
 
 ## Clears but doesn't close the console
 func nc_clear():
 	auto_close = false
-	$LineEdit.clear()
+	if not keep_:
+		$LineEdit.clear()
 	$LineEdit.edit()
 
 ## Opens and begins editing the console
 func open():
+	keep_delay = 1
 	$".".show()
 	$LineEdit.edit()
 
@@ -115,6 +120,8 @@ func command_usage(txt):
 		return(kill_mobs(command))
 	elif command[0] == "mass":
 		return(mass(command))
+	elif command[0] == "keep":
+		return(keep(command))
 
 ## returns true or false based on correct amounts of arguments
 func arg_check(commands, args):
@@ -230,6 +237,22 @@ func help(command):
 	else:
 		return(false)
 
+## shows all commands
+func keep(command):
+	var correct_args = arg_check(command, 0)
+	nc_clear()
+
+	if correct_args:
+		if keep_:
+			log_text("Keep: Inactive")
+			keep_ = false
+		else:
+			log_text("Keep: Active")
+			keep_ = true
+		return(true)
+	else:
+		return(false)
+
 ## spawns an enemy at (0, 0)
 func spawn_enemy(enemy_preload, lvl):
 	var enemy = enemy_preload.instantiate()
@@ -324,5 +347,7 @@ func _physics_process(_delta: float) -> void:
 	if visible == true and Global.stun_time < 2:
 		get_parent().get_parent().get_node("PlayerBody").take_stun(2)
 	console_toggle()
-	console_return_and_collect()
+	if keep_delay == 0:
+		console_return_and_collect()
+	keep_delay = 0
 	fast_track()
