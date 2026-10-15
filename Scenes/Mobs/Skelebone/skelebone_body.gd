@@ -109,6 +109,9 @@ func _physics_process(_delta: float) -> void:
 	if mouse_over:
 		update_description()
 
+func take_bleed():
+	pass
+
 func update_description():
 	set_description()
 	$EnemyStatsList.set_text(description)

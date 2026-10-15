@@ -24,7 +24,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health)
 
 func set_description():
-	description = "[b]SIR BLOB[/b]\nLevel: %d\n\n[i]\"...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription: Some say this is what happens when you leave an orange in a fridge for too long.\n\nDrops:\n%d-%d xp\n\nBoss perk: stunned for 25%% less time." % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
+	description = "[b]SIR BLOB[/b]\nLevel: %d\n\n[i]\"...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription: Some say this is what happens when you leave an orange behind a fridge for too long.\n\nDrops:\n%d-%d xp\n\nBoss perk: stunned for 25%% less time." % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos

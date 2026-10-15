@@ -31,4 +31,11 @@ func _on_instructions_button_pressed() -> void:
 		$"../Instructions".position = Vector2(-1600, 500)
 		$"../Instructions".scale = Vector2(1, 1)
 
-#// 
+#// enemy guide button
+func _on_enemy_guide_button_pressed() -> void:
+	if $"../Enemy_guide".visible == true:
+		$"../Enemy_guide".visible = false
+	else:
+		$"../Enemy_guide".visible = true
+		$"../Enemy_guide".position = Vector2(-1300, 150)
+		$"../Enemy_guide".scale = Vector2(1, 1)

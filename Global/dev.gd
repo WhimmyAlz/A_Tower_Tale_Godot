@@ -17,7 +17,6 @@ func fast_track():
 		if $LineEdit.text.substr(1, len($LineEdit.text)-2) not in command_lib:
 			$LineEdit.text = "/" + command_list[0] + " "
 			track_increment = 0
-			print(command_list)
 	
 		elif Input.is_action_just_pressed("Console_up") and track_increment < len(command_list)-1:
 			track_increment += 1
