@@ -39,3 +39,12 @@ func _on_enemy_guide_button_pressed() -> void:
 		$"../Enemy_guide".visible = true
 		$"../Enemy_guide".position = Vector2(-1300, 150)
 		$"../Enemy_guide".scale = Vector2(1, 1)
+
+
+func _on_status_effect_guide_button_pressed() -> void:
+	if $"../Status_effect_guide".visible == true:
+		$"../Status_effect_guide".visible = false
+	else:
+		$"../Status_effect_guide".visible = true
+		$"../Status_effect_guide".position = Vector2(0, 0)
+		$"../Status_effect_guide".scale = Vector2(1, 1)

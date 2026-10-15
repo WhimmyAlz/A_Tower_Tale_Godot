@@ -118,11 +118,11 @@ func set_berserk(time):
 
 func start_river(time):
 	if river == false:
-		init_status_box("River", 1, time, Color.DARK_SLATE_BLUE)
+		init_status_box("River Styx", 1, time, Color.DARK_SLATE_BLUE)
 		river_bg = preload_river_bg.instantiate()
 		get_tree().current_scene.get_node("Enviroment").get_node("Walls_and_sprites").get_node("Sprites").add_child(river_bg)
 	else:
-		update_status_box("River", 1, time)
+		update_status_box("River Styx", 1, time)
 	river = true
 	if river_time < time:
 		river_time = time
@@ -140,7 +140,7 @@ func set_defensive_stance(level, time):
 func add_river(time):
 	if river == true:
 		river_time += time
-		update_status_box("River", 1, river_time)
+		update_status_box("River Styx", 1, river_time)
 
 func add_needles(stacks):
 	needle_tick_delay = 6000

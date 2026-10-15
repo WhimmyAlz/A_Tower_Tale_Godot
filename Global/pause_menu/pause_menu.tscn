@@ -530,6 +530,30 @@ sources/0 = SubResource("TileSetAtlasSource_lwbbr")
 sources/1 = SubResource("TileSetAtlasSource_yooja")
 sources/2 = SubResource("TileSetAtlasSource_naiil")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yk562"]
+texture = ExtResource("7_kytvl")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tkfvf"]
+texture = ExtResource("6_n7wge")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7r7us"]
+texture = ExtResource("5_hjic6")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cgyrc"]
+tile_size = Vector2i(64, 64)
+sources/3 = SubResource("TileSetAtlasSource_yk562")
+sources/4 = SubResource("TileSetAtlasSource_tkfvf")
+sources/5 = SubResource("TileSetAtlasSource_7r7us")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yk562"]
+size = Vector2(1174.5, 9750)
+
 [node name="PauseMenu" type="Node2D" unique_id=1743787274]
 process_mode = 3
 z_index = 1001
@@ -647,6 +671,29 @@ mouse_filter = 2
 theme_override_font_sizes/bold_font_size = 145
 bbcode_enabled = true
 text = "[b]ENEMY GUIDE[/b]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="status_effect_guide_button" type="TextureButton" parent="pause_menu/buttons_container" unique_id=1373160179]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("2_4jk17")
+texture_pressed = ExtResource("2_4jk17")
+texture_hover = ExtResource("3_v6rfh")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pause_menu/buttons_container/status_effect_guide_button" unique_id=1679533096]
+layout_mode = 0
+offset_left = 14.999999
+offset_top = 17.999998
+offset_right = 1081.0
+offset_bottom = 306.0
+scale = Vector2(0.1, 0.1)
+mouse_filter = 2
+theme_override_font_sizes/bold_font_size = 150
+bbcode_enabled = true
+text = "[b]Status effects"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -1043,6 +1090,133 @@ Mutually Exclusive Drops:
 New Attack
 36-48xp"
 
+[node name="Status_effect_guide" type="Node2D" parent="pause_menu" unique_id=1291225857]
+visible = false
+script = ExtResource("5_n7wge")
+
+[node name="mouse_input_block" type="Control" parent="pause_menu/Status_effect_guide" unique_id=916586145]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2336.0
+offset_top = 201.0
+offset_right = -1076.0
+offset_bottom = 10011.0
+mouse_filter = 1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="pause_menu/Status_effect_guide" unique_id=960274269]
+texture_filter = 1
+position = Vector2(-2356.0002, 624)
+scale = Vector2(20, 20)
+tile_map_data = PackedByteArray("AAAAAP//BQAAAAAAAAAAAAAABAAAAAAAAAAAAAEABAAAAAAAAAAAAAIABAAAAAAAAAAAAAMABAAAAAAAAAAAAAQABAAAAAAAAAAAAAUABAAAAAAAAAAAAAYABAAAAAAAAAAAAAcAAwAAAAAAAAA=")
+tile_set = SubResource("TileSet_cgyrc")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pause_menu/Status_effect_guide" unique_id=2000319812]
+offset_left = -2209.0
+offset_top = 536.0
+offset_right = -1187.0
+offset_bottom = 9675.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 80
+theme_override_font_sizes/bold_italics_font_size = 60
+theme_override_font_sizes/italics_font_size = 40
+bbcode_enabled = true
+text = "[b]List of some status effect stuff and more stuff.[/b]
+
+[font_size=40]Note: X will be used to represent stacks amount.
+
+Note: Different status types
+Single tick: Does action and loses a stack
+Multi tick: Does action, loses mutliple stacks
+Passive tick: Constantly does action, loses stacks(s) after time reached
+Proc type: Reaches amount of tick, does action
+Applied type: time is reset when repplied
+[/font_size]
+
+[b][color=orange]- Fire -[/color]
+[i]Single tick type[/i][/b]
+[left]Damage: X/2 damage
+Max stacks: 50
+Ticks per second: 4
+Defense Penetration: 10
+[/left]
+
+[b][color=dark_red]- Bleed -[/color]
+[i]Single tick type[/i][/b]
+[left]Damage: 1% of max health
+Max stacks: 10
+Ticks per second: 2
+Defense Penetration: 1000
+[/left]
+
+[b][color=black]- Death mark -[/color]
+[i]Proc + Applied type[/i][/b]
+[left]Damage: 20% of max health
+Max stacks: 1000
+Duration: 5s
+Defense Penetration: 1000
+[/left]
+
+[b][color=yellow]- Shock -[/color]
+[i]Mutli tick type[/i][/b]
+[left]Actions: allows X% of stun time to be added.
+Max stacks: 100
+Ticks per second: 6
+Stacks loss per tick: X/10
+[/left]
+
+[b][color=purple]- Venom -[/color]
+[i]Single tick type[/i][/b]
+[left]Damage: 5
+Max stacks: 30
+Ticks per second: 3
+Defense Penetration: 25
+[/left]
+
+[b][color=dim_gray]- Defensive Stance -[/color]
+[i]Passive Tick Type[/i][/b]
+[left]Action: Gives 10(X) defense
+Duration: NA
+[/left]
+
+[b][color=red]- Berserk -[/color]
+[i]Passive Tick Type[/i][/b]
+[left]Action: +10 str, +15 agi, +100% stamina regeneration
+Duration: NA
+[/left]
+
+[b][color=gray]- Needle Stacks -[/color]
+[i]Passive Tick + Applied Type[/i][/b]
+[left]Action: Consumed when skills 2, 4, and 5 of the needle class are used. 
+Duration: 100.0s
+[/left]
+
+[b][color=dark_slate_gray]- River Styx -[/color]
+[i]Passive Tick Type[/i][/b]
+[left]Action: Gives 4hp/s and causes soul explosions frequently. Soul explosions have a 10% chance to be super powered.
+Damage: 25% of power stat
+Duration: NA
+[/left]
+
+[b][color=sky_blue]- Retribution -[/color]
+[i]Passive Tick + Applied Type[/i][/b]
+[left]Action: Consumed when skills 4 and 5 of the paladin class are used.
+Duration: 100.0s
+[/left]
+
+[b][color=sky_blue]- Borrowed Time -[/color]
+[i]Passive Tick Type[/i][/b]
+[left]Action: Saves the amount of health when this buff is activated. Rapidly heals back health when below the saved amount, but all the healed health will be dealt back as damage when this ends. Damage is reduced by the amount of retribution stacks that you have.
+Duration: NA"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="drag_collider" type="Area2D" parent="pause_menu/Status_effect_guide" unique_id=301643781]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pause_menu/Status_effect_guide/drag_collider" unique_id=1112811732]
+position = Vector2(-1700.25, 5102)
+shape = SubResource("RectangleShape2D_yk562")
+
 [node name="pause_button_main" type="TextureButton" parent="." unique_id=1850436905]
 texture_filter = 1
 offset_left = -273.0
@@ -1059,6 +1233,7 @@ texture_hover = ExtResource("3_so02e")
 [connection signal="pressed" from="pause_menu/buttons_container/pls_help_button/pls_help_buttons/skill_issue_button" to="pause_menu/buttons_container" method="_on_skill_issue_button_pressed"]
 [connection signal="pressed" from="pause_menu/buttons_container/pls_help_button/pls_help_buttons/instructions_button" to="pause_menu/buttons_container" method="_on_instructions_button_pressed"]
 [connection signal="pressed" from="pause_menu/buttons_container/enemy_guide_button" to="pause_menu/buttons_container" method="_on_enemy_guide_button_pressed"]
+[connection signal="pressed" from="pause_menu/buttons_container/status_effect_guide_button" to="pause_menu/buttons_container" method="_on_status_effect_guide_button_pressed"]
 [connection signal="mouse_entered" from="pause_menu/Instructions/drag_collider" to="pause_menu/Instructions" method="_on_drag_collider_mouse_entered"]
 [connection signal="mouse_exited" from="pause_menu/Instructions/drag_collider" to="pause_menu/Instructions" method="_on_drag_collider_mouse_exited"]
 [connection signal="mouse_entered" from="pause_menu/Enemy_guide/drag_collider" to="pause_menu/Enemy_guide" method="_on_drag_collider_mouse_entered"]
@@ -1066,4 +1241,6 @@ texture_hover = ExtResource("3_so02e")
 [connection signal="text_changed" from="pause_menu/Enemy_guide/VBoxContainer/level/LineEdit" to="pause_menu/Enemy_guide" method="_on_line_edit_text_changed"]
 [connection signal="pressed" from="pause_menu/Enemy_guide/button_right" to="pause_menu/Enemy_guide" method="_on_button_right_pressed"]
 [connection signal="pressed" from="pause_menu/Enemy_guide/button_left" to="pause_menu/Enemy_guide" method="_on_button_left_pressed"]
+[connection signal="mouse_entered" from="pause_menu/Status_effect_guide/drag_collider" to="pause_menu/Status_effect_guide" method="_on_drag_collider_mouse_entered"]
+[connection signal="mouse_exited" from="pause_menu/Status_effect_guide/drag_collider" to="pause_menu/Status_effect_guide" method="_on_drag_collider_mouse_exited"]
 [connection signal="button_up" from="pause_button_main" to="." method="_on_pause_button_main_button_up"]

@@ -3,6 +3,7 @@ extends Node2D
 var entered
 var offset
 var scale_offset
+static var focused = null
 
 func move():
 	if entered and Input.is_action_just_pressed("left_click"):
@@ -20,8 +21,12 @@ func _physics_process(_delta: float) -> void:
 	move()
 
 func _on_drag_collider_mouse_entered() -> void:
-	entered = true
+	if focused == null or focused == self:
+		entered = true
+		focused = self
 
 func _on_drag_collider_mouse_exited() -> void:
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		entered = false
+		if focused == self:
+			focused = null

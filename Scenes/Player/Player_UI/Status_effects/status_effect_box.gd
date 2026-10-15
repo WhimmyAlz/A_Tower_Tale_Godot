@@ -10,7 +10,7 @@ var text_size = 48
 func set_description():
 	if status == "Berserk":
 		description = "+10 Strength\n+15 Agility\n+100% Stamina regen\n\nSecond and fourth attacks of the brawler class inflicts fire."
-	elif status == "River":
+	elif status == "River Styx":
 		description = "Creates an area that lets you regen at 4hp/s and creates explosions on random enemies."
 	elif status == "Defensive Stance":
 		description = "You gain 10 * X amount of defense where X is the status level"
@@ -28,6 +28,10 @@ func set_description():
 		description = "Lose 20% of max health if 1000 stacks are reached. Ignores 1000 defense."
 	elif status == "Needle Stacks":
 		description = "Stacks are consumed to make your attacks stronger. Caps out at 10 stacks."
+	elif status == "Retribution":
+		description = "Stacks are consumed to give various benefits. Caps out at 200 stacks."
+	elif status == "Borrowed Time":
+		description = "Quickly heals damage that has been dealt to you while active. The combined damage will be dealt to you at the end of the buff but reduced by the amount of retribution you have."
 	$description/RichTextLabel.text = description
 
 func set_status(txt):
