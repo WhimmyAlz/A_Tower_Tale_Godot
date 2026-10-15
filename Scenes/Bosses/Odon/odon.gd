@@ -41,7 +41,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health)
 
 func set_description():
-	description = "[b]Odon[/b]\nLevel: %d\n\n[i]\"Baby spin me round..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The juggernaut of the twins.\n\nDrops:\n%d-%d xp\n\nBoss perk: stunned for 70%% less time." % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
+	description = "[b]Odon[/b]\nLevel: %d\n\n[i]\"Baby spin me round...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The juggernaut of the twins.\n\nDrops:\n%d-%d xp\n\nBoss perk: stunned for 70%% less time." % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos

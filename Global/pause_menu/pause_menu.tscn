@@ -46,7 +46,7 @@ sources/1 = SubResource("TileSetAtlasSource_sxmu7")
 sources/2 = SubResource("TileSetAtlasSource_sg4wm")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kytvl"]
-size = Vector2(1386, 8963)
+size = Vector2(1386, 12181)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n7wge"]
 texture = ExtResource("7_kytvl")
@@ -336,7 +336,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_naiil")
 }],
 "loop": true,
-"name": &"gray_bird",
+"name": &"gray bird",
 "speed": 5.0
 }, {
 "frames": [{
@@ -536,6 +536,7 @@ z_index = 1001
 script = ExtResource("1_5fp10")
 
 [node name="pause_menu" type="Node2D" parent="." unique_id=1518274080]
+visible = false
 
 [node name="BG Duller" type="ColorRect" parent="pause_menu" unique_id=672790827]
 offset_left = -3200.0
@@ -662,21 +663,21 @@ anchors_preset = 0
 offset_left = -809.0
 offset_top = -262.0
 offset_right = 808.0
-offset_bottom = 8806.0
+offset_bottom = 11982.0
 mouse_filter = 1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="pause_menu/Instructions" unique_id=839788435]
 texture_filter = 1
 position = Vector2(-793, 245)
 scale = Vector2(25, 25)
-tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAcAAgAAAAAAAAA=")
 tile_set = SubResource("TileSet_li04m")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="pause_menu/Instructions" unique_id=1425772129]
 offset_left = -633.0
 offset_top = 102.0
 offset_right = 700.0
-offset_bottom = 8191.0
+offset_bottom = 11599.0
 mouse_filter = 2
 theme_override_font_sizes/bold_font_size = 80
 bbcode_enabled = true
@@ -717,6 +718,65 @@ Interact: E
 Console: Enter
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dang you came all the way down here?
+Well that deserves some sort of reward...
+
+Uhhhh... I can tell you that you can scroll on the description area of the enemy guide to see their attacks...
+
+Yeah that's kinda it.
 [/b]"
 scroll_active = false
 horizontal_alignment = 1
@@ -724,10 +784,11 @@ horizontal_alignment = 1
 [node name="drag_collider" type="Area2D" parent="pause_menu/Instructions" unique_id=412126166]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pause_menu/Instructions/drag_collider" unique_id=860441067]
-position = Vector2(29, 4233.5)
+position = Vector2(29, 5842.5)
 shape = SubResource("RectangleShape2D_kytvl")
 
 [node name="Enemy_guide" type="Node2D" parent="pause_menu" unique_id=367670937]
+visible = false
 position = Vector2(-1300, 150)
 script = ExtResource("9_kytvl")
 
@@ -816,9 +877,8 @@ texture_filter = 1
 position = Vector2(362, 435)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_lwbbr")
-animation = &"merchant"
+animation = &"gray bird"
 autoplay = "nerd"
-frame_progress = 0.9936968
 
 [node name="button_right" type="TextureButton" parent="pause_menu/Enemy_guide" unique_id=359347525]
 texture_filter = 1
@@ -921,9 +981,10 @@ scroll_active = false
 [node name="extra" type="RichTextLabel" parent="pause_menu/Enemy_guide/Stats_bg/Stats2" unique_id=1689772918]
 custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
+theme_override_constants/paragraph_separation = 15
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "[b]Extra stuff: Nothing special"
+text = "[b]Extra stuff: Nothing special."
 
 [node name="descprition_BG" type="ColorRect" parent="pause_menu/Enemy_guide/Stats_bg" unique_id=1443363115]
 layout_mode = 0
@@ -1004,5 +1065,5 @@ texture_hover = ExtResource("3_so02e")
 [connection signal="mouse_exited" from="pause_menu/Enemy_guide/drag_collider" to="pause_menu/Enemy_guide" method="_on_drag_collider_mouse_exited"]
 [connection signal="text_changed" from="pause_menu/Enemy_guide/VBoxContainer/level/LineEdit" to="pause_menu/Enemy_guide" method="_on_line_edit_text_changed"]
 [connection signal="pressed" from="pause_menu/Enemy_guide/button_right" to="pause_menu/Enemy_guide" method="_on_button_right_pressed"]
-[connection signal="pressed" from="pause_menu/Enemy_guide/button_left" to="pause_menu/Enemy_guide" method="_on_button_left_2_pressed"]
+[connection signal="pressed" from="pause_menu/Enemy_guide/button_left" to="pause_menu/Enemy_guide" method="_on_button_left_pressed"]
 [connection signal="button_up" from="pause_button_main" to="." method="_on_pause_button_main_button_up"]
