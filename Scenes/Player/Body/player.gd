@@ -255,6 +255,20 @@ func gain_stamina(value):
 		Global.stamina = minf(Global.stamina + value, Global.max_stamina)
 		$"../Non Attached UI Elements/Prog_Bars".Update_STAM()
 
+func add_item(item, amount=1):
+	if item not in Global.Inventory:
+		Global.Inventory[item] = int(amount)
+	else:
+		Global.Inventory[item] += int(amount)
+
+func remove_item(item, amount=1):
+	var accepted = false
+	if item in Global.Inventory:
+		if Global.Inventory[item] >= amount:
+			accepted = true
+			Global.Inventory[item] -= int(amount)
+	return(accepted)
+
 func stamina_regen():
 	if Global.stamina < Global.max_stamina:
 		if quick_regen:

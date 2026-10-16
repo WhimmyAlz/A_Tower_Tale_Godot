@@ -1,11 +1,12 @@
 extends Node2D
 
 var console_text
-var command_lib = {"stats" : 0, "setHealth" : 1, "setStamina" : 1, "spawn" : 2, "help" : 0, "fetchMobs" : 0, "killMobs" : 1, "mass" : 2, "keep" : 0} # has a command name then a 
+var command_lib = {"stats" : 0, "setHealth" : 1, "setStamina" : 1, "spawn" : 2, "help" : 0, "fetchMobs" : 0, "killMobs" : 1, "mass" : 2, "keep" : 0, "add_item" : 1} # has a command name then a 
 var track_increment = 0
 var auto_close = true
 var keep_ = false
 var keep_delay = 1
+@onready var player = get_parent().get_parent().get_child(0)
 
 ## Fast track through commands
 func fast_track():
@@ -121,6 +122,8 @@ func command_usage(txt):
 		return(mass(command))
 	elif command[0] == "keep":
 		return(keep(command))
+	elif command[0] == "add_item":
+		return(add_item(command))
 
 ## returns true or false based on correct amounts of arguments
 func arg_check(commands, args):
@@ -336,6 +339,18 @@ func mass(command):
 			log_text("Error: Bad argument type. Requires (list) argument and (int) argument.\nFormat: /mass [command,arg1,arg2,...] amount.\nReminder: Argument 1 (list) should not contain spaces, use commas to seperate arguments")
 
 			
+		return(false)
+
+func add_item(command):
+	var correct_args = arg_check(command, 1)
+	auto_close = true
+
+	if correct_args:
+		player.add_item(command[1])
+		log_text("Added %s 1x" % command[1])
+		log_text("Inventory: %s" % Global.Inventory)
+		return(true)
+	else:
 		return(false)
 
 func _ready() -> void:

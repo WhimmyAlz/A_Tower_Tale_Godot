@@ -44,6 +44,7 @@ var crit_damage_adds := 0.0 # damage multi from crits
 
 var player_attacks = 1
 var ultimate_attack = 0
+
 # cooldowns
 var attack1t := 0
 var attack2t := 0
@@ -72,6 +73,7 @@ var bonus_defense : int = 0
 var defense_penetration_adds : int = 0
 
 # Misc
+var Inventory := {}
 var Gravity := 50
 var stun_time := 0
 var Souls = 0
@@ -148,6 +150,7 @@ func class_stats_reaper():
 	dexterity = 25 + bonus_dexterity
 	intellect = 25 + bonus_intellect
 
+## Sets stats for Paladin [class:3]
 func class_stats_paladin():
 	flight = 0
 	max_jumps = 1 + jump_adds
@@ -170,7 +173,6 @@ func class_stats_paladin():
 	agility = 45 + bonus_agility
 	dexterity = 1 + bonus_dexterity
 	intellect = 20 + bonus_intellect
-
 
 ## Sets stats for Draco [class:10]
 func class_stats_draco():
