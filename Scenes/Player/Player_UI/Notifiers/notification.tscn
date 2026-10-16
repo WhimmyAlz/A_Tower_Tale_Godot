@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://4lowok84e0wj"]
+
+[ext_resource type="Script" uid="uid://6key4l7hjcsh" path="res://Scenes/Player/Player_UI/Notifiers/notification.gd" id="1_6awu0"]
+
+[node name="Control" type="Control" unique_id=774192415]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1000.0
+offset_bottom = 100.0
+size_flags_horizontal = 8
+mouse_filter = 2
+script = ExtResource("1_6awu0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=945444421]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 0
+offset_right = 694.0
+offset_bottom = 88.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "+ 10 Generic Item name"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2

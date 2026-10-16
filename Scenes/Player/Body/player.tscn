@@ -169,8 +169,8 @@ position = Vector2(-1416, -885)
 anchors_preset = 0
 offset_left = -1507.0
 offset_top = 757.0
-offset_right = -1133.0
-offset_bottom = 1051.0
+offset_right = -1189.25
+offset_bottom = 802.0
 scale = Vector2(4, 4)
 mouse_filter = 2
 script = ExtResource("5_t6byl")
@@ -228,3 +228,21 @@ position = Vector2(1458, 870)
 [node name="Status_effects" parent="Non Attached UI Elements" unique_id=1381918084 instance=ExtResource("5_unyjo")]
 position = Vector2(-1467.0001, -205)
 scale = Vector2(1.25, 1.25)
+
+[node name="Notifiers" type="Control" parent="Non Attached UI Elements" unique_id=1250481903]
+anchors_preset = 0
+offset_left = 150.0
+offset_top = 170.0
+offset_right = 811.0
+offset_bottom = 878.0
+mouse_filter = 2
+
+[node name="container" type="FlowContainer" parent="Non Attached UI Elements/Notifiers" unique_id=1670537962]
+layout_mode = 0
+offset_left = -341.0
+offset_top = -1101.0
+offset_right = 659.0
+offset_bottom = 724.0
+mouse_filter = 2
+alignment = 2
+vertical = true

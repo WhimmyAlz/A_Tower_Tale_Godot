@@ -7,7 +7,7 @@ var stats_offset = Vector2(50, -20)
 var skeleton_animation
 
 func set_description():
-	description = "[b]Skeleton[/b]\nLevel: %d\n\n[i]\"Clank Clank.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA living skeleton. He needs some milk.\n\nDrops:\n%d-%dxp" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
+	description = "[b]Skeleton[/b]\nLevel: %d\n\n[i]\"Clank Clank.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA living skeleton. He needs some milk.\n\nDrops:\nBone fragment (10-14)\n%d-%dxp" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos
@@ -42,6 +42,7 @@ func on_death():
 	if death_rewards == 1:
 		player.gain_xp(randi_range(xp_range[0], xp_range[1]))
 		check_class_misc()
+		player.add_item("Bone Fragment", randi_range(10,14))
 	death_rewards = 0
 	queue_free()
 

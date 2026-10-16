@@ -24,7 +24,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health)
 
 func set_description():
-	description = "[b]SIR BLOB[/b]\nLevel: %d\n\n[i]\"...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription: Some say this is what happens when you leave an orange behind a fridge for too long.\n\nDrops:\n%d-%d xp\n\nBoss perk: stunned for 25%% less time." % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
+	description = "[b]SIR BLOB[/b]\nLevel: %d\n\n[i]\"...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription: Some say this is what happens when you leave an orange behind a fridge for too long.\n\nDrops:\nOrange Slime (10-20)\nBone Fragment (22-30)\n%d-%d xp\n\nBoss perk: stunned for 25%% less time." % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos
@@ -91,6 +91,8 @@ func on_death():
 	if death_rewards == 1:
 		player.gain_xp(randi_range(xp_range[0], xp_range[1]))
 		check_class_misc()
+		player.add_item("Bone Fragment", randi_range(22,30))
+		player.add_item("Orange Slime", randi_range(10,20), Color.LAWN_GREEN)
 	death_rewards = 0
 	queue_free()
 

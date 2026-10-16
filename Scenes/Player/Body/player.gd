@@ -249,25 +249,32 @@ func take_stun(stun_time):
 
 func gain_xp(amount):
 	Global.player_XP += amount
+	var notifier = preload("res://Scenes/Player/Player_UI/Notifiers/notification.tscn").instantiate()
+	notifier.set_text("%d xp" % amount, Color.WHITE)
+	$"../Non Attached UI Elements/Notifiers/container".add_child(notifier)
 
 func gain_stamina(value):
 	if Global.stamina < Global.max_stamina:
 		Global.stamina = minf(Global.stamina + value, Global.max_stamina)
 		$"../Non Attached UI Elements/Prog_Bars".Update_STAM()
 
-func add_item(item, amount=1):
+func add_item(item, amount=1, color=Color.WHITE):
 	if item not in Global.Inventory:
 		Global.Inventory[item] = int(amount)
 	else:
 		Global.Inventory[item] += int(amount)
+	var notifier = preload("res://Scenes/Player/Player_UI/Notifiers/notification.tscn").instantiate()
+	notifier.set_text("%d %s" % [amount, item], color)
+	$"../Non Attached UI Elements/Notifiers/container".add_child(notifier)
 
-func remove_item(item, amount=1):
-	var accepted = false
+func check_item(item, amount=1):
 	if item in Global.Inventory:
 		if Global.Inventory[item] >= amount:
-			accepted = true
-			Global.Inventory[item] -= int(amount)
-	return(accepted)
+			return(true)
+	return(false)
+
+func remove_item(item, amount=1):
+	Global.Inventory[item] -= int(amount)
 
 func stamina_regen():
 	if Global.stamina < Global.max_stamina:

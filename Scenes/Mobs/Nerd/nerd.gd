@@ -26,7 +26,7 @@ func set_description():
 	var attack_chance = (100/float(Global.player_attacks))
 	if Global.player_attacks == 5:
 		attack_chance = 0
-	description = "[b]Nerd[/b]\nLevel: %d\n\n[i]\"Erm Ackually..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA typical Nerd. Hopefully he doesn't try to talk to me.\n\nDrops:\n10%% Ultimate attack\n\nMutually Exclusive drops:\n%.01f%% New attack\n%.01f%% %d-%d xp" % [Level, Health, Damage, Defense, Defense_pen, attack_chance, 100 - attack_chance, xp_range[0], xp_range[1]]
+	description = "[b]Nerd[/b]\nLevel: %d\n\n[i]\"Erm Ackually..\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA typical Nerd. Hopefully he doesn't try to talk to me.\n\nDrops:\n50%% Glasses\n10%% Ultimate attack\n\nMutually Exclusive drops:\n%.01f%% New attack\n%.01f%% %d-%d xp" % [Level, Health, Damage, Defense, Defense_pen, attack_chance, 100 - attack_chance, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos
@@ -67,6 +67,8 @@ func on_death():
 
 		if Global.ultimate_attack == 0 and 10 >= randi_range(1, 100):
 			player.unlock_ultimate()
+		if 50 >= randi_range(1, 100):
+			player.add_item("Glasses", 1, Color.CORAL)
 		check_class_misc()
 	death_rewards = 0
 	queue_free()

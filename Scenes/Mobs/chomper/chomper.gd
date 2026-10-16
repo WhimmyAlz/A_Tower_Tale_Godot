@@ -5,7 +5,7 @@ var stats_offset = Vector2(170, -5)
 var bonus_hit_speed = 0
 
 func set_description():
-	description = "[b]Chomper[/b]\nLevel: %d\n\n[i]\"Nom Nom Nom\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nThat friend that asks for a bite.\n\nDrops:\n%d-%d xp" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
+	description = "[b]Chomper[/b]\nLevel: %d\n\n[i]\"Nom Nom Nom\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nThat friend that asks for a bite.\n\nDrops:\nShadow Essence (1-3)\n%d-%d xp" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos
@@ -27,6 +27,7 @@ func move(animation):
 func on_death():
 	if death_rewards == 1:
 		player.gain_xp(randi_range(xp_range[0], xp_range[1]))
+		player.add_item("Shadow Essence", randi_range(1, 3))
 	death_rewards = 0
 	queue_free()
 

@@ -24,7 +24,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health/2)
 
 func set_description():
-	description = "[b]A shell or something[/b]\nLevel: %d\n\n[i]\"Don't think I can't defend my merchandise.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA strange voice is coming from within.\n\nDrops:\n100%% %d-%d xp\n\nBoss perks: Immune to knockback and 50%% resistance to bleeding and mark of doom." % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
+	description = "[b]A shell or something[/b]\nLevel: %d\n\n[i]\"Don't think I can't defend my merchandise.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA strange voice is coming from within.\n\nDrops:\nSoul of Darkness\nBasement Key\n100%% %d-%d xp\n\nBoss perks: Immune to knockback and 50%% resistance to bleeding and mark of doom." % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos
@@ -98,6 +98,8 @@ func on_death():
 	if death_rewards == 1:
 		player.gain_xp(randi_range(xp_range[0], xp_range[1]))
 		player.get_parent().set_shop_opened(false)
+		player.add_item("Soul of Darkness", 1, Color.BLACK)
+		player.add_item("Basement Key", 1, Color.PURPLE)
 		check_class_misc()
 	death_rewards = 0
 	queue_free()

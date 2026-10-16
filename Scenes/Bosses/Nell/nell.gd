@@ -24,7 +24,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health)
 
 func set_description():
-	description = "[b]Nell[/b]\nLevel: %d\n\n[i]\"My arrows will pierce your heart!\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The ranger of the twins.\n\nDrops:\n%d-%d xp\n\nBoss Perk: prolly don't need one" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
+	description = "[b]Nell[/b]\nLevel: %d\n\n[i]\"My arrows will pierce your heart!\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The ranger of the twins.\n\nDrops:\nEssence of Fire (12-15)\nBone Fragment (5-8)\n%d-%d xp\n\nBoss Perk: prolly don't need one" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func check_phase():
 	if phases[phase][1] > 0:
@@ -88,6 +88,8 @@ func on_death():
 	if death_rewards == 1:
 		player.gain_xp(randi_range(xp_range[0], xp_range[1]))
 		check_class_misc()
+		player.add_item("Bone Fragment", randi_range(5,8))
+		player.add_item("Essence of Fire", randi_range(12,15), Color.RED)
 	death_rewards = 0
 	boss_bar.queue_free()
 	queue_free()

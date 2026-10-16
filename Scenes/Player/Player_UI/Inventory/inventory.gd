@@ -39,10 +39,11 @@ func update_stats():
 		stats_label.text += listed_stats[i]
 
 func toggle_inventory():
-		if self.visible:
-			self.visible = false
-		else:
-			self.visible = true
+	if self.visible:
+		self.visible = false
+	else:
+		self.visible = true
+		$stastList/statsListSprite.play("start")
 
 func _ready() -> void:
 	update_stats()
@@ -51,3 +52,7 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory()
 	update_stats()
+
+func _on_stats_list_sprite_animation_finished() -> void:
+	if $stastList/statsListSprite.animation == "start":
+		$stastList/statsListSprite.play("loop")
