@@ -157,6 +157,9 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 	if self.Health <= 0:
 		on_death()
 
+	if crit:
+		return(true)
+
 func check_class_misc():
 	if Global.player_class == "reaper":
 		Global.Souls += 1

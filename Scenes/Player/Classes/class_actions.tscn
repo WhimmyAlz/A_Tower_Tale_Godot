@@ -32,6 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://5jjk26soxppo" path="res://Scenes/Player/Classes/paladin/sprites/paladin_slash.png" id="27_f2v2p"]
 [ext_resource type="Texture2D" uid="uid://ckgm5kr78w7mr" path="res://Scenes/Player/Classes/paladin/sprites/hat_stun.png" id="28_pt52x"]
 [ext_resource type="Texture2D" uid="uid://dc32oxv2cdxwg" path="res://Scenes/Player/Classes/paladin/sprites/base_scream.png" id="29_jrumo"]
+[ext_resource type="Script" uid="uid://4k7jc106decs" path="res://Scenes/Player/Classes/shadow/shadow.gd" id="33_4axi1"]
+[ext_resource type="Texture2D" uid="uid://c6kgdm3han5rv" path="res://Scenes/Player/Classes/shadow/Sprites/shadow_summon.png" id="34_tvsmp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kva02"]
 atlas = ExtResource("3_imllr")
@@ -1100,6 +1102,60 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a7km"]
+atlas = ExtResource("34_tvsmp")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppe6r"]
+atlas = ExtResource("34_tvsmp")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luxet"]
+atlas = ExtResource("34_tvsmp")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ql1g"]
+atlas = ExtResource("34_tvsmp")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jrumo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1a7km")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppe6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luxet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ql1g")
+}],
+"loop": true,
+"name": &"summon",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4axi1"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"hat_idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hat_run",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hat_stun",
+"speed": 5.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8fyps"]
 atlas = ExtResource("2_bxt8x")
 region = Rect2(0, 0, 32, 32)
@@ -1195,6 +1251,21 @@ scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_m0fqy")
 animation = &"hat_run"
 autoplay = "hat_run"
+
+[node name="shadow" type="Node2D" parent="." unique_id=125273505]
+visible = false
+script = ExtResource("33_4axi1")
+
+[node name="skills" type="AnimatedSprite2D" parent="shadow" unique_id=974683079]
+visible = false
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jrumo")
+animation = &"summon"
+autoplay = "summon"
+
+[node name="hat" type="AnimatedSprite2D" parent="shadow" unique_id=1797351199]
+sprite_frames = SubResource("SpriteFrames_4axi1")
+animation = &"hat_run"
 
 [node name="draco" type="Node2D" parent="." unique_id=2008310674]
 visible = false

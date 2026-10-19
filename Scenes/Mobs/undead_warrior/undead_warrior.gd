@@ -7,7 +7,7 @@ var bonus_hit_speed = 0
 
 
 func set_description():
-	description = "[b]Undead Warrior[/b]\nLevel: %d\n\n[i]\"Let me axe you a question...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nAnother long dead adventurer. Enrages after reaching half health.\n\nDrops:\nBone Fragment (5-8)\n%d-%d xp" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
+	description = "[b]Undead Warrior[/b]\nLevel: %d\n\n[i]\"Let me axe you a question...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nAnother long dead adventurer. Enrages after reaching half health.\n\nDrops:\nWeapon Parts (15%%)\n5-8 Bone Fragment (100%%)\n%d-%d xp" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos
@@ -28,6 +28,8 @@ func on_death():
 		player.gain_xp(randi_range(xp_range[0], xp_range[1]))
 		check_class_misc()
 		player.add_item("Bone Fragment", randi_range(5,8))
+		if 15 >= randi_range(1, 100):
+			player.add_item("Weapon Parts", 1, Color.LAWN_GREEN)
 	death_rewards = 0
 	queue_free()
 

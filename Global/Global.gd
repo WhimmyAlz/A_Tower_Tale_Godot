@@ -174,6 +174,31 @@ func class_stats_paladin():
 	dexterity = 1 + bonus_dexterity
 	intellect = 20 + bonus_intellect
 
+## Sets stats for Shadow [class:4]
+func class_stats_shadow():
+	flight = 0
+	max_jumps = 1 + jump_adds
+	jump_power = round(1600 * (1 + jump_multi))
+	jump_limit = 1000 # must be more than 0
+
+	player_spd = round((0.2 * agility) * (1 + speed_multi))
+	player_weight = 15
+
+	max_health = 210
+	max_stamina = 180
+
+	power = 30 + bonus_power
+	crit_chance = 10 + crit_chance_adds
+	crit_damage = 1.25 + crit_damage_adds
+	defense = 0 + bonus_defense
+	defense_penetration = 10 + defense_penetration_adds
+	
+	strength = 10 + bonus_strength
+	agility = 75 + bonus_agility
+	dexterity = 20 + bonus_dexterity
+	intellect = 20 + bonus_intellect
+
+
 ## Sets stats for Draco [class:10]
 func class_stats_draco():
 	flight = 1
@@ -207,6 +232,8 @@ func check_class():
 		class_stats_reaper()
 	elif player_class == "paladin":
 		class_stats_paladin()
+	elif player_class == "shadow":
+		class_stats_shadow()
 	elif player_class == "draco":
 		class_stats_draco()
 
