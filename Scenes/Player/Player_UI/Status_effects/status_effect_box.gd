@@ -32,6 +32,8 @@ func set_description():
 		description = "Stacks are consumed to give various benefits. Caps out at 200 stacks."
 	elif status == "Borrowed Time":
 		description = "Quickly heals damage that has been dealt to you while active. The combined damage will be dealt to you at the end of the buff but reduced by the amount of retribution you have."
+	elif status == "Iframes":
+		description = "Attacks phase through you."
 	$description/RichTextLabel.text = description
 
 func set_status(txt):

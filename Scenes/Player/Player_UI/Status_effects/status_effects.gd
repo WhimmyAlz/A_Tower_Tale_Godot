@@ -44,6 +44,9 @@ var bleed_tick_delay = 0
 var deathmark_stacks = 0.0
 var deathmark_tick_delay = 0
 
+var iframes = false
+var iframes_time = 0
+
 func init_status_box(status, status_level, time, color, font=48):
 	status_box = preload_status_box.instantiate()
 	status_box.set_status(status)
@@ -73,6 +76,9 @@ func update_status_box(status, status_level, time):
 		if effect.get_status() == status:
 			effect.set_status_level(status_level)
 			effect.set_time(time)
+
+func get_iframes():
+	return(iframes)
 
 func get_berserk():
 	return(berserk)
@@ -115,6 +121,16 @@ func set_berserk(time):
 		update_status_box("Berserk", 1, time)
 	berserk = true
 	berserk_time = time
+
+func set_iframes(time):
+	if iframes == false:
+		init_status_box("Iframes", 1, time, Color.WHITE)
+		player.remove_from_group("attackable")
+		player.set_collision_layer_value(2, false)
+	else:
+		update_status_box("Iframes", 1, time)
+	iframes = true
+	iframes_time = time
 
 func start_river(time):
 	if river == false:
@@ -225,6 +241,14 @@ func inflict_deathmark(stacks):
 		set_status_font_size("Deathmark", 40)
 
 
+func iframes_effect():
+	if iframes:
+		iframes_time -= 1
+		if iframes_time == 0:
+			player.set_collision_layer_value(2, true)
+			player.add_to_group("attackable")
+			iframes = false
+
 func berserk_effect():
 	if berserk:
 		berserk_time -= 1
@@ -320,6 +344,7 @@ func deathmark_effects():
 		deathmark_tick_delay -= 1
 
 func _physics_process(_delta: float) -> void:
+	iframes_effect()
 	berserk_effect()
 	needle_effects()
 	retribution_effects()
