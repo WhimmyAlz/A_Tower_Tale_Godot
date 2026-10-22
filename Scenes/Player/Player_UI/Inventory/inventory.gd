@@ -45,13 +45,28 @@ func toggle_inventory():
 		self.visible = true
 		$stastList/statsListSprite.play("start")
 
+func update_item_inventory():
+	$ItemInventory/item_inventory.text = "[b]- Items -\n\n"
+	for i in range(len(Global.Inventory.keys())):
+		var current_item = Global.Inventory.keys()[i]
+		var item_amount = Global.Inventory[current_item]
+		var item_color = "white"
+		if current_item in Global.item_colors:
+			item_color = Global.item_colors[current_item]
+		if item_color == "black":
+			$ItemInventory/item_inventory.text += "[color=black][outline_size=10][outline_color=white]%s (%d)[/outline_color][/outline_size][/color]\n" % [current_item, item_amount]
+		else:
+			$ItemInventory/item_inventory.text += "[color=%s]%s (%d)[/color]\n" % [item_color, current_item, item_amount]
+
 func _ready() -> void:
 	update_stats()
-	
+
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory()
-	update_stats()
+	
+	if visible:
+		update_stats()
 
 func _on_stats_list_sprite_animation_finished() -> void:
 	if $stastList/statsListSprite.animation == "start":

@@ -4,7 +4,7 @@ var floors := 0
 
 var instant_chat = false
 
-var player_class := "shadow"
+var player_class := "brawler"
 var player_XP := 0
 var player_XP_REQ := 1000
 var player_Level := 1
@@ -74,6 +74,11 @@ var defense_penetration_adds : int = 0
 
 # Misc
 var Inventory := {}
+var item_colors := {"Bone Fragment": "white", "Glasses": "coral", "Orange Slime": "lawn_green",
+"Weapon Parts": "lawn_green", "Shadow Essence": "red", "Essence of Fire": "red", "Soul of Darkness": "black",
+"Basement Key": "purple"}
+
+
 var Gravity := 50
 var stun_time := 0
 var Souls = 0

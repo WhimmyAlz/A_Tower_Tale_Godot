@@ -89,6 +89,7 @@ func set_angle(value):
 
 func set_rotate(value):
 	rotation = deg_to_rad(value)
+	angle = deg_to_rad(value)
 
 func fix_rotation():
 	self.rotation = angle

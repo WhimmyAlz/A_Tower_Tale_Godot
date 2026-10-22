@@ -35,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 					only_collider = collider
 					if not status.get_river():
 						charge_ult()
-					collider.take_damage(damage, defense_pen, 0)
+					collider.take_damage(damage, defense_pen)
 					collider.inflict_deathmark(25)
 					collider.take_stun(stuntime)
 					collider.take_knockback(0, 0)

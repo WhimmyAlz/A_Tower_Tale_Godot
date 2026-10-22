@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://dc32oxv2cdxwg" path="res://Scenes/Player/Classes/paladin/sprites/base_scream.png" id="29_jrumo"]
 [ext_resource type="Script" uid="uid://4k7jc106decs" path="res://Scenes/Player/Classes/shadow/shadow.gd" id="33_4axi1"]
 [ext_resource type="Texture2D" uid="uid://c1ped7yjhmx86" path="res://Scenes/Player/Classes/shadow/Sprites/base_shift.png" id="34_na0f1"]
+[ext_resource type="Texture2D" uid="uid://ljptb358lluq" path="res://Scenes/Player/Classes/shadow/Sprites/shadow_rage.png" id="34_oao5d"]
 [ext_resource type="Texture2D" uid="uid://c6kgdm3han5rv" path="res://Scenes/Player/Classes/shadow/Sprites/shadow_summon.png" id="34_tvsmp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kva02"]
@@ -1103,6 +1104,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7lw8"]
+atlas = ExtResource("34_oao5d")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma7xu"]
+atlas = ExtResource("34_oao5d")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1btju"]
+atlas = ExtResource("34_oao5d")
+region = Rect2(320, 0, 160, 160)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fatib"]
 atlas = ExtResource("34_na0f1")
 region = Rect2(0, 0, 128, 128)
@@ -1133,6 +1146,20 @@ region = Rect2(480, 0, 160, 160)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jrumo"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7lw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma7xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1btju")
+}],
+"loop": true,
+"name": &"rage",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fatib")
@@ -1287,7 +1314,7 @@ script = ExtResource("33_4axi1")
 visible = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jrumo")
-animation = &"shift"
+animation = &"rage"
 autoplay = "summon"
 
 [node name="hat" type="AnimatedSprite2D" parent="shadow" unique_id=1797351199]

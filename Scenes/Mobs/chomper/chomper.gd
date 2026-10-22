@@ -27,7 +27,7 @@ func move(animation):
 func on_death():
 	if death_rewards == 1:
 		player.gain_xp(randi_range(xp_range[0], xp_range[1]))
-		player.add_item("Shadow Essence", randi_range(1, 3))
+		player.add_item("Shadow Essence", randi_range(1, 3), Color.RED)
 	death_rewards = 0
 	queue_free()
 

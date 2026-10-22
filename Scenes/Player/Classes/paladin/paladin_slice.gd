@@ -23,9 +23,9 @@ func _physics_process(_delta: float) -> void:
 			if collider.is_in_group("attackable") and collider.is_in_group("enemy"):
 				charge_ult()
 				if lifetime == 40:
-					collider.take_damage(damage * 10, defense_pen, 0)
+					collider.take_damage(damage * 10, defense_pen)
 				else:
-					collider.take_damage(damage, defense_pen, 0)
+					collider.take_damage(damage, defense_pen)
 				collider.take_stun(stuntime)
 				collider.take_knockback(knockback, direction)
 				collider.take_knockbackY(knockbackY)

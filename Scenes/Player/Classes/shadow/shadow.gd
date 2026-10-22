@@ -2,9 +2,9 @@ extends Node2D
 
 var attack1_max_t = 25
 var attack2_max_t = 150
-var attack3_max_t = 600
-var attack4_max_t = 180
-var attack5_max_t = 480
+var attack3_max_t = 240
+var attack4_max_t = 300
+var attack5_max_t = 450
 var ultimate_max_t = 30
 
 var active = false
@@ -26,11 +26,11 @@ var shadow_break_preload = preload("res://Scenes/Player/Classes/shadow/shadow_br
 
 func get_description():
 	descriptions = {
-	"attack_1": ["[b]Shadow Spike[/b]\n", "Quickly shoots out 3 spikes at moderate range. Each consecutive spike reaches a bit further. \n[color=dodger_blue]Consumes 20 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x3 (20%% + 0.15x dexterity)x3\n" % ((0.2 * Global.power) + (0.15 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(attack1_max_t)/60), "Knockback: 2 x3\n", "Stuntime: 0.16s\n"],
+	"attack_1": ["[b]Shadow Spike[/b]\n", "Quickly shoots out 4 spikes at moderate range. Each consecutive spike reaches a bit further. \n[color=dodger_blue]Consumes 20 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x4 (20%% + 0.15x dexterity)x4\n" % ((0.2 * Global.power) + (0.15 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(attack1_max_t)/60), "Knockback: 2 x4\n", "Stuntime: 0.16s\n"],
 	"attack_2": ["[b]Shadow Shift[/b]\n", "Shifts a moderate distance forward, granting iframes, and dealing damage to everything that you pass through. Also inflicts shock.\n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + 0.75x dexterity)\n" % ((1 * Global.power) + (0.75 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 2\n", "Stuntime: 1.5s\n\n", "Inflicts [color=yellow]shock 50[/color]"],
-	"attack_3": ["[b]Vex[/b]\n", "Shoots a piercing needle that performs slices as it travels. \n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (50%% + 0.25x dexterity)\n" % ((0.5 * Global.power) + (0.25 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 2\n", "Stuntime: 0.25s\n\n", "Slice: deals 5 damage, ignores 10 defense, inflicts [color=red]bleed 1[/color], and gain 10% max stamina or 1 needle stack if stamina is full"],
-	"attack_4": ["[b]Venom pins[/b]\n", "Throws two needles which deals abysmal damage, but inflicts heavy venom. Consumes up to 3 needle stacks to increase piercing. \n[color=dodger_blue]Consumes 30 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)x2\n" % ((0.1 * Global.power) + (0.1 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 2 x2\n", "Stuntime: 0.25s\n\n", "Inflicts [color=purple]venom 6[/color]"],
-	"attack_5": ["[b]Needle therapy[/b]\n", "Throws out a burst of 20 needles with a large fan-like spread, each dealing low damage but inflicting shock. Consumes up to 5 needle stacks to make the spread narrower.\n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (10%% + 0.1x dexterity)\n" % (0.1 * Global.power + 0.1 * Global.dexterity), "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 0\n", "Stuntime: 0.33s\n\n", "Inflicts [color=yellow]shock 20[/color]"],
+	"attack_3": ["[b]Spike Eruption[/b]\n", "Sends outs rows of shadow spikes from the ground around you. Flings enemies into the air.\n[color=dodger_blue]Consumes 50 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (75%% + 0.5x dexterity)\n" % ((0.75 * Global.power) + (0.5 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 0\n", "Stuntime: 1.0s\n"],
+	"attack_4": ["[b]Clones[/b]\n", "Summons 2 clones that help attack for you. Damage is based on first skill. Clones can't crit. \n[color=dodger_blue]Consumes 100 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (20%% + 0.15x dexterity)x2\n" % ((0.2 * Global.power) + (0.15 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 2\n", "Stuntime: 0.05s\n"],
+	"attack_5": ["[b]Giant Spikes[/b]\n", "Shoots out 3 giant shadow spikes, dealing massive damage and has far reach.\n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (80%% + 0.5x dexterity)\n" % (0.8 * Global.power + 0.5 * Global.dexterity), "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 8\n", "Stuntime: 0.5s\n"],
 	"ultimate": ["[b]Vein cutter[/b]\n", "Quickly dashes forwards while holding out a giant needle infront of you which performs slices on the needle's end. Enemies hit by the needle gets hit by 3 falling needles after a second passes.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (125%% + 0.5x dexterity)\n" % ((1.25 * Global.power) + (0.5 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 50\n", "Stuntime: 1s\n\n", "Slice: deals 10 damage, ignores 10 defense, and inflicts [color=red]bleed 1[/color], and gain 1 needle stack\n\n", "Falling needle: Deals 100%% damage and stuns for 0.5s"],
 	}
 	return(descriptions)
@@ -56,22 +56,21 @@ func init_attack_1():
 func attack_1():
 	if Global.attack1t >= 1 and Global.attack1t <= 12:
 		class_anim.speed_scale = 4.5
-		player.set_speed_penalty(0.5)
+		player.set_speed_penalty(0.25)
 		
 		# spawns needle
-		if Global.attack1t == 1:
-			for i in range(4):
-				shadow_spike = shadow_spike_proj.instantiate()
-				shadow_spike.set_player(player)
-				shadow_spike.set_damage((0.2 * Global.power) + (0.15 * Global.dexterity))
-				shadow_spike.set_knockback(2)
-				shadow_spike.set_pos(player.position + Vector2((35 * i + 235) * Global.player_dir, -80))
-				shadow_spike.set_size((0.5 * i)+1)
-				shadow_spike.set_stuntime(10)
-				shadow_spike.set_rotate_level(1)
-				shadow_spike.set_ult_charge_amount(20)
+		if between(Global.attack1t, 1, 4):
+			shadow_spike = shadow_spike_proj.instantiate()
+			shadow_spike.set_player(player)
+			shadow_spike.set_damage((0.2 * Global.power) + (0.15 * Global.dexterity))
+			shadow_spike.set_knockback(2)
+			shadow_spike.set_pos(player.position + Vector2((35 * (Global.attack1t-1) + 235) * Global.player_dir, -80))
+			shadow_spike.set_size(0.5 * (Global.attack1t-1)+1)
+			shadow_spike.set_stuntime(10)
+			shadow_spike.set_rotate_level(1)
+			shadow_spike.set_ult_charge_amount(10)
 
-				get_tree().current_scene.get_node("Projectiles").add_child(shadow_spike)
+			get_tree().current_scene.get_node("Projectiles").add_child(shadow_spike)
 
 		if Global.attack1t == 12:
 			player.set_animation_visibility(true)
@@ -136,38 +135,47 @@ func attack_2():
 		Global.attack2t = 0
 
 func init_attack_3():
-	if Global.stamina >= 0:
+	if Global.stamina >= 50:
 		set_dir()
 
-		Global.stamina -= 0
+		Global.stamina -= 50
 		player.set_animation_visibility(false)
 		class_anim.visible = true
 		class_anim.frame = 0
-		class_anim.play("spike")
+		class_anim.play("summon")
 		Global.attack3t = 1
 		player.set_attacking(true)
 
 func attack_3():
 	if Global.attack3t >= 1 and Global.attack3t <= 20:
-		class_anim.speed_scale = 4
-		player.set_speed_penalty(0.5)
-		
+		class_anim.speed_scale = 3.5
+		player.set_speed_penalty(0.15)
+
 		# spawns slicer needle
-		if Global.attack3t == 1:
-			needle = needle_proj.instantiate()
-			needle.set_player(player)
-			needle.set_damage((0.5 * Global.power) + (0.25 * Global.dexterity))
-			needle.set_knockback(2)
-			needle.set_pos(player.position + Vector2(10 * Global.player_dir, -40))
-			needle.set_speed(100, 0)
-			needle.set_size(1.5)
-			needle.set_slicer(true)
-			needle.set_vex_regen(true)
-			needle.set_hitnum(5)
-			needle.set_ult_charge_amount(100)
-			needle.set_stuntime(15)
-			needle.set_lifetime(20)
-			get_tree().current_scene.get_node("Projectiles").add_child(needle)
+		if between(Global.attack3t, 1, 9) and Global.attack3t % 3 == 0:
+			shadow_spike = shadow_spike_proj.instantiate()
+			shadow_spike.set_player(player)
+			shadow_spike.set_damage((0.75 * Global.power) + (0.5 * Global.dexterity))
+			shadow_spike.set_knockback(0, -11)
+			shadow_spike.set_pos(player.position + Vector2(Global.player_dir * (75 + (Global.attack3t-3) * 60), -180))
+			shadow_spike.set_size(2.5)
+			shadow_spike.set_stuntime(60)
+			shadow_spike.set_hitnum(10)
+			shadow_spike.set_rotate_level(3)
+			shadow_spike.set_ult_charge_amount(60)
+			get_tree().current_scene.get_node("Projectiles").add_child(shadow_spike)
+			
+			shadow_spike = shadow_spike_proj.instantiate()
+			shadow_spike.set_player(player)
+			shadow_spike.set_damage((0.75 * Global.power) + (0.5 * Global.dexterity))
+			shadow_spike.set_knockback(0, -11)
+			shadow_spike.set_pos(player.position + Vector2(-Global.player_dir * (75 + (Global.attack3t-3) * 60), -180))
+			shadow_spike.set_size(2.5)
+			shadow_spike.set_stuntime(60)
+			shadow_spike.set_hitnum(10)
+			shadow_spike.set_rotate_level(3)
+			shadow_spike.set_ult_charge_amount(60)
+			get_tree().current_scene.get_node("Projectiles").add_child(shadow_spike)
 
 		if Global.attack3t == 20:
 			player.set_animation_visibility(true)
@@ -181,43 +189,35 @@ func attack_3():
 		Global.attack3t = 0
 
 func init_attack_4():
-	if Global.stamina >= 30:
+	if Global.stamina >= 100:
 		set_dir()
 
-		Global.stamina -= 30
+		Global.stamina -= 100
 		player.set_animation_visibility(false)
 		class_anim.visible = true
 		class_anim.frame = 0
-		class_anim.play("spike")
+		class_anim.play("shift")
 		Global.attack4t = 1
 		player.set_attacking(true)
-		
-		consumed_needle_stacks = mini(status.get_needles(), 3)
 
 func attack_4():
 	if Global.attack4t >= 1 and Global.attack4t <= 20:
-		class_anim.speed_scale = 7
+		class_anim.speed_scale = 3
 		player.set_speed_penalty(0.5)
 		
 		# spawns venom needles
 		if between(Global.attack4t, 1, 10) and Global.attack4t % 5 == 0:
-			needle = needle_proj.instantiate()
-			needle.set_player(player)
-			needle.set_damage((0.1 * Global.power) + (0.1 * Global.dexterity))
-			needle.set_knockback(2)
-			needle.set_pos(player.position + Vector2(10 * Global.player_dir, -40))
-			needle.set_speed(100, 0)
-			needle.set_size(1.5)
-			needle.set_venom(6)
-			needle.set_hitnum(1 + consumed_needle_stacks)
-			needle.set_ult_charge_amount(40)
-			needle.set_stuntime(15)
-			needle.set_lifetime(20)
-			needle.set_bleed_chance(60)
-			get_tree().current_scene.get_node("Projectiles").add_child(needle)
+			var clone = preload("res://Scenes/Player/Classes/shadow/shadow_clone.tscn").instantiate()
+			clone.set_player(player)
+			if Global.attack4t == 5:
+				clone.set_dir(-1)
+				clone.set_pos(player.position + Vector2(100, 0))
+			else:
+				clone.set_dir(1)
+				clone.set_pos(player.position + Vector2(-100, 0))
+			get_tree().current_scene.get_node("Projectiles").add_child(clone)
 
 		if Global.attack4t == 20:
-			status.remove_needles(consumed_needle_stacks)
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)
@@ -238,37 +238,35 @@ func init_attack_5():
 		player.set_animation_visibility(false)
 		class_anim.visible = true
 		class_anim.frame = 0
-		class_anim.play("spike")
+		class_anim.play("rage")
 		Global.attack5t = 1
 		player.set_attacking(true)
-		
-		consumed_needle_stacks = mini(status.get_needles(), 5)
 
 func attack_5():
-	if Global.attack5t >= 1 and Global.attack5t <= 20:
+	if Global.attack5t >= 1 and Global.attack5t <= 60:
 		class_anim.speed_scale = 4
-		player.set_speed_penalty(0.5)
-		
-		var v_speed = randi_range(-80 + (15 * consumed_needle_stacks), 80 - (15 * consumed_needle_stacks))
+		player.set_speed_penalty(0)
 		
 		# spawns shock needles
-		if between(Global.attack5t, 1, 20):
-			needle = needle_proj.instantiate()
-			needle.set_player(player)
-			needle.set_damage((0.1 * Global.power) + (0.05 * Global.dexterity))
-			needle.set_knockback(0)
-			needle.set_pos(player.position + Vector2(5 * Global.player_dir * Global.attack5t, -40))
-			needle.set_speed(60, v_speed)
-			needle.set_angle(v_speed * Global.player_dir * 0.0125)
-			needle.set_size(1.5)
-			needle.set_hitnum(1)
-			needle.set_stuntime(20)
-			needle.set_ult_charge_amount(6)
-			needle.set_shock(20)
-			needle.set_lifetime(20)
-			get_tree().current_scene.get_node("Projectiles").add_child(needle)
+		if between(Global.attack5t, 16, 60) and Global.attack5t % 15 == 0:
+			var extra_size = 0.5 * randi_range(0, 2)
+			shadow_spike = shadow_spike_proj.instantiate()
+			shadow_spike.set_player(player)
+			shadow_spike.set_damage((0.8 * Global.power) + (0.5 * Global.dexterity))
+			shadow_spike.set_knockback(8)
+			shadow_spike.set_pos(player.position + Vector2(600 * Global.player_dir, -80))
+			shadow_spike.set_size(4 + extra_size)
+			shadow_spike.set_stuntime(30)
+			shadow_spike.set_hitnum(10)
+			shadow_spike.set_rotate_level(2)
+			shadow_spike.set_giant_spike()
+			shadow_spike.set_ult_charge_amount(10)
+			player.get_parent().set_screenshake(3)
+			
 
-		if Global.attack5t == 20:
+			get_tree().current_scene.get_node("Projectiles").add_child(shadow_spike)
+
+		if Global.attack5t == 60:
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)

@@ -181,7 +181,7 @@ func take_stun(stun_time):
 	if shock_stacks == 0 or stunnedf == 0: 
 		stunnedf = stun_time
 	else:
-		stunnedf += int(stun_time * (shock_stacks/100))
+		stunnedf += maxi(int(stun_time * (shock_stacks/100)), 1)
 
 ## inflict funcs are used for player attacks
 func inflict_fire(stacks):

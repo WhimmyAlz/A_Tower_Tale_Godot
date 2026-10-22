@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0b5l4j8fwxj5" path="res://Scenes/Player/Classes/shadow/shadow_spike.gd" id="1_iv60f"]
 [ext_resource type="Texture2D" uid="uid://cgqeyk3ld6c7o" path="res://Scenes/Player/Classes/shadow/Sprites/shadow_spike.png" id="2_psrk6"]
+[ext_resource type="Texture2D" uid="uid://br08cbdhuvcb4" path="res://Scenes/Player/Classes/shadow/Sprites/giant_shadow_spike.png" id="3_psrk6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fnuoq"]
 atlas = ExtResource("2_psrk6")
@@ -19,9 +20,28 @@ region = Rect2(128, 0, 64, 64)
 atlas = ExtResource("2_psrk6")
 region = Rect2(192, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryjmr"]
+atlas = ExtResource("3_psrk6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0udly"]
+atlas = ExtResource("3_psrk6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tct4u"]
+atlas = ExtResource("3_psrk6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob5x0"]
+atlas = ExtResource("3_psrk6")
+region = Rect2(192, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ryjmr"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnuoq")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fnuoq")
 }, {
@@ -34,13 +54,33 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_foy82")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 25.0
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryjmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0udly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tct4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob5x0")
+}],
+"loop": false,
+"name": &"giant",
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0udly"]
 size = Vector2(253, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iv60f"]
+size = Vector2(25, 67)
 
 [node name="shadowSpike" type="Area2D" unique_id=1655068683]
 collision_layer = 16
@@ -52,8 +92,10 @@ texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ryjmr")
 autoplay = "default"
-frame = 3
-frame_progress = 0.87952435
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1308219098]
 shape = SubResource("RectangleShape2D_0udly")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1908318033]
+position = Vector2(-116.5, 6.5)
+shape = SubResource("RectangleShape2D_iv60f")

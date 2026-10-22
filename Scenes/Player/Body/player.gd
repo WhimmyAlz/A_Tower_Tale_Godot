@@ -263,8 +263,11 @@ func add_item(item, amount=1, color=Color.WHITE):
 		Global.Inventory[item] = int(amount)
 	else:
 		Global.Inventory[item] += int(amount)
+	
+	Global.Inventory.sort()
 	var notifier = preload("res://Scenes/Player/Player_UI/Notifiers/notification.tscn").instantiate()
 	notifier.set_text("%d %s" % [amount, item], color)
+	$"../Non Attached UI Elements/Inventory".update_item_inventory()
 	$"../Non Attached UI Elements/Notifiers/container".add_child(notifier)
 
 func check_item(item, amount=1):
@@ -275,6 +278,9 @@ func check_item(item, amount=1):
 
 func remove_item(item, amount=1):
 	Global.Inventory[item] -= int(amount)
+	$"../Non Attached UI Elements/Inventory".update_item_inventory()
+	if Global.Inventory[item] == 0:
+		Global.Inventory.erase(item)
 
 func stamina_regen():
 	if Global.stamina < Global.max_stamina:

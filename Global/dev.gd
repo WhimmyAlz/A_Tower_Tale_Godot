@@ -346,7 +346,7 @@ func add_item(command):
 	auto_close = true
 
 	if correct_args:
-		player.add_item(command[1])
+		player.add_item(command[1].replace("_", " "))
 		log_text("Added %s 1x" % command[1])
 		log_text("Inventory: %s" % Global.Inventory)
 		return(true)

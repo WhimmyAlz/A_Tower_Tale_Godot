@@ -29,7 +29,7 @@ func _physics_process(_delta: float) -> void:
 			if collider.is_in_group("attackable") and collider.is_in_group("enemy") and collider not in already_hit and hitnum >= 1:
 				if not status.get_river():
 					charge_ult()
-				collider.take_damage(damage, defense_pen, 0)
+				collider.take_damage(damage, defense_pen)
 				if collider.position.x > position.x:
 					kb_dir = 1
 				if stuntime > 0:

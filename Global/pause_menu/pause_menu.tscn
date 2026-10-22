@@ -1061,8 +1061,8 @@ horizontal_alignment = 1
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="pause_menu/Enemy_guide" unique_id=340936960]
 texture_filter = 1
-position = Vector2(-111.99999, 262.99997)
-scale = Vector2(5, 5)
+position = Vector2(-236, 32.999985)
+scale = Vector2(7, 7)
 tile_map_data = PackedByteArray("AAABAAEAAgAAAAAAAAABAAIAAQAAAAAAAAABAAMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_t8o4y")
 
@@ -1076,10 +1076,11 @@ color = Color(0, 0, 0, 0.13725491)
 [node name="drops" type="RichTextLabel" parent="pause_menu/Enemy_guide/TileMapLayer2" unique_id=2082861421]
 offset_left = 70.8
 offset_top = 122.80002
-offset_right = 586.8
-offset_bottom = 854.7998
-scale = Vector2(0.1, 0.1)
+offset_right = 696.7375
+offset_bottom = 1028.4248
+scale = Vector2(0.08, 0.08)
 mouse_filter = 2
+theme_override_constants/paragraph_separation = 25
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true

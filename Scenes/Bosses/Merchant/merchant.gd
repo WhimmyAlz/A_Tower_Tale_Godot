@@ -100,6 +100,7 @@ func on_death():
 		player.get_parent().set_shop_opened(false)
 		player.add_item("Soul of Darkness", 1, Color.BLACK)
 		player.add_item("Basement Key", 1, Color.PURPLE)
+		player.add_item("Shadow Essence", randi_range(12, 17), Color.RED)
 		check_class_misc()
 	death_rewards = 0
 	queue_free()
@@ -149,7 +150,11 @@ func _physics_process(_delta: float) -> void:
 		else:
 			$Shop.visible = true
 			player.get_parent().set_shop_opened(true)
-			
+	if phase == 0 and entered and Input.is_action_just_pressed("Escape"):
+		if $Shop.visible:
+			$Shop.visible = false
+			player.get_parent().set_shop_opened(false)
+
 	if phase == 1:
 		if attackt >= 0 and attackt <= 119:
 			if stunnedf == 0:
