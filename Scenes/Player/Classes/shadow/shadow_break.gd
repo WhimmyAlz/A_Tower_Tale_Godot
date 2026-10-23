@@ -27,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 				charge_ult()
 				collider.take_damage(damage, defense_pen)
 				collider.take_stun(stuntime)
-				collider.inflict_shock(50)
+				collider.inflict_shock(75)
 				collider.take_knockback(knockback, direction)
 				collider.reset_gravity()
 				hitnum -= 1

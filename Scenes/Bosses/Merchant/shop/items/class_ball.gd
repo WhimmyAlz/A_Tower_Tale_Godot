@@ -33,7 +33,10 @@ func get_required_items():
 		required_items_str += "%s %s" % [required_items[required_items.keys()[0]], required_items.keys()[0]]
 	else:
 		for i in range(len(required_items.keys())):
-			required_items_str += "%s %s, " % [required_items[required_items.keys()[i]], required_items.keys()[i]]
+			if required_items[required_items.keys()[i]] == 1:
+				required_items_str += "a %s, " % [required_items.keys()[i]]
+			else:
+				required_items_str += "%s %s, " % [required_items[required_items.keys()[i]], required_items.keys()[i]]
 	return(required_items_str)
 
 func check_items():
@@ -54,7 +57,7 @@ func set_item_values():
 		price = 25
 	if value == 4:
 		price = 99
-		required_items = {"Shadow Essence": 12, "Bone Fragment": 30}
+		required_items = {"Shadow Essence": 1, "Bone Fragment": 30}
 	if freebie == 1 and value >= 0 and value <= 3:
 		price = 0
 

@@ -150,6 +150,9 @@ func _physics_process(_delta: float) -> void:
 		else:
 			$Shop.visible = true
 			player.get_parent().set_shop_opened(true)
+			var player_inventory = player.get_parent().get_child(2).get_child(2)
+			if player_inventory.visible == true:
+				player_inventory.toggle_inventory()
 	if phase == 0 and entered and Input.is_action_just_pressed("Escape"):
 		if $Shop.visible:
 			$Shop.visible = false

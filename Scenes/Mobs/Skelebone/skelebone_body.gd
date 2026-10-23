@@ -43,6 +43,8 @@ func on_death():
 		player.gain_xp(randi_range(xp_range[0], xp_range[1]))
 		check_class_misc()
 		player.add_item("Bone Fragment", randi_range(10,14))
+		if 20 >= randi_range(1, 100):
+			player.add_item("Shadow Essence", 1, Color.RED)
 	death_rewards = 0
 	queue_free()
 

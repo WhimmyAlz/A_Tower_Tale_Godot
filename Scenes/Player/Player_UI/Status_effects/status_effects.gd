@@ -92,6 +92,9 @@ func get_shock():
 func get_needles():
 	return(needle_stacks)
 
+func get_defensive_stance():
+	return(defensive_stance)
+
 func remove_needles(stacks):
 	needle_stacks -= stacks
 	if needle_stacks <= 0:
@@ -317,6 +320,7 @@ func shock_effects():
 	var shock_loss = int(shock_stacks/10)
 	
 	if shock_stacks >= 1 and shock_tick_delay == 0:
+		player.take_damage(1, 0, Color.YELLOW)
 		update_status_box("Shock", shock_stacks, shock_time_calc())
 		shock_stacks -= maxi(1, shock_loss)
 		shock_tick_delay = 10

@@ -233,7 +233,6 @@ offset_top = 27.5
 offset_right = 1285.5
 offset_bottom = 689.5
 scale = Vector2(0.5, 0.5)
-mouse_filter = 2
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/line_separation = 10
 theme_override_font_sizes/normal_font_size = 48

@@ -11,7 +11,7 @@ func set_button_descriptions():
 
 func set_item_values():
 	value = Global.player_attacks
-	price = ((0.5 * value)) * 50
+	price = 50
 
 func _ready() -> void:
 	value = 0

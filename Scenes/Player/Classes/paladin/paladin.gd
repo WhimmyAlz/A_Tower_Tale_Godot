@@ -22,7 +22,7 @@ var stab_wave_preload = preload("res://Scenes/Player/Classes/paladin/stab_wave.t
 
 func get_description():
 	var attack_3_damage_formula
-	if status.get_defensive_stance():
+	if status.get_defensive_stance() > 0:
 		attack_3_damage_formula = Global.power + 3 * (Global.defense-30)
 	else:
 		attack_3_damage_formula = Global.power + 3 * Global.defense

@@ -1160,7 +1160,7 @@ Defense Penetration: 1000
 
 [b][color=yellow]- Shock -[/color]
 [i]Mutli tick type[/i][/b]
-[left]Actions: allows X% of stun time to be added.
+[left]Actions: allows X% of stun time to be added. Take 1 damage.
 Max stacks: 100
 Ticks per second: 6
 Stacks loss per tick: X/10

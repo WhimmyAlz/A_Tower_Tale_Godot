@@ -19,7 +19,7 @@ func set_description():
 	elif status == "Fire":
 		description = "Lose 1/2 fire level amount of health every 1/4 second. Ignores 10 defense."
 	elif status == "Shock":
-		description = "Stun time can now be added instead of overwritten. Take 1% of stun time for each stack of shock you have."
+		description = "Stun time can now be added instead of overwritten. Take 1% of stun time for each stack of shock you have. Take 1 damage every 1/6s"
 	elif status == "Venom":
 		description = "Lose 5 health every 1/3 second. Ignores 25 defense."
 	elif status == "Bleeding":

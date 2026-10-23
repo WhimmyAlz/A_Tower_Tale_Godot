@@ -24,7 +24,7 @@ func spike():
 	var shadow_spike = preload("res://Scenes/Player/Classes/shadow/shadow_spike.tscn").instantiate()
 	shadow_spike.set_player(self)
 	shadow_spike.set_direction(direction)
-	shadow_spike.set_damage((0.2 * Global.power) + (0.15 * Global.dexterity))
+	shadow_spike.set_damage((0.15 * Global.power) + (0.15 * Global.dexterity))
 	shadow_spike.set_knockback(2)
 	shadow_spike.set_pos(position + Vector2(235 * direction, -60))
 	shadow_spike.set_size(1.5)

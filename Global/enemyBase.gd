@@ -114,7 +114,7 @@ func check_phase():
 
 		phases[phase][1] -= 1
 
-func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Color.WHITE):
+func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Color.WHITE, bonus_crit_damage=0):
 	var def
 
 	if Defense > 0:
@@ -126,7 +126,7 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 	var crit = randi_range(0, 100) < crit_chance
 
 	if crit:
-		damage =  maxf((dmg * Global.crit_damage) - def, 1)
+		damage =  maxf((dmg * Global.crit_damage + bonus_crit_damage) - def, 1)
 		color = Color.GOLD
 
 	#sets damage to int if close to x.0 and limits decimals to tenths
@@ -225,6 +225,7 @@ func take_venom():
 func take_shock():
 	var shock_loss = int(shock_stacks/10)
 	if shock_stacks >= 1 and shock_tick_delay == 0:
+		take_damage(1, 0, 0, Color.YELLOW)
 		shock_stacks -= maxi(1, shock_loss)
 		shock_tick_delay = 10
 	elif shock_tick_delay > 0:
