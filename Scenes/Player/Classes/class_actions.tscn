@@ -36,6 +36,9 @@
 [ext_resource type="Texture2D" uid="uid://c1ped7yjhmx86" path="res://Scenes/Player/Classes/shadow/Sprites/base_shift.png" id="34_na0f1"]
 [ext_resource type="Texture2D" uid="uid://ljptb358lluq" path="res://Scenes/Player/Classes/shadow/Sprites/shadow_rage.png" id="34_oao5d"]
 [ext_resource type="Texture2D" uid="uid://c6kgdm3han5rv" path="res://Scenes/Player/Classes/shadow/Sprites/shadow_summon.png" id="34_tvsmp"]
+[ext_resource type="Texture2D" uid="uid://2mmg2wjg32p6" path="res://Scenes/Player/Classes/shadow/Sprites/shadow_crown_idle.png" id="37_1lucv"]
+[ext_resource type="Texture2D" uid="uid://df8fmldybdibh" path="res://Scenes/Player/Classes/shadow/Sprites/shadow_crown_run.png" id="38_yo382"]
+[ext_resource type="Texture2D" uid="uid://6c753eeisyg1" path="res://Scenes/Player/Classes/shadow/Sprites/shadow_crown_stun.png" id="39_8hiqi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kva02"]
 atlas = ExtResource("3_imllr")
@@ -1192,19 +1195,75 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_854eh"]
+atlas = ExtResource("37_1lucv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq8rv"]
+atlas = ExtResource("37_1lucv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxhrt"]
+atlas = ExtResource("37_1lucv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdew1"]
+atlas = ExtResource("37_1lucv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge1pg"]
+atlas = ExtResource("38_yo382")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b75x8"]
+atlas = ExtResource("38_yo382")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwoer"]
+atlas = ExtResource("38_yo382")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8hqq"]
+atlas = ExtResource("39_8hiqi")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4axi1"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_854eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq8rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxhrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdew1")
+}],
 "loop": true,
 "name": &"hat_idle",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge1pg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b75x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwoer")
+}],
 "loop": true,
 "name": &"hat_run",
-"speed": 5.0
+"speed": 20.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8hqq")
+}],
 "loop": true,
 "name": &"hat_stun",
 "speed": 5.0
@@ -1318,8 +1377,10 @@ animation = &"rage"
 autoplay = "summon"
 
 [node name="hat" type="AnimatedSprite2D" parent="shadow" unique_id=1797351199]
+texture_filter = 1
+position = Vector2(-3, -62)
 sprite_frames = SubResource("SpriteFrames_4axi1")
-animation = &"hat_run"
+animation = &"hat_stun"
 
 [node name="draco" type="Node2D" parent="." unique_id=2008310674]
 visible = false

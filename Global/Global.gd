@@ -4,6 +4,8 @@ var floors := 0
 
 var instant_chat = false
 
+# Notes: Abyssal cult revolves around the occult/abyss energy
+
 var player_class := "brawler"
 var player_XP := 0
 var player_XP_REQ := 1000
