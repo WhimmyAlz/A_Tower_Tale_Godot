@@ -126,8 +126,8 @@ func set_level_stats():
 		Speed = 0
 		phase = 0
 		attackt_start = 110
-		phases = {0: [50, 0], 1: [1, 1], 2 : [0, 200]}
-		Name = "???"
+	phases = {0: [50, 0], 1: [1, 1], 2 : [0, 200]}
+	Name = "???"
 
 	init_boss_bar()
 	update_hp_bar()

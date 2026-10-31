@@ -279,7 +279,7 @@ size = Vector2(522, 490)
 size = Vector2(517, 492)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktykv"]
-size = Vector2(197, 504)
+size = Vector2(255.5, 504)
 
 [node name="MourningGhoul" type="CharacterBody2D" unique_id=1050394417 groups=["enemy"]]
 collision_layer = 4

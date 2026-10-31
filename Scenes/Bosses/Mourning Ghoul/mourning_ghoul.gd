@@ -9,6 +9,8 @@ var boss_bar_preload = preload("res://Scenes/Mobs/UI/boss_health_bar/boss_health
 
 var attack := 0
 var summon_cd := 0
+var attack_combo := 0
+var hitnum = 0
 
 func check_phase():
 	if phases[phase][1] > 0:
@@ -49,12 +51,14 @@ func set_description():
 func set_pos(pos):
 	position = pos
 
-func summon_shadows():
+func summon_shadows(val=Level-6, enemy=null):
 	var shadow_ball = preload("res://Scenes/Bosses/Mourning Ghoul/shadow_ball.tscn").instantiate()
 	var scale_amount = randi_range(1, 10)
 	shadow_ball.position = Vector2(randi_range(-900, 900), -700 * (1 + 0.1*scale_amount))
-	shadow_ball.set_level(Level-6)
+	shadow_ball.set_level(val)
 	shadow_ball.set_scales(scale_amount*0.05 + 1)
+	if enemy != null:
+		shadow_ball.set_enemy(enemy)
 	get_tree().current_scene.get_node("Projectiles").add_child(shadow_ball)
 
 func attack1():
@@ -62,10 +66,11 @@ func attack1():
 	
 	for i in range(len(colliders)):
 		var collider = colliders[i]
-		if collider.is_in_group("player") and collider.is_in_group("attackable"):
+		if collider.is_in_group("player") and collider.is_in_group("attackable") and hitnum > 0:
 			collider.take_damage(Damage, Defense_pen)
 			collider.take_knockback(11, direction)
 			collider.take_stun(45)
+			hitnum -= 1
 
 func move(animation):
 	face_player(animation)
@@ -109,12 +114,12 @@ func set_level_stats():
 	
 	if check_stats_unchanged():
 		xp_range = [150, 180]
-		Health = 2500 + (level * 250)
-		Max_Health = 2500 + (level * 250)
+		Health = 3500 + (level * 350)
+		Max_Health = 3500 + (level * 350)
 		Defense = 3
 		Speed = 3
-		Damage = 30 + (level * 5)
-
+		Damage = 50 + (level * 5)
+	phases = {0: [100, 0], 1: [50, 1], 2 : [0, 1]}
 	Name = "Mourning Ghoul"
 	phase = 0
 	Boss = true
@@ -145,38 +150,88 @@ func _physics_process(_delta: float) -> void:
 			MourningGhoulSprite.pause()
 			stunnedf -= 1
 	if attackt == 150:
-		if summon_cd == 0:
-			attack = 0
-		else:
-			attack = 1
-	
-	if attack == 0:
-		if attackt >= 150 and attackt <= 250:
-			attackt += 1
-			if attackt == 151:
-				$MourningGhoulSprite.play("scream")
-			if attackt == 201:
-				for i in range(randi_range(3, 5)):
-					summon_shadows()
-			if attackt >= 211:
-				attackt = 0
-				summon_cd = 900
-	if attack == 1:
-		if attackt >= 150 and attackt <= 250:
-			attackt += 1
-			if attackt == 151:
-				set_direction(self, player)
-				face_player(MourningGhoulSprite)
-				$attack1_collider.position.x = direction * 275
-				$MourningGhoulSprite.play("swipe")
-			if attackt == 181:
-				attack1()
-			if attackt >= 211:
-				if abs(self.position.x - player.position.x) < 350:
-					attackt = 100
-				else:
-					attackt = 0
+		if phase == 1:
+			var enemy_amount = get_tree().current_scene.get_node("Enemies").get_child_count()
+			if summon_cd == 0 and enemy_amount < 5:
+				attack = 0
+			else:
+				attack = 1
+		elif phase == 2:
+			if summon_cd == 0:
+				attack = 0
+			else:
+				attack = 1
 
+	if phase == 1:
+		if attack == 0:
+			if attackt >= 150 and attackt <= 211:
+				attackt += 1
+				if attackt == 151:
+					$MourningGhoulSprite.play("scream")
+				if attackt == 201:
+					for i in range(randi_range(3, 5)):
+						summon_shadows()
+					player.get_parent().set_screenshake(20)
+				if attackt >= 211:
+					attackt = 0
+					summon_cd = 900
+		if attack == 1:
+			if attackt >= 150 and attackt <= 211:
+				attackt += 1
+				if attackt == 151:
+					set_direction(self, player)
+					face_player(MourningGhoulSprite)
+					$attack1_collider.position.x = direction * 275
+					$MourningGhoulSprite.play("swipe")
+				if attackt == 181:
+					hitnum = 1
+					summon_shadows(Level-1, "hand")
+				
+				if attackt >= 181 and attackt <= 196:
+					attack1()
+				
+				if attackt >= 211:
+					if abs(self.position.x - player.position.x) < 350:
+						attackt = 100
+					else:
+						attackt = 0
+	elif phase == 2:
+		if attack == 0:
+			if attackt >= 150 and attackt <= 211:
+				attackt += 1
+				if attackt == 151:
+					$MourningGhoulSprite.play("scream")
+				if attackt == 201:
+					player.get_parent().set_screenshake(20)
+					player.take_stun(60)
+				if attackt >= 211:
+					attackt = 0
+					attack_combo = 0
+					summon_cd = 240
+		if attack == 1:
+			if attackt >= 150 and attackt <= 250:
+				attackt += 1
+				if attackt == 151:
+					set_direction(self, player)
+					face_player(MourningGhoulSprite)
+					$attack1_collider.position.x = direction * 275
+					$MourningGhoulSprite.play("swipe")
+
+				if attackt == 181:
+					hitnum = 1
+					summon_shadows(Level-1, "hand")
+				
+				if attackt >= 181 and attackt <= 196:
+					attack1()
+
+				if attackt >= 211:
+					if attack_combo < 3:
+						attack_combo += 1
+						attackt = 150
+						$MourningGhoulSprite.play("idle")
+					else:
+						attackt = 0
+						attack_combo = 0
 	take_all_status_effects()
 	
 	check_phase()

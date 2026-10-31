@@ -338,6 +338,7 @@ func bleed_effects():
 
 func deathmark_effects():
 	update_status_box("Deathmark", deathmark_stacks, deathmark_tick_delay)
+	set_status_font_size("Deathmark", 40)
 	if deathmark_stacks == 1000:
 		player.take_damage(float(Global.max_health/5), 1000, Color.BLACK)
 		deathmark_tick_delay = 0

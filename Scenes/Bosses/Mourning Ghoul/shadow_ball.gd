@@ -2,6 +2,10 @@ extends Node2D
 
 var level 
 var lifetime := randi_range(130, 170)
+var enemy = null
+
+func set_enemy(val):
+	enemy = val
 
 func set_pos(val):
 	position = val
@@ -19,11 +23,20 @@ func spawn_chomper():
 	chomper.death_rewards = 0
 	get_tree().current_scene.get_node("Enemies").add_child(chomper)
 
+func spawn_skelebone():
+	var skelebone = preload("res://Scenes/Mobs/Skelebone/skelebone.tscn").instantiate()
+	skelebone.set_pos(position)
+	skelebone.Level = level+6
+	skelebone.death_rewards = 0
+	get_tree().current_scene.get_node("Enemies").add_child(skelebone)
+
+
 func spawn_shadow_hand():
 	var shadow_hand = preload("res://Scenes/Mobs/shadow_hand/Shadow_hand.tscn").instantiate()
 	shadow_hand.set_pos(position)
 	shadow_hand.Level = level
 	shadow_hand.death_rewards = 0
+	shadow_hand.set_kamakazie(true)
 	get_tree().current_scene.get_node("Enemies").add_child(shadow_hand)
 
 
@@ -41,9 +54,14 @@ func _physics_process(_delta: float) -> void:
 		scale *= Vector2(0.97, 0.97)
 	
 	if lifetime == 0:
-		if randi_range(0, 1) == 1:
-			spawn_chomper()
-		else:
+		if enemy == null:
+			var rand = randi_range(0, 1)
+			if rand == 0:
+				spawn_chomper()
+			elif rand == 1:
+				spawn_shadow_hand()
+
+		elif enemy == "hand":
 			spawn_shadow_hand()
 		queue_free()
 

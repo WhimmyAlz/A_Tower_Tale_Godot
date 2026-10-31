@@ -12,6 +12,8 @@ var preload_chomper = preload("res://Scenes/Mobs/chomper/chomper.tscn")
 var preload_odon = preload("res://Scenes/Bosses/Odon/odon.tscn")
 var preload_nell = preload("res://Scenes/Bosses/Nell/Nell.tscn")
 var preload_gray_bird = preload("res://Scenes/Mobs/gray_bird/gray_bird.tscn")
+var preload_shadow_hand = preload("res://Scenes/Mobs/shadow_hand/Shadow_hand.tscn")
+var preload_mourning_ghoul = preload("res://Scenes/Bosses/Mourning Ghoul/Mourning_ghoul.tscn")
 
 func set_pos(vector2):
 	position = vector2
@@ -85,6 +87,18 @@ func spawn_gray_bird(pos, level):
 	gray_bird.Level = level
 	base_floor.add_enemy(gray_bird)
 
+func spawn_shadow_hand(pos, level):
+	var shadow_hand = preload_shadow_hand.instantiate()
+	shadow_hand.set_pos(pos)
+	shadow_hand.Level = level
+	base_floor.add_enemy(shadow_hand)
+
+func spawn_mourning_ghoul(pos, level):
+	var mourning_ghoul = preload_mourning_ghoul.instantiate()
+	mourning_ghoul.set_pos(pos)
+	mourning_ghoul.Level = level
+	base_floor.add_enemy(mourning_ghoul)
+
 func init_floor_mobs(floor_num):
 	if floor_num == 1:
 		spawn_nerd(Vector2(800, 0), 2)
@@ -133,6 +147,8 @@ func init_floor_mobs(floor_num):
 		spawn_undead_warrior(Vector2(600, 0), 9)
 		spawn_undead_ranger(Vector2(-700, 0), 14)
 		spawn_gray_bird(Vector2(-800, 0), 7)
+	elif floor_num == 15:
+		spawn_mourning_ghoul(Vector2(600, 100), 1)
 
 func _physics_process(_delta: float) -> void:
 	if Global.stun_time == 0 and entered and Input.is_action_just_released("interact"):

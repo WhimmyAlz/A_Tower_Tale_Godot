@@ -2,6 +2,10 @@ extends enemyBase
 var stats_offset = Vector2(170, -60)
 
 @onready var hand_sprite = $handSprite
+@export var kamakazie = false
+
+func set_kamakazie(val):
+	kamakazie = val
 
 func set_description():
 	description = "[b]Shadow Hand[/b]\nLevel: %d\n\n[i]\"They call me: The Hand That Feeds You. Pls don't bite.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\n[Insert joke I've been waiting really long to make here]\n\nDrops:\n%d-%d xp" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
@@ -35,6 +39,8 @@ func attacking():
 			collider.take_damage(Damage, Defense_pen)
 			collider.take_knockback(2, direction)
 			collider.take_stun(30)
+			collider.get_status_effect().inflict_deathmark(450)
+			collider.get_status_effect().inflict_venom(3)
 
 func set_level_stats():
 	# Reminder to self:
@@ -65,26 +71,31 @@ func set_dto():
 	damage_text_offset = Vector2(-40, -300)
 
 func _physics_process(_delta: float) -> void:
-	if attackt >= 0 and attackt <= 49:
+	if attackt >= 0 and attackt <= 29:
 		if stunnedf == 0:
 			move(hand_sprite)
-			attackt += 1
+			if abs(self.position.x - player.position.x) < 400:
+				attackt += 1
 		else:
 			$handSprite.play("idle")
 			stunnedf -= 1
 		
-	elif attackt >= 50 and attackt <= 90:
+	elif attackt >= 30 and attackt <= 80:
 		attackt += 1
 		
-		if attackt == 51:
+		if attackt == 41:
 			$handSprite.speed_scale = 1.5
 			set_direction(self, player)
 			face_player(hand_sprite)
 			$handSprite.play("attack")
 			$Attack_area.position.x = direction * 75
 		
-		if attackt == 80:
+		if attackt == 70:
 			attacking()
+		
+		if attackt == 80:
+			if kamakazie:
+				on_death()
 			attackt = 0
 
 	take_all_status_effects()
