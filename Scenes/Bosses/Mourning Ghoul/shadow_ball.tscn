@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dm5rmtiu7qt3n"]
+
+[ext_resource type="Texture2D" uid="uid://epftee12xvlu" path="res://Scenes/Bosses/Mourning Ghoul/Sprites/shadow_ball.png" id="1_2g8xa"]
+[ext_resource type="Script" uid="uid://bqjpxvjpemwpd" path="res://Scenes/Bosses/Mourning Ghoul/shadow_ball.gd" id="1_iifjh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iifjh"]
+atlas = ExtResource("1_2g8xa")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g414p"]
+atlas = ExtResource("1_2g8xa")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n24ag"]
+atlas = ExtResource("1_2g8xa")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wceuy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iifjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g414p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n24ag")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iifjh"]
+size = Vector2(263, 250)
+
+[node name="ShadowBall" type="Node2D" unique_id=1946691809]
+script = ExtResource("1_iifjh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1334113697]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_wceuy")
+autoplay = "default"
+frame_progress = 0.3234006
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1331784406]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1287371530]
+position = Vector2(-3.5, -1)
+shape = SubResource("RectangleShape2D_iifjh")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

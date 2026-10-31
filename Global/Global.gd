@@ -75,6 +75,7 @@ var bonus_defense : int = 0
 var defense_penetration_adds : int = 0
 
 # Misc
+# Rarity: common-white, uncommon-coral, rare-lawn_green, super_rare-red, epic-aqua, Mythic-purple, Legendary-Black
 var Inventory := {}
 var item_colors := {"Bone Fragment": "white", "Glasses": "coral", "Orange Slime": "lawn_green",
 "Weapon Parts": "lawn_green", "Shadow Essence": "red", "Essence of Fire": "red", "Soul of Darkness": "black",

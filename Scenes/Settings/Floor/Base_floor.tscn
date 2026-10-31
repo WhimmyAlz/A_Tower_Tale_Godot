@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cnpq0jkyhjr73" path="res://Scenes/Player/Body/player.tscn" id="7_t2lht"]
 [ext_resource type="PackedScene" uid="uid://b8fva8sdhjebr" path="res://Scenes/Mobs/Nerd/nerd.tscn" id="9_4w8c0"]
 [ext_resource type="PackedScene" uid="uid://cc1nw4yhjyw36" path="res://Global/pause_menu/pause_menu.tscn" id="9_pkiij"]
+[ext_resource type="PackedScene" uid="uid://h8ewg83ttfet" path="res://Scenes/Bosses/Mourning Ghoul/Mourning_ghoul.tscn" id="10_pkiij"]
+[ext_resource type="PackedScene" uid="uid://bg878ydeg1mvt" path="res://Scenes/Mobs/shadow_hand/Shadow_hand.tscn" id="11_p28ks"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubiir"]
 atlas = ExtResource("3_4w8c0")
@@ -94,3 +96,9 @@ theme_override_constants/separation = 200
 
 [node name="PauseMenu" parent="." unique_id=1743787274 instance=ExtResource("9_pkiij")]
 position = Vector2(1589, -961)
+
+[node name="MourningGhoul" parent="." unique_id=1050394417 instance=ExtResource("10_pkiij")]
+position = Vector2(-568, 569)
+
+[node name="shadow_hand" parent="." unique_id=764376649 instance=ExtResource("11_p28ks")]
+position = Vector2(275, 522)

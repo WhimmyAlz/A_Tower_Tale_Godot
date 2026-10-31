@@ -50,7 +50,6 @@ func move(animation):
 	if self.is_on_floor() and abs(self.position.x - player.position.x) < 1200:
 		if abs(self.position.x - player.position.x) < 200 and dodge_cd == 0:
 			dodge()
-			dodge_cd = 600
 		elif abs(self.position.x - player.position.x) < 1200:
 			animation.play("walk")
 			self.position.x -= Speed * direction
@@ -74,6 +73,7 @@ func dodge():
 		closest_enemy.velocity.x = 2 * (player.position.x - closest_enemy.position.x)
 		velocity.x = direction * 2500
 		attackt = 190
+		dodge_cd = 300
 
 func shoot():
 	var projectile = arrow.instantiate()
@@ -153,7 +153,7 @@ func _physics_process(_delta: float) -> void:
 		if stunnedf == 0 and shots < 3:
 			$NellSprite.frame = 0
 			attackt = 199
-		elif stunnedf != 0:
+		elif stunnedf != 0 and dodge_cd == 0:
 			dodge()
 		else:
 			attackt = 0

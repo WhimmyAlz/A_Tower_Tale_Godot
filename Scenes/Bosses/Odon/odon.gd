@@ -21,7 +21,7 @@ func check_phase():
 				attackt = attackt_start
 				for i in range(enemy_list.get_child_count()):
 					if enemy_list.get_child(i).Name == "Nell":
-						enemy_list.get_child(i).take_damage(fire_stacks / 2, 10, 0, Color.WHITE)
+						enemy_list.get_child(i).take_damage(1, 0, 0, Color.WHITE)
 				if boss_bar != null:
 					boss_bar.visible = true
 

@@ -20,7 +20,7 @@ var boss_bar = null
 var Boss = false
 
 var phase = 1
-var death_rewards = 1
+@export var death_rewards = 1
 
 # key = phase, values = next phase health threshold, phase change time
 var phases = {0: [100, 0], 1: [0, 1]}
