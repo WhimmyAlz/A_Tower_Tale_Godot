@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c7ty5h26li165" path="res://Scenes/Player/Player_UI/Progress_bars/Stamina Bar/STAM_BAR.png" id="12_iqdhd"]
 [ext_resource type="PackedScene" uid="uid://bhrve3jivpr3l" path="res://Scenes/Player/Player_UI/Inventory/Inventory.tscn" id="14_7rbim"]
 [ext_resource type="PackedScene" uid="uid://cfi0x72d52f0x" path="res://Scenes/Player/Player_UI/move_list/move_list.tscn" id="16_e2n6q"]
+[ext_resource type="PackedScene" uid="uid://cc1nw4yhjyw36" path="res://Global/pause_menu/pause_menu.tscn" id="19_iqdhd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ym4e"]
 size = Vector2(38.333336, 120.666664)
@@ -246,3 +247,6 @@ offset_bottom = 724.0
 mouse_filter = 2
 alignment = 2
 vertical = true
+
+[node name="PauseMenu" parent="Non Attached UI Elements" unique_id=1743787274 instance=ExtResource("19_iqdhd")]
+position = Vector2(1534, -950)

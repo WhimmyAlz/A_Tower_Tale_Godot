@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b1apbnu70glxt" path="res://Scenes/Settings/Floor/base_floor.gd" id="1_4w8c0"]
 [ext_resource type="PackedScene" uid="uid://df4idpwngbvmw" path="res://Scenes/Settings/Floor/Floor parts/Border_wall_ground.tscn" id="4_pkiij"]
-[ext_resource type="Texture2D" uid="uid://cvs0s8st0quf4" path="res://Scenes/Settings/Floor/Sprites/Background_walls/Ground_BG.png" id="5_h65j5"]
+[ext_resource type="Texture2D" uid="uid://dw1gnr6jcmuyj" path="res://Scenes/Settings/Floor/Sprites/Background_walls/Ground_BG.png" id="5_h65j5"]
 [ext_resource type="PackedScene" uid="uid://csbsd546ckjx0" path="res://Scenes/Settings/Floor/Floor parts/Border_walls.tscn" id="5_p28ks"]
 [ext_resource type="Texture2D" uid="uid://drhagk77iguhg" path="res://Scenes/Settings/Floor/Sprites/Background_walls/TG_wall5.png" id="5_wgy1v"]
 [ext_resource type="PackedScene" uid="uid://lmxe1uorsl4x" path="res://Scenes/Settings/Floor/Floor parts/Border_wall_ceiling.tscn" id="6_7qsdb"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://cnpq0jkyhjr73" path="res://Scenes/Player/Body/player.tscn" id="7_t2lht"]
 [ext_resource type="Texture2D" uid="uid://cok84a0su50qs" path="res://Scenes/Settings/Floor/Sprites/Background_walls/TG_wall2.png" id="8_pf7s6"]
 [ext_resource type="PackedScene" uid="uid://b8fva8sdhjebr" path="res://Scenes/Mobs/Nerd/nerd.tscn" id="9_4w8c0"]
-[ext_resource type="PackedScene" uid="uid://cc1nw4yhjyw36" path="res://Global/pause_menu/pause_menu.tscn" id="9_pkiij"]
 [ext_resource type="Texture2D" uid="uid://sq7dj0d6vv7a" path="res://Scenes/Settings/Floor/Sprites/Background_walls/TG_wall3.png" id="9_qenw3"]
 [ext_resource type="Texture2D" uid="uid://b8o2m50ekfdg6" path="res://Scenes/Settings/Floor/Sprites/Background_walls/TG_wall4.png" id="10_fo121"]
 
@@ -126,6 +125,3 @@ offset_right = 762.0
 offset_bottom = 1808.0
 mouse_filter = 2
 theme_override_constants/separation = 200
-
-[node name="PauseMenu" parent="." unique_id=1743787274 instance=ExtResource("9_pkiij")]
-position = Vector2(1589, -961)

@@ -41,3 +41,7 @@ func change_class(cls):
 func set_shop_opened(val = true):
 	shop_opened = val
 	$"Non Attached UI Elements/MoveList".ignore_filter(val)
+
+func change_zoom(val):
+	$Camera2D.zoom = Vector2(val, val)
+	$"Non Attached UI Elements".scale = Vector2(1/val, 1/val)

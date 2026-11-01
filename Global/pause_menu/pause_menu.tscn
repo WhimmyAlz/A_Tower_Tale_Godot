@@ -18,10 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://csq805ox8oe7h" path="res://Scenes/Mobs/Skelebone/Sprites/Skeleton_walk.png" id="12_lwbbr"]
 [ext_resource type="Texture2D" uid="uid://8eqrfvi0bx2s" path="res://Scenes/Bosses/Merchant/sprites/turtle_house.png" id="12_tkfvf"]
 [ext_resource type="Texture2D" uid="uid://dm4kwo1b81o1w" path="res://Scenes/Bosses/Nell/Sprites/nell_attack.png" id="12_yk562"]
+[ext_resource type="Texture2D" uid="uid://cbym7db1gb0gr" path="res://Scenes/Bosses/Mourning Ghoul/Sprites/mourning_ghoul_idle.png" id="13_7r7us"]
 [ext_resource type="Texture2D" uid="uid://cxu3pg068rw2g" path="res://Scenes/Bosses/Merchant/shop/sprites/arrows/arrows_2.png" id="13_lwbbr"]
 [ext_resource type="Texture2D" uid="uid://b06nlyoq7j63g" path="res://Scenes/Bosses/Odon/Sprites/odon_attack_2.png" id="14_tkfvf"]
 [ext_resource type="Texture2D" uid="uid://vd0srflrkkef" path="res://Scenes/Bosses/Sir Blob/Sprites/sir_blob_run.png" id="15_7r7us"]
 [ext_resource type="Texture2D" uid="uid://xt18ws3ek2sl" path="res://Scenes/Mobs/Undead_ranger/Sprites/undead_ranger_attack.png" id="17_cgyrc"]
+[ext_resource type="Texture2D" uid="uid://dqdc3ceyxl4b1" path="res://Scenes/Mobs/shadow_hand/Sprites/shadow_hand_idle.png" id="17_o5piy"]
 [ext_resource type="Texture2D" uid="uid://djo7mkd8314hp" path="res://Scenes/Mobs/undead_warrior/Sprites/undead_warrior_walk.png" id="18_o5piy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pfknq"]
@@ -130,6 +132,42 @@ region = Rect2(0, 0, 128, 128)
 atlas = ExtResource("12_tkfvf")
 region = Rect2(128, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4e7uk"]
+atlas = ExtResource("13_7r7us")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t14dj"]
+atlas = ExtResource("13_7r7us")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rqnn"]
+atlas = ExtResource("13_7r7us")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uw35"]
+atlas = ExtResource("13_7r7us")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80p8v"]
+atlas = ExtResource("13_7r7us")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rhlt"]
+atlas = ExtResource("13_7r7us")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y81ni"]
+atlas = ExtResource("13_7r7us")
+region = Rect2(1200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tca6k"]
+atlas = ExtResource("13_7r7us")
+region = Rect2(1400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7ur1"]
+atlas = ExtResource("13_7r7us")
+region = Rect2(1600, 0, 200, 200)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqjf2"]
 atlas = ExtResource("12_yk562")
 region = Rect2(0, 0, 88, 128)
@@ -213,6 +251,22 @@ region = Rect2(1600, 0, 200, 200)
 [sub_resource type="AtlasTexture" id="AtlasTexture_s67h5"]
 atlas = ExtResource("14_tkfvf")
 region = Rect2(1800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8y77"]
+atlas = ExtResource("17_o5piy")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajcuh"]
+atlas = ExtResource("17_o5piy")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw58m"]
+atlas = ExtResource("17_o5piy")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rf4l"]
+atlas = ExtResource("17_o5piy")
+region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_spijb"]
 atlas = ExtResource("15_7r7us")
@@ -352,6 +406,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4e7uk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t14dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rqnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uw35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80p8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rhlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y81ni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tca6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7ur1")
+}],
+"loop": true,
+"name": &"mourning ghoul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fqjf2")
 }, {
 "duration": 1.0,
@@ -427,6 +513,23 @@ animations = [{
 "loop": true,
 "name": &"odon",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8y77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajcuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw58m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rf4l")
+}],
+"loop": true,
+"name": &"shadow hand",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -924,7 +1027,7 @@ texture_filter = 1
 position = Vector2(362, 435)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_lwbbr")
-animation = &"gray bird"
+animation = &"shadow hand"
 autoplay = "nerd"
 
 [node name="button_right" type="TextureButton" parent="pause_menu/Enemy_guide" unique_id=359347525]

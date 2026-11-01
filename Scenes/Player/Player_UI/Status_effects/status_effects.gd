@@ -139,7 +139,7 @@ func start_river(time):
 	if river == false:
 		init_status_box("River Styx", 1, time, Color.DARK_SLATE_BLUE)
 		river_bg = preload_river_bg.instantiate()
-		get_tree().current_scene.get_node("Enviroment").get_node("Walls_and_sprites").get_node("Sprites").add_child(river_bg)
+		get_tree().current_scene.get_node("Enviroment").get_node("Walls_and_sprites").add_child(river_bg)
 	else:
 		update_status_box("River Styx", 1, time)
 	river = true

@@ -5,6 +5,8 @@ var merchant_preload = preload("res://Scenes/Bosses/Merchant/merchant.tscn")
 
 var portal_limiter = 1
 
+var change_floort = 0
+
 func set_random_tiles():
 	var list_of_tile_ids = [6, 7, 8, 9, 10]
 	
@@ -15,10 +17,14 @@ func set_random_tiles():
 func reset_portal_limiter():
 	portal_limiter = 1
 
+func bg_change_anim():
+	$Enviroment/Background.position.y = (Global.floors * 1890) - (1890 * 0.05 * change_floort)
+	$Enviroment/Walls_and_sprites/Tower_Sprite.position.y = (-2860.0 + (Global.floors * 1890)) - (1890 * 0.05 * change_floort)
+
 func bg_add_y_pos():
-	$Enviroment/Background.position.y = Global.floors * 1890
-	$Enviroment/Walls_and_sprites/Tower_Sprite.position.y = -2860.0 + (Global.floors * 1890)
-	
+	#$Enviroment/Background.position.y = Global.floors * 1890
+	#$Enviroment/Walls_and_sprites/Tower_Sprite.position.y = -2860.0 + (Global.floors * 1890)
+	change_floort = 20
 
 func add_enemy(emy):
 	$Enemies.add_child(emy)
@@ -38,7 +44,10 @@ func _ready() -> void:
 	set_random_tiles()
 
 func _physics_process(_delta: float) -> void:
-	
+	if change_floort > 0:
+		change_floort -= 1
+		bg_change_anim()
+		
 	if $Enemies.get_child_count() == 0 and portal_limiter == 1:
 		spawn_portal()
 		spawn_merchant()

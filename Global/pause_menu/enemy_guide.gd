@@ -2,7 +2,7 @@ extends "res://Global/pause_menu/movable.gd"
 
 var level = 1
 var increment = 0
-var enemies_list = ["nerd", "merchant", "skelebone", "sir blob", "undead ranger", "undead warrior", "chomper", "nell", "odon", "gray bird"]
+var enemies_list = ["nerd", "merchant", "skelebone", "sir blob", "undead ranger", "undead warrior", "chomper", "nell", "odon", "gray bird","shadow hand", "mourning ghoul"]
 #							   health  damage  def  dpen  speed  extra / quotes / desc / drops
 var enemies_stats = {"nerd" : ["80 40", "25 2", "0", "0", "10", "Nothing special.", "Erm Ackually", "A typical Nerd. Hopefully he doesn't try to talk to me.\n\n\nAttacks[left]\nPunch: Simple punch, deals 100% damage[/left]", "Drops:\nGlasses (50%)\nUltimate Attack (10%)\n\nMutually Exclusive Drops:\nNew Attack (-%)\n36-48xp (-%)"],
 #			    health    dmg  def  dpen  spd  extra / quote / desc / drops
@@ -15,6 +15,8 @@ var enemies_stats = {"nerd" : ["80 40", "25 2", "0", "0", "10", "Nothing special
 "nell" : ["900 90", "10 1", "2", "10", "4", "Dodges and sends someone towards you. Dodging also lets her shoot immediately.\nShoots 3x in a row unless interrupted.\nCan dodge if interrupted between shots.", "My arrows will pierce your heart!", "A member of a hero party lost in the past. The ranger of the twins.\n\n\n\nAttacks[left]\nFire shot: Shoots a fire arrow that flies straight across the map dealing 100% damage. Inflicts [color=orange]Fire 5[/color].[/left]", "Drops:\n12-15 Essence of Fire (100%)\n5-8 Bone Fragment (100%)\n60-72xp"],
 "odon" : ["1400 120", "30 5", "4", "0", "4", "Takes 70% reduced stun time.", "Baby spin me round...", "A member of a hero party lost in the past. The juggernaut of the twins.\n\n\n\nAttacks[left]\nSpear Thrust: Stabs with spear, deals 100% damage.\n\nWhirl Spin: Performs a small lunge before spinning spear dealing 5% damage 9 times followed by 75% damage once.[/left]", "Drops:\n2-4 Weapon Parts (100%)\n15-18 Bone Fragment (100%)\n60-72xp"],
 "gray bird" : ["180 40", "30 1.5", "8", "0", "8", "Accelerates when moving.\nWon't attack until nearby.", "Why are my legs so messed up?", "\"Sorry i'm bad at drawing legs\" -Developer\n\n\n\nAttacks[left]\nPeck: A swift peck that deals 100% damage.\n\nTriple Peck: 3 swift pecks that deals 50% damage each.[/left]", "Drops:\n14-22xp"],
+"shadow hand" : ["200 20", "30 2", "1", "0", "12", "Won't attack until nearby.", "They call me: The Hand That Feeds You. Pls don't bite.", "[Insert joke I've been waiting really long to make somewhere]\n\n\n\nAttacks[left]\nSwipe: basic swipe attack, deals 100% damage.[/left]", "Drops:\n6-10xp"],
+"mourning ghoul" : ["4000 400", "50 5", "3", "0", "3", "50% less stun and knockback taken.", "I must kill the hero...", "An ancient adventurer who succumbed to the decay. A mother of a pair of twins who perished before herself.\n\n\n\nAttacks[left]\nSwipe: A swipe attack that covers a large area, deals 100% damage and summons a (tier -1) shadow orb that contains shadow hands.\n\n Summon: Summons 3-5 (tier -6) shadow orbs that contains chompers or shadow hands.\n\n Scream: stuns the player for a short amount of time.[/left]", "Drops:\n20-24 Essence of Regret (100%)\n5-8 Shadow Essence (100%)\n35-48 Bone Fragment (100%)\n150-180xp"],
 }
 
 func set_name_text(em_name):

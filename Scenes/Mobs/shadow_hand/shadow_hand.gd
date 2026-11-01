@@ -8,7 +8,7 @@ func set_kamakazie(val):
 	kamakazie = val
 
 func set_description():
-	description = "[b]Shadow Hand[/b]\nLevel: %d\n\n[i]\"They call me: The Hand That Feeds You. Pls don't bite.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\n[Insert joke I've been waiting really long to make here]\n\nDrops:\n%d-%d xp" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
+	description = "[b]Shadow Hand[/b]\nLevel: %d\n\n[i]\"They call me: The Hand That Feeds You. Pls don't bite.\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\n[Insert joke I've been waiting really long to make somewhere]\n\nDrops:\n%d-%d xp" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos
