@@ -148,7 +148,7 @@ func init_floor_mobs(floor_num):
 		spawn_undead_ranger(Vector2(-700, 0), 14)
 		spawn_gray_bird(Vector2(-800, 0), 7)
 	elif floor_num == 15:
-		spawn_mourning_ghoul(Vector2(600, 100), 1)
+		spawn_mourning_ghoul(Vector2(700, 600), 1)
 
 func _physics_process(_delta: float) -> void:
 	if Global.stun_time == 0 and entered and Input.is_action_just_released("interact"):

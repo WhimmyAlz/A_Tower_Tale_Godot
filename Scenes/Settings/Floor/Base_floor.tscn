@@ -1,29 +1,59 @@
 [gd_scene format=3 uid="uid://lx3q27cr43hv"]
 
 [ext_resource type="Script" uid="uid://b1apbnu70glxt" path="res://Scenes/Settings/Floor/base_floor.gd" id="1_4w8c0"]
-[ext_resource type="Texture2D" uid="uid://cbpwyf5oue0m6" path="res://Scenes/Settings/Floor/Sprites/Tower_base.png" id="3_4w8c0"]
 [ext_resource type="PackedScene" uid="uid://df4idpwngbvmw" path="res://Scenes/Settings/Floor/Floor parts/Border_wall_ground.tscn" id="4_pkiij"]
+[ext_resource type="Texture2D" uid="uid://cvs0s8st0quf4" path="res://Scenes/Settings/Floor/Sprites/Background_walls/Ground_BG.png" id="5_h65j5"]
 [ext_resource type="PackedScene" uid="uid://csbsd546ckjx0" path="res://Scenes/Settings/Floor/Floor parts/Border_walls.tscn" id="5_p28ks"]
+[ext_resource type="Texture2D" uid="uid://drhagk77iguhg" path="res://Scenes/Settings/Floor/Sprites/Background_walls/TG_wall5.png" id="5_wgy1v"]
 [ext_resource type="PackedScene" uid="uid://lmxe1uorsl4x" path="res://Scenes/Settings/Floor/Floor parts/Border_wall_ceiling.tscn" id="6_7qsdb"]
+[ext_resource type="Texture2D" uid="uid://ovxelq0d472y" path="res://Scenes/Settings/Floor/Sprites/Background_walls/TG_wall_base.png" id="6_h65j5"]
 [ext_resource type="PackedScene" uid="uid://daaduesc7yxwm" path="res://Scenes/Settings/Background/background.tscn" id="6_u13yy"]
+[ext_resource type="Texture2D" uid="uid://buoyix24tgp4o" path="res://Scenes/Settings/Floor/Sprites/Background_walls/TG_wall1.png" id="7_hsfq4"]
 [ext_resource type="PackedScene" uid="uid://cnpq0jkyhjr73" path="res://Scenes/Player/Body/player.tscn" id="7_t2lht"]
+[ext_resource type="Texture2D" uid="uid://cok84a0su50qs" path="res://Scenes/Settings/Floor/Sprites/Background_walls/TG_wall2.png" id="8_pf7s6"]
 [ext_resource type="PackedScene" uid="uid://b8fva8sdhjebr" path="res://Scenes/Mobs/Nerd/nerd.tscn" id="9_4w8c0"]
 [ext_resource type="PackedScene" uid="uid://cc1nw4yhjyw36" path="res://Global/pause_menu/pause_menu.tscn" id="9_pkiij"]
+[ext_resource type="Texture2D" uid="uid://sq7dj0d6vv7a" path="res://Scenes/Settings/Floor/Sprites/Background_walls/TG_wall3.png" id="9_qenw3"]
+[ext_resource type="Texture2D" uid="uid://b8o2m50ekfdg6" path="res://Scenes/Settings/Floor/Sprites/Background_walls/TG_wall4.png" id="10_fo121"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ubiir"]
-atlas = ExtResource("3_4w8c0")
-region = Rect2(0, 0, 711, 400)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5mogd"]
+texture = ExtResource("5_wgy1v")
+texture_region_size = Vector2i(400, 400)
+0:0/0 = 0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ks4c7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ubiir")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y7y0s"]
+texture = ExtResource("6_h65j5")
+texture_region_size = Vector2i(400, 400)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_167jm"]
+texture = ExtResource("7_hsfq4")
+texture_region_size = Vector2i(400, 400)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cjyj2"]
+texture = ExtResource("8_pf7s6")
+texture_region_size = Vector2i(400, 400)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ostje"]
+texture = ExtResource("9_qenw3")
+texture_region_size = Vector2i(400, 400)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8bpur"]
+texture = ExtResource("10_fo121")
+texture_region_size = Vector2i(400, 400)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_rnmsw"]
+tile_size = Vector2i(400, 400)
+sources/6 = SubResource("TileSetAtlasSource_167jm")
+sources/7 = SubResource("TileSetAtlasSource_cjyj2")
+sources/8 = SubResource("TileSetAtlasSource_ostje")
+sources/9 = SubResource("TileSetAtlasSource_8bpur")
+sources/10 = SubResource("TileSetAtlasSource_5mogd")
+sources/11 = SubResource("TileSetAtlasSource_y7y0s")
 
 [node name="Base_floor" type="Node2D" unique_id=1019729382]
 script = ExtResource("1_4w8c0")
@@ -48,14 +78,19 @@ scale = Vector2(1.85, 1.85)
 position = Vector2(0, -950)
 scale = Vector2(2, 2)
 
-[node name="Sprites" type="Node2D" parent="Enviroment/Walls_and_sprites" unique_id=960453592]
+[node name="Tower_Sprite" type="TileMapLayer" parent="Enviroment/Walls_and_sprites" unique_id=1648711926]
+texture_filter = 1
+position = Vector2(-1025, -2860)
+scale = Vector2(5.17, 4.725)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 1, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 6, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_rnmsw")
 
-[node name="Tower_sprite_1" type="AnimatedSprite2D" parent="Enviroment/Walls_and_sprites/Sprites" unique_id=1468190379]
+[node name="Setting_BG" type="Sprite2D" parent="Enviroment/Walls_and_sprites/Tower_Sprite" unique_id=1190372917]
 z_index = -1
 texture_filter = 1
-position = Vector2(50, -25)
-scale = Vector2(4.725, 4.725)
-sprite_frames = SubResource("SpriteFrames_ks4c7")
+position = Vector2(203.86847, 581.164)
+scale = Vector2(1.0154738, 1.1111112)
+texture = ExtResource("5_h65j5")
 
 [node name="Background" parent="Enviroment" unique_id=1861313626 instance=ExtResource("6_u13yy")]
 

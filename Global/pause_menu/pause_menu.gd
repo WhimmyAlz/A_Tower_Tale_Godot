@@ -28,7 +28,14 @@ func pause():
 func unpause():
 	menu.visible = false
 	get_tree().paused = false
+	hide_all()
 	set_pause_button_sprites("pause")
+
+func hide_all():
+	$pause_menu/buttons_container/pls_help_button/pls_help_buttons.visible = false
+	$pause_menu/Instructions.visible = false
+	$pause_menu/Enemy_guide.visible = false
+	$pause_menu/Status_effect_guide.visible = false
 
 func _on_pause_button_main_button_up() -> void:
 	if menu.visible == true:
