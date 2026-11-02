@@ -79,7 +79,7 @@ var defense_penetration_adds : int = 0
 var Inventory := {}
 var item_colors := {"Bone Fragment": "white", "Glasses": "coral", "Orange Slime": "lawn_green",
 "Weapon Parts": "lawn_green", "Shadow Essence": "red", "Essence of Fire": "red", "Soul of Darkness": "black",
-"Basement Key": "purple", "Essence of Regret": "red"}
+"Basement Key": "purple", "Essence of Regret": "coral"}
 
 
 var Gravity := 50

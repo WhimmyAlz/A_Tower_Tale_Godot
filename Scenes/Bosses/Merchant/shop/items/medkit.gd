@@ -41,6 +41,9 @@ func _on_texture_button_button_up() -> void:
 	if mouse_over:
 		Global.health += value * 0.01 * Global.max_health
 		Global.player_XP -= int(value)
+		
+		if Global.health >= 0.99 * Global.max_health:
+			Global.health = Global.max_health
 
 		set_item_values()
 		set_button_descriptions()

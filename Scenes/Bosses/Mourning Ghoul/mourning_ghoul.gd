@@ -89,7 +89,7 @@ func on_death():
 		check_class_misc()
 		player.add_item("Bone Fragment", randi_range(35, 48))
 		player.add_item("Shadow Essence", randi_range(5, 8), Color.RED)
-		player.add_item("Essence of Regret", randi_range(20, 24), Color.RED)
+		player.add_item("Essence of Regret", randi_range(20, 24), Color.CORAL)
 	death_rewards = 0
 	boss_bar.queue_free()
 	queue_free()

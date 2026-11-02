@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="A Tower Tale"
-run/main_scene="uid://lx3q27cr43hv"
+run/main_scene="uid://bswp2ioi17ysc"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=60
+boot_splash/image="uid://cvv2byh715evc"
 
 [autoload]
 
