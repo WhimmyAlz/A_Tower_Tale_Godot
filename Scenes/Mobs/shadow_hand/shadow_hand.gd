@@ -83,19 +83,24 @@ func _physics_process(_delta: float) -> void:
 	elif attackt >= 30 and attackt <= 80:
 		attackt += 1
 		
-		if attackt == 41:
+		if attackt == 31:
 			$handSprite.speed_scale = 1.5
 			set_direction(self, player)
 			face_player(hand_sprite)
 			$handSprite.play("attack")
 			$Attack_area.position.x = direction * 75
 		
-		if attackt == 70:
+		if attackt == 50:
 			attacking()
 		
-		if attackt == 80:
+		if attackt == 56:
 			if kamakazie:
 				on_death()
+		
+		if attackt == 65:
+			attacking()
+		
+		if attackt == 70:
 			attackt = 0
 
 	take_all_status_effects()

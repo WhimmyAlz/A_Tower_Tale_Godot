@@ -100,6 +100,7 @@ script = ExtResource("1_t0j56")
 
 [node name="PlayerBody" type="CharacterBody2D" parent="." unique_id=1855640503 groups=["attackable", "player"]]
 z_index = 1
+position = Vector2(0, 750)
 scale = Vector2(3, 3)
 collision_layer = 2
 script = ExtResource("3_6t5aa")
@@ -116,10 +117,8 @@ shape = SubResource("RectangleShape2D_2ym4e")
 texture_filter = 1
 position = Vector2(1.3333334, -18.666668)
 sprite_frames = SubResource("SpriteFrames_gymyn")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.88888896
 
 [node name="RayCast2D" type="RayCast2D" parent="PlayerBody" unique_id=700149789]
 target_position = Vector2(0, -200)

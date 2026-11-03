@@ -46,7 +46,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health)
 
 func set_description():
-	description = "[b]Mourning Ghoul[/b]\nLevel: %d\n\n[i]\"I must kill the hero...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nAn ancient adventurer who succumbed to the decay. A mother of a pair of twins who perished before herself.\n\nDrops:\n20-24 Essence of Regret (100%%)\n5-8 Shadow Essence (100%%)\n35-48 Bone Fragment (100%%)\n%d-%d xp\n\nBoss perk: stunned for 50%% less time and significantly reduced knockback." % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
+	description = "[b]Mourning Ghoul[/b]\nLevel: %d\n\n[i]\"I must kill the hero...\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nAn ancient adventurer who succumbed to the decay. A mother of a pair of twins who perished before herself.\n\nDrops:\n36-40 Essence of Regret (100%%)\n9-14 Shadow Essence (100%%)\n35-48 Bone Fragment (100%%)\n%d-%d xp\n\nBoss perk: stunned for 50%% less time and significantly reduced knockback." % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func set_pos(pos):
 	position = pos
@@ -88,8 +88,8 @@ func on_death():
 		player.gain_xp(randi_range(xp_range[0], xp_range[1]))
 		check_class_misc()
 		player.add_item("Bone Fragment", randi_range(35, 48))
-		player.add_item("Shadow Essence", randi_range(5, 8), Color.RED)
-		player.add_item("Essence of Regret", randi_range(20, 24), Color.CORAL)
+		player.add_item("Shadow Essence", randi_range(9, 14), Color.RED)
+		player.add_item("Essence of Regret", randi_range(36, 40), Color.CORAL)
 	death_rewards = 0
 	boss_bar.queue_free()
 	queue_free()
