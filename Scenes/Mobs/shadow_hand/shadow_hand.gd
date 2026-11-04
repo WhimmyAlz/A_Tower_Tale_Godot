@@ -39,7 +39,7 @@ func attacking():
 			collider.take_damage(Damage, Defense_pen)
 			collider.take_knockback(2, direction)
 			collider.take_stun(30)
-			collider.get_status_effect().inflict_deathmark(450)
+			collider.get_status_effect().inflict_deathmark(250)
 			collider.get_status_effect().inflict_venom(3)
 
 func set_level_stats():

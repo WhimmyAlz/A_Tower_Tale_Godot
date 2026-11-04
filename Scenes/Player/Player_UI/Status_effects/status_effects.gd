@@ -238,7 +238,7 @@ func inflict_bleed(stacks):
 
 func inflict_deathmark(stacks):
 	if deathmark_stacks <= 1000:
-		deathmark_tick_delay = 300
+		deathmark_tick_delay = 600
 		if deathmark_stacks > 0:
 			deathmark_stacks = mini(deathmark_stacks + stacks, 1000)
 			update_status_box("Deathmark", deathmark_stacks, deathmark_tick_delay)

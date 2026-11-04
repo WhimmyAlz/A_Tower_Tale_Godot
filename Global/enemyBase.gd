@@ -203,7 +203,7 @@ func inflict_bleed(stacks):
 func inflict_deathmark(stacks):
 	if deathmark_stacks <= 1000:
 		deathmark_stacks = mini(deathmark_stacks + stacks, 1000)
-		deathmark_tick_delay = 300
+		deathmark_tick_delay = 600
 
 ## status effects
 func take_burn():
