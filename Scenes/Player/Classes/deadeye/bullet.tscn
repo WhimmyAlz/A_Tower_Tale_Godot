@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://qysjdef5wtdq"]
+
+[ext_resource type="Script" uid="uid://k4yy88oyjfd3" path="res://Scenes/Player/Classes/deadeye/bullet.gd" id="1_grnsw"]
+[ext_resource type="Texture2D" uid="uid://2p0nmerv2w3h" path="res://Scenes/Player/Classes/deadeye/Sprites/bullet.png" id="1_mhb1r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sh3e"]
+size = Vector2(30.65625, 20)
+
+[sub_resource type="Curve" id="Curve_dp4oa"]
+_limits = [0.0, 1024.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dp4oa"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp4oa"]
+atlas = ExtResource("1_mhb1r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_grnsw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp4oa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="bullet" type="Area2D" unique_id=1231517787]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_grnsw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=939281692]
+shape = SubResource("RectangleShape2D_4sh3e")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1453814165]
+scale = Vector2(2, 2)
+points = PackedVector2Array(0, 0, 0, 0)
+width = 1.0
+width_curve = SubResource("Curve_dp4oa")
+gradient = SubResource("Gradient_dp4oa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=429047386]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_grnsw")

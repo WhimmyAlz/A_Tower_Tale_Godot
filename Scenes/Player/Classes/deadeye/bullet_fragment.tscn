@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://drkgm80xlem1v"]
+
+[ext_resource type="Script" uid="uid://c45h34dldhs1s" path="res://Scenes/Player/Classes/deadeye/bullet_fragment.gd" id="1_1dpci"]
+[ext_resource type="Texture2D" uid="uid://b2yyn75kcti6y" path="res://Scenes/Player/Classes/deadeye/Sprites/bullet_fragment.png" id="1_iylrs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dpci"]
+atlas = ExtResource("1_iylrs")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drbb5"]
+atlas = ExtResource("1_iylrs")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqi1b"]
+atlas = ExtResource("1_iylrs")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fp0g4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dpci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dpci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drbb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqi1b")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="BulletFragment" type="Node2D" unique_id=642290727]
+script = ExtResource("1_1dpci")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=15302706]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fp0g4")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

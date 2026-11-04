@@ -6,7 +6,7 @@ var instant_chat = false
 
 # Notes: Abyssal cult revolves around the occult/abyss energy
 
-var player_class := "brawler"
+var player_class := "deadeye"
 var player_XP := 0
 var player_XP_REQ := 1000
 var player_Level := 1
@@ -94,7 +94,7 @@ func class_stats_brawler():
 	jump_limit = 100 # must be more than 0
 
 	player_spd = round((0.2 * agility) * (1 + speed_multi))
-	player_weight = 20
+	player_weight = 25
 
 	max_health = 300
 	max_stamina = 110
@@ -142,7 +142,7 @@ func class_stats_reaper():
 	jump_limit = 100 # must be more than 0
 
 	player_spd = round((0.2 * agility) * (1 + speed_multi))
-	player_weight = 15
+	player_weight = 20
 
 	max_health = 250
 	max_stamina = 250
@@ -166,7 +166,7 @@ func class_stats_paladin():
 	jump_limit = 100 # must be more than 0
 
 	player_spd = round((0.2 * agility) * (1 + speed_multi))
-	player_weight = 35
+	player_weight = 40
 
 	max_health = 350
 	max_stamina = 200
@@ -192,8 +192,8 @@ func class_stats_shadow():
 	player_spd = round((0.2 * agility) * (1 + speed_multi))
 	player_weight = 15
 
-	max_health = 210
-	max_stamina = 180
+	max_health = 240
+	max_stamina = 160
 
 	power = 30 + bonus_power
 	crit_chance = 10 + crit_chance_adds
@@ -205,6 +205,30 @@ func class_stats_shadow():
 	agility = 75 + bonus_agility
 	dexterity = 20 + bonus_dexterity
 	intellect = 20 + bonus_intellect
+
+## Sets stats for Deadeye [class:5]
+func class_stats_deadeye():
+	flight = 0
+	max_jumps = 1 + jump_adds
+	jump_power = round(1400 * (1 + jump_multi))
+	jump_limit = 1000 # must be more than 0
+
+	player_spd = round((0.2 * agility) * (1 + speed_multi))
+	player_weight = 10
+
+	max_health = 220
+	max_stamina = 150
+
+	power = 20 + bonus_power
+	crit_chance = 20 + crit_chance_adds
+	crit_damage = 1.25 + crit_damage_adds
+	defense = 0 + bonus_defense
+	defense_penetration = 0 + defense_penetration_adds
+	
+	strength = 6 + bonus_strength
+	agility = 60 + bonus_agility
+	dexterity = 26 + bonus_dexterity
+	intellect = 8 + bonus_intellect
 
 
 ## Sets stats for Draco [class:10]
@@ -242,6 +266,8 @@ func check_class():
 		class_stats_paladin()
 	elif player_class == "shadow":
 		class_stats_shadow()
+	elif player_class == "deadeye":
+		class_stats_deadeye()
 	elif player_class == "draco":
 		class_stats_draco()
 

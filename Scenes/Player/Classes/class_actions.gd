@@ -49,6 +49,12 @@ func set_class_items():
 		animation = $shadow/skills
 		hat = $shadow/hat
 		$shadow.visible = true
+	
+	elif player_class == "deadeye":
+		class_node = $deadeye
+		animation = $deadeye/skills
+		hat = $deadeye/hat
+		$deadeye.visible = true
 
 	elif player_class == "draco":
 		# implement later

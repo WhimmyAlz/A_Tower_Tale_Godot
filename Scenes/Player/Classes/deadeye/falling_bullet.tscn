@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bmbdpxeih5psp"]
+
+[ext_resource type="Script" uid="uid://co6mw11774hed" path="res://Scenes/Player/Classes/deadeye/falling_bullet.gd" id="1_1u1c5"]
+[ext_resource type="Texture2D" uid="uid://2p0nmerv2w3h" path="res://Scenes/Player/Classes/deadeye/Sprites/bullet.png" id="1_064j1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u1c5"]
+size = Vector2(12, 38)
+
+[sub_resource type="Curve" id="Curve_l4lbh"]
+_limits = [0.0, 1024.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_kt007"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljffu"]
+atlas = ExtResource("1_064j1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8ipv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljffu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="falling_bullet" type="Area2D" unique_id=341187456]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_1u1c5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=385092883]
+shape = SubResource("RectangleShape2D_1u1c5")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=298583499]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+width_curve = SubResource("Curve_l4lbh")
+gradient = SubResource("Gradient_kt007")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2129812492]
+texture_filter = 1
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_u8ipv")
