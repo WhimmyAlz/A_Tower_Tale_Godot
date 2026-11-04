@@ -3,7 +3,7 @@ extends Node2D
 var attack1_max_t = 13
 var attack2_max_t = 120
 var attack3_max_t = 300
-var attack4_max_t = 300
+var attack4_max_t = 450
 var attack5_max_t = 450
 var ultimate_max_t = 60
 
@@ -13,7 +13,7 @@ var consumed_needle_stacks = 0
 var bullet
 
 var shadow_spike
-var shadow_break
+var scope
 var descriptions 
 
 @onready var player = get_parent().get_parent()
@@ -26,15 +26,15 @@ var kick_wave = preload("res://Scenes/Player/Classes/deadeye/kick_wave.tscn")
 var bullet_proj = preload("res://Scenes/Player/Classes/deadeye/bullet.tscn")
 var needle_proj = preload("res://Scenes/Player/Classes/needle/needle_proj.tscn")
 var shadow_spike_proj = preload("res://Scenes/Player/Classes/shadow/shadow_spike.tscn")
-var shadow_break_preload = preload("res://Scenes/Player/Classes/shadow/shadow_break.tscn")
+var scope_preload = preload("res://Scenes/Player/Classes/deadeye/scope.tscn")
 var shadow_slice = preload("res://Scenes/Player/Classes/shadow/shadow_slice.tscn")
 
 func get_description():
 	descriptions = {
 	"attack_1": ["[b]Quick Shot[/b]\n", "Quickly fires a single bullet. Crits give you 20% of your max stamina. \n[color=dodger_blue]Consumes 25 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (40%% + 0.4x dexterity)x4\n" % ((0.4 * Global.power) + (0.4 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(attack1_max_t)/60), "Knockback: 3\n", "Stuntime: 0.16s\n"],
-	"attack_2": ["[b]Kick[/b]\n", "Kicks an enemy into the air, leaving them vulnerable. \n[color=dodger_blue]Consumes 15 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + Strength)\n" % ((1 * Global.power) + (1 * Global.strength)),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 15\n", "Stuntime: 0.75s\n"],
+	"attack_2": ["[b]Kick[/b]\n", "Kicks an enemy into the air, leaving them vulnerable. -15% chance to crit. \n[color=dodger_blue]Consumes 15 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + Strength)\n" % ((1 * Global.power) + (1 * Global.strength)),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 15\n", "Stuntime: 0.75s\n"],
 	"attack_3": ["[b]Bullet Rain[/b]\n", "Shoots a special bullet which causes 15 bullets to fall upon the enemy hit. Falling bullets do half of inital damage.\n[color=dodger_blue]Consumes 75 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (40%% + 0.4x dexterity)\n" % ((0.4 * Global.power) + (0.4 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 3\n", "Stuntime: 0.16s\n"],
-	"attack_4": ["[b]Clones[/b]\n", "Summons 2 clones that help attack for you. Damage is based on first skill. Clones can't crit. \n[color=dodger_blue]Consumes 100 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (15%% + 0.15x dexterity)x2\n" % ((0.15 * Global.power) + (0.15 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 2\n", "Stuntime: 0.05s\n"],
+	"attack_4": ["[b]Cover Me![/b]\n", "Calls for cover fire. 3 special shots are fired at random enemies, piercing them and inflicting fire. \n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (60%% + 0.6x dexterity)x3\n" % ((0.6 * Global.power) + (0.6 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 0\n", "Stuntime: 0.2s\n\n", "Inflicts [color=orange]Fire 9[/color]\n"],
 	"attack_5": ["[b]Giant Spikes[/b]\n", "Shoots out 3 giant shadow spikes, dealing massive damage and has far reach.\n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (80%% + 0.5x dexterity)\n" % (0.8 * Global.power + 0.5 * Global.dexterity), "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 8\n", "Stuntime: 0.5s\n"],
 	"ultimate": ["[b]Shadow Slices[/b]\n", "Quickly slices 3 times around you and deal massive damage. Crits inflict deathmark.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (60%% + 0.6x dexterity)\n" % ((0.6 * Global.power) + (0.6 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 0\n", "Stuntime: 1s\n\n", "Inflicts [color=yellow]Shock 15[/color] and crits inflict [color=gray]Deathmark 500[/color]"],
 	}
@@ -180,35 +180,36 @@ func attack_3():
 		Global.attack3t = 0
 
 func init_attack_4():
-	if Global.stamina >= 100:
+	if Global.stamina >= 60:
 		set_dir()
 
-		Global.stamina -= 100
+		Global.stamina -= 60
 		player.set_animation_visibility(false)
 		class_anim.visible = true
 		class_anim.frame = 0
-		class_anim.play("shift")
+		class_anim.play("base_talk")
 		Global.attack4t = 1
 		player.set_attacking(true)
 
 func attack_4():
-	if Global.attack4t >= 1 and Global.attack4t <= 20:
+	if Global.attack4t >= 1 and Global.attack4t <= 30:
 		class_anim.speed_scale = 3
-		player.set_speed_penalty(0.5)
+		player.set_speed_penalty(0.1)
 		
 		# spawns venom needles
-		if between(Global.attack4t, 1, 10) and Global.attack4t % 5 == 0:
-			var clone = preload("res://Scenes/Player/Classes/shadow/shadow_clone.tscn").instantiate()
-			clone.set_player(player)
-			if Global.attack4t == 5:
-				clone.set_dir(-1)
-				clone.set_pos(player.position + Vector2(100, 0))
-			else:
-				clone.set_dir(1)
-				clone.set_pos(player.position + Vector2(-100, 0))
-			get_tree().current_scene.get_node("Projectiles").add_child(clone)
+		if between(Global.attack4t, 1, 15) and Global.attack4t % 5 == 0:
+			
+			var enemy_list = get_tree().current_scene.get_node("Enemies")
+			if enemy_list.get_child_count() > 0:
+			
+				scope = scope_preload.instantiate()
+				scope.set_player(player)
+				scope.set_target(enemy_list.get_child(randi_range(0, enemy_list.get_child_count()-1)))
+				scope.set_damage((0.6 * Global.power) + (0.6 * Global.dexterity))
 
-		if Global.attack4t == 20:
+				get_tree().current_scene.get_node("Projectiles").add_child(scope)
+
+		if Global.attack4t == 30:
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)

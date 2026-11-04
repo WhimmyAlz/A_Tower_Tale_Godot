@@ -75,6 +75,7 @@ func _physics_process(_delta: float) -> void:
 		if stunnedf == 0:
 			if attackt >= 0 and attackt <= 30:
 				move(1)
+				$CollisionShape2D.disabled = true
 			if attackt == 30:
 				self.visible = false
 				self.remove_from_group("attackable")
@@ -92,6 +93,7 @@ func _physics_process(_delta: float) -> void:
 			if attackt == 151:
 				$ChomperSprite.modulate.a = 1
 				$ChomperSprite.play("attack")
+				$CollisionShape2D.disabled = false
 			
 			if attackt == 171:
 				attacking()
@@ -99,6 +101,7 @@ func _physics_process(_delta: float) -> void:
 			attackt += 1
 		else:
 			chomper_sprite.play("idle")
+			$CollisionShape2D.disabled = true
 			chomper_sprite.pause()
 			stunnedf -= 1
 			attackt = 0

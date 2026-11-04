@@ -44,7 +44,7 @@ var crit_chance_adds := 0.0
 var crit_damage := 1.25 # damage multi from crits
 var crit_damage_adds := 0.0 # damage multi from crits
 
-var player_attacks = 1
+var player_attacks = 5
 var ultimate_attack = 0
 
 # cooldowns
@@ -210,11 +210,11 @@ func class_stats_shadow():
 func class_stats_deadeye():
 	flight = 0
 	max_jumps = 1 + jump_adds
-	jump_power = round(1400 * (1 + jump_multi))
+	jump_power = round(1600 * (1 + jump_multi))
 	jump_limit = 1000 # must be more than 0
 
 	player_spd = round((0.2 * agility) * (1 + speed_multi))
-	player_weight = 10
+	player_weight = 12
 
 	max_health = 220
 	max_stamina = 150
@@ -226,7 +226,7 @@ func class_stats_deadeye():
 	defense_penetration = 0 + defense_penetration_adds
 	
 	strength = 6 + bonus_strength
-	agility = 60 + bonus_agility
+	agility = 63 + bonus_agility
 	dexterity = 26 + bonus_dexterity
 	intellect = 8 + bonus_intellect
 

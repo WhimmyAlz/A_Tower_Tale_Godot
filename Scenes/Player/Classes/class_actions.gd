@@ -100,25 +100,29 @@ func ultimate():
 func hat_animations():
 	var hat_mode = get_parent().get_hat_mode()
 	
+	var hat_check = false
+	
+	if player.get_attacking():
+		hat_check = Global.player_dir == -1
+	else :
+		hat_check = player.get_anim_flip()
+	
 	hat.speed_scale = (Global.player_spd * 0.035)
-	if Global.player_dir == -1:
+	if hat_check:
 		hat.flip_h = true
 		hat.position.x = 4
 	else:
 		hat.flip_h = false
 		hat.position.x = -4
 
-	if hat_mode == "idle":
-		hat.play("hat_idle")
-	elif hat_mode == "run":
-		hat.play("hat_run")
-	elif hat_mode == "jump":
-		hat.play("hat_stun")
+	hat.play("hat_%s" % hat_mode)
+
 
 func _ready() -> void:
 	set_class_items()
 
 func _physics_process(_delta: float) -> void:
+	
 	hat_animations()
 	
 	attack_1()

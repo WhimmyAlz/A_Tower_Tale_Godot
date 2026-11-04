@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dwrq6gmqwot75"]
+
+[ext_resource type="Texture2D" uid="uid://i4erjucdo8td" path="res://Scenes/Player/Classes/deadeye/Sprites/scope.png" id="1_x8lv3"]
+[ext_resource type="Script" uid="uid://ctjmwbn2goq1n" path="res://Scenes/Player/Classes/deadeye/scope.gd" id="2_g2v6b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq8bf"]
+atlas = ExtResource("1_x8lv3")
+region = Rect2(75, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2v6b"]
+atlas = ExtResource("1_x8lv3")
+region = Rect2(0, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7m56"]
+atlas = ExtResource("1_x8lv3")
+region = Rect2(150, 0, 75, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n8g3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq8bf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2v6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7m56")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 15.0
+}]
+
+[node name="scope" type="AnimatedSprite2D" unique_id=234158832]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_n8g3a")
+animation = &"shoot"
+script = ExtResource("2_g2v6b")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

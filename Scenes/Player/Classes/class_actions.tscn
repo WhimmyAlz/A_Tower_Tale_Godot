@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://dqwxaqqdvworx" path="res://Scenes/Player/Classes/deadeye/Sprites/base_kick.png" id="41_lskmx"]
 [ext_resource type="Texture2D" uid="uid://cqsi54t3rai60" path="res://Scenes/Player/Classes/deadeye/Sprites/hat_idle.png" id="42_1nu0r"]
 [ext_resource type="Texture2D" uid="uid://viwyic2xml8m" path="res://Scenes/Player/Classes/deadeye/Sprites/hat_run.png" id="43_lskmx"]
+[ext_resource type="Texture2D" uid="uid://bbf5cxwndnwjw" path="res://Scenes/Player/Classes/deadeye/Sprites/base_talk.png" id="43_ujd6n"]
 [ext_resource type="Texture2D" uid="uid://mq66vojqkmu2" path="res://Scenes/Player/Classes/deadeye/Sprites/hat_stun.png" id="44_ujd6n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kva02"]
@@ -1311,6 +1312,34 @@ region = Rect2(320, 0, 160, 160)
 atlas = ExtResource("41_gbu60")
 region = Rect2(480, 0, 160, 160)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwty6"]
+atlas = ExtResource("43_ujd6n")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg7av"]
+atlas = ExtResource("43_ujd6n")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dp8x"]
+atlas = ExtResource("43_ujd6n")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4erx"]
+atlas = ExtResource("43_ujd6n")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1smr"]
+atlas = ExtResource("43_ujd6n")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nri4u"]
+atlas = ExtResource("43_ujd6n")
+region = Rect2(800, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8pm2"]
+atlas = ExtResource("43_ujd6n")
+region = Rect2(960, 0, 160, 160)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1lucv"]
 animations = [{
 "frames": [{
@@ -1348,6 +1377,32 @@ animations = [{
 }],
 "loop": true,
 "name": &"base_shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwty6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg7av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dp8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4erx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1smr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nri4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8pm2")
+}],
+"loop": true,
+"name": &"base_talk",
 "speed": 5.0
 }]
 
@@ -1546,7 +1601,7 @@ script = ExtResource("40_8hiqi")
 visible = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1lucv")
-animation = &"base_kick"
+animation = &"base_talk"
 
 [node name="hat" type="AnimatedSprite2D" parent="deadeye" unique_id=1140094430]
 texture_filter = 1

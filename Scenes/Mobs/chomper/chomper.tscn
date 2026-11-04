@@ -118,6 +118,9 @@ size = Vector2(369, 211)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3k8m"]
 size = Vector2(301, 318.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyf1e"]
+size = Vector2(373.5, 205)
+
 [node name="Chomper" type="CharacterBody2D" unique_id=521896040 groups=["enemy"]]
 collision_layer = 4
 input_pickable = true
@@ -159,6 +162,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_area" unique_id=720150441]
 position = Vector2(2.5, 91.25)
 shape = SubResource("RectangleShape2D_f3k8m")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=66781551]
+position = Vector2(2.25, 141.5)
+shape = SubResource("RectangleShape2D_jyf1e")
 
 [connection signal="mouse_entered" from="stats_collider" to="." method="_on_stats_collider_mouse_entered"]
 [connection signal="mouse_exited" from="stats_collider" to="." method="_on_stats_collider_mouse_exited"]

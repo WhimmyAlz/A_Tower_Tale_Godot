@@ -1,5 +1,10 @@
 extends Node2D
 
+var angle = null
+
+func set_angle(val):
+	rotation = val
+
 func set_dir(val):
 	if val == -1:
 		$AnimatedSprite2D.flip_h = true

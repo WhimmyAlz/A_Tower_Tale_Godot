@@ -129,7 +129,7 @@ func vert_velocities():
 func jump():
 	var jump_power = -Global.jump_power
 	jump_pause = true
-	hat_mode = "jump"
+	hat_mode = "stun"
 	$AnimatedSprite2D.play("run")
 	$AnimatedSprite2D.frame = 0
 	$AnimatedSprite2D.pause()
@@ -175,6 +175,9 @@ func attack_speed_penalty(penalty):
 func direction_change_free(value):
 	if attacking == false:
 		Global.player_dir = value
+
+func get_anim_flip():
+	return($AnimatedSprite2D.flip_h)
 
 ## toggles animation visiblity
 func set_animation_visibility(boolean):
