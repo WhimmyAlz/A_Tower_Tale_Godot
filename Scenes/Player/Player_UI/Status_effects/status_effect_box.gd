@@ -78,6 +78,5 @@ func _on_box_area_mouse_entered() -> void:
 	set_description()
 	$description.visible = true
 
-
 func _on_box_area_mouse_exited() -> void:
 	$description.visible = false

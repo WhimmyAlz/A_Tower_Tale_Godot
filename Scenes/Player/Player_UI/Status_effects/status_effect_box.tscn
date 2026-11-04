@@ -53,6 +53,7 @@ vertical_alignment = 1
 
 [node name="description" type="Control" parent="." unique_id=348607186]
 visible = false
+z_index = 1
 anchors_preset = 0
 offset_left = 11.0
 offset_top = -132.0

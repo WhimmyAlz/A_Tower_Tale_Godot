@@ -1266,7 +1266,7 @@ Defense Penetration: 1000
 [left]Actions: allows X% of stun time to be added. Take 1 damage.
 Max stacks: 100
 Ticks per second: 6
-Stacks loss per tick: X/10
+Stacks loss per tick: X/20
 [/left]
 
 [b][color=purple]- Venom -[/color]

@@ -54,7 +54,10 @@ func init_status_box(status, status_level, time, color, font=48):
 	status_box.set_time(time)
 	status_box.set_color(color)
 	status_box.set_text_size(font)
-	$FlowContainer.call_deferred("add_child", status_box)
+	if not check_dupes(status):
+		$FlowContainer.call_deferred("add_child", status_box)
+	else:
+		update_status_box(status, status_level, time)
 
 func set_status_font_size(status, size):
 	for i in range(self.get_child(0).get_child_count()):
@@ -65,7 +68,7 @@ func set_status_font_size(status, size):
 func check_dupes(status):
 	for i in range(self.get_child(0).get_child_count()):
 		var effect = self.get_child(0).get_child(i-1)
-		if effect.get_status() == status:
+		if effect.get_status() == status and not effect.is_queued_for_deletion():
 			return(true)
 	return(false)
 
@@ -76,6 +79,7 @@ func update_status_box(status, status_level, time):
 		if effect.get_status() == status:
 			effect.set_status_level(status_level)
 			effect.set_time(time)
+
 
 func get_iframes():
 	return(iframes)
@@ -317,7 +321,7 @@ func venom_effect():
 		venom_tick_delay -= 1
 
 func shock_effects():
-	var shock_loss = int(shock_stacks/10)
+	var shock_loss = int(shock_stacks/20)
 	
 	if shock_stacks >= 1 and shock_tick_delay == 0:
 		player.take_damage(1, 0, Color.YELLOW)
@@ -364,12 +368,12 @@ func _physics_process(_delta: float) -> void:
 
 func shock_time_calc():
 	var shock_current = shock_stacks
-	var shock_loss = int(shock_current/10)
+	var shock_loss = int(shock_current/20)
 	var shock_ticks = 0
 	
 	while shock_current >= 1:
 		shock_ticks += 1
-		shock_loss = int(shock_current/10)
+		shock_loss = int(shock_current/20)
 		shock_current -= maxi(1, shock_loss)
 		
 	return(shock_ticks * 10)

@@ -52,12 +52,13 @@ func fire():
 	
 	bullet.set_player(player)
 	bullet.set_damage(damage)
-	bullet.set_knockback(3)
+	bullet.set_knockback(0)
 	bullet.set_pos(bullet_pos)
 	bullet.set_stuntime(12)
 	bullet.set_hitnum(100)
 	bullet.set_speed(350 * direction[0], 350 * direction[1])
 	bullet.set_lifetime(100)
+	bullet.set_burn(true)
 	bullet.set_ult_charge_amount(35)
 
 	get_tree().current_scene.get_node("Projectiles").call_deferred("add_child", bullet)

@@ -147,7 +147,7 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 
 	if crit:
 		damageText.set_size(2)
-	get_tree().current_scene.get_node("Damage_text").add_child(damageText)
+	get_tree().current_scene.get_node("UI Containers").get_node("Damage_text").add_child(damageText)
 
 	# checks if the health threshold has been hit to switch phases
 	if phases[phase][0] != 0 and Health <= Max_Health * (float(phases[phase][0])/100):
@@ -223,7 +223,7 @@ func take_venom():
 		venom_tick_delay -= 1
 
 func take_shock():
-	var shock_loss = int(shock_stacks/10)
+	var shock_loss = int(shock_stacks/20)
 	if shock_stacks >= 1 and shock_tick_delay == 0:
 		take_damage(1, 0, 0, Color.YELLOW)
 		shock_stacks -= maxi(1, shock_loss)

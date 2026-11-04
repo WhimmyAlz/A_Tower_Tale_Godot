@@ -15,7 +15,7 @@ func init_boss_bar():
 	boss_bar = boss_bar_preload.instantiate()
 	boss_bar.visible = false
 	boss_bar.update_name("[b]%s[/b]" % Boss_bar_name)
-	get_tree().current_scene.get_node("Boss_Health_Bars").get_node("boss_hp_container").add_child(boss_bar)
+	get_tree().current_scene.get_node("UI Containers").get_node("boss_hp_container").add_child(boss_bar)
 
 func update_hp_bar():
 	$HealthBar.update_value(Health)

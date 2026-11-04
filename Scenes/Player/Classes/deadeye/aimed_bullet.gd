@@ -2,6 +2,15 @@ extends "res://Scenes/Player/Classes/projectile_base.gd"
 var already_hit = []
 
 var bullet_frag = preload("res://Scenes/Player/Classes/deadeye/bullet_fragment.tscn")
+var burn = false
+
+func set_burn(val):
+	burn = val
+
+func set_size(sze):
+	self.scale.x = sze
+	self.scale.y = sze
+	size = sze
 
 func _ready() -> void:
 	set_status()
@@ -9,6 +18,7 @@ func _ready() -> void:
 	self.scale.y = size
 	$Line2D.points[1] += Vector2(speed[0] * 0.05, speed[1] * 0.05)
 	set_angle(speed.angle())
+	fix_rotation()
 
 func set_speed(x, y):
 	self.speed = Vector2(x, y)
@@ -30,10 +40,17 @@ func check_hit():
 		if collider.is_in_group("attackable") and collider.is_in_group("enemy") and collider not in already_hit and hitnum >= 1:
 			charge_ult()
 			collider.take_damage(damage, calc_pierce(collider.get_defense()))
+			
+			if speed[0] < 0:
+				direction = -1
+			else:
+				direction = 1
+			
 			collider.take_knockback(knockback, direction)
 			collider.take_knockbackY(knockbackY)
 			collider.reset_gravity()
-			collider.inflict_fire(9)
+			if burn:
+				collider.inflict_fire(9)
 			collider.take_stun(stuntime)
 			already_hit += [collider]
 			hitnum -= 1

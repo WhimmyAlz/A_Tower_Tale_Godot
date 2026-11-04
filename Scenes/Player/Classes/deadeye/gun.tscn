@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://t48hcfoqjluk"]
+
+[ext_resource type="Texture2D" uid="uid://dcx3geaovjxq" path="res://Scenes/Player/Classes/deadeye/Sprites/gun_shot.png" id="1_y8xh3"]
+[ext_resource type="Script" uid="uid://1gxj4mky8cbm" path="res://Scenes/Player/Classes/deadeye/gun.gd" id="2_kj4p3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj4p3"]
+atlas = ExtResource("1_y8xh3")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxilc"]
+atlas = ExtResource("1_y8xh3")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p262g"]
+atlas = ExtResource("1_y8xh3")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yemke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj4p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxilc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p262g")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 20.0
+}]
+
+[node name="gun" type="AnimatedSprite2D" unique_id=1466482019]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_yemke")
+animation = &"shoot"
+script = ExtResource("2_kj4p3")

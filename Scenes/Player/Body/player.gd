@@ -217,7 +217,7 @@ func take_damage(value, defense_pen, color = Color.WHITE_SMOKE):
 	damageText.set_position(position + Vector2(0, -400))
 	damageText.set_color(color)
 	damageText.set_size(1 + (float(damage)/50))
-	get_tree().current_scene.get_node("Damage_text").add_child(damageText)
+	get_tree().current_scene.get_node("UI Containers").get_node("Damage_text").add_child(damageText)
 	
 	damage_misc(damage)
 

@@ -15,7 +15,7 @@ func init_boss_bar():
 	boss_bar = boss_bar_preload.instantiate()
 	boss_bar.visible = false
 	boss_bar.update_name("[b]%s[/b]" % Boss_bar_name)
-	get_tree().current_scene.get_node("Boss_Health_Bars").get_node("boss_hp_container").add_child(boss_bar)
+	get_tree().current_scene.get_node("UI Containers").get_node("boss_hp_container").add_child(boss_bar)
 
 func update_hp_bar():
 	$HealthBar.update_value(Health)
@@ -24,7 +24,7 @@ func update_hp_bar():
 	boss_bar.update_max_value(Max_Health)
 
 func set_description():
-	description = "[b]Nell[/b]\nLevel: %d\n\n[i]\"My arrows will pierce your heart!\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The ranger of the twins.\n\nDrops:\n10-12 Essence of Regret (100%%)\nEssence of Fire (12-15)\nBone Fragment (5-8)\n%d-%d xp\n\nBoss Perk: prolly don't need one" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
+	description = "[b]Nell[/b]\nLevel: %d\n\n[i]\"My arrows will pierce your heart!\"[/i]\n\nHealth: %d\nDamage: %d\nDefense: %d\nDefense Penetration: %d\n\nDescription:\nA member of a hero party lost in the past. The ranger of the twins.\n\nDrops:\n10-12 Essence of Regret (100%%)\ndaEssence of Fire (12-15)\nBone Fragment (5-8)\n%d-%d xp\n\nBoss Perk: prolly don't need one" % [Level, Health, Damage, Defense, Defense_pen, xp_range[0], xp_range[1]]
 
 func check_phase():
 	if phases[phase][1] > 0:

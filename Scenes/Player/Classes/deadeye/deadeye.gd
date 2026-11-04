@@ -4,7 +4,7 @@ var attack1_max_t = 13
 var attack2_max_t = 120
 var attack3_max_t = 300
 var attack4_max_t = 450
-var attack5_max_t = 450
+var attack5_max_t = 600
 var ultimate_max_t = 60
 
 var active = false
@@ -12,7 +12,7 @@ var active = false
 var consumed_needle_stacks = 0
 var bullet
 
-var shadow_spike
+var gun
 var scope
 var descriptions 
 
@@ -25,7 +25,7 @@ var kick_wave = preload("res://Scenes/Player/Classes/deadeye/kick_wave.tscn")
 
 var bullet_proj = preload("res://Scenes/Player/Classes/deadeye/bullet.tscn")
 var needle_proj = preload("res://Scenes/Player/Classes/needle/needle_proj.tscn")
-var shadow_spike_proj = preload("res://Scenes/Player/Classes/shadow/shadow_spike.tscn")
+var gun_preload = preload("res://Scenes/Player/Classes/deadeye/gun.tscn")
 var scope_preload = preload("res://Scenes/Player/Classes/deadeye/scope.tscn")
 var shadow_slice = preload("res://Scenes/Player/Classes/shadow/shadow_slice.tscn")
 
@@ -35,7 +35,7 @@ func get_description():
 	"attack_2": ["[b]Kick[/b]\n", "Kicks an enemy into the air, leaving them vulnerable. -15% chance to crit. \n[color=dodger_blue]Consumes 15 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + Strength)\n" % ((1 * Global.power) + (1 * Global.strength)),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 15\n", "Stuntime: 0.75s\n"],
 	"attack_3": ["[b]Bullet Rain[/b]\n", "Shoots a special bullet which causes 15 bullets to fall upon the enemy hit. Falling bullets do half of inital damage.\n[color=dodger_blue]Consumes 75 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (40%% + 0.4x dexterity)\n" % ((0.4 * Global.power) + (0.4 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 3\n", "Stuntime: 0.16s\n"],
 	"attack_4": ["[b]Cover Me![/b]\n", "Calls for cover fire. 3 special shots are fired at random enemies, piercing them and inflicting fire. \n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (60%% + 0.6x dexterity)x3\n" % ((0.6 * Global.power) + (0.6 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 0\n", "Stuntime: 0.2s\n\n", "Inflicts [color=orange]Fire 9[/color]\n"],
-	"attack_5": ["[b]Giant Spikes[/b]\n", "Shoots out 3 giant shadow spikes, dealing massive damage and has far reach.\n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (80%% + 0.5x dexterity)\n" % (0.8 * Global.power + 0.5 * Global.dexterity), "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 8\n", "Stuntime: 0.5s\n"],
+	"attack_5": ["[b]Gun Boomerang[/b]\n", "Throw a revolver which spins forward before flying back while rapidly firing bullets. \n[color=dodger_blue]Consumes 75 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (30%% + 0.3x dexterity)\n" % (0.3 * Global.power + 0.3 * Global.dexterity), "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 5\n", "Stuntime: 0.25s\n"],
 	"ultimate": ["[b]Shadow Slices[/b]\n", "Quickly slices 3 times around you and deal massive damage. Crits inflict deathmark.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (60%% + 0.6x dexterity)\n" % ((0.6 * Global.power) + (0.6 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 0\n", "Stuntime: 1s\n\n", "Inflicts [color=yellow]Shock 15[/color] and crits inflict [color=gray]Deathmark 500[/color]"],
 	}
 	return(descriptions)
@@ -221,44 +221,35 @@ func attack_4():
 		Global.attack4t = 0
 
 func init_attack_5():
-	if Global.stamina >= 60:
+	if Global.stamina >= 75:
 		set_dir()
 
-		Global.stamina -= 60
+		Global.stamina -= 75
 		Global.attack5t = 1
 
 		player.set_animation_visibility(false)
 		class_anim.visible = true
 		class_anim.frame = 0
-		class_anim.play("rage")
+		class_anim.play("base_shoot")
 		Global.attack5t = 1
 		player.set_attacking(true)
 
 func attack_5():
-	if Global.attack5t >= 1 and Global.attack5t <= 60:
+	if Global.attack5t >= 1 and Global.attack5t <= 30:
 		class_anim.speed_scale = 4
 		player.set_speed_penalty(0)
 		
 		# spawns spikes
-		if between(Global.attack5t, 16, 60) and Global.attack5t % 15 == 0:
-			var extra_size = 0.5 * randi_range(0, 2)
-			shadow_spike = shadow_spike_proj.instantiate()
-			shadow_spike.set_player(player)
-			shadow_spike.set_damage((0.8 * Global.power) + (0.5 * Global.dexterity))
-			shadow_spike.set_knockback(8)
-			shadow_spike.set_pos(player.position + Vector2(600 * Global.player_dir, -80))
-			shadow_spike.set_size(4 + extra_size)
-			shadow_spike.set_stuntime(30)
-			shadow_spike.set_hitnum(10)
-			shadow_spike.set_rotate_level(2)
-			shadow_spike.set_giant_spike()
-			shadow_spike.set_ult_charge_amount(60)
-			player.get_parent().set_screenshake(3)
-			
+		if Global.attack5t == 10:
+			gun = gun_preload.instantiate()
+			gun.set_player(player)
+			gun.set_pos(player.position + Vector2(0, -80))
+			gun.set_speed(Vector2(25, 0))
+			gun.set_damage((0.3 * Global.power) + (0.3 * Global.dexterity))
 
-			get_tree().current_scene.get_node("Projectiles").add_child(shadow_spike)
+			get_tree().current_scene.get_node("Projectiles").add_child(gun)
 
-		if Global.attack5t == 60:
+		if Global.attack5t == 30:
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)
