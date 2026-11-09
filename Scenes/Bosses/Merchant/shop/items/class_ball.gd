@@ -1,6 +1,6 @@
 extends "res://Scenes/Bosses/Merchant/shop/items/items_base.gd"
 
-static var class_list = ["brawler", "needle", "reaper", "paladin", "shadow"]
+static var class_list = ["brawler", "needle", "reaper", "paladin", "shadow", "deadeye"]
 static var freebie = 1
 
 var required_items := {}
@@ -53,11 +53,14 @@ func check_items():
 
 func set_item_values():
 	required_items = {}
-	if value >= 0 and value <= 3:
+	if value >= 0 and value <= 3: # brawler, needle, reaper, paladin
 		price = 25
-	if value == 4:
+	if value == 4: # shadow
 		price = 99
 		required_items = {"Shadow Essence": 1, "Bone Fragment": 30}
+	if value == 5: # deadeye
+		price = 99
+		required_items = {"Essence of Regret": 5, "Weapon Parts": 1, "Bone Fragment": 90}
 	if freebie == 1 and value >= 0 and value <= 3:
 		price = 0
 

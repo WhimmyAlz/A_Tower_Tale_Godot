@@ -3,8 +3,16 @@ var already_hit = []
 
 var bullet_frag = preload("res://Scenes/Player/Classes/deadeye/bullet_fragment.tscn")
 var bullet_fall = false
+var mega_shot = false
+var crit_stam = false
 
 var falling_bullet_proj = preload("res://Scenes/Player/Classes/deadeye/falling_bullet.tscn")
+
+func set_crit_stam(val):
+	crit_stam = val
+
+func set_mega_shot(val):
+	mega_shot = val
 
 func set_bullet_fall(val):
 	bullet_fall = val
@@ -30,7 +38,6 @@ func spawn_falling_bullet(pos, i=0):
 
 	get_tree().current_scene.get_node("Projectiles").call_deferred("add_child", falling_bullet)
 
-
 func check_hit():
 	var query = PhysicsShapeQueryParameters2D.new()
 	query.shape = $CollisionShape2D.shape
@@ -43,8 +50,11 @@ func check_hit():
 		var collider = collision.collider
 		if collider.is_in_group("attackable") and collider.is_in_group("enemy") and collider not in already_hit and hitnum >= 1:
 			charge_ult()
-			if collider.take_damage(damage, calc_pierce(collider.get_defense())) and not bullet_fall:
-				Global.stamina = minf(Global.stamina + (Global.max_stamina * 0.2), Global.max_stamina)
+			if collider.take_damage(damage, calc_pierce(collider.get_defense())):
+				if crit_stam:
+					Global.stamina = minf(Global.stamina + (Global.max_stamina * 0.2), Global.max_stamina)
+				if mega_shot:
+					collider.inflict_shock(50)
 			collider.take_knockback(knockback, direction)
 			collider.take_knockbackY(knockbackY)
 			collider.reset_gravity()
@@ -53,17 +63,26 @@ func check_hit():
 			hitnum -= 1
 			
 			var fragment = bullet_frag.instantiate()
-			
+
+			if mega_shot:
+				collider.inflict_fire(30)
+				fragment.set_size(4)
+
 			fragment.set_pos(position.x, position.y)
 			fragment.set_dir(direction)
 			get_tree().current_scene.get_node("Projectiles").call_deferred("add_child", fragment)
+			
+
 			
 			if bullet_fall:
 				for i in range(15):
 					spawn_falling_bullet(collider.position, i)
 
 func _physics_process(_delta: float) -> void:
-	$Line2D.points[1] -= Vector2(speed[0] * 0.2, 0)
+	if mega_shot:
+		$Line2D.points[1] -= Vector2(speed[0] * 0.03, 0)
+	else:
+		$Line2D.points[1] -= Vector2(speed[0] * 0.2, 0)
 	fix_rotation()
 	
 	self.position += speed * 0.5

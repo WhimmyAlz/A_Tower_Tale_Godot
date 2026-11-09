@@ -150,6 +150,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=522202565]
 position = Vector2(0, -10)
+offset = Vector2(0, 600)
+zoom = Vector2(3, 3)
 limit_enabled = false
 
 [node name="Non Attached UI Elements" type="Control" parent="." unique_id=1654400495]

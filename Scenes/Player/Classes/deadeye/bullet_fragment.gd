@@ -2,6 +2,9 @@ extends Node2D
 
 var angle = null
 
+func set_size(val):
+	scale = Vector2(val, val)
+
 func set_angle(val):
 	rotation = val
 

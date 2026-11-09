@@ -9,11 +9,11 @@ var ultimate_max_t = 90
 
 var active = false
 
+var descriptions 
+
 var explosion
 var soul_needle
 var reaper_slice
-var descriptions 
-var closest_enemy
 
 @onready var player = get_parent().get_parent()
 @onready var class_anim = $skills
@@ -180,7 +180,6 @@ func init_attack_4():
 		set_dir()
 
 		Global.stamina -= 120
-		Global.attack4t = 1
 
 		player.set_animation_visibility(false)
 		class_anim.visible = true
@@ -234,7 +233,6 @@ func init_attack_5():
 		set_dir()
 
 		Global.stamina -= 0
-		Global.attack5t = 1
 
 		player.set_animation_visibility(false)
 		class_anim.visible = true
@@ -281,7 +279,6 @@ func init_ultimate():
 		set_dir()
 
 		Global.stamina -= 0
-		Global.ultimatet = 1
 
 		player.set_animation_visibility(false)
 		class_anim.visible = true

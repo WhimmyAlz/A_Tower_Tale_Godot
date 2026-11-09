@@ -9,9 +9,6 @@ var ultimate_max_t = 60
 
 var active = false
 
-var consumed_needle_stacks = 0
-var needle
-
 var shadow_spike
 var shadow_break
 var descriptions 
@@ -20,7 +17,6 @@ var descriptions
 @onready var class_anim = $skills
 @onready var status = $"../../../Non Attached UI Elements/Status_effects"
 
-var needle_proj = preload("res://Scenes/Player/Classes/needle/needle_proj.tscn")
 var shadow_spike_proj = preload("res://Scenes/Player/Classes/shadow/shadow_spike.tscn")
 var shadow_break_preload = preload("res://Scenes/Player/Classes/shadow/shadow_break.tscn")
 var shadow_slice = preload("res://Scenes/Player/Classes/shadow/shadow_slice.tscn")
@@ -124,7 +120,6 @@ func attack_2():
 					player.position.x = mini(player.position.x + (500), 999)
 
 		if Global.attack2t == 25:
-			status.remove_needles(consumed_needle_stacks)
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)
@@ -234,7 +229,6 @@ func init_attack_5():
 		set_dir()
 
 		Global.stamina -= 60
-		Global.attack5t = 1
 
 		player.set_animation_visibility(false)
 		class_anim.visible = true
@@ -271,7 +265,6 @@ func attack_5():
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)
-			status.remove_needles(consumed_needle_stacks)
 
 	if Global.attack5t >= 1:
 		Global.attack5t += 1
@@ -284,7 +277,6 @@ func init_ultimate():
 		set_dir()
 
 		Global.stamina -= 0
-		Global.ultimatet = 1
 
 		player.set_animation_visibility(false)
 		class_anim.visible = true

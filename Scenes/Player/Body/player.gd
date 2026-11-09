@@ -79,6 +79,9 @@ func player_movement():
 	elif not jump_pause:
 		$AnimatedSprite2D.play("idle")
 		hat_mode = "idle"
+	
+	if Global.stun_time > 0:
+		hat_mode = "stun"
 
 ## Sets the gravity and values of jumps for the player. Also checks for player input on jumps and allows jumping. (fix colision with ceiling issue)
 func vert_velocities():
@@ -192,6 +195,9 @@ func unlock_ultimate():
 	Global.ultimate_attack = 1
 	$"../Non Attached UI Elements/MoveList".unhide_attacks()
 
+func on_death():
+	Global._ready()
+
 # Next few functions are used for stat changes
 
 ## changes health and sets the hp bar
@@ -220,6 +226,9 @@ func take_damage(value, defense_pen, color = Color.WHITE_SMOKE):
 	get_tree().current_scene.get_node("UI Containers").get_node("Damage_text").add_child(damageText)
 	
 	damage_misc(damage)
+	
+	if Global.health <= 0:
+		on_death()
 
 func damage_misc(damage):
 	if Global.player_class == "paladin" and not get_status_effect().get_borrowed_time():
@@ -297,8 +306,16 @@ func _ready() -> void:
 	player_friction() # calls friction function 
 	player_movement() # calls player movement function 
 	vert_velocities() # calls player vertical movement function
+	Global.stun_time = 120
+
+func zoom_out():
+	if $"../Camera2D".zoom.x > 1.01:
+		$"../Camera2D".offset.y -= 6
+		$"../Camera2D".zoom -= Vector2(0.02, 0.02)
 
 func _physics_process(_delta: float):
+	zoom_out()
+	
 	check_between_time()
 	if not attacking:
 		stamina_regen()

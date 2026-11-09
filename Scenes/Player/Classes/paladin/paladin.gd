@@ -207,7 +207,6 @@ func init_attack_4():
 		set_dir()
 
 		Global.stamina -= 75
-		Global.attack4t = 1
 
 		player.set_animation_visibility(false)
 		class_anim.visible = true
@@ -252,8 +251,8 @@ func init_attack_5():
 	if Global.stamina >= 30:
 		set_dir()
 
-		Global.attack5t = 1
 		Global.stamina -= 30
+
 		player.set_animation_visibility(false)
 		class_anim.visible = true
 		class_anim.frame = 0
@@ -284,7 +283,6 @@ func init_ultimate():
 		set_dir()
 
 		Global.stamina -= 0
-		Global.ultimatet = 1
 
 		player.set_animation_visibility(false)
 		class_anim.visible = true

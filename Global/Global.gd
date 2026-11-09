@@ -6,9 +6,8 @@ var instant_chat = false
 
 # Notes: Abyssal cult revolves around the occult/abyss energy
 
-var player_class := "deadeye"
+var player_class := "brawler"
 var player_XP := 0
-var player_XP_REQ := 1000
 var player_Level := 1
 
 var max_jumps := 1
@@ -44,7 +43,7 @@ var crit_chance_adds := 0.0
 var crit_damage := 1.25 # damage multi from crits
 var crit_damage_adds := 0.0 # damage multi from crits
 
-var player_attacks = 5
+var player_attacks = 1
 var ultimate_attack = 0
 
 # cooldowns
@@ -85,6 +84,76 @@ var item_colors := {"Bone Fragment": "white", "Glasses": "coral", "Orange Slime"
 var Gravity := 50
 var stun_time := 0
 var Souls = 0
+
+func reset_stats():
+	player_class = "brawler"
+	player_XP = 0
+	player_Level = 1
+	
+	max_jumps = 1
+	flight = 0
+	jump_power = 1500
+	jump_limit = 100
+	
+	player_spd = 10
+	player_weight = 50
+	player_dir = 1
+	
+	strength = 2
+	agility = 2
+	dexterity = 2
+	intellect = 2
+	
+	bonus_strength = 0
+	bonus_agility = 0
+	bonus_dexterity = 0
+	bonus_intellect = 0
+	
+	power = 0
+	defense = 0
+	defense_penetration = 0
+	max_stamina = 1
+	stamina = 1
+	max_health = 1
+	health = 1
+	health_regen_value = 15
+	crit_chance = 0
+	crit_chance_adds = 0
+	crit_damage = 0
+	crit_damage_adds = 0
+	
+	player_attacks = 1
+	ultimate_attack = 1
+	
+	attack1t = 0
+	attack2t = 0
+	attack3t = 0
+	attack4t = 0
+	attack5t = 0
+	ultimatet = 0
+	
+	attack1_max_t = null
+	attack2_max_t = null
+	attack3_max_t = null
+	attack4_max_t = null
+	attack5_max_t = null
+	ultimate_max_t = null
+	
+	ultimate_charge = 0
+	
+	speed_multi = 0
+	jump_multi = 0	
+	jump_adds = 0
+	bonus_health_regen = 0
+	stamina_regen_multi = 0
+	bonus_power = 0
+	bonus_defense = 0
+	defense_penetration_adds = 0
+	
+	Inventory = {}
+	Gravity = 50
+	stun_time = 0
+	Souls = 0
 
 ## Sets stats for Brawler [class:0]
 func class_stats_brawler():
