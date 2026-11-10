@@ -126,7 +126,7 @@ func take_damage(dmg, defense_pen, crit_chance = Global.crit_chance, color = Col
 	var crit = randi_range(0, 100) < crit_chance
 
 	if crit:
-		damage =  maxf((dmg * Global.crit_damage + bonus_crit_damage) - def, 1)
+		damage =  maxf((maxf(dmg - def, 1) * Global.crit_damage + bonus_crit_damage), 1)
 		color = Color.GOLD
 
 	#sets damage to int if close to x.0 and limits decimals to tenths
