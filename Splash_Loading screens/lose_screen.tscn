@@ -85,7 +85,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wj4x2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=844732822]
 texture_filter = 1
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6x1ko")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D" unique_id=1283911443]

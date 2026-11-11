@@ -167,6 +167,10 @@ visible = false
 z_index = 100
 position = Vector2(-1416, -885)
 
+[node name="Inventory" parent="Non Attached UI Elements" unique_id=951110833 instance=ExtResource("14_7rbim")]
+visible = false
+position = Vector2(0, -54)
+
 [node name="Prog_Bars" type="Control" parent="Non Attached UI Elements" unique_id=841381205]
 anchors_preset = 0
 offset_left = -1507.0
@@ -219,10 +223,6 @@ texture_under = ExtResource("10_unyjo")
 texture_over = ExtResource("11_t0j56")
 texture_progress = ExtResource("12_iqdhd")
 texture_progress_offset = Vector2(9, 0)
-
-[node name="Inventory" parent="Non Attached UI Elements" unique_id=951110833 instance=ExtResource("14_7rbim")]
-visible = false
-position = Vector2(0, -54)
 
 [node name="MoveList" parent="Non Attached UI Elements" unique_id=1954343084 instance=ExtResource("16_e2n6q")]
 position = Vector2(1458, 870)

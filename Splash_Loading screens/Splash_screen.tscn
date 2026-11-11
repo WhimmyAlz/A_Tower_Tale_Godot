@@ -4,6 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://b66rvmk3jmy5r" path="res://Splash_Loading screens/Sprites/Cover_screen.png" id="1_aodrp"]
 [ext_resource type="Texture2D" uid="uid://dvro8anhgt1tt" path="res://Global/pause_menu/buttons/button1_1.png" id="3_mtvan"]
 [ext_resource type="Texture2D" uid="uid://bk6asq376s781" path="res://Global/pause_menu/buttons/button1_2.png" id="4_1m8au"]
+[ext_resource type="Texture2D" uid="uid://bi2hnkmkkr1ef" path="res://Splash_Loading screens/Sprites/title_text.png" id="5_mtvan"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtvan"]
+bg_color = Color(0, 0, 0, 0.5019608)
+border_width_top = 300
+border_width_bottom = 300
+border_color = Color(0, 0, 0, 0.68235296)
+border_blend = true
 
 [node name="Cover Screen" type="Node2D" unique_id=59160505]
 script = ExtResource("1_5ed46")
@@ -20,6 +28,19 @@ zoom = Vector2(1.57, 1.57)
 
 [node name="Cover_screen_BG" type="Sprite2D" parent="." unique_id=796241247]
 texture = ExtResource("1_aodrp")
+
+[node name="Panel" type="Panel" parent="." unique_id=564231566]
+offset_left = -87.57242
+offset_top = -1407.5969
+offset_right = 1921.8871
+offset_bottom = -483.54022
+rotation = 0.6126106
+theme_override_styles/panel = SubResource("StyleBoxFlat_mtvan")
+
+[node name="TitleText" type="Sprite2D" parent="." unique_id=1821514783]
+position = Vector2(560, -253)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_mtvan")
 
 [node name="Buttons" type="VBoxContainer" parent="." unique_id=253725108]
 offset_left = -886.0
