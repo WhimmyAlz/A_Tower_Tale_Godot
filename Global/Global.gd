@@ -3,7 +3,7 @@ extends Node
 var floors := 0
 
 var instant_chat = false
-
+var death_position
 # Notes: Abyssal cult revolves around the occult/abyss energy
 
 var player_class := "brawler"

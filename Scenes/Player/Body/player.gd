@@ -196,7 +196,8 @@ func unlock_ultimate():
 	$"../Non Attached UI Elements/MoveList".unhide_attacks()
 
 func on_death():
-	Global._ready()
+	Global.death_position = position
+	get_tree().call_deferred("change_scene_to_file", "res://Splash_Loading screens/lose_screen.tscn")
 
 # Next few functions are used for stat changes
 

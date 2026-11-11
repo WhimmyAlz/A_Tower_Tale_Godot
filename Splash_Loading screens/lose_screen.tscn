@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://8wxny3fhfgcd"]
+
+[ext_resource type="Script" uid="uid://bgjjqgqpfumoo" path="res://Splash_Loading screens/lose_screen.gd" id="1_5ojnh"]
+[ext_resource type="Texture2D" uid="uid://bwhjft8dslrlx" path="res://Splash_Loading screens/Sprites/player_death.png" id="1_33us6"]
+[ext_resource type="Texture2D" uid="uid://dvro8anhgt1tt" path="res://Global/pause_menu/buttons/button1_1.png" id="3_iaha4"]
+[ext_resource type="Texture2D" uid="uid://bk6asq376s781" path="res://Global/pause_menu/buttons/button1_2.png" id="4_lp21v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wj4x2"]
+bg_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+border_width_left = 20000
+border_width_top = 20000
+border_width_right = 20000
+border_width_bottom = 20000
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjipj"]
+atlas = ExtResource("1_33us6")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmsc8"]
+atlas = ExtResource("1_33us6")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ojnh"]
+atlas = ExtResource("1_33us6")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iaha4"]
+atlas = ExtResource("1_33us6")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp21v"]
+atlas = ExtResource("1_33us6")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj4x2"]
+atlas = ExtResource("1_33us6")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6x1ko"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjipj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmsc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmsc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ojnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iaha4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp21v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj4x2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_5ojnh"]
+offsets = PackedFloat32Array(0, 0.52259886)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
+
+[node name="LoseScreen" type="Node2D" unique_id=2120635152]
+script = ExtResource("1_5ojnh")
+
+[node name="Panel" type="Panel" parent="." unique_id=1184616159]
+offset_left = -1674.0
+offset_top = -1198.0
+offset_right = 1685.0
+offset_bottom = 1168.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wj4x2")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1794656717]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=844732822]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_6x1ko")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D" unique_id=1283911443]
+position = Vector2(-1.1999999, -39.999996)
+scale = Vector2(0.19999999, 0.19999999)
+emitting = false
+amount = 100
+lifetime = 4.14
+one_shot = true
+speed_scale = 1.89
+explosiveness = 0.6
+direction = Vector2(0, -1)
+spread = 60.0
+gravity = Vector2(0, 600)
+initial_velocity_max = 1000.0
+angle_min = -232.3
+angle_max = 291.9
+scale_amount_min = 19.43
+scale_amount_max = 60.91
+color = Color(0.96505195, 4.379898e-06, 1.540184e-06, 1)
+color_ramp = SubResource("Gradient_5ojnh")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=851076128]
+visible = false
+offset_left = -1501.0
+offset_top = -807.0
+offset_right = 1501.0
+offset_bottom = -452.0
+theme_override_font_sizes/normal_font_size = 96
+theme_override_font_sizes/bold_font_size = 96
+bbcode_enabled = true
+text = "[b]Wow. Geeg[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1675568415]
+visible = false
+texture_filter = 1
+offset_left = -327.0
+offset_top = 502.0
+offset_right = -195.0
+offset_bottom = 566.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("3_iaha4")
+texture_pressed = ExtResource("3_iaha4")
+texture_hover = ExtResource("4_lp21v")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureButton" unique_id=428109887]
+layout_mode = 0
+offset_left = 48.200005
+offset_top = 20.2
+offset_right = 444.2
+offset_bottom = 244.2
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/bold_font_size = 160
+bbcode_enabled = true
+text = "[b]EXIT"
+scroll_active = false
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
