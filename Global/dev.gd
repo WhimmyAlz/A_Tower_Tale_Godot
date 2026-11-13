@@ -224,7 +224,7 @@ func spawn(command):
 				spawn_enemy(gray_bird, command[2])
 			elif command[1] == "shadow_hand":
 				spawn_enemy(shadow_hand, command[2])
-			elif command[1] == "mournign_ghoul":
+			elif command[1] == "mourning_ghoul":
 				spawn_enemy(mourning_ghoul, command[2])
 			else:
 				log_text("Enemy name not found.")

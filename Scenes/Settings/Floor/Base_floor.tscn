@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b8fva8sdhjebr" path="res://Scenes/Mobs/Nerd/nerd.tscn" id="9_4w8c0"]
 [ext_resource type="Texture2D" uid="uid://sq7dj0d6vv7a" path="res://Scenes/Settings/Floor/Sprites/Background_walls/TG_wall3.png" id="9_qenw3"]
 [ext_resource type="Texture2D" uid="uid://b8o2m50ekfdg6" path="res://Scenes/Settings/Floor/Sprites/Background_walls/TG_wall4.png" id="10_fo121"]
+[ext_resource type="Script" uid="uid://bvn3camlnhkdq" path="res://Scenes/Settings/Floor/ui_containers.gd" id="15_hsfq4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5mogd"]
 texture = ExtResource("5_wgy1v")
@@ -108,6 +109,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+script = ExtResource("15_hsfq4")
 
 [node name="Damage_text" type="Node2D" parent="UI Containers" unique_id=1384257206]
 
@@ -124,3 +126,13 @@ offset_right = 747.0
 offset_bottom = 911.4
 mouse_filter = 2
 theme_override_constants/separation = 200
+
+[node name="text_container" type="VBoxContainer" parent="UI Containers" unique_id=253779936]
+z_index = 10
+layout_mode = 0
+offset_left = -898.0
+offset_top = -918.0
+offset_right = 905.0
+offset_bottom = 754.0
+mouse_filter = 2
+alignment = 2

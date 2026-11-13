@@ -15,10 +15,10 @@ func _physics_process(_delta: float) -> void:
 		$AnimatedSprite2D.position.x *= 0.98
 		$AnimatedSprite2D.position.y *= 0.98
 	
-	if abs($AnimatedSprite2D.position.x) < 5:
+	if abs($AnimatedSprite2D.position.x) < 3:
 		$AnimatedSprite2D.position.x = 0
 
-	if abs($AnimatedSprite2D.position.y) < 5:
+	if abs($AnimatedSprite2D.position.y) < 3:
 		$AnimatedSprite2D.position.y = 0
 
 	if one_shot == 1 and counter == 90:

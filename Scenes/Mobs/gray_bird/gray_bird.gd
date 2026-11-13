@@ -38,11 +38,12 @@ func attacking():
 		if collider.is_in_group("player") and collider.is_in_group("attackable") and hitnum >= 1:
 			if attack == 2:
 				collider.take_damage(Damage * 0.5, Defense_pen)
+				collider.take_stun(20)
 			else:
 				collider.take_damage(Damage, Defense_pen)
+				collider.take_stun(40)
 			if hitnum == 1:
 				collider.take_knockback(10, direction)
-			collider.take_stun(40)
 			hitnum -= 1
 
 func set_level_stats():

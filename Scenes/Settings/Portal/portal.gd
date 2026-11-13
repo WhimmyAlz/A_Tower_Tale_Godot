@@ -111,12 +111,15 @@ func init_floor_mobs(floor_num):
 		spawn_skeleton(Vector2(0, 0), 8)
 	elif floor_num == 4:
 		spawn_nerd(Vector2(500, 0), 3)
-		spawn_skeleton(Vector2(0, 0), 10)
+		if randi_range(1,10) == 1:
+			spawn_undead_warrior(Vector2(0, 0), 2)
+		else:
+			spawn_skeleton(Vector2(0, 0), 10)
 	elif floor_num == 5:
 		spawn_sir_blob(Vector2(700, 0), 1)
 	elif floor_num == 6:
-		spawn_undead_ranger(Vector2(700, 0), 5)
-		spawn_undead_ranger(Vector2(-700, 0), 5)
+		spawn_undead_ranger(Vector2(700, 0), 6)
+		spawn_undead_ranger(Vector2(-700, 0), 6)
 	elif floor_num == 7:
 		spawn_skeleton(Vector2(700, 0), 10)
 		spawn_undead_ranger(Vector2(-700, 0), 7)

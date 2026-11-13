@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c3kbpkmn4v4ns" path="res://Scenes/Bosses/Merchant/shop/items/consumable.tscn" id="11_aem8j"]
 [ext_resource type="PackedScene" uid="uid://crk17gjkrmqkv" path="res://Scenes/Bosses/Merchant/shop/items/nerd_book.tscn" id="12_iqy3q"]
 [ext_resource type="PackedScene" uid="uid://bon3vn7jnrb7y" path="res://Scenes/Bosses/Merchant/shop/items/ultimate_book.tscn" id="13_sw20i"]
+[ext_resource type="PackedScene" uid="uid://cuufur8hu2win" path="res://Scenes/Bosses/Merchant/shop/items/halo.tscn" id="14_jev6w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udlmb"]
 atlas = ExtResource("1_45aw4")
@@ -255,6 +256,9 @@ position = Vector2(-429, -532)
 
 [node name="UltimateBook" parent="Shop/Items" unique_id=1373719681 instance=ExtResource("13_sw20i")]
 position = Vector2(1944, -1186)
+
+[node name="Halo" parent="Shop/Items" unique_id=1750917414 instance=ExtResource("14_jev6w")]
+position = Vector2(1396, -1367)
 
 [connection signal="mouse_entered" from="stats_collider" to="." method="_on_stats_collider_mouse_entered"]
 [connection signal="mouse_exited" from="stats_collider" to="." method="_on_stats_collider_mouse_exited"]

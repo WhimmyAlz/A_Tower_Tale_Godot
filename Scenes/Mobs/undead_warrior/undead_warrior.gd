@@ -124,9 +124,10 @@ func _physics_process(_delta: float) -> void:
 		if hitnum == 1:
 			attacking()
 
+		if attackt == 202:
+			hitnum = 0
 		attackt += 1
 	if attackt >= 210:
-		hitnum = 0
 		attackt = bonus_hit_speed
 
 	take_all_status_effects()

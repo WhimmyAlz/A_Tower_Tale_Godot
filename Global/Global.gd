@@ -1,5 +1,8 @@
 extends Node
 
+var cursor_normal = preload("res://Global/cursor/cursor2/cursor1.png")
+var cursor_pressed = preload("res://Global/cursor/cursor2/cursor2.png")
+
 var floors := 0
 
 var instant_chat = false
@@ -73,13 +76,14 @@ var bonus_power : int = 0
 var bonus_defense : int = 0
 var defense_penetration_adds : int = 0
 
+var has_halo := false
+
 # Misc
 # Rarity: common-white, uncommon-coral, rare-lawn_green, super_rare-red, epic-aqua, Mythic-purple, Legendary-Black
 var Inventory := {}
 var item_colors := {"Bone Fragment": "white", "Glasses": "coral", "Orange Slime": "lawn_green",
 "Weapon Parts": "lawn_green", "Shadow Essence": "red", "Essence of Fire": "red", "Soul of Darkness": "black",
 "Basement Key": "purple", "Essence of Regret": "coral"}
-
 
 var Gravity := 50
 var stun_time := 0
@@ -123,7 +127,7 @@ func reset_stats():
 	crit_damage_adds = 0
 	
 	player_attacks = 1
-	ultimate_attack = 1
+	ultimate_attack = 0
 	
 	attack1t = 0
 	attack2t = 0
@@ -142,13 +146,15 @@ func reset_stats():
 	ultimate_charge = 0
 	
 	speed_multi = 0
-	jump_multi = 0	
+	jump_multi = 0
 	jump_adds = 0
 	bonus_health_regen = 0
 	stamina_regen_multi = 0
 	bonus_power = 0
 	bonus_defense = 0
 	defense_penetration_adds = 0
+	
+	has_halo = false
 	
 	Inventory = {}
 	Gravity = 50
@@ -340,9 +346,16 @@ func check_class():
 	elif player_class == "draco":
 		class_stats_draco()
 
+func cursor():
+	if Input.is_action_pressed("left_click"):
+		Input.set_custom_mouse_cursor(cursor_pressed, Input.CURSOR_ARROW, Vector2(8, 8))
+	else:
+		Input.set_custom_mouse_cursor(cursor_normal, Input.CURSOR_ARROW, Vector2(8, 8))
+
 func _ready() -> void:
 	class_stats_brawler()
 	health = max_health
 
 func _physics_process(_delta: float):
 	check_class()
+	cursor()

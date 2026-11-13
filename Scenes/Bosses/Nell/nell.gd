@@ -36,7 +36,8 @@ func check_phase():
 				attackt = attackt_start
 				for i in range(enemy_list.get_child_count()):
 					if enemy_list.get_child(i).Name == "Odon":
-						enemy_list.get_child(i).take_damage(fire_stacks / 2, 10, 0, Color.WHITE)
+						enemy_list.get_child(i).take_damage(1, 0, 0, Color.WHITE)
+						get_tree().current_scene.get_node("UI Containers").make_text("Watch Out!", "chocolate")
 				if boss_bar != null:
 					boss_bar.visible = true
 

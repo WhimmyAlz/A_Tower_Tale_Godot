@@ -19,9 +19,11 @@ func check_phase():
 			# check if enemy is "passive" before damaged
 			if phase == 1:
 				attackt = attackt_start
+				get_tree().current_scene.get_node("UI Containers").make_text("I have to kill the hero...", "red")
 				if boss_bar != null:
 					boss_bar.visible = true
-
+			if phase == 2:
+				get_tree().current_scene.get_node("UI Containers").make_text("I HAVE TO KILL THE HERO^$*!", "red")
 		phases[phase][1] -= 1
 
 func face_player(animation):
@@ -117,9 +119,9 @@ func set_level_stats():
 		Health = 4000 + (level * 400)
 		Max_Health = 4000 + (level * 400)
 		Defense = 3
-		Speed = 3
-		Damage = 50 + (level * 5)
-	phases = {0: [100, 0], 1: [50, 1], 2 : [0, 1]}
+		Speed = 2
+		Damage = 40 + (level * 4)
+	phases = {0: [100, 0], 1: [60, 1], 2 : [0, 1]}
 	Name = "Mourning Ghoul"
 	phase = 0
 	Boss = true
@@ -207,7 +209,7 @@ func _physics_process(_delta: float) -> void:
 				if attackt >= 211:
 					attackt = 0
 					attack_combo = 0
-					summon_cd = 240
+					summon_cd = randi_range(240, 420)
 		if attack == 1:
 			if attackt >= 150 and attackt <= 250:
 				attackt += 1
@@ -220,6 +222,8 @@ func _physics_process(_delta: float) -> void:
 				if attackt == 181:
 					hitnum = 1
 					summon_shadows(Level-1, "hand")
+					if randi_range(0, 1) == 0:
+						summon_shadows(Level-1, "hand")
 				
 				if attackt >= 181 and attackt <= 196:
 					attack1()

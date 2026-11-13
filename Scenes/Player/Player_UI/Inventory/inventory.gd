@@ -14,7 +14,7 @@ func update_stats():
 	
 	# displayed texts
 	var listed_stats = [
-	"[b]Level %s[/b]\n" % Global.player_Level,
+	"[b]Floor %s[/b]\n" % Global.floors,
 	"Exp %d\n\n" % Global.player_XP,
 	"Health: %d/%d\n" % [Global.health, Global.max_health],
 	"Stamina: %d/%d\n\n" % [Global.stamina, Global.max_stamina],

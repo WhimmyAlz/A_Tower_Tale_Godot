@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://vbpicxacq8n"]
+
+[ext_resource type="Script" uid="uid://bwd72pft16pv5" path="res://Scenes/Mobs/UI/text/text_scene.gd" id="1_8i5lw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmftt"]
+bg_color = Color(0, 0, 0, 0.3647059)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 0.043137256)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="enemytextScene" type="Panel" unique_id=986723107]
+custom_minimum_size = Vector2(0, 100)
+offset_right = 1800.0
+offset_bottom = 100.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmftt")
+script = ExtResource("1_8i5lw")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1341248484]
+modulate = Color(1, 1, 1, 0.77254903)
+layout_mode = 0
+offset_right = 1802.0
+offset_bottom = 98.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+bbcode_enabled = true
+text = "[i]Locked and Loaded[/i]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

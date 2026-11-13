@@ -308,6 +308,7 @@ func _ready() -> void:
 	player_movement() # calls player movement function 
 	vert_velocities() # calls player vertical movement function
 	Global.stun_time = 120
+	get_tree().current_scene.get_node("UI Containers").make_text("Time to conquer this tower...", "sky_blue")
 
 func zoom_out():
 	if $"../Camera2D".zoom.x > 1.01:

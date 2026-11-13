@@ -63,6 +63,7 @@ func on_death():
 		player.add_item("Bone Fragment", randi_range(15, 18))
 		player.add_item("Weapon Parts", randi_range(2, 4), Color.LAWN_GREEN)
 		player.add_item("Essence of Regret", randi_range(10, 12), Color.CORAL)
+		get_tree().current_scene.get_node("UI Containers").make_text("Do not break the seal...", "peru")
 	death_rewards = 0
 	boss_bar.queue_free()
 	queue_free()
@@ -84,7 +85,7 @@ func attack_2_attacking():
 		var collider = colliders[i]
 		if collider.is_in_group("player") and collider.is_in_group("attackable") and attack2cd == 0:
 			if hitnum != 1:
-				collider.take_damage(float(Damage) * 0.05, 100)
+				collider.take_damage(float(Damage) * 0.05, 10)
 				collider.take_knockback(0.75, direction)
 			else:
 				collider.take_damage(float(Damage) * 0.75, Defense_pen)

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cuufur8hu2win"]
+
+[ext_resource type="Texture2D" uid="uid://clv2htetn4cl3" path="res://Scenes/Bosses/Merchant/shop/sprites/halo/halo_1.png" id="1_68y55"]
+[ext_resource type="Script" uid="uid://dhjl0gbfjfk1g" path="res://Scenes/Bosses/Merchant/shop/items/halo.gd" id="1_fy02p"]
+[ext_resource type="Texture2D" uid="uid://7j4gt5bdtfdp" path="res://Scenes/Bosses/Merchant/shop/sprites/halo/halo_2.png" id="2_fy02p"]
+
+[node name="Halo" type="Node2D" unique_id=1750917414]
+script = ExtResource("1_fy02p")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=235460334]
+texture_filter = 1
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("1_68y55")
+texture_pressed = ExtResource("1_68y55")
+texture_hover = ExtResource("2_fy02p")
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]
