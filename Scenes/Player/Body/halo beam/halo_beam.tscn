@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://caovxlqsofrst"]
+
+[ext_resource type="Texture2D" uid="uid://5u8c6qds2nbg" path="res://Scenes/Player/Body/halo beam/halo_beam.png" id="1_43h85"]
+[ext_resource type="Script" uid="uid://1pkimg0y0x3a" path="res://Scenes/Player/Body/halo beam/halo_beam.gd" id="1_i5bve"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5bve"]
+atlas = ExtResource("1_43h85")
+region = Rect2(0, 0, 100, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ey4b"]
+atlas = ExtResource("1_43h85")
+region = Rect2(100, 0, 100, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwyp4"]
+atlas = ExtResource("1_43h85")
+region = Rect2(200, 0, 100, 800)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ehm04"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5bve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ey4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwyp4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="HaloBeam" type="Node2D" unique_id=1498175406]
+script = ExtResource("1_i5bve")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1950755443]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_ehm04")
+autoplay = "default"
+frame_progress = 0.41483033

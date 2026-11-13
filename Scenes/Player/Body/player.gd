@@ -229,7 +229,15 @@ func take_damage(value, defense_pen, color = Color.WHITE_SMOKE):
 	damage_misc(damage)
 	
 	if Global.health <= 0:
+		pre_death_check()
+
+	if Global.health <= 0:
 		on_death()
+
+func pre_death_check():
+	if Global.has_halo:
+		get_status_effect().use_halo()
+		$"Attached UI Elements/halo".visible = false
 
 func damage_misc(damage):
 	if Global.player_class == "paladin" and not get_status_effect().get_borrowed_time():

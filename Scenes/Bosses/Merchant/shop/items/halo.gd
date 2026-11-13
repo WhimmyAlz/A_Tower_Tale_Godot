@@ -6,11 +6,11 @@ func set_button_descriptions():
 	if Global.has_halo:
 		raw_description = "You already have a halo?"
 	elif check_price("Hey pal, don't think you got enough there, you need %s xp, broke bum." % value):
-		raw_description = "Buy a halo for %d?" % [value]
+		raw_description = "Buy a halo for %d xp?" % [value]
 	description = "[b]%s[/b]" % raw_description
 
 func set_item_values():
-	value = 300
+	value = 225
 
 func _ready() -> void:
 	set_button_descriptions()
@@ -31,6 +31,7 @@ func _on_texture_button_mouse_entered() -> void:
 func _on_texture_button_button_up() -> void:
 	if mouse_over and Global.player_XP >= value and not Global.has_halo:
 		Global.has_halo = true
+		player.get_node("Attached UI Elements").get_node("halo").visible = true
 		Global.player_XP -= int(value)
 
 		set_item_values()

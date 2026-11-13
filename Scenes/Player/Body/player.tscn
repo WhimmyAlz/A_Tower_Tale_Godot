@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://258dhlky5nq3" path="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_BG.png" id="5_86lyx"]
 [ext_resource type="Script" uid="uid://drnmkrhj51qsh" path="res://Scenes/Player/Player_UI/Progress_bars/Prog_bars.gd" id="5_t6byl"]
 [ext_resource type="PackedScene" uid="uid://btfb8iexjk6eb" path="res://Scenes/Player/Player_UI/Status_effects/status_effects.tscn" id="5_unyjo"]
+[ext_resource type="Texture2D" uid="uid://bhrywjcsjsj7" path="res://Scenes/Player/Body/Sprites/halo.png" id="6_fj12i"]
 [ext_resource type="Texture2D" uid="uid://dl8xhycnyk4wn" path="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_EXTRA.png" id="6_t6byl"]
+[ext_resource type="Script" uid="uid://cwjvv5krrcjpx" path="res://Scenes/Player/Body/halo.gd" id="7_8usfb"]
 [ext_resource type="Texture2D" uid="uid://cqxyaaoft6q56" path="res://Scenes/Player/Player_UI/Progress_bars/level_emblem.png" id="8_b1gc2"]
 [ext_resource type="Texture2D" uid="uid://ceisp4mqgqot3" path="res://Scenes/Player/Player_UI/Progress_bars/level_prog.png" id="9_e2n6q"]
 [ext_resource type="Texture2D" uid="uid://cqiec1poet32x" path="res://Scenes/Player/Player_UI/Progress_bars/HP Bar/HP_BAR.png" id="10_t0j56"]
@@ -95,6 +97,21 @@ expand_margin_bottom = 1.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtuoh"]
 bg_color = Color(1, 1, 1, 0.49019608)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8usfb"]
+atlas = ExtResource("6_fj12i")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mvxaa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8usfb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Player" type="Node2D" unique_id=150661442]
 script = ExtResource("1_t0j56")
 
@@ -147,6 +164,15 @@ value = 50.0
 fill_mode = 3
 show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="halo" type="AnimatedSprite2D" parent="PlayerBody/Attached UI Elements" unique_id=36327659]
+visible = false
+z_index = 1
+texture_filter = 1
+position = Vector2(0.33333334, -94.66667)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_mvxaa")
+script = ExtResource("7_8usfb")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=522202565]
 position = Vector2(0, -10)

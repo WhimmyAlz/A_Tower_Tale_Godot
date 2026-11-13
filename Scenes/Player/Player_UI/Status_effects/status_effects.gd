@@ -47,6 +47,8 @@ var deathmark_tick_delay = 0
 var iframes = false
 var iframes_time = 0
 
+var halo_time = 0
+
 func init_status_box(status, status_level, time, color, font=48):
 	status_box = preload_status_box.instantiate()
 	status_box.set_status(status)
@@ -71,7 +73,6 @@ func check_dupes(status):
 		if effect.get_status() == status and not effect.is_queued_for_deletion():
 			return(true)
 	return(false)
-
 
 func update_status_box(status, status_level, time):
 	for i in range(self.get_child(0).get_child_count()):
@@ -199,6 +200,15 @@ func add_retribution(stacks):
 			init_status_box("Retribution", retribution_stacks, retribution_tick_delay, Color.SKY_BLUE, 40)
 		set_status_font_size("Retribution", 40)
 
+func use_halo():
+	player.position.y -= 5
+	halo_time = 1
+	Global.health = 1
+	Global.has_halo = false
+	set_iframes(100)
+	var halo_beam = preload("res://Scenes/Player/Body/halo beam/halo_beam.tscn").instantiate()
+	halo_beam.set_player_pos(player)
+	get_tree().current_scene.get_node("Projectiles").add_child(halo_beam)
 
 func inflict_fire(stacks):
 	if fire_stacks <= 50:
@@ -352,7 +362,18 @@ func deathmark_effects():
 	elif deathmark_tick_delay > 0:
 		deathmark_tick_delay -= 1
 
+func halo_effect():
+	if halo_time > 0:
+		player.velocity.y = -500
+		Global.stun_time = 10
+		Global.health = (Global.max_health/100)*halo_time
+		player.update_hp_bar()
+		halo_time += 1
+		if halo_time >= 100:
+			halo_time = 0
+
 func _physics_process(_delta: float) -> void:
+	halo_effect()
 	iframes_effect()
 	berserk_effect()
 	needle_effects()
