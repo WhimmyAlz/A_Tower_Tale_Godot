@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://d4j32rxliilcg" path="res://Scenes/Mobs/UI/Stats_list/enemy_stats_list.tscn" id="5_epd48"]
 [ext_resource type="Script" uid="uid://bajnrcqqwyyx3" path="res://Scenes/Bosses/Merchant/shop/shop.gd" id="6_epd48"]
 [ext_resource type="Texture2D" uid="uid://dodjhlk64b3ep" path="res://Scenes/Bosses/Merchant/shop/sprites/bg_and_turtle.png" id="6_f7bvc"]
+[ext_resource type="Texture2D" uid="uid://g71s4kv5pnwj" path="res://Global/ETC_UI/e_to_interact.png" id="6_ga6u1"]
+[ext_resource type="Texture2D" uid="uid://pfo5h4b4sgyd" path="res://Global/ETC_UI/e_to_leave.png" id="8_0cx21"]
 [ext_resource type="Texture2D" uid="uid://cb8n0ab586267" path="res://Scenes/Bosses/Merchant/shop/sprites/text_box.png" id="9_jdt71"]
 [ext_resource type="PackedScene" uid="uid://i85n3ol557ut" path="res://Scenes/Bosses/Merchant/shop/items/class_ball.tscn" id="10_aem8j"]
 [ext_resource type="PackedScene" uid="uid://ytiw8chjo0bx" path="res://Scenes/Bosses/Merchant/shop/items/medkit.tscn" id="10_wkk76"]
@@ -194,6 +196,13 @@ collision_mask = 2
 position = Vector2(-11, 121)
 shape = SubResource("RectangleShape2D_epd48")
 
+[node name="EToInteract" type="Sprite2D" parent="." unique_id=115281064]
+visible = false
+texture_filter = 1
+position = Vector2(1, -87)
+scale = Vector2(2, 2)
+texture = ExtResource("6_ga6u1")
+
 [node name="Shop" type="Node2D" parent="." unique_id=2118587856]
 visible = false
 z_index = 100
@@ -206,6 +215,12 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_0cx21")
 animation = &"idle"
 frame_progress = 0.36451977
+
+[node name="EToLeave" type="Sprite2D" parent="Shop/BG" unique_id=802554682]
+texture_filter = 1
+position = Vector2(-225.40001, 124.4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_0cx21")
 
 [node name="text" type="Node2D" parent="Shop" unique_id=537383686]
 

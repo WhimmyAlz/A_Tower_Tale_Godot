@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://ddlr3v5rs4ll0"]
+
+[ext_resource type="Script" uid="uid://daqvgaq1kyscn" path="res://Splash_Loading screens/demo_end_screen.gd" id="1_lv2rs"]
+[ext_resource type="Texture2D" uid="uid://cfriva7g23utw" path="res://Splash_Loading screens/Sprites/end_of_demo.png" id="1_lvwbq"]
+[ext_resource type="Texture2D" uid="uid://dvro8anhgt1tt" path="res://Global/pause_menu/buttons/button1_1.png" id="2_lv2rs"]
+[ext_resource type="Texture2D" uid="uid://bk6asq376s781" path="res://Global/pause_menu/buttons/button1_2.png" id="3_k14yr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ck7fw"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 100
+border_width_top = 100
+border_width_right = 100
+border_width_bottom = 100
+border_color = Color(0, 0, 0, 0.5803922)
+border_blend = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ott2i"]
+atlas = ExtResource("1_lvwbq")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdxe0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ott2i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_s1xwh"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 0, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_6ltyn"]
+colors = PackedColorArray(1, 0, 0, 1, 0.98458356, 0.808929, 3.85046e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k14yr"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="DemoEndScreen" type="Node2D" unique_id=1820976497]
+script = ExtResource("1_lv2rs")
+
+[node name="Panel" type="Panel" parent="." unique_id=2065022272]
+offset_left = -1680.0
+offset_top = -1050.0
+offset_right = 1628.0
+offset_bottom = 1072.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ck7fw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1060991618]
+texture_filter = 1
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_kdxe0")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=773229613]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=693842481]
+position = Vector2(-1594, 795)
+amount = 30
+lifetime = 10.0
+speed_scale = 4.24
+explosiveness = 0.8
+direction = Vector2(1, -1)
+gravity = Vector2(0, 300)
+initial_velocity_min = 616.34
+initial_velocity_max = 1000.0
+scale_amount_min = 28.65
+scale_amount_max = 130.03
+color_initial_ramp = SubResource("Gradient_s1xwh")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="." unique_id=1059173425]
+position = Vector2(1566, 788)
+amount = 30
+lifetime = 10.0
+speed_scale = 4.24
+explosiveness = 0.8
+direction = Vector2(-1, -1)
+gravity = Vector2(0, 300)
+initial_velocity_min = 616.34
+initial_velocity_max = 1000.0
+scale_amount_min = 28.65
+scale_amount_max = 130.03
+color_initial_ramp = SubResource("Gradient_6ltyn")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=547838069]
+texture_filter = 1
+offset_left = 402.99997
+offset_top = -147.99998
+offset_right = 535.0
+offset_bottom = -83.999985
+scale = Vector2(5, 5)
+texture_normal = ExtResource("2_lv2rs")
+texture_pressed = ExtResource("2_lv2rs")
+texture_hover = ExtResource("3_k14yr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureButton" unique_id=830807943]
+layout_mode = 0
+offset_left = 20.200005
+offset_top = 18.599995
+offset_right = 496.2
+offset_bottom = 152.19997
+scale = Vector2(0.2, 0.2)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/bold_font_size = 80
+bbcode_enabled = true
+text = "[b]Play Again?"
+fit_content = true
+scroll_active = false
+
+[node name="Panel2" type="Panel" parent="." unique_id=1221270158]
+offset_left = -2012.0
+offset_top = -1257.0
+offset_right = 1835.0
+offset_bottom = 1319.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k14yr")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

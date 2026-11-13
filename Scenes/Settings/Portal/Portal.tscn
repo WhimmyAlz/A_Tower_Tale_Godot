@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bofm7fejolpvw" path="res://Scenes/Settings/Portal/portal.png" id="1_eoy3l"]
 [ext_resource type="Script" uid="uid://d3trq2d5pnhn1" path="res://Scenes/Settings/Portal/portal.gd" id="1_pj81h"]
+[ext_resource type="Texture2D" uid="uid://g71s4kv5pnwj" path="res://Global/ETC_UI/e_to_interact.png" id="3_ktnsv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pj81h"]
 atlas = ExtResource("1_eoy3l")
@@ -91,6 +92,13 @@ frame_progress = 0.16815427
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=339073511]
 position = Vector2(36.5, 79.5)
 shape = SubResource("RectangleShape2D_5w58w")
+
+[node name="EToInteract" type="Sprite2D" parent="." unique_id=648228196]
+visible = false
+texture_filter = 1
+position = Vector2(35, -207)
+scale = Vector2(2, 2)
+texture = ExtResource("3_ktnsv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

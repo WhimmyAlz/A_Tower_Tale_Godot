@@ -37,7 +37,6 @@ func check_phase():
 				for i in range(enemy_list.get_child_count()):
 					if enemy_list.get_child(i).Name == "Odon":
 						enemy_list.get_child(i).take_damage(1, 0, 0, Color.WHITE)
-						get_tree().current_scene.get_node("UI Containers").make_text("Check it!", "chocolate")
 				if boss_bar != null:
 					boss_bar.visible = true
 
@@ -75,6 +74,7 @@ func dodge():
 		velocity.x = direction * 2500
 		attackt = 190
 		dodge_cd = 300
+		get_tree().current_scene.get_node("UI Containers").make_text("Check it!", "chocolate", true)
 
 func shoot():
 	var projectile = arrow.instantiate()

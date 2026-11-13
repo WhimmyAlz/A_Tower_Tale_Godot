@@ -152,6 +152,8 @@ func init_floor_mobs(floor_num):
 		spawn_gray_bird(Vector2(-800, 0), 7)
 	elif floor_num == 15:
 		spawn_mourning_ghoul(Vector2(700, 600), 1)
+	elif floor_num == 16:
+		get_tree().change_scene_to_file("res://Splash_Loading screens/demoEndScreen.tscn")
 
 func _physics_process(_delta: float) -> void:
 	if Global.stun_time == 0 and entered and Input.is_action_just_released("interact"):
@@ -163,8 +165,10 @@ func _on_body_entered(body: Node2D) -> void:
 	var collider = body
 	if collider.is_in_group("player"):
 		entered = true
+		$EToInteract.visible = true
 
 func _on_body_exited(body: Node2D) -> void:
 	var collider = body
 	if collider.is_in_group("player"):
 		entered = false
+		$EToInteract.visible = false
