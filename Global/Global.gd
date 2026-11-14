@@ -349,10 +349,11 @@ func check_class():
 func cursor():
 	if Input.is_action_pressed("left_click"):
 		Input.set_custom_mouse_cursor(cursor_pressed, Input.CURSOR_ARROW, Vector2(8, 8))
-	else:
+	if Input.is_action_just_released("left_click"):
 		Input.set_custom_mouse_cursor(cursor_normal, Input.CURSOR_ARROW, Vector2(8, 8))
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	class_stats_brawler()
 	health = max_health
 
