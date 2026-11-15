@@ -163,7 +163,7 @@ func _physics_process(_delta: float) -> void:
 				attack_1_attacking()
 				
 			if attackt == 200:
-				hitnum = 1
+				hitnum = 0
 			
 			attackt += 1
 		if attackt >= 210:
