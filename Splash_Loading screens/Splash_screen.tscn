@@ -94,6 +94,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="gore_warning" type="ColorRect" parent="." unique_id=461904501]
+visible = false
 offset_left = -1162.0
 offset_top = -757.0
 offset_right = 1326.0

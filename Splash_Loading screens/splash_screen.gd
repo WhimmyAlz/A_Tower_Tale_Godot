@@ -13,3 +13,7 @@ func _on_texture_button_pressed() -> void:
 func _on_texture_button_2_pressed() -> void:
 	$gore_warning.visible = false
 	Global.gore = false
+
+func _ready() -> void:
+	if Global.gore == null:
+		$gore_warning.visible = true

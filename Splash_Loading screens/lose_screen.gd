@@ -3,6 +3,7 @@ extends Node2D
 var death_text = ["Wow. Geeg.", "L + Ratio.", "Live like a fool, die like a fool.", "The end of a tale.", "That's it?"]
 var one_shot = 1
 var counter = 0
+
 func set_animation_pos():
 	$AnimatedSprite2D.position = Vector2(int(Global.death_position[0]), int(Global.death_position[1]))
 
@@ -11,29 +12,43 @@ func _ready() -> void:
 	set_animation_pos()
 
 func _physics_process(_delta: float) -> void:
-	if $AnimatedSprite2D.position != Vector2(0, 10):
-		$AnimatedSprite2D.position.x *= 0.98
-		$AnimatedSprite2D.position.y *= 0.98
-	
-	if abs($AnimatedSprite2D.position.x) < 3:
-		$AnimatedSprite2D.position.x = 0
+	if counter < 150 or Global.gore:
+		if $AnimatedSprite2D.position != Vector2(0, 10):
+			$AnimatedSprite2D.position.x *= 0.98
+			$AnimatedSprite2D.position.y *= 0.98
+		
+		if abs($AnimatedSprite2D.position.x) < 3:
+			$AnimatedSprite2D.position.x = 0
 
-	if abs($AnimatedSprite2D.position.y) < 3:
-		$AnimatedSprite2D.position.y = 0
+		if abs($AnimatedSprite2D.position.y) < 3:
+			$AnimatedSprite2D.position.y = 0
+
+	if counter < 150:
+		counter += 1
 
 	if one_shot == 1 and counter == 90:
-		$AnimatedSprite2D.play()
-		one_shot = 0
-	counter += 1
+		if Global.gore:
+			$AnimatedSprite2D.play()
+			one_shot = 0
+	
+	if not Global.gore and counter == 150:
+		$AnimatedSprite2D.rotation += 0.5
+		$AnimatedSprite2D.position += Vector2(50, -37.5)
+		if one_shot == 1:
+			show_UI()
+			one_shot = 0
 	
 	if $AnimatedSprite2D.scale.x < 5:
 		$AnimatedSprite2D.scale += Vector2(0.02, 0.02)
 
+func show_UI():
+	$RichTextLabel.visible = true
+	$TextureButton.visible = true
+
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if $AnimatedSprite2D.frame == 5:
-		$RichTextLabel.visible = true
+		show_UI()
 		$AnimatedSprite2D/CPUParticles2D.emitting = true
-		$TextureButton.visible = true
 
 
 func _on_texture_button_pressed() -> void:

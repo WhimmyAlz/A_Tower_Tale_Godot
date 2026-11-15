@@ -2,7 +2,7 @@ extends Node
 
 var cursor_normal = preload("res://Global/cursor/cursor2/cursor1.png")
 var cursor_pressed = preload("res://Global/cursor/cursor2/cursor2.png")
-var gore = false
+var gore = null
 
 var floors := 0
 
