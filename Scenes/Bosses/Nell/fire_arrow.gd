@@ -3,7 +3,7 @@ extends Area2D
 var size = 8
 var proj_speed
 var direction 
-var proj_life_time = 142
+var proj_life_time = 140
 var damage = 15
 var defense_pen = 10
 
