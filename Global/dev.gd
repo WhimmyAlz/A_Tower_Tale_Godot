@@ -53,7 +53,7 @@ func console_toggle():
 
 			if len($LineEdit.text) == 0:
 				close()
-		else:
+		elif Input.is_action_pressed("shift"):
 			open()
 
 ## When console message is sent, logs the message, checks for command and if command is valid, then call the command usage function

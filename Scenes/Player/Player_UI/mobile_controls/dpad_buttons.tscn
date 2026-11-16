@@ -12,46 +12,6 @@
 texture_filter = 1
 script = ExtResource("1_egctm")
 
-[node name="dpad_up" type="TextureButton" parent="." unique_id=887982170]
-texture_filter = 1
-offset_left = -162.99998
-offset_top = -40.999996
-offset_right = -98.999985
-offset_bottom = 23.000004
-rotation = 4.712389
-scale = Vector2(5, 5)
-texture_normal = ExtResource("1_lpmfw")
-texture_hover = ExtResource("2_egctm")
-
-[node name="dpad_down" type="TextureButton" parent="." unique_id=1764896806]
-offset_left = 145.0
-offset_top = -35.0
-offset_right = 209.0
-offset_bottom = 29.0
-rotation = 1.5707964
-scale = Vector2(5, 5)
-texture_normal = ExtResource("1_lpmfw")
-texture_hover = ExtResource("2_egctm")
-
-[node name="dpad_left" type="TextureButton" parent="." unique_id=1568700741]
-offset_left = -185.00003
-offset_top = 149.99995
-offset_right = -121.00003
-offset_bottom = 213.99995
-rotation = 3.1415927
-scale = Vector2(5, 5)
-texture_normal = ExtResource("1_lpmfw")
-texture_hover = ExtResource("2_egctm")
-
-[node name="dpad_right" type="TextureButton" parent="." unique_id=186553182]
-offset_left = 164.00002
-offset_top = -172.99998
-offset_right = 228.00002
-offset_bottom = -108.999985
-scale = Vector2(5, 5)
-texture_normal = ExtResource("1_lpmfw")
-texture_hover = ExtResource("2_egctm")
-
 [node name="E_button" type="TextureButton" parent="." unique_id=1768108785]
 z_index = 100
 texture_filter = 1
@@ -73,15 +33,46 @@ scale = Vector2(3, 3)
 texture_normal = ExtResource("6_k621p")
 texture_pressed = ExtResource("7_x0n63")
 
-[connection signal="mouse_entered" from="dpad_up" to="." method="_on_dpad_up_mouse_entered"]
-[connection signal="mouse_exited" from="dpad_up" to="." method="_on_dpad_up_mouse_exited"]
-[connection signal="mouse_entered" from="dpad_down" to="." method="_on_dpad_down_mouse_entered"]
-[connection signal="mouse_exited" from="dpad_down" to="." method="_on_dpad_down_mouse_exited"]
-[connection signal="mouse_entered" from="dpad_left" to="." method="_on_dpad_left_mouse_entered"]
-[connection signal="mouse_exited" from="dpad_left" to="." method="_on_dpad_left_mouse_exited"]
-[connection signal="mouse_entered" from="dpad_right" to="." method="_on_dpad_right_mouse_entered"]
-[connection signal="mouse_exited" from="dpad_right" to="." method="_on_dpad_right_mouse_exited"]
+[node name="dpad_up" type="TouchScreenButton" parent="." unique_id=369262010]
+texture_filter = 1
+position = Vector2(-167.99998, -37.999996)
+rotation = 4.712389
+scale = Vector2(5, 5)
+texture_normal = ExtResource("1_lpmfw")
+texture_pressed = ExtResource("2_egctm")
+
+[node name="dpad_down" type="TouchScreenButton" parent="." unique_id=780820207]
+texture_filter = 1
+position = Vector2(145.99997, -13.999939)
+rotation = 1.5707964
+scale = Vector2(5, 5)
+texture_normal = ExtResource("1_lpmfw")
+texture_pressed = ExtResource("2_egctm")
+
+[node name="dpad_left" type="TouchScreenButton" parent="." unique_id=1614636634]
+texture_filter = 1
+position = Vector2(-180.00003, 142)
+rotation = 3.1415927
+scale = Vector2(5, 5)
+texture_normal = ExtResource("1_lpmfw")
+texture_pressed = ExtResource("2_egctm")
+
+[node name="dpad_right" type="TouchScreenButton" parent="." unique_id=1327098920]
+texture_filter = 1
+position = Vector2(182.99998, -196.99998)
+scale = Vector2(5, 5)
+texture_normal = ExtResource("1_lpmfw")
+texture_pressed = ExtResource("2_egctm")
+
 [connection signal="button_down" from="E_button" to="." method="_on_e_button_button_down"]
 [connection signal="button_up" from="E_button" to="." method="_on_e_button_button_up"]
 [connection signal="button_down" from="Q_button" to="." method="_on_q_button_button_down"]
 [connection signal="button_up" from="Q_button" to="." method="_on_q_button_button_up"]
+[connection signal="pressed" from="dpad_up" to="." method="_on_dpad_up_pressed"]
+[connection signal="released" from="dpad_up" to="." method="_on_dpad_up_released"]
+[connection signal="pressed" from="dpad_down" to="." method="_on_dpad_down_pressed"]
+[connection signal="released" from="dpad_down" to="." method="_on_dpad_down_released"]
+[connection signal="pressed" from="dpad_left" to="." method="_on_dpad_left_pressed"]
+[connection signal="released" from="dpad_left" to="." method="_on_dpad_left_released"]
+[connection signal="pressed" from="dpad_right" to="." method="_on_dpad_right_pressed"]
+[connection signal="released" from="dpad_right" to="." method="_on_dpad_right_released"]
