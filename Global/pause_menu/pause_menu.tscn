@@ -673,9 +673,9 @@ color = Color(0, 0, 0, 0.47058824)
 
 [node name="buttons_container" type="FlowContainer" parent="pause_menu" unique_id=1058275247]
 offset_left = -1897.0
-offset_top = 405.00003
+offset_top = 179.00003
 offset_right = -1765.0
-offset_bottom = 469.00003
+offset_bottom = 492.20004
 scale = Vector2(5, 5)
 mouse_filter = 2
 script = ExtResource("2_v6rfh")
@@ -801,6 +801,27 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="mobile_controls_button" type="TextureButton" parent="pause_menu/buttons_container" unique_id=389696915]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("2_4jk17")
+texture_pressed = ExtResource("2_4jk17")
+texture_hover = ExtResource("3_v6rfh")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pause_menu/buttons_container/mobile_controls_button" unique_id=508114583]
+layout_mode = 0
+offset_left = 18.2
+offset_top = 24.400003
+offset_right = 681.2
+offset_bottom = 134.40001
+scale = Vector2(0.15, 0.15)
+mouse_filter = 2
+theme_override_font_sizes/bold_font_size = 80
+bbcode_enabled = true
+text = "[b]Mobile Controls[/b]"
+fit_content = true
+scroll_active = false
 
 [node name="Instructions" type="Node2D" parent="pause_menu" unique_id=1456490157]
 visible = false
@@ -1338,6 +1359,7 @@ texture_hover = ExtResource("3_so02e")
 [connection signal="pressed" from="pause_menu/buttons_container/pls_help_button/pls_help_buttons/instructions_button" to="pause_menu/buttons_container" method="_on_instructions_button_pressed"]
 [connection signal="pressed" from="pause_menu/buttons_container/enemy_guide_button" to="pause_menu/buttons_container" method="_on_enemy_guide_button_pressed"]
 [connection signal="pressed" from="pause_menu/buttons_container/status_effect_guide_button" to="pause_menu/buttons_container" method="_on_status_effect_guide_button_pressed"]
+[connection signal="pressed" from="pause_menu/buttons_container/mobile_controls_button" to="pause_menu/buttons_container" method="_on_mobile_controls_button_pressed"]
 [connection signal="mouse_entered" from="pause_menu/Instructions/drag_collider" to="pause_menu/Instructions" method="_on_drag_collider_mouse_entered"]
 [connection signal="mouse_exited" from="pause_menu/Instructions/drag_collider" to="pause_menu/Instructions" method="_on_drag_collider_mouse_exited"]
 [connection signal="mouse_entered" from="pause_menu/Enemy_guide/drag_collider" to="pause_menu/Enemy_guide" method="_on_drag_collider_mouse_entered"]

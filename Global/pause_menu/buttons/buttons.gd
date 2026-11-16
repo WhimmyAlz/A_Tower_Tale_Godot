@@ -48,3 +48,11 @@ func _on_status_effect_guide_button_pressed() -> void:
 		$"../Status_effect_guide".visible = true
 		$"../Status_effect_guide".position = Vector2(0, 0)
 		$"../Status_effect_guide".scale = Vector2(1, 1)
+
+
+func _on_mobile_controls_button_pressed() -> void:
+	if Global.mobile_controls == false:
+		Global.mobile_controls = true
+	else:
+		Global.mobile_controls = false
+	get_tree().current_scene.get_node("Player").toggle_dpad()

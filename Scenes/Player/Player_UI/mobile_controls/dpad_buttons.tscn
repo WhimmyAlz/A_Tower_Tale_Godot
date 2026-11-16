@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://daqhlvshinbfn"]
+
+[ext_resource type="Script" uid="uid://r4trkd7d58tw" path="res://Scenes/Player/Player_UI/mobile_controls/dpad_buttons.gd" id="1_egctm"]
+[ext_resource type="Texture2D" uid="uid://bovcqjcvxonli" path="res://Scenes/Player/Player_UI/mobile_controls/sprites/dpad1.png" id="1_lpmfw"]
+[ext_resource type="Texture2D" uid="uid://c8i1bjlyinp6g" path="res://Scenes/Player/Player_UI/mobile_controls/sprites/dpad2.png" id="2_egctm"]
+[ext_resource type="Texture2D" uid="uid://c273h07udsphj" path="res://Scenes/Player/Player_UI/mobile_controls/sprites/E1.png" id="4_yqlog"]
+[ext_resource type="Texture2D" uid="uid://b5eln31qjs5ke" path="res://Scenes/Player/Player_UI/mobile_controls/sprites/E2.png" id="5_vo448"]
+[ext_resource type="Texture2D" uid="uid://c8vw1dlwslk24" path="res://Scenes/Player/Player_UI/mobile_controls/sprites/Q1.png" id="6_k621p"]
+[ext_resource type="Texture2D" uid="uid://cvn8nabbywdnn" path="res://Scenes/Player/Player_UI/mobile_controls/sprites/Q2.png" id="7_x0n63"]
+
+[node name="DpadButtons" type="Node2D" unique_id=875794318]
+texture_filter = 1
+script = ExtResource("1_egctm")
+
+[node name="dpad_up" type="TextureButton" parent="." unique_id=887982170]
+texture_filter = 1
+offset_left = -162.99998
+offset_top = -40.999996
+offset_right = -98.999985
+offset_bottom = 23.000004
+rotation = 4.712389
+scale = Vector2(5, 5)
+texture_normal = ExtResource("1_lpmfw")
+texture_hover = ExtResource("2_egctm")
+
+[node name="dpad_down" type="TextureButton" parent="." unique_id=1764896806]
+offset_left = 145.0
+offset_top = -35.0
+offset_right = 209.0
+offset_bottom = 29.0
+rotation = 1.5707964
+scale = Vector2(5, 5)
+texture_normal = ExtResource("1_lpmfw")
+texture_hover = ExtResource("2_egctm")
+
+[node name="dpad_left" type="TextureButton" parent="." unique_id=1568700741]
+offset_left = -185.00003
+offset_top = 149.99995
+offset_right = -121.00003
+offset_bottom = 213.99995
+rotation = 3.1415927
+scale = Vector2(5, 5)
+texture_normal = ExtResource("1_lpmfw")
+texture_hover = ExtResource("2_egctm")
+
+[node name="dpad_right" type="TextureButton" parent="." unique_id=186553182]
+offset_left = 164.00002
+offset_top = -172.99998
+offset_right = 228.00002
+offset_bottom = -108.999985
+scale = Vector2(5, 5)
+texture_normal = ExtResource("1_lpmfw")
+texture_hover = ExtResource("2_egctm")
+
+[node name="E_button" type="TextureButton" parent="." unique_id=1768108785]
+z_index = 100
+texture_filter = 1
+offset_left = -442.0
+offset_top = -417.0
+offset_right = -378.0
+offset_bottom = -353.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("4_yqlog")
+texture_pressed = ExtResource("5_vo448")
+
+[node name="Q_button" type="TextureButton" parent="." unique_id=1465966619]
+texture_filter = 1
+offset_left = 233.0
+offset_top = -423.0
+offset_right = 297.0
+offset_bottom = -359.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("6_k621p")
+texture_pressed = ExtResource("7_x0n63")
+
+[connection signal="mouse_entered" from="dpad_up" to="." method="_on_dpad_up_mouse_entered"]
+[connection signal="mouse_exited" from="dpad_up" to="." method="_on_dpad_up_mouse_exited"]
+[connection signal="mouse_entered" from="dpad_down" to="." method="_on_dpad_down_mouse_entered"]
+[connection signal="mouse_exited" from="dpad_down" to="." method="_on_dpad_down_mouse_exited"]
+[connection signal="mouse_entered" from="dpad_left" to="." method="_on_dpad_left_mouse_entered"]
+[connection signal="mouse_exited" from="dpad_left" to="." method="_on_dpad_left_mouse_exited"]
+[connection signal="mouse_entered" from="dpad_right" to="." method="_on_dpad_right_mouse_entered"]
+[connection signal="mouse_exited" from="dpad_right" to="." method="_on_dpad_right_mouse_exited"]
+[connection signal="button_down" from="E_button" to="." method="_on_e_button_button_down"]
+[connection signal="button_up" from="E_button" to="." method="_on_e_button_button_up"]
+[connection signal="button_down" from="Q_button" to="." method="_on_q_button_button_down"]
+[connection signal="button_up" from="Q_button" to="." method="_on_q_button_button_up"]

@@ -45,3 +45,12 @@ func set_shop_opened(val = true):
 func change_zoom(val):
 	$Camera2D.zoom = Vector2(val, val)
 	$"Non Attached UI Elements".scale = Vector2(1/val, 1/val)
+
+func toggle_dpad():
+	if Global.mobile_controls:
+		$"Non Attached UI Elements/DpadButtons".visible = true
+	else:
+		$"Non Attached UI Elements/DpadButtons".visible = false
+
+func _ready() -> void:
+	toggle_dpad()

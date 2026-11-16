@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bhrve3jivpr3l" path="res://Scenes/Player/Player_UI/Inventory/Inventory.tscn" id="14_7rbim"]
 [ext_resource type="PackedScene" uid="uid://cfi0x72d52f0x" path="res://Scenes/Player/Player_UI/move_list/move_list.tscn" id="16_e2n6q"]
 [ext_resource type="PackedScene" uid="uid://cc1nw4yhjyw36" path="res://Global/pause_menu/pause_menu.tscn" id="19_iqdhd"]
+[ext_resource type="PackedScene" uid="uid://daqhlvshinbfn" path="res://Scenes/Player/Player_UI/mobile_controls/dpad_buttons.tscn" id="22_mvxaa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ym4e"]
 size = Vector2(38.333336, 120.666664)
@@ -277,3 +278,7 @@ vertical = true
 
 [node name="PauseMenu" parent="Non Attached UI Elements" unique_id=1743787274 instance=ExtResource("19_iqdhd")]
 position = Vector2(1534, -950)
+
+[node name="DpadButtons" parent="Non Attached UI Elements" unique_id=875794318 instance=ExtResource("22_mvxaa")]
+visible = false
+position = Vector2(-960, 535)
