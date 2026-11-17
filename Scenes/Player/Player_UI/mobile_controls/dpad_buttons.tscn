@@ -40,6 +40,8 @@ rotation = 4.712389
 scale = Vector2(5, 5)
 texture_normal = ExtResource("1_lpmfw")
 texture_pressed = ExtResource("2_egctm")
+passby_press = true
+action = "up"
 
 [node name="dpad_down" type="TouchScreenButton" parent="." unique_id=780820207]
 texture_filter = 1
@@ -48,6 +50,8 @@ rotation = 1.5707964
 scale = Vector2(5, 5)
 texture_normal = ExtResource("1_lpmfw")
 texture_pressed = ExtResource("2_egctm")
+passby_press = true
+action = "down"
 
 [node name="dpad_left" type="TouchScreenButton" parent="." unique_id=1614636634]
 texture_filter = 1
@@ -56,6 +60,8 @@ rotation = 3.1415927
 scale = Vector2(5, 5)
 texture_normal = ExtResource("1_lpmfw")
 texture_pressed = ExtResource("2_egctm")
+passby_press = true
+action = "left"
 
 [node name="dpad_right" type="TouchScreenButton" parent="." unique_id=1327098920]
 texture_filter = 1
@@ -63,6 +69,8 @@ position = Vector2(182.99998, -196.99998)
 scale = Vector2(5, 5)
 texture_normal = ExtResource("1_lpmfw")
 texture_pressed = ExtResource("2_egctm")
+passby_press = true
+action = "right"
 
 [connection signal="button_down" from="E_button" to="." method="_on_e_button_button_down"]
 [connection signal="button_up" from="E_button" to="." method="_on_e_button_button_up"]

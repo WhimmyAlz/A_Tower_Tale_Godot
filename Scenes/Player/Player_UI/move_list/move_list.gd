@@ -20,26 +20,36 @@ func change_sizes(val):
 	$VBoxContainer/bar_1/bar_1_prog.size.y = 48 + val
 	$VBoxContainer/bar_1/bar_1_txt.position.y = 1 + val/2
 	$VBoxContainer/bar_1/bar_1_button.size.y = 48 + val
+	$VBoxContainer/bar_1/bar_1_button/bar1_touch.shape.size.y = 48 + val
+	$VBoxContainer/bar_1/bar_1_button/bar1_touch.position.y = (48 + val)/2
 	
 	$VBoxContainer/bar_2.custom_minimum_size.y = 48 + val
 	$VBoxContainer/bar_2/bar_2_prog.size.y = 48 + val
-	$VBoxContainer/bar_2/bar_2_txt.position.y = 1 + val/2
+	$VBoxContainer/bar_2/bar_2_txt.position.y = (1 + val)/2
 	$VBoxContainer/bar_2/bar_2_button.size.y = 48 + val
+	$VBoxContainer/bar_2/bar_2_button/bar2_touch.shape.size.y = 48 + val
+	$VBoxContainer/bar_2/bar_2_button/bar2_touch.position.y = (48 + val)/2
 	
 	$VBoxContainer/bar_3.custom_minimum_size.y = 48 + val
 	$VBoxContainer/bar_3/bar_3_prog.size.y = 48 + val
 	$VBoxContainer/bar_3/bar_3_txt.position.y = 1 + val/2
 	$VBoxContainer/bar_3/bar_3_button.size.y = 48 + val
+	$VBoxContainer/bar_3/bar_3_button/bar3_touch.shape.size.y = 48 + val
+	$VBoxContainer/bar_3/bar_3_button/bar3_touch.position.y = (48 + val)/2
 
 	$VBoxContainer/bar_4.custom_minimum_size.y = 48 + val
 	$VBoxContainer/bar_4/bar_4_prog.size.y = 48 + val
 	$VBoxContainer/bar_4/bar_4_txt.position.y = 1 + val/2
 	$VBoxContainer/bar_4/bar_4_button.size.y = 48 + val
+	$VBoxContainer/bar_4/bar_4_button/bar4_touch.shape.size.y = 48 + val
+	$VBoxContainer/bar_4/bar_4_button/bar4_touch.position.y = (48 + val)/2
 
 	$VBoxContainer/bar_5.custom_minimum_size.y = 48 + val
 	$VBoxContainer/bar_5/bar_5_prog.size.y = 48 + val
 	$VBoxContainer/bar_5/bar_5_txt.position.y = 1 + val/2
 	$VBoxContainer/bar_5/bar_5_button.size.y = 48 + val
+	$VBoxContainer/bar_5/bar_5_button/bar5_touch.shape.size.y = 48 + val
+	$VBoxContainer/bar_5/bar_5_button/bar5_touch.position.y = (48 + val)/2
 
 func ignore_filter(val):
 	if val:
@@ -189,9 +199,14 @@ func _on_text_edit_text_changed() -> void:
 		if int($VBoxContainer/TextEdit.text) > 128:
 			change_sizes(128)
 
-
 func _on_text_edit_mouse_entered() -> void:
 	mouse_hover_edit = true
 
 func _on_text_edit_mouse_exited() -> void:
 	mouse_hover_edit = false
+
+
+func _on_text_edit_gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch and event.pressed:
+		$VBoxContainer/TextEdit.grab_focus()
+		DisplayServer.virtual_keyboard_show($VBoxContainer/TextEdit.text)

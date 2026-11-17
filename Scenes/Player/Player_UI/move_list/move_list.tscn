@@ -5,6 +5,24 @@
 [ext_resource type="Texture2D" uid="uid://dhu0tguqp7wt8" path="res://Scenes/Player/Player_UI/move_list/ultimate bar sprites/overlay.png" id="3_fp10q"]
 [ext_resource type="Texture2D" uid="uid://jl75drqkfi7p" path="res://Scenes/Player/Player_UI/move_list/ultimate bar sprites/ultimate_charge.png" id="4_6ltvv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ltvv"]
+size = Vector2(380, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrtmd"]
+size = Vector2(413, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hilrt"]
+size = Vector2(413, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ic62c"]
+size = Vector2(413, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7o2u"]
+size = Vector2(413, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fp10q"]
+size = Vector2(413, 70)
+
 [node name="MoveList" type="Node2D" unique_id=1954343084]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_m7o2u")
@@ -85,6 +103,10 @@ offset_bottom = 115.66664
 focus_mode = 0
 flat = true
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/ultimate_bar/ultimate_button" unique_id=1158225784]
+position = Vector2(190, 35)
+shape = SubResource("RectangleShape2D_6ltvv")
+
 [node name="bar_5" type="Control" parent="VBoxContainer" unique_id=1339666496]
 custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
@@ -116,6 +138,12 @@ offset_right = 412.833
 offset_bottom = 70.0
 focus_mode = 0
 flat = true
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/bar_5/bar_5_button" unique_id=1289364845]
+position = Vector2(206.5, 35)
+shape = SubResource("RectangleShape2D_hrtmd")
+shape_centered = false
+passby_press = true
 
 [node name="bar_4" type="Control" parent="VBoxContainer" unique_id=2080699590]
 custom_minimum_size = Vector2(0, 71)
@@ -149,6 +177,13 @@ offset_bottom = 70.0
 focus_mode = 0
 flat = true
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/bar_4/bar_4_button" unique_id=389733406]
+position = Vector2(206.5, 35)
+shape = SubResource("RectangleShape2D_hilrt")
+shape_centered = false
+passby_press = true
+action = "attack 4"
+
 [node name="bar_3" type="Control" parent="VBoxContainer" unique_id=854474331]
 custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
@@ -181,6 +216,13 @@ offset_bottom = 70.0
 focus_mode = 0
 flat = true
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/bar_3/bar_3_button" unique_id=916968823]
+position = Vector2(206.5, 35)
+shape = SubResource("RectangleShape2D_ic62c")
+shape_centered = false
+passby_press = true
+action = "attack 3"
+
 [node name="bar_2" type="Control" parent="VBoxContainer" unique_id=152810246]
 custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
@@ -211,6 +253,13 @@ offset_right = 412.833
 offset_bottom = 70.0
 focus_mode = 0
 flat = true
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/bar_2/bar_2_button" unique_id=262839648]
+position = Vector2(206.5, 35)
+shape = SubResource("RectangleShape2D_m7o2u")
+shape_centered = false
+passby_press = true
+action = "attack 2"
 
 [node name="bar_1" type="Control" parent="VBoxContainer" unique_id=307362647]
 custom_minimum_size = Vector2(0, 71)
@@ -243,6 +292,13 @@ offset_bottom = 70.0
 focus_mode = 0
 flat = true
 
+[node name="bar1_touch" type="TouchScreenButton" parent="VBoxContainer/bar_1/bar_1_button" unique_id=535472861]
+position = Vector2(206.6667, 35)
+shape = SubResource("RectangleShape2D_fp10q")
+shape_centered = false
+passby_press = true
+action = "attack 1"
+
 [node name="TextEdit" type="TextEdit" parent="VBoxContainer" unique_id=2111552877]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
@@ -268,6 +324,7 @@ placeholder_text = "Set Button Size here (Min: 0, Max: 128, Intergers only)
 [connection signal="button_down" from="VBoxContainer/bar_1/bar_1_button" to="." method="_on_bar_1_button_button_down"]
 [connection signal="button_up" from="VBoxContainer/bar_1/bar_1_button" to="." method="_on_bar_1_button_button_up"]
 [connection signal="mouse_entered" from="VBoxContainer/bar_1/bar_1_button" to="." method="_on_bar_1_button_mouse_entered"]
+[connection signal="gui_input" from="VBoxContainer/TextEdit" to="." method="_on_text_edit_gui_input"]
 [connection signal="mouse_entered" from="VBoxContainer/TextEdit" to="." method="_on_text_edit_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/TextEdit" to="." method="_on_text_edit_mouse_exited"]
 [connection signal="text_changed" from="VBoxContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
