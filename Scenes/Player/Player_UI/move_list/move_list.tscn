@@ -41,7 +41,7 @@ grow_vertical = 0
 alignment = 2
 
 [node name="Text_display" type="Control" parent="VBoxContainer" unique_id=386422438]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/Text_display" unique_id=702157007]
@@ -65,16 +65,17 @@ bbcode_enabled = true
 text = "Hover over each skill for info"
 
 [node name="ultimate_bar" type="Control" parent="VBoxContainer" unique_id=1792079677]
-custom_minimum_size = Vector2(0, 120)
+visible = false
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
 [node name="ultimate_prog" type="TextureProgressBar" parent="VBoxContainer/ultimate_bar" unique_id=801504851]
 texture_filter = 1
 layout_mode = 0
-offset_left = 16.000042
-offset_top = 0.33333334
-offset_right = 144.00005
-offset_bottom = 64.333336
+offset_left = 15.333375
+offset_top = -53.000004
+offset_right = 143.33337
+offset_bottom = 10.999996
 scale = Vector2(3, 3)
 mouse_filter = 2
 texture_under = ExtResource("2_m7o2u")
@@ -83,10 +84,10 @@ texture_progress = ExtResource("4_6ltvv")
 
 [node name="ultimate_5_txt" type="RichTextLabel" parent="VBoxContainer/ultimate_bar" unique_id=305631450]
 layout_mode = 0
-offset_left = 148.6667
-offset_top = 59.0
-offset_right = 271.33337
-offset_bottom = 100.66666
+offset_left = 148.00003
+offset_top = 5.666664
+offset_right = 270.6667
+offset_bottom = 47.33332
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
@@ -96,10 +97,10 @@ scroll_active = false
 
 [node name="ultimate_button" type="Button" parent="VBoxContainer/ultimate_bar" unique_id=1024985733]
 layout_mode = 0
-offset_left = 18.666698
-offset_top = 47.000015
-offset_right = 401.33337
-offset_bottom = 115.66664
+offset_left = 18.000032
+offset_top = -6.3333206
+offset_right = 400.66672
+offset_bottom = 62.333305
 focus_mode = 0
 flat = true
 
@@ -108,6 +109,7 @@ position = Vector2(190, 35)
 shape = SubResource("RectangleShape2D_6ltvv")
 
 [node name="bar_5" type="Control" parent="VBoxContainer" unique_id=1339666496]
+visible = false
 custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
 
@@ -139,13 +141,14 @@ offset_bottom = 70.0
 focus_mode = 0
 flat = true
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/bar_5/bar_5_button" unique_id=1289364845]
+[node name="bar5_touch" type="TouchScreenButton" parent="VBoxContainer/bar_5/bar_5_button" unique_id=1289364845]
 position = Vector2(206.5, 35)
 shape = SubResource("RectangleShape2D_hrtmd")
 shape_centered = false
 passby_press = true
 
 [node name="bar_4" type="Control" parent="VBoxContainer" unique_id=2080699590]
+visible = false
 custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
 
@@ -177,7 +180,7 @@ offset_bottom = 70.0
 focus_mode = 0
 flat = true
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/bar_4/bar_4_button" unique_id=389733406]
+[node name="bar4_touch" type="TouchScreenButton" parent="VBoxContainer/bar_4/bar_4_button" unique_id=389733406]
 position = Vector2(206.5, 35)
 shape = SubResource("RectangleShape2D_hilrt")
 shape_centered = false
@@ -185,6 +188,7 @@ passby_press = true
 action = "attack 4"
 
 [node name="bar_3" type="Control" parent="VBoxContainer" unique_id=854474331]
+visible = false
 custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
 
@@ -216,7 +220,7 @@ offset_bottom = 70.0
 focus_mode = 0
 flat = true
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/bar_3/bar_3_button" unique_id=916968823]
+[node name="bar3_touch" type="TouchScreenButton" parent="VBoxContainer/bar_3/bar_3_button" unique_id=916968823]
 position = Vector2(206.5, 35)
 shape = SubResource("RectangleShape2D_ic62c")
 shape_centered = false
@@ -224,6 +228,7 @@ passby_press = true
 action = "attack 3"
 
 [node name="bar_2" type="Control" parent="VBoxContainer" unique_id=152810246]
+visible = false
 custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
 
@@ -254,7 +259,7 @@ offset_bottom = 70.0
 focus_mode = 0
 flat = true
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/bar_2/bar_2_button" unique_id=262839648]
+[node name="bar2_touch" type="TouchScreenButton" parent="VBoxContainer/bar_2/bar_2_button" unique_id=262839648]
 position = Vector2(206.5, 35)
 shape = SubResource("RectangleShape2D_m7o2u")
 shape_centered = false
