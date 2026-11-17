@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://gadn84vpl3y8" path="res://Scenes/Player/Player_UI/move_list/ultimate bar sprites/ultimate_back.png" id="2_m7o2u"]
 [ext_resource type="Texture2D" uid="uid://dhu0tguqp7wt8" path="res://Scenes/Player/Player_UI/move_list/ultimate bar sprites/overlay.png" id="3_fp10q"]
 [ext_resource type="Texture2D" uid="uid://jl75drqkfi7p" path="res://Scenes/Player/Player_UI/move_list/ultimate bar sprites/ultimate_charge.png" id="4_6ltvv"]
+[ext_resource type="PackedScene" uid="uid://w3n0h62ro8ng" path="res://Global/num_keypad/num_keypad.tscn" id="5_fp10q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ltvv"]
 size = Vector2(380, 70)
@@ -307,9 +308,26 @@ action = "attack 1"
 [node name="TextEdit" type="TextEdit" parent="VBoxContainer" unique_id=2111552877]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
 theme_override_font_sizes/font_size = 12
 placeholder_text = "Set Button Size here (Min: 0, Max: 128, Intergers only)
 "
+editable = false
+virtual_keyboard_enabled = false
+
+[node name="Button" type="Button" parent="VBoxContainer/TextEdit" unique_id=1623866889]
+layout_mode = 0
+offset_left = 6.1035156e-05
+offset_right = 413.3334
+offset_bottom = 30.0
+focus_mode = 0
+flat = true
+
+[node name="NumKeypad" parent="VBoxContainer" unique_id=189624780 instance=ExtResource("5_fp10q")]
+visible = false
+position = Vector2(-292, 375)
 
 [connection signal="button_down" from="VBoxContainer/ultimate_bar/ultimate_button" to="." method="_on_ultimate_button_button_down"]
 [connection signal="button_up" from="VBoxContainer/ultimate_bar/ultimate_button" to="." method="_on_ultimate_button_button_up"]
@@ -329,7 +347,4 @@ placeholder_text = "Set Button Size here (Min: 0, Max: 128, Intergers only)
 [connection signal="button_down" from="VBoxContainer/bar_1/bar_1_button" to="." method="_on_bar_1_button_button_down"]
 [connection signal="button_up" from="VBoxContainer/bar_1/bar_1_button" to="." method="_on_bar_1_button_button_up"]
 [connection signal="mouse_entered" from="VBoxContainer/bar_1/bar_1_button" to="." method="_on_bar_1_button_mouse_entered"]
-[connection signal="gui_input" from="VBoxContainer/TextEdit" to="." method="_on_text_edit_gui_input"]
-[connection signal="mouse_entered" from="VBoxContainer/TextEdit" to="." method="_on_text_edit_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/TextEdit" to="." method="_on_text_edit_mouse_exited"]
-[connection signal="text_changed" from="VBoxContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="VBoxContainer/TextEdit/Button" to="." method="_on_button_pressed"]

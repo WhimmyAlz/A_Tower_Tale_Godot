@@ -14,6 +14,8 @@ var mouse_hover_edit = false
 
 func _ready() -> void:
 	change_sizes(0)
+	$VBoxContainer/NumKeypad.set_input_node($VBoxContainer/TextEdit)
+	$VBoxContainer/NumKeypad.set_notify($".")
 
 func change_sizes(val):
 	$VBoxContainer/bar_1.custom_minimum_size.y = 48 + val
@@ -96,17 +98,6 @@ func _physics_process(_delta: float) -> void:
 	else: 
 		$VBoxContainer/ultimate_bar/ultimate_prog.texture_progress = ultimate_load
 		$VBoxContainer/ultimate_bar/ultimate_5_txt.visible = false
-	
-	if Input.is_action_just_pressed("left_click"):
-		if not mouse_hover_edit:
-			$VBoxContainer/TextEdit.release_focus()
-			$VBoxContainer/TextEdit.clear()
-	
-		elif $VBoxContainer/TextEdit.has_focus():
-			$VBoxContainer/TextEdit.clear()
-	
-	if Input.is_action_just_pressed("Console"):
-		$VBoxContainer/TextEdit.clear()
 
 func display_attack_text(attack):
 	var label = $VBoxContainer/Text_display/RichTextLabel
@@ -190,23 +181,15 @@ func _on_ultimate_button_button_down() -> void:
 func _on_ultimate_button_button_up() -> void:
 	Input.action_release("ultimate")
 
-
-func _on_text_edit_text_changed() -> void:
+func keypad_input():
 	if $VBoxContainer/TextEdit.text.is_valid_int():
-		if int($VBoxContainer/TextEdit.text) >= 0:
-			change_sizes(int($VBoxContainer/TextEdit.text))
-		
 		if int($VBoxContainer/TextEdit.text) > 128:
 			change_sizes(128)
+		elif int($VBoxContainer/TextEdit.text) >= 0:
+			change_sizes(int($VBoxContainer/TextEdit.text))
 
-func _on_text_edit_mouse_entered() -> void:
-	mouse_hover_edit = true
-
-func _on_text_edit_mouse_exited() -> void:
-	mouse_hover_edit = false
-
-
-func _on_text_edit_gui_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch and event.pressed:
-		$VBoxContainer/TextEdit.grab_focus()
-		DisplayServer.virtual_keyboard_show($VBoxContainer/TextEdit.text)
+func _on_button_pressed() -> void:
+	if $VBoxContainer/NumKeypad.visible == true:
+		$VBoxContainer/NumKeypad.visible = false
+	else:
+		$VBoxContainer/NumKeypad.visible = true

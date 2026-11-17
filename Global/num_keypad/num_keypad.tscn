@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://w3n0h62ro8ng"]
+
+[ext_resource type="Script" uid="uid://pbahclyrtr8k" path="res://Global/num_keypad/num_keypad.gd" id="1_06mmq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bx2fq"]
+bg_color = Color(0, 0, 0, 0.7529412)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0, 0, 0, 0.41568628)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[node name="NumKeypad" type="Node2D" unique_id=189624780]
+script = ExtResource("1_06mmq")
+
+[node name="Panel" type="Panel" parent="." unique_id=1344512338]
+offset_right = 276.0
+offset_bottom = 349.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bx2fq")
+
+[node name="Button_container" type="FlowContainer" parent="." unique_id=1206164458]
+offset_left = 25.0
+offset_top = 45.0
+offset_right = 250.0
+offset_bottom = 327.0
+alignment = 1
+
+[node name="Num1" type="Button" parent="Button_container" unique_id=830801042]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+text = "1"
+
+[node name="Num2" type="Button" parent="Button_container" unique_id=490726606]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+text = "2"
+
+[node name="Num3" type="Button" parent="Button_container" unique_id=691537006]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+focus_mode = 0
+text = "3
+"
+
+[node name="Num4" type="Button" parent="Button_container" unique_id=696179315]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+focus_mode = 0
+text = "4"
+
+[node name="Num5" type="Button" parent="Button_container" unique_id=2114725429]
+custom_minimum_size = Vector2(65, 5)
+layout_mode = 2
+focus_mode = 0
+text = "5
+"
+
+[node name="Num6" type="Button" parent="Button_container" unique_id=504910601]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+focus_mode = 0
+text = "6
+"
+
+[node name="Num7" type="Button" parent="Button_container" unique_id=863433038]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+focus_mode = 0
+text = "7
+"
+
+[node name="Num8" type="Button" parent="Button_container" unique_id=1023865593]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+focus_mode = 0
+text = "8"
+
+[node name="Num9" type="Button" parent="Button_container" unique_id=1751119972]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+focus_mode = 0
+text = "9"
+
+[node name="Del" type="Button" parent="Button_container" unique_id=204592822]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+focus_mode = 0
+text = "DEL"
+
+[node name="Num0" type="Button" parent="Button_container" unique_id=856223032]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+focus_mode = 0
+text = "0"
+
+[node name="CC" type="Button" parent="Button_container" unique_id=236725355]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+focus_mode = 0
+text = "CC"
+
+[connection signal="button_up" from="Button_container/Num1" to="." method="_on_num_1_button_up"]
+[connection signal="button_up" from="Button_container/Num2" to="." method="_on_num_2_button_up"]
+[connection signal="button_up" from="Button_container/Num3" to="." method="_on_num_3_button_up"]
+[connection signal="button_up" from="Button_container/Num4" to="." method="_on_num_4_button_up"]
+[connection signal="button_up" from="Button_container/Num5" to="." method="_on_num_5_button_up"]
+[connection signal="button_up" from="Button_container/Num6" to="." method="_on_num_6_button_up"]
+[connection signal="button_up" from="Button_container/Num7" to="." method="_on_num_7_button_up"]
+[connection signal="button_up" from="Button_container/Num8" to="." method="_on_num_8_button_up"]
+[connection signal="button_up" from="Button_container/Num9" to="." method="_on_num_9_button_up"]
+[connection signal="pressed" from="Button_container/Del" to="." method="_on_del_pressed"]
+[connection signal="button_up" from="Button_container/Num0" to="." method="_on_num_0_button_up"]
+[connection signal="button_up" from="Button_container/CC" to="." method="_on_cc_button_up"]

@@ -24,19 +24,9 @@ func set_name_text(em_name):
 
 func _ready() -> void:
 	$Stats_bg/description.get_v_scroll_bar().modulate.a = 0
+	$NumKeypad.set_notify($".")
+	$NumKeypad.set_input_node($VBoxContainer/level/LineEdit)
 	set_all()
-
-func _on_line_edit_text_changed(_new_text: String) -> void:
-	var text = $VBoxContainer/level/LineEdit.text
-	if text.is_valid_int() or text == "":
-		if text == "":
-			level = 1
-		else:
-			level = int(text)
-		set_all()
-		$VBoxContainer/level/RichTextLabel.text = ""
-	else:
-		$VBoxContainer/level/RichTextLabel.text = "[b][font_size=36]Error: Not a valid interger[/font_size][/b]\n "
 
 func calc_stats(stat):
 	var split_stats = stat.split(" ")
@@ -90,3 +80,22 @@ func _on_button_left_pressed() -> void:
 		$VBoxContainer/sprite.scale = Vector2(scale_factor, scale_factor)
 	if increment == 0:
 		$button_left.visible = false
+
+func keypad_input():
+	var text = $VBoxContainer/level/LineEdit.text
+	if text.is_valid_int() or text == "":
+		if text == "":
+			level = 1
+		else:
+			level = int(text)
+		set_all()
+		$VBoxContainer/level/RichTextLabel.text = ""
+	else:
+		$VBoxContainer/level/RichTextLabel.text = "[b][font_size=36]Error: Not a valid interger[/font_size][/b]\n "
+
+
+func _on_button_pressed() -> void:
+	if $NumKeypad.visible == true:
+		$NumKeypad.visible = false
+	else:
+		$NumKeypad.visible = true

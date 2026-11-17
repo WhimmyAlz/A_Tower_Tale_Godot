@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://xt18ws3ek2sl" path="res://Scenes/Mobs/Undead_ranger/Sprites/undead_ranger_attack.png" id="17_cgyrc"]
 [ext_resource type="Texture2D" uid="uid://dqdc3ceyxl4b1" path="res://Scenes/Mobs/shadow_hand/Sprites/shadow_hand_idle.png" id="17_o5piy"]
 [ext_resource type="Texture2D" uid="uid://djo7mkd8314hp" path="res://Scenes/Mobs/undead_warrior/Sprites/undead_warrior_walk.png" id="18_o5piy"]
+[ext_resource type="PackedScene" uid="uid://w3n0h62ro8ng" path="res://Global/num_keypad/num_keypad.tscn" id="24_cgyrc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pfknq"]
 texture = ExtResource("5_hjic6")
@@ -1025,6 +1026,7 @@ offset_right = 470.0
 offset_bottom = 65.66666
 scale = Vector2(1.5, 1.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_uneditable_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxEmpty_li04m")
@@ -1032,6 +1034,16 @@ theme_override_styles/read_only = SubResource("StyleBoxEmpty_lwbbr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yooja")
 placeholder_text = "1"
 max_length = 3
+editable = false
+
+[node name="Button" type="Button" parent="pause_menu/Enemy_guide/VBoxContainer/level/LineEdit" unique_id=1271233917]
+layout_mode = 0
+offset_left = -11.333252
+offset_top = 18.0
+offset_right = 120.00006
+offset_bottom = 76.0
+focus_mode = 0
+flat = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="pause_menu/Enemy_guide/VBoxContainer/level" unique_id=940941423]
 layout_mode = 0
@@ -1215,6 +1227,10 @@ Mutually Exclusive Drops:
 New Attack
 36-48xp"
 
+[node name="NumKeypad" parent="pause_menu/Enemy_guide" unique_id=189624780 instance=ExtResource("24_cgyrc")]
+visible = false
+position = Vector2(-135, 154)
+
 [node name="Status_effect_guide" type="Node2D" parent="pause_menu" unique_id=1291225857]
 visible = false
 script = ExtResource("5_n7wge")
@@ -1364,7 +1380,7 @@ texture_hover = ExtResource("3_so02e")
 [connection signal="mouse_exited" from="pause_menu/Instructions/drag_collider" to="pause_menu/Instructions" method="_on_drag_collider_mouse_exited"]
 [connection signal="mouse_entered" from="pause_menu/Enemy_guide/drag_collider" to="pause_menu/Enemy_guide" method="_on_drag_collider_mouse_entered"]
 [connection signal="mouse_exited" from="pause_menu/Enemy_guide/drag_collider" to="pause_menu/Enemy_guide" method="_on_drag_collider_mouse_exited"]
-[connection signal="text_changed" from="pause_menu/Enemy_guide/VBoxContainer/level/LineEdit" to="pause_menu/Enemy_guide" method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="pause_menu/Enemy_guide/VBoxContainer/level/LineEdit/Button" to="pause_menu/Enemy_guide" method="_on_button_pressed"]
 [connection signal="pressed" from="pause_menu/Enemy_guide/button_right" to="pause_menu/Enemy_guide" method="_on_button_right_pressed"]
 [connection signal="pressed" from="pause_menu/Enemy_guide/button_left" to="pause_menu/Enemy_guide" method="_on_button_left_pressed"]
 [connection signal="mouse_entered" from="pause_menu/Status_effect_guide/drag_collider" to="pause_menu/Status_effect_guide" method="_on_drag_collider_mouse_entered"]
