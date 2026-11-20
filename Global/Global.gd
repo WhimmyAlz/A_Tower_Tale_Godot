@@ -94,7 +94,7 @@ var Souls = 0
 func reset_stats():
 	floors = 0
 	
-	player_class = "brawler"
+	player_class = "shadow"
 	player_XP = 0
 	player_Level = 1
 	
@@ -271,18 +271,18 @@ func class_stats_shadow():
 	player_spd = round((0.2 * agility) * (1 + speed_multi))
 	player_weight = 15
 
-	max_health = 240
+	max_health = 245
 	max_stamina = 160
 
 	power = 30 + bonus_power
 	crit_chance = 10 + crit_chance_adds
 	crit_damage = 1.25 + crit_damage_adds
-	defense = 0 + bonus_defense
+	defense = 1 + bonus_defense
 	defense_penetration = 10 + defense_penetration_adds
 	
 	strength = 10 + bonus_strength
 	agility = 75 + bonus_agility
-	dexterity = 20 + bonus_dexterity
+	dexterity = 25 + bonus_dexterity
 	intellect = 20 + bonus_intellect
 
 ## Sets stats for Deadeye [class:5]

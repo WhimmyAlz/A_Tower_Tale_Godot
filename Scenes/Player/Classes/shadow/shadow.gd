@@ -23,12 +23,12 @@ var shadow_slice = preload("res://Scenes/Player/Classes/shadow/shadow_slice.tscn
 
 func get_description():
 	descriptions = {
-	"attack_1": ["[b]Shadow Spike[/b]\n", "Quickly shoots out 4 spikes at moderate range. Each consecutive spike reaches a bit further. \n[color=dodger_blue]Consumes 20 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x4 (15%% + 0.15x dexterity)x4\n" % ((0.15 * Global.power) + (0.15 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(attack1_max_t)/60), "Knockback: 2 x4\n", "Stuntime: 0.16s\n"],
-	"attack_2": ["[b]Shadow Shift[/b]\n", "Shifts a moderate distance forward, granting iframes, and dealing damage to everything that you pass through. Also inflicts shock.\n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + 0.75x dexterity)\n" % ((1 * Global.power) + (0.75 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 2\n", "Stuntime: 1.5s\n\n", "Inflicts [color=yellow]shock 75[/color]"],
-	"attack_3": ["[b]Spike Eruption[/b]\n", "Sends outs rows of shadow spikes from the ground around you. Flings enemies into the air.\n[color=dodger_blue]Consumes 50 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (50%% + 0.5x dexterity)\n" % ((0.5 * Global.power) + (0.5 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 0\n", "Stuntime: 1.0s\n"],
-	"attack_4": ["[b]Clones[/b]\n", "Summons 2 clones that help attack for you. Damage is based on first skill. Clones can't crit. \n[color=dodger_blue]Consumes 100 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (15%% + 0.15x dexterity)x2\n" % ((0.15 * Global.power) + (0.15 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 2\n", "Stuntime: 0.05s\n"],
-	"attack_5": ["[b]Giant Spikes[/b]\n", "Shoots out 3 giant shadow spikes, dealing massive damage and has far reach.\n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (80%% + 0.5x dexterity)\n" % (0.8 * Global.power + 0.5 * Global.dexterity), "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 8\n", "Stuntime: 0.5s\n"],
-	"ultimate": ["[b]Shadow Slices[/b]\n", "Quickly slices 3 times around you and deal massive damage. Crits inflict deathmark.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (60%% + 0.6x dexterity)\n" % ((0.6 * Global.power) + (0.6 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 0\n", "Stuntime: 1s\n\n", "Inflicts [color=yellow]Shock 15[/color] and crits inflict [color=gray]Deathmark 500[/color]"],
+	"attack_1": ["[b]Shadow Spike[/b]\n", "Quickly shoots out 4 spikes at moderate range. Each consecutive spike reaches a bit further. \n[color=dodger_blue]Consumes 16 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] x4 (15%% + 0.15x dexterity)x4\n" % ((0.15 * Global.power) + (0.15 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(attack1_max_t)/60), "Knockback: 2 x4\n", "Stuntime: 0.16s\n"],
+	"attack_2": ["[b]Shadow Shift[/b]\n", "Shifts a moderate distance forward, granting iframes, and dealing damage to everything that you pass through. Also inflicts shock.\n[color=dodger_blue]Consumes 48 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (100%% + 0.75x dexterity)\n" % ((1 * Global.power) + (0.75 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack2_max_t)/60), "Knockback: 2\n", "Stuntime: 1.5s\n\n", "Inflicts [color=yellow]shock 75[/color]"],
+	"attack_3": ["[b]Spike Eruption[/b]\n", "Sends outs rows of shadow spikes from the ground around you. Flings enemies into the air.\n[color=dodger_blue]Consumes 40 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (75%% + 0.5x dexterity)\n" % ((0.75 * Global.power) + (0.5 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack3_max_t)/60), "Knockback: 0\n", "Stuntime: 1.0s\n"],
+	"attack_4": ["[b]Clones[/b]\n", "Summons 2 clones that help attack for you. Damage is based on first skill. Clones can't crit. \n[color=dodger_blue]Consumes 80 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (15%% + 0.15x dexterity)x2\n" % ((0.15 * Global.power) + (0.15 * Global.dexterity)),"Cooldown: %.2fs\n" % (float(attack4_max_t)/60), "Knockback: 2\n", "Stuntime: 0.05s\n"],
+	"attack_5": ["[b]Giant Spikes[/b]\n", "Shoots out 3 giant shadow spikes, dealing massive damage and has far reach.\n[color=dodger_blue]Consumes 60 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (90%% + 0.6x dexterity)\n" % (0.9 * Global.power + 0.6 * Global.dexterity), "Cooldown: %.2fs\n" % (float(attack5_max_t)/60), "Knockback: 8\n", "Stuntime: 0.5s\n"],
+	"ultimate": ["[b]Shadow Slices[/b]\n", "Quickly slices 3 times around you and deal massive damage. Crits inflict deathmark.\n[color=dodger_blue]Consumes 0 stamina.[/color]\n\n", "Damage: [color=red]%.1f[/color] (60%% + 0.6x dexterity)\n" % ((0.6 * Global.power) + (0.6 * Global.dexterity)), "Cooldown: %.2fs\n" % (float(ultimate_max_t)/60), "Knockback: 0\n", "Stuntime: 1.5s\n\n", "Inflicts [color=yellow]Shock 15[/color] and crits inflict [color=gray]Deathmark 500[/color]"],
 	}
 	return(descriptions)
 
@@ -39,10 +39,10 @@ func set_dir():
 		class_anim.flip_h = false
 
 func init_attack_1():
-	if Global.stamina >= 20:
+	if Global.stamina >= 16:
 		set_dir()
 
-		Global.stamina -= 20
+		Global.stamina -= 16
 		player.set_animation_visibility(false)
 		class_anim.visible = true
 		class_anim.frame = 0
@@ -81,10 +81,10 @@ func attack_1():
 		Global.attack1t = 0
 
 func init_attack_2():
-	if Global.stamina >= 60:
+	if Global.stamina >= 48:
 		set_dir()
 
-		Global.stamina -= 60
+		Global.stamina -= 48
 		player.set_animation_visibility(false)
 		class_anim.visible = true
 		class_anim.frame = 0
@@ -95,7 +95,7 @@ func init_attack_2():
 func attack_2():
 	if Global.attack2t >= 1 and Global.attack2t <= 25:
 		class_anim.speed_scale = 3
-		player.set_speed_penalty(0.5)
+		player.set_speed_penalty(0.35)
 		
 		# spawns needles
 		if Global.attack2t == 5:
@@ -131,10 +131,10 @@ func attack_2():
 		Global.attack2t = 0
 
 func init_attack_3():
-	if Global.stamina >= 50:
+	if Global.stamina >= 40:
 		set_dir()
 
-		Global.stamina -= 50
+		Global.stamina -= 40
 		player.set_animation_visibility(false)
 		class_anim.visible = true
 		class_anim.frame = 0
@@ -143,15 +143,15 @@ func init_attack_3():
 		player.set_attacking(true)
 
 func attack_3():
-	if Global.attack3t >= 1 and Global.attack3t <= 20:
+	if Global.attack3t >= 1 and Global.attack3t <= 10:
 		class_anim.speed_scale = 3.5
 		player.set_speed_penalty(0.15)
 
-		# spawns slicer needle
+		# spawns spikes
 		if between(Global.attack3t, 1, 9) and Global.attack3t % 3 == 0:
 			shadow_spike = shadow_spike_proj.instantiate()
 			shadow_spike.set_player(player)
-			shadow_spike.set_damage((0.5 * Global.power) + (0.5 * Global.dexterity))
+			shadow_spike.set_damage((0.75 * Global.power) + (0.5 * Global.dexterity))
 			shadow_spike.set_knockback(0, -11)
 			shadow_spike.set_pos(player.position + Vector2(Global.player_dir * (75 + (Global.attack3t-3) * 60), -180))
 			shadow_spike.set_size(2.5)
@@ -173,7 +173,7 @@ func attack_3():
 			shadow_spike.set_ult_charge_amount(60)
 			get_tree().current_scene.get_node("Projectiles").add_child(shadow_spike)
 
-		if Global.attack3t == 20:
+		if Global.attack3t == 10:
 			player.set_animation_visibility(true)
 			class_anim.visible = false
 			player.set_attacking(false)
@@ -185,10 +185,10 @@ func attack_3():
 		Global.attack3t = 0
 
 func init_attack_4():
-	if Global.stamina >= 100:
+	if Global.stamina >= 80:
 		set_dir()
 
-		Global.stamina -= 100
+		Global.stamina -= 80
 		player.set_animation_visibility(false)
 		class_anim.visible = true
 		class_anim.frame = 0
@@ -247,7 +247,7 @@ func attack_5():
 			var extra_size = 0.5 * randi_range(0, 2)
 			shadow_spike = shadow_spike_proj.instantiate()
 			shadow_spike.set_player(player)
-			shadow_spike.set_damage((0.8 * Global.power) + (0.5 * Global.dexterity))
+			shadow_spike.set_damage((0.9 * Global.power) + (0.6 * Global.dexterity))
 			shadow_spike.set_knockback(8)
 			shadow_spike.set_pos(player.position + Vector2(600 * Global.player_dir, -80))
 			shadow_spike.set_size(4 + extra_size)
@@ -296,7 +296,7 @@ func ultimate():
 			slice.set_player(player)
 			slice.set_damage((0.6 * Global.power) + (0.6 * Global.dexterity))
 			slice.set_pos(player.position + Vector2(150 * Global.player_dir, -70))
-			slice.set_stuntime(60)
+			slice.set_stuntime(90)
 			slice.set_hitnum(100)
 			slice.set_size(2)
 			slice.set_knockback(0)

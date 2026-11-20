@@ -39,11 +39,13 @@ offset_top = -723.0
 offset_right = -6.666626
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 alignment = 2
 
 [node name="Text_display" type="Control" parent="VBoxContainer" unique_id=386422438]
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/Text_display" unique_id=702157007]
 layout_mode = 0
@@ -69,6 +71,7 @@ text = "Hover over each skill for info"
 visible = false
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ultimate_prog" type="TextureProgressBar" parent="VBoxContainer/ultimate_bar" unique_id=801504851]
 texture_filter = 1
@@ -105,7 +108,7 @@ offset_bottom = 62.333305
 focus_mode = 0
 flat = true
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/ultimate_bar/ultimate_button" unique_id=1158225784]
+[node name="ult_touch" type="TouchScreenButton" parent="VBoxContainer/ultimate_bar/ultimate_button" unique_id=1158225784]
 position = Vector2(190, 35)
 shape = SubResource("RectangleShape2D_6ltvv")
 
@@ -113,6 +116,7 @@ shape = SubResource("RectangleShape2D_6ltvv")
 visible = false
 custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="bar_5_prog" type="ProgressBar" parent="VBoxContainer/bar_5" unique_id=1065668714]
 layout_mode = 0
@@ -152,6 +156,7 @@ passby_press = true
 visible = false
 custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="bar_4_prog" type="ProgressBar" parent="VBoxContainer/bar_4" unique_id=1647510287]
 layout_mode = 0
@@ -192,6 +197,7 @@ action = "attack 4"
 visible = false
 custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="bar_3_prog" type="ProgressBar" parent="VBoxContainer/bar_3" unique_id=1238595712]
 layout_mode = 0
@@ -232,6 +238,7 @@ action = "attack 3"
 visible = false
 custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="bar_2_prog" type="ProgressBar" parent="VBoxContainer/bar_2" unique_id=634286780]
 layout_mode = 0
@@ -270,6 +277,7 @@ action = "attack 2"
 [node name="bar_1" type="Control" parent="VBoxContainer" unique_id=307362647]
 custom_minimum_size = Vector2(0, 71)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="bar_1_prog" type="ProgressBar" parent="VBoxContainer/bar_1" unique_id=1602923882]
 layout_mode = 0

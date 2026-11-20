@@ -61,6 +61,12 @@ func ignore_filter(val):
 		$VBoxContainer/bar_4/bar_4_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		$VBoxContainer/bar_5/bar_5_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		$VBoxContainer/ultimate_bar/ultimate_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		$VBoxContainer/bar_1/bar_1_button/bar1_touch.position.x = 1000
+		$VBoxContainer/bar_2/bar_2_button/bar2_touch.position.x = 1000
+		$VBoxContainer/bar_3/bar_3_button/bar3_touch.position.x = 1000
+		$VBoxContainer/bar_4/bar_4_button/bar4_touch.position.x = 1000
+		$VBoxContainer/bar_5/bar_5_button/bar5_touch.position.x = 1000
+		$VBoxContainer/ultimate_bar/ultimate_button/ult_touch.position.x = 1000
 		$VBoxContainer/Text_display/RichTextLabel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	else:
 		$VBoxContainer/bar_1/bar_1_button.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -69,6 +75,12 @@ func ignore_filter(val):
 		$VBoxContainer/bar_4/bar_4_button.mouse_filter = Control.MOUSE_FILTER_STOP
 		$VBoxContainer/bar_5/bar_5_button.mouse_filter = Control.MOUSE_FILTER_STOP
 		$VBoxContainer/ultimate_bar/ultimate_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		$VBoxContainer/bar_1/bar_1_button/bar1_touch.position.x = 206.5
+		$VBoxContainer/bar_2/bar_2_button/bar2_touch.position.x = 206.5
+		$VBoxContainer/bar_3/bar_3_button/bar3_touch.position.x = 206.5
+		$VBoxContainer/bar_4/bar_4_button/bar4_touch.position.x = 206.5
+		$VBoxContainer/bar_5/bar_5_button/bar5_touch.position.x = 206.5
+		$VBoxContainer/ultimate_bar/ultimate_button/ult_touch.position.x = 206.5
 		$VBoxContainer/Text_display/RichTextLabel.mouse_filter = Control.MOUSE_FILTER_STOP
 
 func update_prog():

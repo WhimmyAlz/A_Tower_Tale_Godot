@@ -39,8 +39,11 @@ func _ready() -> void:
 	$ProgressBar.max_value = max_lifetime
 	clone_list += [self]
 	while len(clone_list) > 4:
-		clone_list[0].queue_free()
-		clone_list.pop_front()
+		if clone_list[0] == null:
+			clone_list.pop_front()
+		else:
+			clone_list[0].queue_free()
+			clone_list.pop_front()
 
 func _physics_process(_delta: float) -> void:
 	var enemy_list = get_tree().current_scene.get_node("Enemies")
