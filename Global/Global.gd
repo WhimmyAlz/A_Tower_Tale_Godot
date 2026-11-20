@@ -94,7 +94,7 @@ var Souls = 0
 func reset_stats():
 	floors = 0
 	
-	player_class = "shadow"
+	player_class = "brawler"
 	player_XP = 0
 	player_Level = 1
 	
