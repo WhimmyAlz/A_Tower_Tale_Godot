@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://o56c4d3lvt71"]
+
+[ext_resource type="Script" uid="uid://bm1hqlnmhw0rt" path="res://Scenes/Player/Classes/lightning/zap.gd" id="1_6ug8d"]
+[ext_resource type="Texture2D" uid="uid://ddrks1280pf6p" path="res://Scenes/Player/Classes/lightning/Sprites/zap.png" id="1_7xpi4"]
+[ext_resource type="Texture2D" uid="uid://c4g0fhea00mf2" path="res://Scenes/Player/Classes/lightning/Sprites/zap_expire.png" id="3_wi8dk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ug8d"]
+atlas = ExtResource("1_7xpi4")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi8dk"]
+atlas = ExtResource("1_7xpi4")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3npic"]
+atlas = ExtResource("1_7xpi4")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gin1c"]
+atlas = ExtResource("1_7xpi4")
+region = Rect2(384, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll560"]
+atlas = ExtResource("1_7xpi4")
+region = Rect2(512, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj07q"]
+atlas = ExtResource("1_7xpi4")
+region = Rect2(640, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5slbm"]
+atlas = ExtResource("1_7xpi4")
+region = Rect2(768, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2ooc"]
+atlas = ExtResource("3_wi8dk")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gswir"]
+atlas = ExtResource("3_wi8dk")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8def"]
+atlas = ExtResource("3_wi8dk")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2ooc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ug8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi8dk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3npic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gin1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll560")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj07q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5slbm")
+}],
+"loop": false,
+"name": &"default",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2ooc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gswir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8def")
+}],
+"loop": true,
+"name": &"expire",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gswir"]
+size = Vector2(24, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8def"]
+size = Vector2(62, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qw86"]
+size = Vector2(98, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouj7r"]
+size = Vector2(128, 10)
+
+[node name="Area2D" type="Area2D" unique_id=1457632428]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_6ug8d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=768951272]
+texture_filter = 1
+position = Vector2(0, 3)
+sprite_frames = SubResource("SpriteFrames_b2ooc")
+animation = &"expire"
+autoplay = "default"
+
+[node name="1" type="CollisionShape2D" parent="." unique_id=1323947994]
+position = Vector2(-52, 0)
+shape = SubResource("RectangleShape2D_gswir")
+
+[node name="2" type="CollisionShape2D" parent="." unique_id=928649332]
+position = Vector2(-33, 0)
+shape = SubResource("RectangleShape2D_f8def")
+disabled = true
+
+[node name="3" type="CollisionShape2D" parent="." unique_id=1820021865]
+position = Vector2(-15, 0)
+shape = SubResource("RectangleShape2D_5qw86")
+disabled = true
+
+[node name="4" type="CollisionShape2D" parent="." unique_id=229708343]
+shape = SubResource("RectangleShape2D_ouj7r")
+disabled = true
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

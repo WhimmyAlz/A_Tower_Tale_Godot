@@ -55,6 +55,12 @@ func set_class_items():
 		animation = $deadeye/skills
 		hat = $deadeye/hat
 		$deadeye.visible = true
+		
+	elif player_class == "lightning":
+		class_node = $lightning
+		animation = $lightning/skills
+		hat = $lightning/hat
+		$lightning.visible = true
 
 	elif player_class == "draco":
 		# implement later

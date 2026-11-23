@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://bc13pe530kckc"]
+
+[ext_resource type="Script" uid="uid://u26sphufi2e1" path="res://Scenes/Player/Classes/lightning/smite.gd" id="1_jqad0"]
+[ext_resource type="Texture2D" uid="uid://cp0lrt2fo32nn" path="res://Scenes/Player/Classes/lightning/Sprites/smite.png" id="1_o3lqc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqad0"]
+atlas = ExtResource("1_o3lqc")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px7lq"]
+atlas = ExtResource("1_o3lqc")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cql5w"]
+atlas = ExtResource("1_o3lqc")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjtu6"]
+atlas = ExtResource("1_o3lqc")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6khxs"]
+atlas = ExtResource("1_o3lqc")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opw1p"]
+atlas = ExtResource("1_o3lqc")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duxtx"]
+atlas = ExtResource("1_o3lqc")
+region = Rect2(1536, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_613jy"]
+atlas = ExtResource("1_o3lqc")
+region = Rect2(1792, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o2ry"]
+atlas = ExtResource("1_o3lqc")
+region = Rect2(2048, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_do5of"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqad0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_px7lq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cql5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjtu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6khxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opw1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duxtx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_613jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o2ry")
+}],
+"loop": false,
+"name": &"default",
+"speed": 25.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k35r4"]
+size = Vector2(77, 232)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iq4uk"]
+size = Vector2(224.5, 57)
+
+[node name="Area2D" type="Area2D" unique_id=2003589488]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_jqad0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1306026632]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_do5of")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2010200999]
+position = Vector2(3.5, 3)
+shape = SubResource("RectangleShape2D_k35r4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=2089695229]
+position = Vector2(6.75, 95.5)
+shape = SubResource("RectangleShape2D_iq4uk")
+disabled = true
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

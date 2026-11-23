@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://3stv86s12bm8"]
+
+[ext_resource type="Script" uid="uid://2yqlatwiwjhy" path="res://Scenes/Player/Classes/lightning/lightning_dash.gd" id="1_rn7ok"]
+[ext_resource type="Texture2D" uid="uid://1gwxwdhy56t2" path="res://Scenes/Player/Classes/lightning/Sprites/lightning_dash.png" id="1_xm8ls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn7ok"]
+atlas = ExtResource("1_xm8ls")
+region = Rect2(0, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpc2j"]
+atlas = ExtResource("1_xm8ls")
+region = Rect2(256, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okyuu"]
+atlas = ExtResource("1_xm8ls")
+region = Rect2(512, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjvhw"]
+atlas = ExtResource("1_xm8ls")
+region = Rect2(768, 0, 256, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3cg5"]
+atlas = ExtResource("1_xm8ls")
+region = Rect2(1024, 0, 256, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nef7y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn7ok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpc2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okyuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjvhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3cg5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xm8ls"]
+size = Vector2(257, 49.5)
+
+[node name="Area2D" type="Area2D" unique_id=2073229903]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_rn7ok")
+
+[node name="Control" type="Control" parent="." unique_id=863746462]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -129.0
+offset_top = -25.0
+offset_right = 129.0
+offset_bottom = 26.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control" unique_id=836145892]
+texture_filter = 1
+position = Vector2(129, 27)
+sprite_frames = SubResource("SpriteFrames_nef7y")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=369156743]
+position = Vector2(0, 0.75)
+shape = SubResource("RectangleShape2D_xm8ls")

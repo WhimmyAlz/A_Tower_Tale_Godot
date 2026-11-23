@@ -48,6 +48,10 @@
 [ext_resource type="Texture2D" uid="uid://bpcxkd4svofgk" path="res://Scenes/Player/Classes/deadeye/Sprites/gun_throw.png" id="44_3qcfu"]
 [ext_resource type="Texture2D" uid="uid://mq66vojqkmu2" path="res://Scenes/Player/Classes/deadeye/Sprites/hat_stun.png" id="44_ujd6n"]
 [ext_resource type="Texture2D" uid="uid://dv0cnak6rssdj" path="res://Scenes/Player/Classes/deadeye/Sprites/long_shot.png" id="45_uf5ci"]
+[ext_resource type="Script" uid="uid://caqyxme3ejk3k" path="res://Scenes/Player/Classes/lightning/lightning.gd" id="49_1l864"]
+[ext_resource type="Texture2D" uid="uid://bud082rc4od2k" path="res://Scenes/Player/Classes/lightning/Sprites/base_shock.png" id="50_cbulo"]
+[ext_resource type="Texture2D" uid="uid://b6q5av7m4hwfi" path="res://Scenes/Player/Classes/lightning/Sprites/lightning_shift.png" id="51_xhl70"]
+[ext_resource type="Texture2D" uid="uid://bfuwcr7cg3y5n" path="res://Scenes/Player/Classes/lightning/Sprites/lightning_throw.png" id="52_cpmrs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kva02"]
 atlas = ExtResource("3_imllr")
@@ -1569,6 +1573,126 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oe8t"]
+atlas = ExtResource("50_cbulo")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj1mn"]
+atlas = ExtResource("50_cbulo")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klxc1"]
+atlas = ExtResource("50_cbulo")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3v3c"]
+atlas = ExtResource("50_cbulo")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71a76"]
+atlas = ExtResource("51_xhl70")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogpl6"]
+atlas = ExtResource("51_xhl70")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jii7x"]
+atlas = ExtResource("51_xhl70")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gnbw"]
+atlas = ExtResource("52_cpmrs")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47cjg"]
+atlas = ExtResource("52_cpmrs")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t3dp"]
+atlas = ExtResource("52_cpmrs")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prvmk"]
+atlas = ExtResource("52_cpmrs")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1g1a"]
+atlas = ExtResource("52_cpmrs")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uf5ci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oe8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj1mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klxc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3v3c")
+}],
+"loop": true,
+"name": &"base_shock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71a76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogpl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jii7x")
+}],
+"loop": true,
+"name": &"lightning_shift",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gnbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47cjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5t3dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prvmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1g1a")
+}],
+"loop": true,
+"name": &"lightning_throw",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1l864"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"hat_idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hat_run",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hat_stun",
+"speed": 5.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8fyps"]
 atlas = ExtResource("2_bxt8x")
 region = Rect2(0, 0, 32, 32)
@@ -1698,6 +1822,19 @@ position = Vector2(-3, -54)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_yo382")
 animation = &"hat_stun"
+
+[node name="lightning" type="Node2D" parent="." unique_id=289486862]
+script = ExtResource("49_1l864")
+
+[node name="skills" type="AnimatedSprite2D" parent="lightning" unique_id=38752046]
+visible = false
+sprite_frames = SubResource("SpriteFrames_uf5ci")
+animation = &"lightning_throw"
+
+[node name="hat" type="AnimatedSprite2D" parent="lightning" unique_id=1891431392]
+visible = false
+sprite_frames = SubResource("SpriteFrames_1l864")
+animation = &"hat_run"
 
 [node name="draco" type="Node2D" parent="." unique_id=2008310674]
 visible = false

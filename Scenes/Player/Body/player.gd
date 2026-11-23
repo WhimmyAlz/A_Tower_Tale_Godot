@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var jumps
+var jumps = 0
 var jump_pause
 
 var attacking = false

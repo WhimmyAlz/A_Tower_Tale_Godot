@@ -94,7 +94,7 @@ var Souls = 0
 func reset_stats():
 	floors = 0
 	
-	player_class = "brawler"
+	player_class = "lightning"
 	player_XP = 0
 	player_Level = 1
 	
@@ -130,7 +130,7 @@ func reset_stats():
 	crit_damage = 0
 	crit_damage_adds = 0
 	
-	player_attacks = 1
+	player_attacks = 5
 	ultimate_attack = 0
 	
 	attack1t = 0
@@ -290,7 +290,7 @@ func class_stats_deadeye():
 	flight = 0
 	max_jumps = 1 + jump_adds
 	jump_power = round(1600 * (1 + jump_multi))
-	jump_limit = 1000 # must be more than 0
+	jump_limit = 100 # must be more than 0
 
 	player_spd = round((0.2 * agility) * (1 + speed_multi))
 	player_weight = 12
@@ -309,6 +309,29 @@ func class_stats_deadeye():
 	dexterity = 26 + bonus_dexterity
 	intellect = 8 + bonus_intellect
 
+## Sets stats for Lightning [class:6]
+func class_stats_lightning():
+	flight = 0
+	max_jumps = 1 + jump_adds
+	jump_power = round(1500 * (1 + jump_multi))
+	jump_limit = 100 # must be more than 0
+
+	player_spd = round((0.2 * agility) * (1 + speed_multi))
+	player_weight = 18
+
+	max_health = 230
+	max_stamina = 200
+
+	power = 30 + bonus_power
+	crit_chance = 8 + crit_chance_adds
+	crit_damage = 1.25 + crit_damage_adds
+	defense = 0 + bonus_defense
+	defense_penetration = 0 + defense_penetration_adds
+	
+	strength = 8 + bonus_strength
+	agility = 80 + bonus_agility
+	dexterity = 16 + bonus_dexterity
+	intellect = 28 + bonus_intellect
 
 ## Sets stats for Draco [class:10]
 func class_stats_draco():
@@ -347,8 +370,11 @@ func check_class():
 		class_stats_shadow()
 	elif player_class == "deadeye":
 		class_stats_deadeye()
+	elif player_class == "lightning":
+		class_stats_lightning()
 	elif player_class == "draco":
 		class_stats_draco()
+		
 
 func cursor():
 	if Input.is_action_pressed("left_click"):
