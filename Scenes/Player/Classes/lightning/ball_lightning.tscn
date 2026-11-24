@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://cipqcpyfy157o"]
+
+[ext_resource type="Texture2D" uid="uid://wy5d1tt8jlkl" path="res://Scenes/Player/Classes/lightning/Sprites/ball_lightning.png" id="1_d7kdp"]
+[ext_resource type="Script" uid="uid://882krmbg2kou" path="res://Scenes/Player/Classes/lightning/ball_lightning.gd" id="1_xc4bn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc4bn"]
+atlas = ExtResource("1_d7kdp")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfl3l"]
+atlas = ExtResource("1_d7kdp")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8g6a"]
+atlas = ExtResource("1_d7kdp")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n38db"]
+atlas = ExtResource("1_d7kdp")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilx10"]
+atlas = ExtResource("1_d7kdp")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7fsf"]
+atlas = ExtResource("1_d7kdp")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfmx8"]
+atlas = ExtResource("1_d7kdp")
+region = Rect2(1536, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8tkt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc4bn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfl3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8g6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n38db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilx10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7fsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfmx8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_encov"]
+radius = 421.0
+
+[node name="Area2D" type="Area2D" unique_id=1299887197]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_xc4bn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1930006649]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u8tkt")
+autoplay = "default"
+frame_progress = 0.12308112
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2064158477]
+shape = SubResource("CircleShape2D_encov")
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
