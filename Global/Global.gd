@@ -130,8 +130,8 @@ func reset_stats():
 	crit_damage = 0
 	crit_damage_adds = 0
 	
-	player_attacks = 5
-	ultimate_attack = 0
+	player_attacks = 1
+	ultimate_attack = 1
 	
 	attack1t = 0
 	attack2t = 0
@@ -147,7 +147,7 @@ func reset_stats():
 	attack5_max_t = null
 	ultimate_max_t = null
 	
-	ultimate_charge = 0
+	ultimate_charge = 1000
 	
 	speed_multi = 0
 	jump_multi = 0
