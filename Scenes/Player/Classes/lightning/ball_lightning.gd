@@ -26,7 +26,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		for collider in collisions:
 			if collider.is_in_group("attackable") and collider.is_in_group("enemy") and collider not in already_hit and hitnum >= 1:
 				charge_ult()
-				collider.take_damage(damage, defense_pen, 0)
+				collider.take_damage(damage, defense_pen)
 				collider.inflict_shock(25)
 				collider.take_stun(stuntime)
 				collider.take_knockback(knockback, direction)

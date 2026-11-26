@@ -4,6 +4,7 @@ var cursor_normal = preload("res://Global/cursor/cursor2/cursor1.png")
 var cursor_pressed = preload("res://Global/cursor/cursor2/cursor2.png")
 var gore = null
 var mobile_controls = false
+var difficulty = "normal"
 
 var floors := 0
 
@@ -13,7 +14,6 @@ var death_position
 
 var player_class := "brawler"
 var player_XP := 0
-var player_Level := 1
 
 var max_jumps := 1
 var flight := 0
@@ -94,9 +94,8 @@ var Souls = 0
 func reset_stats():
 	floors = 0
 	
-	player_class = "lightning"
+	player_class = "brawler"
 	player_XP = 0
-	player_Level = 1
 	
 	max_jumps = 1
 	flight = 0
@@ -131,7 +130,7 @@ func reset_stats():
 	crit_damage_adds = 0
 	
 	player_attacks = 1
-	ultimate_attack = 1
+	ultimate_attack = 0
 	
 	attack1t = 0
 	attack2t = 0
@@ -147,7 +146,7 @@ func reset_stats():
 	attack5_max_t = null
 	ultimate_max_t = null
 	
-	ultimate_charge = 1000
+	ultimate_charge = 0
 	
 	speed_multi = 0
 	jump_multi = 0

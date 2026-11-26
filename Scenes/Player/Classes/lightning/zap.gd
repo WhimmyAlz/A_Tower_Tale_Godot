@@ -23,7 +23,7 @@ func _physics_process(_delta: float) -> void:
 	for collider in collisions:
 		if collider.is_in_group("attackable") and collider.is_in_group("enemy") and collider not in already_hit and hitnum >= 1:
 			charge_ult()
-			collider.take_damage(damage * dmg_multi, defense_pen, 0)
+			collider.take_damage(damage * dmg_multi, defense_pen)
 			collider.inflict_shock(5)
 			collider.take_stun(stuntime)
 			collider.take_knockback(knockback, direction)
