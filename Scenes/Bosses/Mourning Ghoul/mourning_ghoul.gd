@@ -109,6 +109,14 @@ func take_knockback(kb, dir):
 func take_knockbackY(_kb):
 	pass
 
+func take_bleed():
+	if bleed_stacks >= 1 and bleed_tick_delay == 0:
+		bleed_stacks -= 1
+		bleed_tick_delay = 30
+		take_damage(float(Max_Health/200), 1000, 0, Color.DARK_RED)
+	elif bleed_tick_delay > 0:
+		bleed_tick_delay -= 1
+
 func set_level_stats():
 	# Reminder to self:
 	# Level is display level while level is used functionally
@@ -116,12 +124,12 @@ func set_level_stats():
 	
 	if check_stats_unchanged():
 		xp_range = [150, 180]
-		Health = 4000 + (level * 400)
-		Max_Health = 4000 + (level * 400)
+		Health = 4000 + (level * 1000)
+		Max_Health = 4000 + (level * 1000)
 		Defense = 3
 		Speed = 2
-		Damage = 40 + (level * 4)
-	phases = {0: [100, 0], 1: [60, 1], 2 : [0, 1]}
+		Damage = 40 + (level * 10)
+	phases = {0: [100, 0], 1: [50, 1], 2 : [0, 1]}
 	Name = "Mourning Ghoul"
 	phase = 0
 	Boss = true
@@ -171,8 +179,12 @@ func _physics_process(_delta: float) -> void:
 				if attackt == 151:
 					$MourningGhoulSprite.play("scream")
 				if attackt == 201:
-					for i in range(randi_range(3, 5)):
-						summon_shadows()
+					if Global.difficulty == "easy":
+						for i in range(randi_range(2, 3)):
+							summon_shadows()
+					else:
+						for i in range(randi_range(3, 5)):
+							summon_shadows()
 					player.get_parent().set_screenshake(20)
 				if attackt >= 211:
 					attackt = 0
@@ -205,7 +217,10 @@ func _physics_process(_delta: float) -> void:
 					$MourningGhoulSprite.play("scream")
 				if attackt == 201:
 					player.get_parent().set_screenshake(20)
-					player.take_stun(60)
+					if Global.difficulty == "easy":
+						player.take_stun(45)
+					else:
+						player.take_stun(60)
 				if attackt >= 211:
 					attackt = 0
 					attack_combo = 0
@@ -222,7 +237,7 @@ func _physics_process(_delta: float) -> void:
 				if attackt == 181:
 					hitnum = 1
 					summon_shadows(Level-1, "hand")
-					if randi_range(0, 1) == 0:
+					if randi_range(0, 1) == 0 and Global.difficulty != "easy":
 						summon_shadows(Level-1, "hand")
 				
 				if attackt >= 181 and attackt <= 196:

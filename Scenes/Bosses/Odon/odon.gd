@@ -107,8 +107,8 @@ func set_level_stats():
 	
 	if check_stats_unchanged():
 		xp_range = [60, 72]
-		Health = 1400 + (level * 120)
-		Max_Health = 1400 + (level * 120)
+		Health = 1400 + (level * 300)
+		Max_Health = 1400 + (level * 300)
 		Defense = 4
 		Speed = 4
 		Damage = 30 + (level * 5)

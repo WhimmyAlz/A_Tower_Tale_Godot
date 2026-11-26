@@ -31,7 +31,11 @@ func progress_floor():
 	player.reset_regen_amount()
 	
 	base_floor.bg_add_y_pos()
-	init_floor_mobs(Global.floors)
+	
+	if Global.difficulty == "easy":
+		init_floor_mobs_easy(Global.floors)
+	elif Global.difficulty == "normal":
+		init_floor_mobs_normal(Global.floors)
 
 func spawn_skeleton(pos, level):
 	var skelebone = preload_skelebone.instantiate()
@@ -99,7 +103,9 @@ func spawn_mourning_ghoul(pos, level):
 	mourning_ghoul.Level = level
 	base_floor.add_enemy(mourning_ghoul)
 
-func init_floor_mobs(floor_num):
+
+
+func init_floor_mobs_normal(floor_num):
 	if floor_num == 1:
 		spawn_nerd(Vector2(800, 0), 2)
 		spawn_skeleton(Vector2(0, 0), 3)
@@ -154,6 +160,65 @@ func init_floor_mobs(floor_num):
 		spawn_mourning_ghoul(Vector2(700, 600), 1)
 	elif floor_num == 16:
 		get_tree().change_scene_to_file("res://Splash_Loading screens/demoEndScreen.tscn")
+
+
+func init_floor_mobs_easy(floor_num):
+	if floor_num == 1:
+		spawn_nerd(Vector2(800, 0), 1)
+		spawn_skeleton(Vector2(0, 0), 1)
+	elif floor_num == 2:
+		spawn_skeleton(Vector2(-700, 0), 2)
+		spawn_skeleton(Vector2(700, 0), 2)
+	elif floor_num == 3:
+		spawn_nerd(Vector2(500, 0), 2)
+		spawn_skeleton(Vector2(0, 0), 5)
+	elif floor_num == 4:
+		spawn_nerd(Vector2(500, 0), 2)
+		if randi_range(1,10) == 1:
+			spawn_undead_warrior(Vector2(0, 0), 0)
+		else:
+			spawn_skeleton(Vector2(0, 0), 6)
+	elif floor_num == 5:
+		spawn_sir_blob(Vector2(700, 0), 0)
+	elif floor_num == 6:
+		spawn_undead_ranger(Vector2(700, 0), 3)
+		spawn_undead_ranger(Vector2(-700, 0), 3)
+	elif floor_num == 7:
+		spawn_skeleton(Vector2(700, 0), 6)
+		spawn_undead_ranger(Vector2(-700, 0), 4)
+	elif floor_num == 8:
+		spawn_nerd(Vector2(800, 0), 10)
+		spawn_undead_warrior(Vector2(500, 0), 4)
+		spawn_undead_ranger(Vector2(-700, 0), 5)
+	elif floor_num == 9:
+		spawn_chomper(Vector2(700, 0), 2)
+		spawn_undead_ranger(Vector2(-700, 0), 5)
+		spawn_skeleton(Vector2(700, 0), 6)
+	elif floor_num == 10:
+		spawn_odon(Vector2(-700, 0), 0)
+		spawn_nell(Vector2(700, 0), 0)
+	elif floor_num == 11:
+		spawn_nerd(Vector2(700, 0), 6)
+		spawn_gray_bird(Vector2(-800, 0), 3)
+	elif floor_num == 12:
+		spawn_gray_bird(Vector2(-800, 0), 1)
+		spawn_gray_bird(Vector2(800, 0), 2)
+	elif floor_num == 13:
+		spawn_undead_warrior(Vector2(-600, 0), 0)
+		spawn_undead_warrior(Vector2(600, 0), 0)
+		spawn_chomper(Vector2(0, 0), 2)
+		spawn_skeleton(Vector2(-700, 0), 6)
+	elif floor_num == 14:
+		spawn_nerd(Vector2(800, 0), 12)
+		spawn_undead_warrior(Vector2(600, 0), 5)
+		spawn_undead_ranger(Vector2(-700, 0), 8)
+		spawn_gray_bird(Vector2(-800, 0), 4)
+	elif floor_num == 15:
+		spawn_mourning_ghoul(Vector2(700, 600), 0)
+	elif floor_num == 16:
+		get_tree().change_scene_to_file("res://Splash_Loading screens/demoEndScreen.tscn")
+
+
 
 func _physics_process(_delta: float) -> void:
 	if Global.stun_time == 0 and entered and Input.is_action_just_released("interact"):

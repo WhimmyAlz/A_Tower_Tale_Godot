@@ -5,4 +5,5 @@ func _physics_process(_delta: float) -> void:
 		$Panel2.modulate.a -= 0.01
 
 func _on_texture_button_pressed() -> void:
+	Global.difficulty = "normal"
 	get_tree().change_scene_to_file("res://Splash_Loading screens/Splash_screen.tscn")

@@ -73,7 +73,10 @@ func dodge():
 		closest_enemy.velocity.x = 2 * (player.position.x - closest_enemy.position.x)
 		velocity.x = direction * 2500
 		attackt = 190
-		dodge_cd = 300
+		if Global.difficulty == "easy":
+			dodge_cd = 450
+		else:
+			dodge_cd = 300
 		get_tree().current_scene.get_node("UI Containers").make_text("Check it!", "chocolate", true)
 
 func shoot():
@@ -103,11 +106,11 @@ func set_level_stats():
 	
 	if check_stats_unchanged():
 		xp_range = [60, 72]
-		Health = 900 + (level * 90)
-		Max_Health = 900 + (level * 90)
+		Health = 900 + (level * 150)
+		Max_Health = 900 + (level * 150)
 		Defense = 2
 		Speed = 4
-		Damage = 10 + (level * 1)
+		Damage = 10 + (level * 2)
 		Defense_pen = 10
 	attackt_start = 190
 

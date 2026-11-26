@@ -7,6 +7,8 @@ var boss_bar_preload = preload("res://Scenes/Mobs/UI/boss_health_bar/boss_health
 var hitnum = 1
 var hitnumcd = 30
 
+var extra_TBA = 0
+
 @onready var animation = $SirBlobSprite
 
 @export var Boss_bar_name = "SIR BLOB"
@@ -107,6 +109,9 @@ func set_level_stats():
 		Max_Health = 1000 + (level * 150)
 		Damage = 60 + (level * 5)
 		Speed = 3
+	
+	if Global.difficulty == "easy":
+		extra_TBA = 120
 
 	phase = 0
 	attackt_start = 180
@@ -140,7 +145,7 @@ func _physics_process(_delta: float) -> void:
 		if hitnumcd == 1:
 			hitnum = 1
 
-	if attackt >= 0 and attackt <= 239:
+	if attackt >= 0 and attackt <= (239 + extra_TBA):
 		if stunnedf == 0:
 			move(animation)
 			attackt += 1
@@ -151,11 +156,11 @@ func _physics_process(_delta: float) -> void:
 	elif attackt == -1 and stunnedf == 0:
 		move(animation)
 		
-	if attackt >= 240 and attackt <= 690:
-		if attackt == 240:
+	if attackt >= (240 + extra_TBA) and attackt <= (690 + extra_TBA):
+		if attackt == 240 + extra_TBA:
 			self.velocity.y = -3000
 
-		if attackt == 260:
+		if attackt == 260 + extra_TBA:
 			init_attack()
 		attack()
 		
@@ -163,7 +168,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		friction()
 
-	if attackt >= 690:
+	if attackt >= 690 + extra_TBA:
 		deactivate_attack()
 		attackt = 0
 	

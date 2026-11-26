@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dvro8anhgt1tt" path="res://Global/pause_menu/buttons/button1_1.png" id="3_mtvan"]
 [ext_resource type="Texture2D" uid="uid://bk6asq376s781" path="res://Global/pause_menu/buttons/button1_2.png" id="4_1m8au"]
 [ext_resource type="Texture2D" uid="uid://bi2hnkmkkr1ef" path="res://Splash_Loading screens/Sprites/title_text.png" id="5_mtvan"]
+[ext_resource type="Texture2D" uid="uid://nkfsbmoljwka" path="res://Scenes/Bosses/Merchant/shop/sprites/arrows/arrows_1.png" id="6_2ooc2"]
+[ext_resource type="Texture2D" uid="uid://cxu3pg068rw2g" path="res://Scenes/Bosses/Merchant/shop/sprites/arrows/arrows_2.png" id="7_bnvq3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtvan"]
 bg_color = Color(0, 0, 0, 0.5019608)
@@ -64,16 +66,20 @@ position = Vector2(560, -253)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_mtvan")
 
-[node name="Buttons" type="VBoxContainer" parent="." unique_id=253725108]
+[node name="Buttons" type="Control" parent="." unique_id=539698986]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="start_button" type="TextureButton" parent="Buttons" unique_id=366732151]
+texture_filter = 1
+layout_mode = 0
 offset_left = -886.0
 offset_top = -51.0
 offset_right = -754.0
 offset_bottom = 13.0
-scale = Vector2(4, 4)
-
-[node name="start_button" type="TextureButton" parent="Buttons" unique_id=366732151]
-texture_filter = 1
-layout_mode = 2
+scale = Vector2(3, 3)
 texture_normal = ExtResource("3_mtvan")
 texture_pressed = ExtResource("3_mtvan")
 texture_hover = ExtResource("4_1m8au")
@@ -92,6 +98,49 @@ bbcode_enabled = true
 text = "[b]Start"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="difficulty" type="Sprite2D" parent="Buttons" unique_id=860485445]
+texture_filter = 1
+position = Vector2(-695, 170.00002)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("3_mtvan")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Buttons/difficulty" unique_id=1046960092]
+offset_left = -58.857136
+offset_top = -12.0000105
+offset_right = 416.57144
+offset_bottom = 75.99999
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "[b]Normal"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="right" type="TextureButton" parent="Buttons/difficulty" unique_id=844147213]
+visible = false
+texture_filter = 1
+offset_left = 67.99999
+offset_top = -16.571438
+offset_right = 99.99999
+offset_bottom = 15.428562
+texture_normal = ExtResource("6_2ooc2")
+texture_pressed = ExtResource("6_2ooc2")
+texture_hover = ExtResource("7_bnvq3")
+
+[node name="left" type="TextureButton" parent="Buttons/difficulty" unique_id=670370564]
+texture_filter = 1
+offset_left = -97.142845
+offset_top = -16.000002
+offset_right = -65.142845
+offset_bottom = 15.999998
+texture_normal = ExtResource("6_2ooc2")
+texture_pressed = ExtResource("6_2ooc2")
+texture_hover = ExtResource("7_bnvq3")
+flip_h = true
 
 [node name="gore_warning" type="ColorRect" parent="." unique_id=461904501]
 visible = false
@@ -180,5 +229,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="Buttons/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Buttons/difficulty/right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="Buttons/difficulty/left" to="." method="_on_left_pressed"]
 [connection signal="pressed" from="gore_warning/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="gore_warning/TextureButton2" to="." method="_on_texture_button_2_pressed"]
